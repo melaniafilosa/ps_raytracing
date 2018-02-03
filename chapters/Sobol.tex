@@ -1,0 +1,76 @@
+\chapter{Implementation of Sobol' sequences}\label{app:Sobol}
+\section{Van der Corput sequences}
+ In the following we show a particular construction of a low-discrepancy sequence for $d=1$ that was introduced the first time by Van der Corput in 1935.  
+This kind of sequences, called \textit{van der Corput} sequences, are particular interesting not only because they give an intuition of how to construct low discrepancy sequences but also because many other kind of sequences in higher dimensions are based on this one-dimensional case. Before introducing these sequences we need to give the concept of radical inverse function. Let $\const{b}\geq 2$ be an integer base. Any natural number $\variabile{n}\in \mathbb{N}_0$ can be decomposed in base $\const{b}$ as follows:
+\begin{equation}
+\variabile{n} = \sum_{\variabile{i}=0}^\infty \variabile{d}_{\variabile{i}}\const{b}^{\variabile{i}}
+\end{equation}
+where $\variabile{d}_{\variabile{i}} \in \{0, 1, \cdots, \const{b}-1\}$ are the digit numbers.
+The radical inverse function $\phi_{\const{b}}:\mathbb{N}_0\mapsto [0,1)$ in base $\const{b}$ is defined as:
+\begin{equation}
+\phi_{\const{b}}(\variabile{n}) = \sum_{\variabile{i}=1}^{\infty}\frac{\variabile{d}_{\variabile{i}-1}}{\const{b}^{\variabile{i}}}.
+\end{equation}
+As an example we provide in the following the radical inverse function $\phi_{\const{b}}(5)$ in base $\const{b} = 2$. 
+The digit expansion in base $\const{b}$ of $\variabile{n}=5$ is:
+\begin{equation}
+5 = 1\cdot 2^0+1\cdot 2^2.
+\end{equation}
+Therefore, $\variabile{d}_0 = 1, \variabile{d}_1 = 0$ and $\variabile{d}_2 = 1$. 
+The radical inverse function $\phi_2(5)$ is:
+\begin{equation}
+\phi_2 (5) = \frac{1}{2}+\frac{1}{8} = \frac{5}{8}.
+\end{equation}
+\begin{definition}
+The Van der Corput sequence in base $\const{b}$ is defined as $\{ \phi_{\const{b}}(\variabile{n})\}_{n\in\mathbb{N}_0}$.
+\end{definition}
+For example, suppose we have the finite sequence of numbers $\variabile{n}\in \{0, 1,\cdots, 8\}$  the corresponding Van der Corput sequence 
+$\{ \phi_{\const{b}}(\variabile{n})\}_{\variabile{n}\in \{0, 1,\cdots, 8\}}$ in base $\variabile{b}=2$ is:
+\begin{equation}
+\big\{\phi_2(\variabile{n})\big\}_{\variabile{n}\in \{0, 1,\cdots, 8\}} = \Bigg\{0, \frac{1}{2}, \frac{1}{4}, \frac{3}{4}, \frac{1}{8},\frac{5}{8}, \frac{3}{8}, \frac{7}{8}, \frac{1}{16}\Bigg\} \,.
+\end{equation}
+It can be proved that the Van der Corput sequence in base $\variabile{b}$ is uniformly distributed modulo one, \cite{leobacher2014introduction}. 
+The van der Corput sequence has been extended to higher dimensions. 
+The most common QMC approach uses Sobol sequence which can be seen as an extended Van der Corput sequence in base $\variabile{b}=2$ .
+Sobol' sequence uses the same base $\variabile{b}=2$ for all the dimensions $\variabile{d}\geq2$. 
+\section{Sobol' sequences}
+The aim is to generate a low-discrepancy sequence in the ipercube $[0,1]^{d}$. 
+Let us start from the simplest case of one dimension, i.e. $d=1$. First, we need to chose a primitive polynomial $P_\variabile{j}$ of degree $\textrm{s}_\variabile{j}$ of the form
+\begin{equation}
+P_{\variabile{j}}:\variabile{x}^{\textrm{s}_{\variabile{j}}}+\variabile{a}_{1, \variabile{j}}\variabile{x}^{\textrm{s}_{\variabile{j}}-1}+\cdots+\variabile{a}_{\textrm{s}_{\variabile{j}}-1}\variabile{x}+1
+\end{equation}
+where the coefficients $\{\variabile{a}_{\variabile{i},\variabile{j}}\}_{\variabile{i}= 1, \cdots, \textrm{s}_{\variabile{j}}-1}$ are either $0$ or $1$. 
+Then a sequence $\{m_1,m_2,\cdots\}$ is defined such that:
+\begin{equation}\label{eq:m}
+m_{\variabile{k}, \variabile{j}} := 2\variabile{a}_{1, \variabile{j}}m_{\variabile{k}-1, \variabile{j}}\oplus 2^2a_{2, \variabile{j}}m_{\variabile{k}-2, \variabile{j}}\oplus \cdots \oplus 2^{\textrm{s}-1}\variabile{a}_{\variabile{k}-1, \variabile{j}}m_{\variabile{k}-\textrm{s}+1, \variabile{j}}\oplus 2^{\textrm{s}}m_{\variabile{k}-1, \variabile{j}}\oplus m_{\variabile{k}-\textrm{s}, \variabile{j}},
+\end{equation}
+where we have indicated with $\oplus$ the bit by bit exclusive or operator which operates on two bit patterns and operates on each pair of the corresponding bins giving as result $1$ if one of the two bits is $1$ and $0$ if both bits are equal either to $0$ or $1$. The values $m_{\variabile{k}, \variabile{j}}$, $1\leq\variabile{k}\leq d$, are chosen such that they are odd and positive numbers less than $2^\variabile{k}$. Now, the so-called direction numbers are defined by:
+\begin{equation}\label{eq:dir_numb}
+\variabile{v}_{\variabile{k}, \variabile{j}}=\frac{m_{\variabile{k}, \variabile{j}}}{2^\variabile{k}}.
+\end{equation}
+Then, the sequence $\{\variabile{x}_{\variabile{i}, \variabile{j}}\}$ is given by
+\begin{equation}\label{eq:x}
+\variabile{x}_{\variabile{i}, \variabile{j}} = \variabile{i}_1\variabile{v}_1\oplus \variabile{i}_2\variabile{v}_{2}\oplus \cdots
+\end{equation}
+for every $\variabile{i}$, where $\variabile{i}_{\variabile{k}}$ is the $\variabile{k}$-th digit from the right when $\variabile{i}$ is written in binary $\variabile{i} = (\cdots \variabile{i}_3\variabile{i}_2\variabile{i}_1)_2$, \cite{joe2008notes}. We provide in the following an example. \\ \indent
+Given the primitive polynomial $\variabile{x}^3+\variabile{x}^2+1$ of degree $\textrm{s}_{\variabile{j}}=3$, the first three coefficients $m_{1, \variabile{j}}=1$, 
+$m_{2, \variabile{j}}=3$, and $m_{3, \variabile{j}}=7$ lead to the following direction numbers 
+\begin{equation}
+\variabile{v}_{1,\variabile{j}} = \frac{1}{2}, \qquad \variabile{v}_{2,\variabile{j}} = \frac{3}{4}, \qquad \variabile{v}_{3,\variabile{j}}= \frac{7}{8},
+\end{equation}
+that in binary notation are:
+\begin{equation}
+\variabile{v}_{1,\variabile{j}} = (0.1)_2 \qquad \variabile{v}_{1,\variabile{j}} = (0.11)_2, \qquad \variabile{v}_{1,\variabile{j}} = (0.111)_2.
+\end{equation}
+From Eq. (\ref{eq:m}) we can derive the others coefficients $m_{4,\variabile{j}}=5$, $m_{5,\variabile{j}}=7$, etc. with he corresponding direction vectors:
+\begin{equation}
+\variabile{v}_{4,\variabile{j}} = \frac{5}{16} = (0.0101)_2  \qquad \variabile{v}_{5,\variabile{j}} = \frac{7}{32}=(0.00111)_2
+\end{equation}
+From Eq. (\ref{eq:x}) we finally find the sequence
+\begin{equation}
+\end{equation}
+\\ \indent
+The generalization of Sobol's sequence to higher dimensions $d>1$ is calculated considering a sequence where the $\variabile{i}$-th point has the form:
+\begin{equation}
+\variabile{q}_{i} = (\variabile{x}_{\variabile{i}, 1},\variabile{x}_{\variabile{i}, 2} \cdots, \variabile{x}_{\variabile{i}, d}),
+\end{equation}
+where the second index of the variables $\variabile{x}_{\variabile{i}, \variabile{j}}$ it refers to the polynomial $P_{\variabile{j}}$ (with corresponding degree $\textrm{s}_{\variabile{j}}$) which is considered to calculate the direction numbers. Therefore, $d$ different sets of direction numbers are generated from a given polynomial $P_\variabile{j}$ using Eq. \ref{eq:dir_numb} and each component $\variabile{x}_{\variabile{i},\variabile{j}}$ is computed using the corresponding direction vector. 

@@ -1,0 +1,102 @@
+\documentclass[letterpaper,10pt]{article}
+\usepackage{osameet2}
+\usepackage{fancyhdr}
+\rfoot{\thepage}
+%% standard packages and arguments should be modified as needed
+
+\usepackage{amsmath,amssymb}
+\usepackage{epstopdf}
+\usepackage[pdftex,colorlinks=true,bookmarks=false,citecolor=blue,urlcolor=blue]{hyperref} %pdflatex
+\pagenumbering{roman}
+%\usepackage[dvips,colorlinks=true,bookmarks=false,citecolor=blue,urlcolor=blue]{hyperref} %latex w/dvips
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage[]{algorithm2e}
+\usepackage{subcaption}
+\usepackage{epstopdf}
+%\usepackage{qtree}
+\usepackage{fancybox}
+
+\newcommand{\set}[3]{$\emph{#1}_{\textit{#2#3}}$}
+%\newcommand{\setconst}[3]{$\mathcal{#1}_{\textrm{#2#3}}$}
+\newcommand{\map}[3]{$\mathrm{#1}_{\textit{#2#3}}$}
+\newcommand{\setbound}[4]{$\emph{#1}_{\textit{#2#3}}^{#4}$}
+\newcommand{\inversemap}[3]{$\mathrm{#1}_{\textit{#2#3}}^{-1}$}
+%\newcommand{\mapconst}[3]{$\mathrm{#1}_{\textrm{#2#3}}$}
+\newcommand{\var}[1]{\textit{#1}}
+\newcommand{\pos}[2]{\var{q}_{\textrm{#1} \textit{#2}}}
+\newcommand{\dir}[2]{\var{p}_{\textrm{#1} \textit{#2}}}
+\newcommand{\const}[1]{\textrm{#1}}
+\newcommand{\vect}[1]{\textit{\textbf{#1}}}
+\newcommand{\point}[1]{\textsf{#1}}
+\usepackage{qtree}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{tikz,tikz-qtree}
+\usetikzlibrary{backgrounds}
+\newcommand{\ply}[3][black]{{#2 ({\color{#1}#3})}}
+\newcommand{\player}[1]{ \emph #1}
+\tikzset{
+  treenode/.style = {shape=rectangle, rounded corners,
+                     draw, align=center,
+                     top color=white, bottom color=blue!20},
+  root/.style     = {treenode, font=\Large, bottom color=red!30},
+  env/.style      = {treenode, font=\ttfamily\normalsize},
+  dummy/.style    = {treenode, circle,draw}
+}
+%
+%
+
+
+\title{Inverse ray mapping on phase space for two-dimensional reflective optical systems}
+
+\author{Carmela Filosa $^1$, Jan ten Thije Boonkkamp $^1$, Wilbert IJzerman $^{1,2}$}
+\address{$^1$ CASA, Eindhoven University of Technology, PO Box 513 5600 MB Eindhoven, The Netherlands \\
+$^2$ Philips Lighting, High Tech Campus 7, Eindhoven 5656 AE, The Netherlands}
+\email{c.filosa@tue.nl, j.h.m.tenthijeboonkkamp@tue.nl, wilbert.ijzerman@philips.com}
+
+\begin{abstract}
+A new method to compute the target photometric variables of non-imaging optical systems is presented.
+The method is based on the phase space representation of $\it{each}$
+surface that forms the optical system.
+All surfaces can be modeled as detectors of the incident light and emitters of the reflected light.
+Moreover, we assume that the source can only emit light and the target can only receive light.
+Therefore, one phase space is taken into account for the source and one for the target. For the other surfaces both the source and target phase spaces are considered.
+The output intensity is computed from the rays that leave the source and hit the target.
+We implement the method for two-dimensional optical systems, and we compare the new method with Monte Carlo (MC) ray tracing. In this paper we present the results for systems formed by straight lines which are all located in the same medium.
+Numerical results show that the intensity found with the ray mapping method equals the reference intensity.
+Accuracy and speed advantage of several orders are observed with the new method.
+\end{abstract}
+
+\section{List of publications}
+\addcontentsline{toc}{chapter}{List of publications}
+
+%\noindent \textbf{Preprints}:
+%\begin{enumerate}
+%  \item G.A. Bonaschi, P. van Meurs, and M. Morandotti. \emph{Dislocations and gradient flows}. submitted, \verb"arXiv:1509.01019" , 2015.
+%  \item G.A. Bonaschi, R. Rossi and G. Savar\'{e}. \emph{A stochastic and a vanishing-viscosity derivation of balanced viscosity solutions to finite-dimensional rate-independent system}. in preparation, 2015.
+%  \item G.A. Bonaschi, J. Feng and M.A. Peletier. \emph{Large deviations principle for a rate independent system}. in preparation , 2015.
+%\end{enumerate}
+
+\noindent \textbf{Refereed journal papers}:
+\begin{enumerate}
+% \item GA Bonaschi \& MA Peletier. \emph{Quadratic and rate-independent limit for a large-deviations functional}. Continuum Mechanics and Thermodynamics, 2015
+% \item GA Bonaschi, JA Carrillo, M Di Francesco, \& MA Peletier. \emph{Equivalence of gradient flows and entropy solutions for singular nonlocal interaction equations in 1D}. ESAIM: Control, Optimisation and Calculus of Variations, 21(2), 2015
+% \item GA Bonaschi, et al. \emph{Identification of a response amplitude operator for ships}, Mathematics-in-Industry Case Studies Journal, Volume 5, pp. 1-26, 2013
+\item   C. Filosa, J. ten Thije Boonkkamp, W. IJzerman,
+\emph{Ray tracing method in phase space for two-dimensional optical systems}, Applied optics, Optical Society of America,
+  Volume 55, pp 3599--3606, 2016.
+
+
+\item  C. Filosa, J. ten Thije Boonkkamp, W. IJzerman, 
+  \emph{Phase space ray tracing for a two-dimensional parabolic reflector},
+Mathematics and Statistics, Volume 5, pp. 135 - 142, 2017.
+\end{enumerate}
+\noindent \textbf{Non refereed proceeding papers}:
+\begin{enumerate}
+\item 
+  C. Filosa, J. ten Thije Boonkkamp, W. IJzerman,  \emph{Inverse ray mapping on phase space for two-dimensional optical systems},
+  Optical Fabrication and Testing, OSA, 2017. 
+\end{enumerate}
+\end{document}
