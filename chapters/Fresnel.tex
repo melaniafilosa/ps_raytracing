@@ -26,7 +26,7 @@ First we describe the geometry of the system, then we explain the method for thi
 \subsection{The geometry of the system}
 Let us consider the optical system depicted in Figure \ref{fig:lens}. 
 % Geometry of the system
-\begin{figure}[h]
+\begin{figure}[t]
   \begin{center}
   \includegraphics[width=0.6\textwidth]{lens}
   \end{center}
@@ -39,7 +39,7 @@ It is formed by the source (line $1$), a lens formed by two optical lines (line 
 $\variabile{z}\in[-\variabile{h}, \variabile{h}]$ where $\variabile{h}=5$. The target \point{T} is a line segment of the same length of the source \point{S}, parallel to \point{S} and located at a distance $\variabile{x}=\variabile{a}$ from \point{S} with $\variabile{a} = 20$. The lens is formed by two refractive lines (simple lens), and it is convex as it is thicker at its middle point than at its edges.
 The lines $2$ and $3$ that form the lens are symmetric to each other with respect to the axis $\variabile{x}=10$. The optical axis is the line $\variabile{z}=0$. $D=10$, $\variabile{h}=5$, $\textrm{d}(5)=0.5$.
 % Citation
-\begin{figure}[h]
+\begin{figure}[t]
   \begin{center}
   \includegraphics[width=0.6\textwidth]{lens_rays}
   \end{center}
@@ -92,7 +92,7 @@ Running QMC ray tracing for the lens in Figure \ref{fig:lens} with $10^4$ rays a
 \end{aligned}
 \end{equation}
 In Figure \ref{fig:target_PS_lens} we provide the target PS of the Fresnel lens where we depicted with the same color the rays that follow the same path. The rays in magenta are rays that follow path $\Pi_1$, the cyan rays have two reflections before reaching the target following path $\Pi_2$, the black rays have three reflections inside the lens, these rays follow path $\Pi_3$ (see Equation (\ref{eq:paths_fresnel})).
-\begin{figure}[h]
+\begin{figure}[t]
   \begin{center}
   \includegraphics[width=0.6\textwidth]{target_lens}
   \end{center}
@@ -109,7 +109,7 @@ where the intersection is over all the possible paths.
 Because of this, we need to slightly modify the full inverse ray mapping explained in the previous chapter to detect all the possible paths. \\ \indent
 The idea is to apply the bisection method combined with the inverse ray tracing to the entire PS for every single path $\Pi$ separately. All the possible paths from the target to the source can be visualized in the tree in Figure \ref{fig:tree_fresnel}. $R$ and $T$ indicate whether the reflected or the transmitted part of the ray is considered at every intersection point. Many possibilities can occur, we indicate with $C$ the sequence of the choices that is made at every intersection with the Fresnel lens. For example, the path $\Pi_1$ in the reverse order that is 
 $\Pi_1^{\prime}=(4,3,2,1)$ corresponds to the choice $C_1= (T,T)$ from the target to the source. This means that the rays that follow path $\Pi_1$ are transmitted both on line $2$ and $3$. 
-\begin{figure}[h]
+\begin{figure}[t]
   \begin{center}
   \includegraphics[width=0.6\textwidth]{tree_lens}
   \end{center}
@@ -123,12 +123,12 @@ $(\variabile{q}^{\textrm{min}}(\Pi_1, \variabile{p}), \variabile{p})$ and $(\var
 Repeating the procedure for all the possible directions $\variabile{p}\in[-1,1]$, the profile of the partial luminance $L_{\Pi_1}$ given by all the rays that follow path $\Pi_1$ is computed for every $(\variabile{q}, \variabile{p})\in$\set{T}{}{}. 
 \\ \indent Next another path $\Pi$ and the corresponding choice $C$ are considered. We remark that every path is associated to a unique choice but the vice versa is not always true. For example, the path $\Pi_2 = (1,2,3,2,3,4)$ considered in reverse order from the \point{T} to \point{S}, i.e. $\Pi_2^{\prime} = (4,3,2,3,2,1)$ can only be associate to the choice $C_2 = (T,R,R,T)$ which leads also to the inverse paths $\Pi_5^{\prime}= (4,3,2,3,2,5)$ and $\Pi_6^{\prime}= (4,3,2,3,2,6)$. The last two paths $\Pi_5^{\prime}$ and $\Pi_6^{\prime}$ are not paths from the target to the source, therefore they are not considered for the intensity calculation. Given a choice $C$ many paths are possible but only one is a physical path from the source to the target. Considering \textit{all} the possible choices, \textit{all} the physical paths are determined. The corresponding partial luminance $L_{\Pi}(\variabile{q}, \variabile{p})$ is calculated for every path $\Pi$.\\
 \indent Finally, the total luminance $L(\variabile{q}, \variabile{p})$ is given by:
-\begin{equation}
+\begin{equation}\label{eq:luminance_fresnel}
 L(\variabile{q}, \variabile{p}) = \sum_{\Pi}L_{\Pi}(\variabile{q}, \variabile{p}),
 \end{equation} 
 where the summation is over all the possible paths. 
 From an integration of $L(\variabile{q}, \variabile{p})$ the intensity at the target is given by:
-\begin{equation}
+\begin{equation}\label{eq:intensity_fresnel}
 I(\variabile{q}, \variabile{p}) = \int_{\mbox{\set{Q}{}{}}}L(\variabile{q}, \variabile{p})\textrm{d}\variabile{q}.
 \end{equation}
 \\ \indent In the next section numerical results are shown.
@@ -139,7 +139,7 @@ Indeed, every ray traced back hit the right curved line (line $3$) and is split 
 In case it hit the detectors the procedure is stopped, otherwise the ray is split again into two more rays. Again, according to the second component of $C_1$, the transmitted ray is considered and it continues its trajectory reaching either the detectors or the source (line $1$). 
 In Figure \ref{fig:ray_path1} we draw in red and example of ray that follows path $\Pi_1 = (1,2,3,4)$.\\ \indent 
 Using the inverse numerical ray mapping and taking into account the choice $C_1$ every time that the inverse ray tracing is applied and the rays hit a Fresnel line, the boundaries $\partial$\set{R}{}{}$(\Pi_1)$ are found. In Figure \ref{fig:boundary_path1} $\partial$\set{R}{}{}$(\Pi_1)$ is shown in blue. To verify whether this boundary is correct we trace around $10^4$ rays using forward QMC ray tracing imposing that at every interaction of the ray with lines $2$ and $3$ always the transmitted part of is considered. These rays are traced in red in Figure \ref{fig:boundary_path1}. The picture shows that all the rays traced are inside the boundary $\partial$\set{R}{}{}$(\Pi_1)$ which is, therefore, calculated correctly.
-\begin{figure}[h!]
+\begin{figure}[t]
 \centering
 \begin{subfigure}[t]{.45\textwidth}
   \includegraphics[width=\textwidth]{lens_path1}
@@ -156,7 +156,7 @@ Using the inverse numerical ray mapping and taking into account the choice $C_1$
 \end{figure}
 \\ \indent To detect the other paths we need to consider all the possible choice. We continue considering the choice $C_2 = (T, R, R, T)$,. This means that once the ray is traced back from the target, if it hits the line $3$, the transmitted part is considered according to the first component of $C_2$ and it is traced back further with its corresponding power given by $\mathcal{T}$. If the transmitted ray does not hit the detectors, it hits line $2$ where it is split again. Now the reflected part of the ray is considered according to the second component of $C_2$. The power of the reflected ray is given by the reflectance $\mathcal{R}$ multiplied by the power of the incident ray. The rays continues to propagates inside the system, if it hits line $3$ it is reflected according to the third component of $C_2$ and, in case it hit line $2$ next, it is finally transmitted according to the last component of $C_2$. If the ray reach finally the source, it follows the physical path $\Pi_2 = (1,2,3,2,3,4)$. 
 In Figure \ref{fig:ray_path2} we show in green a ray traced back from the target to the source that follows path $\Pi_2$. The numerical inverse ray mapping applied considering the choice $C_2$ every time that the inverse ray tracing is employed, provides the boundary of the region $\partial$\set{R}{}{}$(\Pi_2)$ which is depicted in blue in Figure \ref{fig:boundary_path2}. To properly detect the boundary we divided the target PS into $\textrm{Ni}=10$ bins as explained in Section \ref{}. Likewise for the boundary $\partial$\set{R}{}{}$(\Pi_1)$, to prove that the method computes the boundary correctly we traced $10^4$ rays using QMC ray tracing and and using the decision $C_2$ at every intersection with line $2$ and $3$. These rays are traced in green in Figure \ref{fig:boundary_path2}. We observe that all the rays traced are located inside the blue line, therefore the boundary $\partial$\set{R}{}{}$(\Pi_2)$ is calculated correctly.
-\begin{figure}[h!]
+\begin{figure}[t]
 \centering
 \begin{subfigure}[t]{.45\textwidth}
   \includegraphics[width=\textwidth]{lens_path2}
@@ -165,14 +165,14 @@ In Figure \ref{fig:ray_path2} we show in green a ray traced back from the target
 \end{subfigure}%
 \hfill
 \begin{subfigure}[t]{.45\textwidth}
-  \includegraphics[width=\textwidth]{lens_path2}
+  \includegraphics[width=\textwidth]{path_lens2}
   \caption{\textbf{Boundary $\partial$\set{R}{}{}$(\Pi_2)$.} The boundary is depicted with the blue line, the green rays are traced using QMC ray tracing with $10^4$ and considering two reflections between the lenses.} %
   \label{fig:boundary_path2}
 \end{subfigure} %
 \caption{\textbf{Computation of the boundary $\partial$\set{R}{}{}$(\Pi_2)$.}}
 \end{figure}
 \\ \indent Note that more than two reflection can occur between line $2$ and $3$, thus the procedure continues considering the choice $C_3 = (T,R,R,R,R,T)$ that leads to four reflections between line $2$ and $3$. Every ray traced back from the source is first transmitted, then reflected between $2$ and $3$ four times and finally transmitted again. If the ray hits the source then it follows the physical path $\Pi_{3} = (1,2,3,2,3,2,3,4)$ corresponding to the choice $C_3$ is found. A ray that follow path $\Pi_3$ is depicted in black in Figure \ref{fig:ray_path3}. The inverse ray mapping with the choice $C_3$ gives the boundary $\partial$\set{R}{}{}$(\Pi_3)$ depicted in blue in Figure \ref{fig:boundary_path3}. This boundaries is obtained dividing the target PS into $\textrm{Ni}=10$ bins and applying the inverse ray mapping to each bin. The black dots correspond to the rays in target PS obtained using QMC ray tracing with $10^4$ rays where at every intersection with the Fresnel lines either the reflected or the transmitted ray are selected according to choice $C_3$. Also in this case we found that the boundary computation is correct.
-\begin{figure}[h!]
+\begin{figure}[t]
 \centering
 \begin{subfigure}[t]{.45\textwidth}
   \includegraphics[width=\textwidth]{lens_path3}
@@ -187,21 +187,24 @@ In Figure \ref{fig:ray_path2} we show in green a ray traced back from the target
 \end{subfigure} %
 \caption{\textbf{Computation of the boundary $\partial$\set{R}{}{}$(\Pi_3)$.}}
 \end{figure}
-\\ \indent Note that the more reflections the rays have the lower power is associated to them. We decide do not to consider the rays with more than four reflections as they do not give a significant contribution to the output photometric variables. However, the inverse ray mapping is able to detect \textit{all} the boundaries in target PS of the regions with positive luminance. The procedure can be stopped accordingly to the desired accuracy. The more reflections are considered, the better accuracy is obtained. \\ \indent 
-
-\begin{figure}[h!]
+\\ \indent Since rays with multiple reflections do not bring a significant amount of power, we decide do not to consider the rays with more than four reflections as they do not give a significant contribution to the output photometric variables. However, the inverse ray mapping is able to detect \textit{all} the boundaries of the regions with positive luminance in target PS. The procedure can be stopped accordingly to the desired accuracy. The more reflections are considered, the better accuracy is obtained. \\ \indent
+We remark now that the luminance at the target cannot be constant because every ray has a certain amount of energy that depends on the Fresnel coefficients. Because of this, an interpolation between the rays on the boundaries is needed to compute the profile of the luminance at the target. In Figure \ref{fig:interpolation1} we show the procedure to compute the luminance related to path $\Pi_1$ along direction $\variabile{p}=0$. The rays corresponding to the coordinates $(\variabile{q}(\Pi_1, \variabile{p}), \variabile{p})$ with $\variabile{q}\in[\variabile{q}^{\textrm{min}}(\Pi_1,\variabile{p}), \variabile{q}^{\textrm{max}}(\Pi_1,\variabile{p})]$ and $\variabile{p}=0$ are traced from the source to the target using the inverse ray tracing and taking into account of the choice $C_1$ at every intersection with the Fresnel lines. The rays traced are depicted in red. The luminance $L_{\Pi_1}(\variabile{q}, \variabile{p})$ is calculated for every $\variabile{q}\in[\variabile{q}^{\textrm{min}}(\Pi_1,\variabile{p}), \variabile{q}^{\textrm{max}}(\Pi_1,\variabile{p})]$ and $\variabile{p}=0$. Its profile is depicted in Figure \ref{fig:luminance_fresnel}.
+\begin{figure}[t]
 \centering
 \begin{subfigure}{.45\textwidth}
   \includegraphics[width=\textwidth]{interpolation1}
  \caption{Interpolation between the rays on $\partial$\set{R}{}{}$(\Pi_1)$ along direction $\variabile{p}=0$.}
-  \label{fig:boundaries_s2}
+  \label{fig:interpolation1}
 \end{subfigure}%
 \hfill
 \begin{subfigure}{.45\textwidth}
   \includegraphics[width=\textwidth]{luminance}
   \caption{Luminance $L_{\Pi_1}(\variabile{q}, 0)$ related to path $\Pi_1$ along direction $\variabile{p}=0$ and with $\variabile{q}\in[\variabile{q}^{\textrm{min}}(\Pi_1, \variabile{p}), \variabile{q}^{\textrm{max}}(\Pi_1, \variabile{p})]$.} %
-  \label{fig:boundaries_t2}
+  \label{fig:luminance_fresnel}
 \end{subfigure} %
 \caption{\textbf{Determination of the partial luminance.} $L_{\Pi_1}(\variabile{q}, 0)$ is related to path $\Pi_1$ along direction $\variabile{p}=0$.} 
 \end{figure}
+\\\indent 
+Repeating the interpolation along all the possible directions $\variabile{p}\in[-1,1]$, the luminance $L_{\Pi_1}(\variabile{q}, \variabile{p})$ related to the rays that follow path $\Pi_1$ is found for every $\variabile{p}\in[-1,1]$ and $\variabile{q}\in[\variabile{q}^{\textrm{min}}(\Pi_1,\variabile{p}), \variabile{q}^{\textrm{max}}(\Pi_1,\variabile{p})]$. The same procedure is applied to all the paths considered and the luminance corresponding to each path is calculated. The total luminance $L(\variabile{q}, \variabile{p})$ is given by the sum in Equation (\ref{eq:luminance_fresnel}). Finally, the intensity is computed using Equation (\ref{eq:intensity_fresnel}). \\ \indent
+In this thesis we do not show the numerical results of the total luminance and intensity because there is still some work in progress. To validate the method we need to calculate the luminance along every possible direction and compare it with a reference luminance obtained for example using either MC or QMC ray tracing. Our expectation is that the inverse ray mapping is suitable also for systems with Fresnel reflection. Indeed, our first results show that the boundaries of the regions with positive luminance are calculated correctly. Once the boundaries are found also the luminance and the intensity can be computed applying an interpolation between the rays on the boundaries along every possible direction. Furthermore we expect that the method is much more accurate and faster than both MC and QMC ray tracing. This is due to the fact that we can analyse every single path independently from the others.  
 \section{Conclusion and outlook}
