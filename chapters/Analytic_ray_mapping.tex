@@ -13,13 +13,13 @@ Therefore, two different phase spaces are considered for the reflectors and one 
 \point{S} and \point{T}. All these phase spaces are connected through a map which relates the ray coordinates on every PS. This map can be written as the concatenation of many maps which can be classified as two different kind of maps, i.e., the map that connects the source and the target PS of two \textit{different} lines and the map that connects the target and the source PS of the \textit{same} line.
 Employing the inverses of these maps we are able to detect the parts of target PS illuminated by the source.
 All the PS considered are divided into regions, the boundaries of which can be determined exactly for systems formed by straight lines.
-We make the assumption of a Lambertian source; hence, the luminance is a positive constant when different from $0$. 
+We make the assumption of a Lambertian source.
+%; hence, the luminance is a positive constant inside a when different from $0$. 
 As a consequence, the output intensity along a given direction is given by the total width of all the patches with positive luminance, measured along that direction.\\ \indent 
 %In this chapter we explain the method for systems formed by straight and reflective lines segment. 
-In this chapter, two different optical systems are investigated here: the two-faceted cup and the so-called multi-faceted cup. Next, the details of the procedure are explained for the two-faceted-cup.
+In this chapter, two different optical systems are investigated: the two-faceted cup and the so-called multi-faceted cup. Next, the details of the procedure are explained for the two-faceted-cup.
 \section{Phase spaces of the two-faceted cup}\label{sec:cup_raymapping}
-A two-faceted cup is formed by a source \point{S}, a target \point{T} and two reflectors which are straight lines segments. 
-As an example, we consider the two-faceted cup introduced in Chapter \ref{chap:raytracing} and depicted in Figure \ref{fig:cup}.
+A two-faceted cup is introduced in Chapter \ref{chap:raytracing} and depicted in Figure \ref{fig:cup}. It is formed by a source \point{S}, a target \point{T} and two reflectors which are straight lines segments. 
 We use the same notation of Chapter \ref{chap:PS} indicating with $\mbox{\set{S}{}{}}=\mbox{\set{Q}{}{}}\times\mbox{\set{P}{}{}}$ the PS and with 
 $(\variabile{q}, \variabile{p})$ the rays coordinates in \set{S}{}{}.\\ \indent
 Let's now introduce some new notation. 
@@ -54,7 +54,7 @@ The boundaries $\partial$\set{S}{\lineai,}{\lineak} and $\partial$\set{T}{\linea
 and all the rays that reach the end points of $\lineaj$.
 They are formed by four different curves,
 two of them are given by all the rays that leave the end points of line $\lineai$ and hit line $\lineak$ and, the others two are given by the rays
-that leave the extremes of line $\lineai$ and hit the interior of line $\lineak$.
+that leave the interior of line $\lineai$ and hit the end points of line $\lineak$.
 The boundaries $\partial$\set{S}{\lineai,}{\lineak} and $\partial$\set{T}{\lineak,}{\lineai} are given by:
  \begin{equation}
 \label{eq:analytic_boundaries}
@@ -232,8 +232,8 @@ Once a ray leaves the source \point{S} it can hit the reflectors several times b
 $\mapnumb{M}_{1,4}$ is not surjective.
 Therefore, we need to determine the subsets of \set{T}{$4$}{} illuminated by \point{S} corresponding to the regions where the luminance is positive.
 To this purpose, we consider two different kinds of maps.
-The first map relates the coordinates of the source and the target PS of two \textit{different} lines, we call it the propagation map.
-The second map relates the coordinates of the target and the source PS of the \textit{same} line, we call it the reflection map.
+The first map relates the coordinates of the source and the target PS of two \textit{different} lines, we call it the \textit{propagation map}.
+The second map relates the coordinates of the target and the source PS of the \textit{same} line, we call it the \textit{reflection map}.
 In particular, given two lines $\lineai$ and $\lineaj$ with $\lineai\neq\lineaj$, the propagation map $\mapnumb{P}_{\lineai,\lineaj}: \mbox{\set{S}{\lineai,}{\lineaj}}\mapsto$\set{T}{\lineaj,}{\lineai} relates \set{S}{\lineai,}{\lineaj} with \set{T}{\lineaj,}{\lineai} and, it is defined as follows:
  \begin{equation}\label{Pij}
 \mapnumb{P}_{\lineai,\lineaj}(\pos{s,}{\lineai},\dir{s,}{\lineai})=(\pos{t,}{\lineaj},\dir{t,}{\lineaj}),
@@ -740,7 +740,7 @@ To demonstrate the accuracy of the method, a comparison with MC and QMC ray trac
 The MC and QMC intensities are computed as explained in Chapter \ref{chap:raytracing}. 
 We consider here the same partitioning $P:-1 = \variabile{p}^0 < \cdots< \variabile{p}^\textrm{Nb} = 1$ of the interval $[-1,1]$ used for all the simulation presented in the previous chapters. 
 The profile of the QMC intensity is obtained tracing $10^7$ rays and taking $\textrm{Nb} = 100$.% is depicted in Figure \ref{fig:intensity_cup} with a blue line.\\
-\\ \indent  The PS intensity is obtained from Eq. (\ref{eta2}) where the rays on the boundaries are obtained applying the inverse ray mapping. We observe that the method is suitable for detecting all the possible paths $\Pi$ that a ray can follow during the propagation through the system. According to the results obtained with PS ray tracing, $5$ different paths are found for the two-faceted cup. Given a path $\Pi$, the coordinates $(\variabile{q}^\textrm{min}(\Pi, \variabile{p}^ \variabile{h}), \variabile{p}^ \variabile{h})$ and $(\variabile{q}^\textrm{\,max}(\Pi, \variabile{p}^ \variabile{h}), \variabile{p}^\variabile{h})$ of the corresponding rays located on $\partial \mbox{\set{R}{}{}}(\Pi)$ are determined for every $\variabile{p} = (\variabile{p}^\variabile{h})_{\variabile{h}=0, \cdots, \textrm{Nb}}$ where the values $\variabile{p}^\variabile{h}$ are given from the partitioning $P$ used for QMC ray tracing. These rays are depicted in Figure \ref{fig:final_T}, where all the rays that follow the same path are shown with the same color. For the two-faced cup, given a direction $\variabile{p}^\variabile{h}$ and a path $\Pi$, only two rays are located on the boundary $\partial$\set{R}{}{}$(\Pi)$ of the corresponding region along that direction. As a consequence, at most $2\npath\textrm{Nb}$ rays need to be traced from the target to the source, where $\npath =5$ is the number of paths.
+\\ \indent  The PS intensity is obtained from Eq. (\ref{eta2}) where the rays on the boundaries are obtained applying the inverse ray mapping. We observe that the method is suitable for detecting all the possible paths $\Pi$ that a ray can follow during the propagation through the system. According to the results obtained with PS ray tracing, $5$ different paths are found for the two-faceted cup. Given a path $\Pi$, the coordinates $(\variabile{q}^\textrm{min}(\Pi, \variabile{p}^ \variabile{h}), \variabile{p}^ \variabile{h})$ and $(\variabile{q}^\textrm{\,max}(\Pi, \variabile{p}^ \variabile{h}), \variabile{p}^\variabile{h})$ of the corresponding rays located on $\partial \mbox{\set{R}{}{}}(\Pi)$ are determined for every $\variabile{p} = (\variabile{p}^\variabile{h})_{\variabile{h}=0, \cdots, \textrm{Nb}}$ where the values $\variabile{p}^\variabile{h}$ are given from the partitioning $P$ used for QMC ray tracing. These rays are depicted in Figure \ref{fig:final_T}, where all the rays that follow the same path are shown with the same color. For the two-faced cup, given a direction $\variabile{p}^\variabile{h}$ and a path $\Pi$, only two rays are located on the boundary $\partial$\set{R}{}{}$(\Pi)$ of the corresponding region along that direction. As a consequence, at most $2\,\npath\,\textrm{Nb}$ rays need to be traced from the target to the source, where $\npath =5$ is the number of paths.
 The averaged normalized PS intensity is given by Equation (\ref{eq:normalized_PS_intensity})
 %\begin{equation}\label{eq:intensity}
 % \hat{I}_{\textrm{PS}}(\variabile{p}^{\variabile{h}+1/2}) = \frac{\int_{\variabile{p}^\variabile{h}}^{\variabile{p}^{\variabile{h}+1}}{\lineai}_{PS}(\variabile{p})\textrm{d}\variabile{p}}{\int_{-1}^{1}{\lineai}_{PS}(\variabile{p})\textrm{d}\variabile{p}}\,,
@@ -839,7 +839,7 @@ Comparison between the reference intensity (QMC ray tracing with $10^8$ rays) an
 \end{figure}
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=.4]{error_10_cup_raymapping}
+\includegraphics[scale=.4]{error_10_cup_raymapping1}
 \caption{\textbf{Errors for the $20$-faceted cup as a function of the CPU.} The ray mapping method is more accurate than QMC ray tracing and it is faster in case an error smaller than $10^{-5}$ is desired.}
 \label{fig:error10cup} 
 \end{figure}
@@ -858,8 +858,8 @@ The error between the normalized exact intensity $\hat{I}_{\textrm{exact}}$ and 
 \frac{1}{\textrm{Nb}}\Bigg(\sum_{\variabile{h} = 1}^{\textrm{Nb}}\big| \hat{I}_{\textrm{exact}}(\variabile{p}^\variabile{h}) - \hat{I}_{\textrm{ref}}(\variabile{p}^\variabile{h})\big| +
 \sum_{\variabile{h} = 1}^{\textrm{Nb}}\big| \hat{I}_{\textrm{ref}}(\variabile{p}^\variabile{h}) - \hat{I}_{\textrm{A}}(\variabile{p}^\variabile{h})\big|\Bigg)\,.
 \end{equation}
-Extrapolating the QMC error we obtain an approximation of the error between the reference intensity and the exact intensity,
-this error is depicted in Figure \ref{fig:error10cup} with the cyan dot.
+Assuming that QMC error converges proportional to $\frac{C}{CPU-time}$, we can calculate the constant $C$ and extrapolate the QMC error. From this extrapolation we obtain an approximation of the error between the reference intensity and the exact intensity,
+this error is depicted in Figure \ref{fig:error10cup} with the cyan dot, the dotted cyan line shows the linear extrapolation.
 From numerical simulation we obtain the difference between the extrapolated value and the exact intensity 
 \begin{equation*}\sum_{\variabile{h} = 1}^{\textrm{Nb}}| \hat{I}_{\textrm{exact}}(\variabile{p}^\variabile{h}) - \hat{I}_{\textrm{ref}}(\variabile{p}^\variabile{h})|/\textrm{Nb}\approx 3*10^{-8}. \end{equation*}
 The results show that 
