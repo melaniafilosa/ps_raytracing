@@ -1,8 +1,29 @@
-%!TEX root = ../thesis.tex
 \chapter{Introduction}
 
 \section{Motivation}
+% chiacchiere su illuminantion optics
+% Geometric optics
+% Ray definition
+% Ray tracing (MC and QMC)
+% Advantages and disadvantages
+% How to improve with PS
+
 \section{Methods and results}
+%For example, the \'{e}tendue can be seen as the area covered by the rays in phase space (area of the regions at the target phase space) which can be calculated from the boundaries either using numerical integration or even analytically for very simple systems. The luminance is the power distribution in phase space. For systems formed by a Lambertian source (constant luminance), the output luminance is equal to zero outside the regions at the target phase space illuminated by the source and it assumes a constant value inside it. Thus the boundaries are sufficient for computing the profile of the target luminance. In case of a non Lambertian source, an interpolation between the rays located at the boundaries along all the possible directions provides the profile of the output luminance. The intensity is given by an integration of the luminance along all the possible positions in phase space. In case of Lambertian source, the intensity is simply the support of the luminance which is given by the sum of the distances between the boundaries rays for every direction. In case of a non Lambertian source, a numerical integration provides the target intensity profile. 
+%In general is not easy to determine the desired parameter $\alpha$. In Chapter \ref{chap:boundaries_alpha} we developed a procedure based on \'{e}tendue conservation that provides an estimation of the parameter $\alpha$ that gives a good accuracy of the boundaries computation from which the intensity can be calculated. 
+%We provided a stopping criterion for the triangulation refinement employing \'{e}tendue conservation. 
+% Systems formed by a Lambertian source are particularly relevant in geometric optics because..
+
 \section{Content of this thesis}
+This work is organized in the following way.\\ \indent
+In Chapter \ref{chap:Illumination optics} an overview of the physical notion of Illumination optics used in this thesis is provided. After a short introduction of the radiometric variables, the photometric counterparts are defined. Reflection and refraction law are described and the total internal reflection is discussed. A description of Fresnel reflection is included. In this chapter we follow the literature reported in \cite{hecht1998hecht, feynman2011feynman, feynman1964feynman}.\\ \indent
+Chapter \ref{chap:raytracing} includes the discussion of classical ray tracing. First, we introduce in details MC and QMC methods which are very often used in numerical integration. A mathematical formulation of both the methods is given. Second the MC and QMC ray tracing are discussed. They are based on a combination of MC and QMC procedures with ray tracing method. We explain how to calculate the target intensity using these techniques and numerical results for a simple system show the convergence of the approximated intensities to the exact intensity by increasing the number of rays traced.\\\indent
+Chapter \ref{chap:PS} introduces the PS concept for two-dimensional optical systems. We show that the PS provides a complete description of the optical systems. Employing the PS of the source and the target of the optical systems the new PS ray tracing is developed. We provide a PS representation of the source and the target of the systems which shows that the phase spaces are divided into regions formed by the rays that follow the same trajectory when they propagates through the system. We discuss that the goal of PS ray tracing is to calculate the boundaries of these regions. \\ \indent 
+A method based on $\alpha$-shapes methods for detecting the boundaries of the regions with positive luminance is presented in Chapter \ref{chap:boundaries_alpha}. The $\alpha$-shapes method for detecting the contour of a point cloud is explained. A technique based on \'{e}tendue conservation is developed and numerical results for two different TIR-collimators are provided. For such systems also the target intensity in PS is calculated and it is compared with MC ray tracing. The chapter concludes with discussions of the results obtained.\\ \indent
+A different approach for the boundaries calculation which employs a triangulation refinement in source PS is provided in Chapter \ref{chap:triangulation}.  
+\\ \indent A second method based on ray mapping reconstruction from the target to the source is developed. Chapter \ref{chap:raymapping1} includes the description of the analytic inverse ray mapping for systems formed by straight and reflective lines segments. The target intensity is computed for two different optical systems and the numerical results are compared to QMC ray tracing. \\ \indent The numerical inverse ray mapping method extended to systems formed by curved and refractive lines is presented in
+Chapter \ref{chap:raymapping2}. First, a detailed explanation of the idea and the algorithm used is given. Next, the results for the TIR-collimator and the parabolic reflector validate the method showing that it calculates the intensity correctly compared to QMC ray tracing. \\ \indent
+The research concludes with Chapter \ref{chap:fresnel} which contains the numerical inverse ray mapping applied to systems with Fresnel reflection. The theoretical explanation of the method is followed by numerical results applied to a system formed by the source, the target and a simple convex Fresnel lens. We show in simulations that the boundaries of the regions with positive luminance are calculated correctly. Finally, we explain in theory how to calculate the luminance and the intensity.
+ \\ \indent Chapter \ref{chap:conclusions} presents discussions and insights for future prospective.
 \clearpage{\pagestyle{empty}\cleardoublepage}
-%\blfootnote{{This chapter is based on joint work with M. Hong Duong, Agnes Lamacz, Mark A. Peletier and Andr{\'e} Schlichting.} }
+ 

@@ -1,11 +1,13 @@
 \chapter{lnverse ray mapping for systems with Fresnel reflection}
 \label{chap:fresnel}
-In this chapter we present the inverse ray mapping method for systems formed by optical lines for which Fresnel reflection can occur. In particular, we are interested in explain how to calculate the boundaries of the regions with positive luminance in target PS. We provide numerical results for a simple system formed by the source, a Fresnel lens and the target. 
-The chapter begins with a general introduction of the method, then the details are explained for a simple system, finally we show the results obtained for this system.
+
+% Fresnel's equation give a physically accurate expression for the power transmission and reflection according to angle. For all but some special anhles a ray splits up into a reflected and transmitted ray. Both carry off some of the incident energy. For accurate ray tracing this means that both have to be followed theought optics. However, this splitting happens at each interface
+In this chapter we present the inverse ray mapping method for systems consisting of optical lines for which Fresnel reflection can occur. We consider unpolarized light. In particular, we explain how to calculate the boundaries of the regions of positive luminance in target PS. We provide numerical results for a simple system formed by the source, a Fresnel lens and the target. 
+The chapter starts with a general introduction of the method, then the details are explained for a simple system, finally we show the results obtained for this system.
 \section{Introduction}
-Including Fresnel reflections, every time that a ray hits an optical line, a part of it is reflected and the other part is refracted. 
+Including Fresnel reflections, a ray splits into a reflected and a refracted ray every time that it hits an optical line. Both carry a part of the incident energy.
 %The amount of light that is reflected and refracted is given by the reflectance and transmittance which are related to Fresnel coefficients (see ). 
-Hence, a ray emitted from the source generates two rays after interactions with the optical lines (the reflected ray and the transmitted one) each of them has the percentage of the original power given by the reflectance $\mathcal{R}$ and the transmittance $\mathcal{T}$ obtained from Fresnel equations (see Section \ref{sec:fresnel}).
+Hence, a ray emitted from the source generates two rays after interaction with the optical lines (the reflected ray and the transmitted one) each of them has the fraction of the original power given by the reflectance $\mathcal{R}$ and the transmittance $\mathcal{T}$ obtained from Fresnel equations (see Section \ref{sec:fresnel}).
 At the next intersection of the two rays with a line, each incident ray is split
 again. This process is called ray splitting. The ray emitted from the source is called the parent rays. Once it hits a line one of the two rays keeps the parent status while the other one is called child ray. The convention is to assign the parent status to the ray with the most power.
 This results tracing a rapidly increasing number of rays, including those with a very little power (at every interaction the power of the ray decreases). 
