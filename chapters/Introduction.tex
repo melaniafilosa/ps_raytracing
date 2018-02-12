@@ -1,5 +1,4 @@
 \chapter{Introduction}
-
 \section{Motivation}
 % chiacchiere su illuminantion optics
 % Geometric optics
@@ -8,16 +7,22 @@
 % Advantages and disadvantages
 % How to improve with PS
 % Given an optical system...PS
+% PS for abberration
+% \cite{herkommer2013phase, babington2017freeform}
+% Study on illumination optics
+% \cite{rausch2014phase} \cite{@article{rausch2012phase} \cite{herkommer2012phase}
 \section{Methods and results}
-The PS of a line is described by the positions and directions coordinates of all the rays that propagate within the system, \cite{testorf2009phase}. We analyze here two dimensional systems, the phase space of which is a two-dimensional space. It is described by one positions coordinate of the intersection point of the rays with the optical lines and one direction coordinate which is the sine of the angle that the ray form with the normal to the line encountered measured counterclockwise. 
-\\ \indent The phase space gives a full description of the photometric variables. 
-For example, the \'{e}tendue can be seen as the area covered by the rays in phase space (area of the regions with positive luminance at the target phase space) which can be calculated either using numerical integration or, for very simple systems, even analytically. The luminance is the power distribution in phase space. For systems formed by a Lambertian source the output luminance is assumes the same a positive constant value inside it. The intensity is given by an integration of the luminance along all the possible positions in phase space. Assuming a lambertian source, this is simply the support of the luminance which is given by the sum of the distances between the boundaries rays for every direction. 
+The PS of a line is described by the positions and directions coordinates of all the rays that propagate within the system, \cite{testorf2009phase}. We analyze here two dimensional systems, the phase space of which is a two-dimensional space. It is described by all the possible rays position and direction. The position coordinate is given by one coordinate of the intersection point between the rays and the optical line, the direction coordinate is the sine of the angle that the ray form with the normal to the line encountered measured counterclockwise. 
+\\ \indent Optical phenomena can be analized using the phase space and important photometric variables can be defined and calculated in this plane \cite{rausch2014illumination}.  
+For example, the \'{e}tendue can be seen as the area covered by the rays in phase space which can be calculated either using numerical integration or, for very simple systems, even analytically. The luminance is the power distribution in phase space. For systems formed by a Lambertian source the output luminance is a positive constant when different from zero. The intensity is given by an integration of the luminance along all the possible positions in phase space. Assuming a Lambertian source, this is simply the support of the luminance which is given by the sum of the distances between the boundaries rays for every direction. 
 %Systems formed by a Lambertian source are particularly relevant because...
-In case of a non Lambertian source, an interpolation between the rays located at the boundaries along all the possible directions provides the profile of the output luminance. In case of a non Lambertian source, a numerical integration provides the target intensity profile. 
+%In case of a non Lambertian source, an interpolation between the rays located at the boundaries along all the possible directions provides the profile of the output luminance. In case of a non Lambertian source, a numerical integration provides the target intensity profile. 
 \\ \indent 
-%Study on illumination optics in phase space, \cite{rausch2014illumination}. 
-In this thesis we present two methods based on the phase space (PS) representation of the optical systems. The first method is \textit{phase space ray tracing} based on the source and the target PS representation of the optical systems. This is a forward method where the rays are traced from the source to the target.
-The second method is ray mapping which is based on a ray mapping reconstruction in PS. This involves the backward ray tracing and, for this reason, we refer to it as the inverse ray mapping.
+In this thesis we present two methods based on the phase space (PS) representation of the optical systems. The first method is \textit{phase space ray tracing} based on the source and the target PS representation of the optical systems. This is a forward method where the rays are traced from the source to the target. The key idea is to construct a 
+%In general is not easy to determine the desired parameter $\alpha$. In Chapter \ref{chap:boundaries_alpha} we developed a procedure based on \'{e}tendue conservation that provides an estimation of the parameter $\alpha$ that gives a good accuracy of the boundaries computation from which the intensity can be calculated. 
+%We provided a stopping criterion for the triangulation refinement employing \'{e}tendue conservation. 
+\\ \indent
+The second method is based on a ray mapping reconstruction in PS. This involves the backward ray tracing and, for this reason, we call it \textit{inverse ray mapping} method.
 % In general is not easy to determine the desired parameter $\alpha$. In Chapter \ref{chap:boundaries_alpha} we developed a procedure based on \'{e}tendue conservation that provides an estimation of the parameter $\alpha$ that gives a good accuracy of the boundaries computation from which the intensity can be calculated. 
 %We provided a stopping criterion for the triangulation refinement employing \'{e}tendue conservation. 
 % Systems formed by a Lambertian source are particularly relevant in geometric optics because..
