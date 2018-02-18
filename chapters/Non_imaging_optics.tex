@@ -10,15 +10,15 @@ Radiometry is concerned with the measurement of electromagnetic radiation across
 where $Q$ is the energy and $\mytime$ the time.\\
 \indent In illumination optics the measurement of light is given in terms of the impression that it gives on the human eye. Therefore, illumination optics deals with photometric variables rather than with radiometric variables. The most important photometric variables are defined in the following using the notation adopted by Chaves in \cite{chaves2015introduction}. The luminous flux $\Phi$ (unit lumen \textrm{lm}) is defined as the \textit{perceived} power of light by the human eye.
  The radiant and the luminous flux are related by the luminous efficacy function $y$, unit \textrm{lm}/\textrm{W}, which defines how many lumen correspond to one Watt of power at a given wavelength.
- The luminous efficacy reaches its maximum  at a wavelength of $555$ $\textrm{nm}$ where it is equal to $683$ $\textrm{lm}/\textrm{W}$.
+ The luminous efficacy function reaches its maximum  at a wavelength of $555$ $\textrm{nm}$ where it is equal to $683$ $\textrm{lm}/\textrm{W}$.
   We may normalize the luminous efficacy function with its maximum value of $683$.
-  The normalized function $\bar{y}(\lambda)$ is the luminous efficiency shown in Figure $\ref{fig:luminosityfunction}$ where $\lambda$ is the wavelength. It is a dimensionless quantity with a range of value between $0$ and $1$ \cite{schubert2005light}.
+  The normalized function $\bar{y}(\lambda)$ is the luminous efficiency shown in Figure $\ref{fig:luminosityfunction}$ where $\lambda$ is the wavelength. It is a \textit{dimensionless} quantity with a range of value between $0$ and $1$ \cite{schubert2005light}.
 \begin{figure}[h]
 %\label{fig:luminousfunction}  
   \begin{center}
   \includegraphics[width=7cm]{CIELuminosity}
   \end{center}
-  \caption{Luminosity function $\bar{y}(\lambda)$: relation between the eye's sensitivity and the wavelength of light. The luminosity function is dimensionless  \cite{wiki}.}
+  \caption{\textbf{Luminosity function $\bar{y}(\lambda)$}. relation between the eye's sensitivity and the wavelength of light. The luminosity function is dimensionless  \cite{wiki}.}
   \label{fig:luminosityfunction}
   \end{figure}
 \\ \indent The luminous flux corresponding to one Watt of radiation power at any wavelength is given by the product of $683$ $\textrm{lm/W}$ and the luminosity function at the same wavelength,
@@ -26,32 +26,32 @@ i.e. $683 \, \bar{y}(\lambda)$. Hence, the total luminous flux $\Phi$ has unit l
 \begin{equation}\label{eq:luminous_flux}
 \Phi = 683 \int_0^\infty \Psi_\textrm{r}(\lambda) \bar{y}(\lambda)\textrm{d}\lambda,
 \end{equation}
-where $\Psi_\textrm{r}(\lambda)$ is the spectral radiant flux, i.e. the power (in Watt) per unit wavelength (unit \textrm{W}/\textrm{m}). The corresponding photometric variable of $\Phi_\textrm{r}(\lambda)$ is the spectral luminous flux $\Phi_\lambda$ (unit \textrm{lm}/\textrm{m}), i.e. the flux as perceived by the human eye as a function of the wavelength. 
-Using the relation following between $\Phi_\textrm{r}$ and $\Phi_\lambda$:
+where $\Psi_\textrm{r}(\lambda)$ is the spectral radiant flux, i.e. the power (in Watt) per unit wavelength (unit \textrm{W}/\textrm{m}). The corresponding photometric variable of is the spectral luminous flux $\Psi(\lambda)$ (unit \textrm{lm}/\textrm{m}), i.e. the flux as perceived by the human eye as a function of the wavelength. 
+Using the relation following between $\Psi_\textrm{r}$ and $\Psi$:
 \begin{equation}
-683 \bar{y} = \frac{\Psi_\lambda}{\Psi_\textrm{r}}, 
+683 \bar{y} = \frac{\Psi}{\Psi}, 
 \end{equation}
 Equation (\ref{eq:luminous_flux}) can be written as:
 \begin{equation}
-\Phi = \int_0^\infty \Psi_\lambda\textrm{d}\lambda.
+\Phi = \int_0^\infty \Psi(\lambda)\textrm{d}\lambda.
 \end{equation}
 %% Explain while integrals between 0 and infinity
 %The luminous emittance $M = M(\vect{x}, \myangle)$ is the total flux emitted in all direction from a unit area. It is measured in lumens pr square meters (\textrm{lm}/$\textrm{m}^2$).
 \\ \indent Geometric optics describes a beam of light as a collection of parallel light rays, where a light ray can be interpreted as a line or curve along which the energy travels. A ray is always direct perpendicular to the light's wavefront.  
-The luminous flux $\textrm{d}\Phi$ incident on a surface is called illuminance $E$ (unit $\textrm{lm}/\textrm{m}^2$)
+The infinitesimal luminous flux $\textrm{d}\Phi$ incident on an infinitesimal surface $\textrm{d}A$ is called illuminance $E$ (unit $\textrm{lm}/\textrm{m}^2$)
 and is defined as:
 \begin{equation}
- E=E(\variabile{x}) = \frac{\textrm{d}\Phi}{\textrm{d}A}\;,
+ E=E(\vect{x}) = \frac{\textrm{d}\Phi}{\textrm{d}A}\;,
  \end{equation}
- where $\textrm{d}A$ is an infinitesimal area receiving radiation. The corresponding radiometric variable is called \textit{irradiance}, we indicate it with $P$. The density of light emitted by a point source in a given direction is determined by the solid angle.\\ \indent
+The corresponding radiometric variable is called \textit{irradiance}, we indicate it with $P$. The density of light emitted by a point source in a given direction is determined by the solid angle.\\ \indent
 The solid angle in a given direction is expressed by a cone of rays emitted in that particular direction by a point source located at the center of the unit sphere \cite{koshel2012illumination}. 
 Let $\textrm{d}S$ be the area on the unit sphere subtended by the cone,
 the infinitesimal solid angle $\textrm{d}\Omega$ is given by:
 \begin{equation}\label{solid_angle}
 \textrm{d}\Omega = \textrm{d}S= \sin(\theta)\textrm{d}\theta \textrm{d}\phi\,
 \end{equation}
- where $\myangle$ and $\phi$ are the polar and the azimuthal angle that the normal $\boldsymbol{\nu}$ to $\textrm{d}A$ makes with the direction of the central line of $\textrm{d}\Omega$, respectively (see Figure \ref{fig:rad}).
-The solid angle on the entire sphere is $\Omega = 4\pi$ and its unit is steradian $\textrm{sr}$ \cite{arecchi2007field}.
+ where $\myangle$ and $\phi$ are the polar and the azimuthal angle that the normal $\boldsymbol{\nu}$ to the infinitesimal area $\textrm{d}A$ makes with the direction of the central line of $\textrm{d}\Omega$, respectively (see Figure \ref{fig:rad}).
+The solid angle on the entire unit sphere is $\Omega = 4\pi$ and its unit is steradian $\textrm{sr}$ \cite{arecchi2007field}.
 The luminous intensity $I$ (unit candela $\textrm{cd}=\textrm{lm}/\textrm{sr}$) is defined as the luminous flux $\textrm{d}\Phi$ per solid angle
 $\textrm{d}\Omega$ and is given by:
 \begin{equation}\label{intensity}
@@ -62,7 +62,7 @@ I = I(\myangle, \phi) = \frac{\textrm{d}\Phi}{\textrm{d}\Omega}\;.
   \begin{center}
   \includegraphics[width=6 cm]{SolidAngle}
   \end{center}
-  \caption{Solid angle $\textrm{d}\Omega$ in a given direction $\myangle$ with $\myangle$ the angle that the central line forms with the normal to the area $\textrm{d}A$.}
+  \caption{\textbf{Solid angle}. $\textrm{d}\Omega$ is in a given direction $\myangle$ with $\myangle$ the angle that the central line forms with the normal to the area $\textrm{d}A$.}
   \label{fig:rad}
   \end{figure}
 \\ \indent Let us now consider a finite source $\textrm{d}A$.
@@ -81,45 +81,46 @@ I(\vect{x}, \myangle) = I(\myangle) = L(\myangle) A \cos\myangle\,.
 \end{equation}
 Thus, when $L(\vect{x},\myangle)$ does not depend on the position and the direction (i.e. $L(\vect{x},\myangle)=L$), we obtain Lambert's cosine law:
 \begin{equation}
-I(\myangle) = I_0\cos\myangle\,.
+I(\myangle) = I_0\cos\myangle ,
 \end{equation}
-where $I_0 = I(\myangle = 0) = LA$. Light sources that emit light with a constant luminance are called \textit{Lambertian} sources.\\
+where $I_0 = I(\myangle = 0) = LA$. Light sources emitting light with a constant luminance are called \textit{Lambertian} sources.\\
 \indent Finally, we give a definition of the \'{e}tendue $U$ (unit $\textrm{m}^2\textrm{sr}$).
-Etendue is a french word that means extent or spread. In geometric optics, it is a quantity to describe how light is spread out in terms of area and solid angle, it can be formally defined in many equivalent ways \cite{lerner2006etendue, zhu2011etendue}.
-The quantity $ \textrm{d}U $ of a source is defined as:
+Etendue is a french word that means extent or spread. In geometric optics, it is a quantity to describe how light is spread out in terms of area and solid angle \cite{lerner2006etendue, zhu2011etendue}.
+The quantity $ \textrm{d}U $ of a source $\textrm{d}A$ is defined as:
 \begin{equation}\label{etendue}
 \textrm{d}U = n^2  \frac{1}{L}\textrm{d}\Phi = n^2 \cos\myangle\textrm{d}A\textrm{d}\Omega,
 \end{equation}
-where $n$ is the index of refraction of the medium in which the surface $\textrm{d}A$ is immersed. In phase space optics the \'{e}tendue is considered to be a volume in phase space  (or an area for two-dimensional systems). This concept will be clarified in Chapter \ref{chap:PS} in which we treat the phase space in more detail.
-An important \'{e}tendue property is its conservation within an optical system in absence of absorption. We now show, using the approach of Chaves in \cite{chaves2015introduction}, 
-how conservation of this quantity can be derived.
+where $n$ is the index of refraction of the medium in which $\textrm{d}A$ is immersed. In phase space optics the \'{e}tendue is considered to be a volume in phase space (or an area for two-dimensional systems). This concept will be clarified in Chapter \ref{chap:PS} in which we treat the phase space in more detail.
+An important \'{e}tendue property is its conservation within an optical system in absence of absorption. 
+In the following we show, using the approach of Chaves in \cite{chaves2015introduction}, 
+how conserservation of \'{e}tendue in a lossless system can be derived. For the optical systems we will consider in this work, the source and the target are located in the same medium (air) with $n=1$, so the luminance $L$ equals the basic luminance $L^* = L/n^2$ at the source and the target of the system. 
 Consider a light ray emitted from an infinitesimal area $\textrm{d}A_1$ to the area $\textrm{d}A_2$. Suppose that the centers of $\textrm{d}A_1$ and $\textrm{d}A_2$ 
 are located at a distance \variabile{d} from each other, see Figure \ref{fig:etendue_conservation}.
-\begin{figure}[h]
+\begin{figure}[t]
  \label{fig:etendue_conservation}
      \begin{center}
      \includegraphics[width=10cm]{areas.pdf}
      \end{center}
-     \caption{$\textrm{d}A_1$ and $\textrm{d}A_2$ are two surfaces with normals $\nu_1$ and $\nu_2$, respectively. Their centers are located at a distance \variabile{d}.
+     \caption{\textbf{Transfer of flux from the source $\textrm{d}A_1$ to the target $\textrm{d}A_2$.} $\textrm{d}A_1$ and $\textrm{d}A_2$ are two surfaces with normals $\nu_1$ and $\nu_2$, respectively. Their centers are located at a distance \variabile{d}.
 $\myangle_1$ and $\myangle_2$ are the angles made by the central ray with the normals $\nu_1$ and $\nu_2$, respectively.}
 \label{fig:etendue_conservation}
  \end{figure}
-Indicating with $\boldsymbol{\nu}_1$ and $\boldsymbol{\nu}_2$ the normals to the surfaces $\textrm{d}A_1$ and $\textrm{d}A_2$, respectively and with $\myangle_1$ and $\myangle_2$ the angles that the ray connecting the centers of $\textrm{d}A_1$ and $\textrm{d}A_2$ forms with $\boldsymbol{\nu}_1$ and $\boldsymbol{\nu}_2$, respectively,
-the flux $\textrm{d}\Phi_1$ passing through $\textrm{d}A_2$ emitted from $\textrm{d}A_1$ and the corresponding solid angle $\textrm{d}\Omega_1 $ are defined as:
+We derive \'{e}tendue conservation for the case in which $\textrm{d}A_1$ and $\textrm{d}A_2$ are located in the same medium (see \ref{chaves2015introduction,koshel2012illumination} for the general case).
+We indicate with $\boldsymbol{\nu}_1$ and $\boldsymbol{\nu}_2$ the normals to the surfaces $\textrm{d}A_1$ and $\textrm{d}A_2$, and with $\myangle_1$ and $\myangle_2$ the angles that the ray connecting the centers of $\textrm{d}A_1$ and $\textrm{d}A_2$ forms with $\boldsymbol{\nu}_1$ and $\boldsymbol{\nu}_2$. The differential solid angle $\textrm{d}\Omega_1$ subtended by $\textrm{d}A_2$ at the center of $\textrm{d}A_1$ and the flux $\textrm{d}\Phi_1$ passing through $\textrm{d}A_2$ emitted from $\textrm{d}A_1$ and the corresponding solid angle are defined as:
 \begin{subequations}
 \begin{align}
 \label{eq:omega1}
 \textrm{d}\Omega_1 &= \frac{\textrm{d}A_2\cos(\myangle_2)}{\variabile{d}^2}\,,\\
-\textrm{d}\Phi_1 &= L \cos\myangle_1 \textrm{d}A_1 \textrm{d}\Omega_1. \label{eq:phi1}
+\textrm{d}\Phi_1 &= L_1 \cos\myangle_1 \textrm{d}A_1 \textrm{d}\Omega_1. \label{eq:phi1}
 \end{align}
 \end{subequations}
-Similarly, the flux $\textrm{d}\Phi_2$ passing through $\textrm{d}A_1$ emitted from $\textrm{d}A_2$ is equal to:
+Similarly, the differential solid angle $\textrm{d}\Omega_2$ subtended by $\textrm{d}A_1$ at the center of $\textrm{d}A_2$ and the flux $\textrm{d}\Phi_2$ passing through $\textrm{d}A_1$ emitted from $\textrm{d}A_2$ are equal to:
 \begin{subequations}\begin{align}\label{eq:omega2}
 \textrm{d}\Omega_2 &= \frac{\textrm{d}A_1\cos\myangle_1}{\variabile{d}^2}\,,\\
-\textrm{d}\Phi_2 &= L \cos\myangle_2 \textrm{d}A_2 \textrm{d}\Omega_2.\label{eq:phi2}
+\textrm{d}\Phi_2 &= L_2 \cos\myangle_2 \textrm{d}A_2 \textrm{d}\Omega_2.\label{eq:phi2}
 \end{align}
 \end{subequations}
-Then from Eq. (\ref{etendue}) we obtain the following relations: 
+Then from Equation (\ref{etendue}) we obtain the following relations: 
 \begin{subequations}
 \begin{align}
 \textrm{d}U_1 &= n^2\cos\myangle_1 \textrm{d}A_1\textrm{d}\Omega_1= \frac{n^2\cos\myangle_1 \textrm{d}A_1\textrm{d}A_2\cos\myangle_2}{\variabile{d}^2},\\
@@ -129,21 +130,20 @@ Then from Eq. (\ref{etendue}) we obtain the following relations:
 \end{subequations}
 for $\textrm{d}A_1$ and $\textrm{d}A_2$, respectively.
 %From equation ($\ref{etendue1}$) and ($\ref{etendue2}$) 
-From the previous equations we can conclude that $\textrm{d}U_1=\textrm{d}U_2$ and therefore the \'{e}tendue $\textrm{d}U$ is conserved along a beam of light. 
-Combining Equations (\ref{eq:phi1}) and (\ref{eq:phi2}) we obtain that also the flux through the areas $\textrm{d}A_1$ and $\textrm{d}A_2$ is conserved ($\textrm{d}\Phi_1 = \textrm{d}\Phi_2 = \textrm{d}\Phi$), hence the following relation holds:
+From the previous equations we can conclude that $\textrm{d}U_1=\textrm{d}U_2$ and therefore the \'{e}tendue is conserved along a beam of light. 
+Since the system is a lossless system energy is conserved from the source to the target ($\textrm{d}\Phi_1= \textrm{d}\Phi_2$), therefore the \'{e}tendue conservation implies:
 \begin{equation}\label{basicluminance}
-L = n^2 \frac{\textrm{d}\Phi}{\textrm{d}U} = constant\,,
+L_1 = n^2 \frac{\textrm{d}\Phi_1}{\textrm{d}U_1} = n^2 \frac{\textrm{d}\Phi_2}{\textrm{d}U_2} = L_2\,,
 \end{equation}
 where the first equality comes from Equation (\ref{luminance1}) combined with Equation (\ref{etendue}).
- In the optical systems we will consider in this work, the source and the target are located in the same medium (air) with $n=1$, so the luminance $L$ equals the basic luminance $L^* = L/n^2$ at the source and the target of the system.\\
-\indent In this thesis we consider two-dimensional optical systems. 
- Hence, the definitions of the photometric parameters have to be adapted in two-dimensions. An infinitesimal line segment of length $\textrm{d}\variabile{a}$ emitting a ray that makes an angle $\myangle$ with the normal $\boldsymbol{\nu}$ are considered, see Fig. \ref{fig:2Dsolidangle}. 
+In this thesis we consider two-dimensional optical systems. 
+ Hence, the definitions of the photometric parameters have to be adapted in two-dimensions. An infinitesimal line segment of length $\textrm{d}\variabile{a}$ emitting a ray that makes an angle $\myangle$ with the normal $\boldsymbol{\nu}$ are considered, see Figure \ref{fig:2Dsolidangle}. 
 \begin{figure}[t]
  \label{fig:2Dsolidangle}
      \begin{center}
      \includegraphics[width=7cm]{solidangle2D.pdf}
      \end{center}
-     \caption{Ray emitted by an infinitesimal line segment $\textrm{d}a$ that makes an angle $\myangle$ with respect to the line normal $\boldsymbol{\nu}$.}
+     \caption{\textbf{Ray emitted by an infinitesimal line segment.} $\textrm{d}a$ makes an angle $\myangle$ with respect to the line normal $\boldsymbol{\nu}$.}
 \label{fig:2Dsolidangle}
  \end{figure}
 The two-dimensional illuminance (unit $\textrm{lm}/\textrm{m}$) denotes the luminous flux received by an infinitesimal line segment of length $\textrm{d}\variabile{a}$ 
@@ -181,7 +181,7 @@ Luminous flux & $\Phi$   & $\textrm{lm}$   &  $\textrm{lm}$ \\
 %Spectral luminous flux & $\Phi_\lambda$   & $$   &  $1.75\cdot10^{-4}$ \\
 Illuminance/emittance  & $E$    & $\textrm{lm}/{\textrm{m}^2} $ & $\textrm{lm}/{\textrm{m}^2}$  \\
 Intensity  & $I$    & $\textrm{lm}/{\textrm{srad}} = \textrm{cd}$  & $\textrm{lm}/\textrm{rad}$ \\
-Luminance  & $L$  & $\textrm{lm}/(\textrm{rad} \,\textrm{m}^2) = \textrm{cd}/{\textrm{m}^2}$   & $\textrm{lm}/(\textrm{rad} \,\textrm{m})$ \\
+Luminance  & $L$  & $ \textrm{cd}/{\textrm{m}^2}$   & $\textrm{lm}/(\textrm{rad} \,\textrm{m})$ \\
 Etendue & $U$  & $\textrm{m}^2\; \textrm{srad}$   & $\textrm{m}\; \textrm{rad}$ \\
  \hline
  \end{tabular}
@@ -207,13 +207,13 @@ From the previous equation follows that the vector  $\vect{t}_\textrm{r}$ is a u
 \end{equation} 
 Note from Equation (\ref{Reflection}) that the vectors $\vect{t}_\textrm{i}$, $\vect{t}_\textrm{r}$ and $\boldsymbol{\nu}$ are coplanar.
 Indicating with $\myangle_\textrm{i}$ the incident angle and with $\myangle_\textrm{r}$ the reflective angle such that $\myangle_\textrm{i}$, $\myangle_\textrm{r} \in[0, \pi/2)$,
-the reflection law states that $\myangle_\textrm{i}=\myangle_\textrm{r}$, see Fig. \ref{fig:Snell}.
+the reflection law states that $\myangle_\textrm{i}=\myangle_\textrm{r}$, see Figure \ref{fig:Snell}.
 \begin{figure}[t]
  \label{fig:Snell}
      \begin{center}
      \includegraphics[width=8cm]{reflection}
      \end{center}
-     \caption{Propagation of a ray through two materials with index of refraction $n_\textrm{i}$ and $n_\textrm{t}$.}% \bolsymbol{$\nu$} is the normal to the surface $A$ that the incident ray hits.
+     \caption{\textbf{Propagation of a ray.} The ray travels through two materials with index of refraction $n_\textrm{i}$ and $n_\textrm{t}$.}% \bolsymbol{$\nu$} is the normal to the surface $A$ that the incident ray hits.
 %$\vect{t}_i$, $\vect{t}_r$ and $\vect{t}_t$ are the direction vectors of the incident, reflected and refracted (or transmitted) ray, respectively. }}
 %\myangle$_{i}$, \myangle$_{r}$ and \myangle$_{t}$ are the angles between \bolsymbol{$\nu$} and the incident, reflected and transmitted ray, respectively.}}
 \label{fig:Snell}
@@ -228,11 +228,11 @@ n_{\textrm{i},\textrm{t}}^2(\boldsymbol{\nu}\boldsymbol{\cdot}\vect{t}_\textrm{i
 -n_{\textrm{i},\textrm{t}}(\boldsymbol{\nu}\boldsymbol{\cdot}\vect{t}_\textrm{i}) \Big]\boldsymbol{\nu}\,,
 \end{equation}
 where $n_{\textrm{i},\textrm{t}}=n_\textrm{i}/n_\textrm{t}$ \cite{chaves2015introduction}.
- Note that in Eq. (\ref{Reflection}) the direction of the normal $\boldsymbol{\nu}$ to the surface is not relevant for the computation of the direction of the reflective ray, since:
+While the direction of the normal $\boldsymbol{\nu}$ to the surface is not relevant for the computation of the direction of the reflected ray, in fact:
 \begin{equation}
-\vect{t}_\textrm{r} = \vect{t}_\textrm{i}-2(\vect{t}_\textrm{i}\boldsymbol{\cdot}\boldsymbol{\nu})\boldsymbol{\nu}= \vect{t}_\textrm{i}-2(\vect{t}_\textrm{i}\boldsymbol{\cdot}(-\boldsymbol{\nu}))(-\boldsymbol{\nu}),
+\vect{t}_\textrm{r} = \vect{t}_\textrm{i}-2(\vect{t}_\textrm{i}\boldsymbol{\cdot}\boldsymbol{\nu})\boldsymbol{\nu}= \vect{t}_\textrm{i}-2(\vect{t}_\textrm{i}\boldsymbol{\cdot}(-\boldsymbol{\nu}))(-\boldsymbol{\nu}), 
 \end{equation}
-however, this is not the case for Eq. (\ref{Refraction}), therefore in the latter case we need to specify the direction of $\boldsymbol{\nu}$ which is usually chosen in such a way that the angle that it forms with the incident ray $\vect{t}_\textrm{i}$ is smaller than or equal to $\pi/2$. 
+for computing the direction of the refracted ray, we need to specify the direction of $\boldsymbol{\nu}$ which is usually chosen in such a way that the angle that it forms with the incident ray $\vect{t}_\textrm{i}$ is smaller than or equal to $\pi/2$. 
 Considering the cross product of both the terms in Equation (\ref{Refraction}) and the normal $\boldsymbol{\nu}$ of the incident surface we obtain:
 \begin{equation}
 \vect{t}_\textrm{t}\times\boldsymbol{\nu} = n_{\textrm{i},\textrm{t}}(\vect{t}_\textrm{i}\times\boldsymbol{\nu})
@@ -261,19 +261,19 @@ from which we obtain:
 %Note that the condition $\frac{n_t}{n_i}<1$ is verified as in this case $\sin(\myangle_\textrm{i})<1$.
 When the incident angle $\myangle_{\textrm{i}}$ is exactly equal to the critical angle $\myangle_{\textrm{c}}$, the square root in Equation (\ref{Refraction}) is zero and $\vect{t}_\textrm{t}\boldsymbol{\cdot}\boldsymbol{\nu})=0$, hence the transmitted ray propagates parallel to the refractive surface. 
 When $\myangle_{\textrm{i}}>\myangle_{\textrm{c}}$ the light ray is no longer refracted but is only reflected by the surface. This phenomenon is called total internal reflection (TIR). When TIR occurs, $100\%$ of light is reflected and there is no refraction. Therefore, optical systems designed such that rays are reflected by TIR are very efficient. \\ \indent 
-In general, light that hits an ordinary refractive surface can be both reflected and refracted. Every incident ray generates two rays when interacting with a surface. Each of the them carries a fraction of the total energy of the incident ray. The sum of the reflected and transmitted energy obviously equals the incident power.
+In general, light that hits an ordinary refractive surface can be both reflected and refracted. Every incident ray generates two rays when interacting with a surface. Each of the them carries a fraction of the total energy of the incident ray. Obviously, the sum of the reflected and transmitted energy equals the incident power.
 The amount of energy transported by the reflected and the refracted ray is determined by the Fresnel's coefficients.
 In the next paragraph an overview of the Fresnel equations is given.
 \section{Fresnel equations}\label{sec:fresnel}
-In order to derive Fresnel's equations we need to describe light as an electromagnetic wave. 
-It is therefore useful to study the light propagation from the perspective of electromagnetic theory which gives information about the incident, reflected and transmitted radiant flux density, which are denoted $E_\textrm{i}$, $E_\textrm{r}$ and $E_\textrm{t}$, respectively.  
+In order to derive Fresnel equations we need to describe light as an electromagnetic wave. 
+It is therefore useful to study the light propagation from the perspective of electromagnetic theory which gives information about the incident, reflected and transmitted radiant flux density, which are denoted with $P_\textrm{i}$, $P_\textrm{r}$ and $P_\textrm{t}$, respectively.  
 The electric field $\boldsymbol{\mathcal{E}}$ can be written as: 
 \begin{equation}
 \boldsymbol{\mathcal{E}}(\vect{x}, \mytime) = \boldsymbol{\mathcal{E}}_0(\vect{x} )e^{i( \vect{k}\boldsymbol{\cdot}\vect{x}-\omega \mytime)},
 \end{equation}
-where \vect{k} is the vector in the direction of the field propagation and modulus 
-$|\vect{k}| = k$, \vect{x} is the position vector and $\mytime$ is the time. The amplitude $\boldsymbol{\mathcal{E}}_0(\vect{x})$ is constant in time and $\omega = \frac{c |\vect{k}|}{n}$ is the value of the angular frequency with $c$ the velocity of light and $n$ the index of refraction in which the wave is traveling, which is the ratio of $c$ and the speed of light $v$ in the material. Note that the angular frequency can be also written as $\omega = v\, k$, in particular when a wave travels in vacuum $n=1$ and $\omega=ck$. The value
-$k = \frac{2\pi}{\lambda}$ is the wave number in vacuum, with $\lambda$ the wavelength. Similarly, the magnetic field has the form:
+where \vect{k} is the vector in the direction of the field propagation with modulus 
+$|\vect{k}| = k$, \vect{x} is the position vector and $\mytime$ is the time. The amplitude $\boldsymbol{\mathcal{E}}_0(\vect{x})$ is constant in time and $\omega = \frac{c |\vect{k}|}{n}$ is the value of the angular frequency with $c$ the velocity of light and $n$ the index of refraction in which the wave is traveling, which is the ratio of $c$ and the speed of light $v$ in the material. Note that the angular frequency can be also written as $\omega = v\, k$ (in vacuum $n=1$ and $\omega=ck$). The value
+$k = \frac{2\pi}{\lambda}$ is the wave number in vacuum, with $\lambda$ the wavelength. \\ \indent Similarly, the magnetic field has the form:
 \begin{equation}
 \boldsymbol{\mathcal{B}}(\vect{x}, \mytime) = \boldsymbol{\mathcal{B}}_0(\vect{x}) e^{i( \vect{k}\boldsymbol{\cdot} \vect{x}-\omega \mytime )}\,.
 \end{equation}
@@ -285,48 +285,52 @@ The electric and magnetic fields satisfy the following relations:
 \end{align}
 \end{subequations}
 % Say right hand system
-\\ \indent Light can be seen as an electromagnetic wave consisting of an electric field $\boldsymbol{\mathcal{E}}$ and a field $\boldsymbol{\mathcal{B}}$ which propagates always perpendicular to $\boldsymbol{\mathcal{E}}$ and $\vect{k}$ (see Equation (\ref{eq:electric_magnetic})). By convention, the direction of the electric field $\boldsymbol{\mathcal{E}}$ \cite{feynman1964feynman} with respect to the incident plane defines the\textit{polarization} of an electromagnetic wave. The direction of $\boldsymbol{\mathcal{E}}$ is given by the incident and reflected rays as is shown in Figure \ref{fig:planeofincidence}. 
-Light is said to be \textit{polarized} if the electric field oscillates in a single plane. Light is \textit{unpolarized} when the direction of this electric field changes randomly in time.
+\\ \indent Light can be seen as an electromagnetic wave consisting of an electric field $\boldsymbol{\mathcal{E}}$ and a field $\boldsymbol{\mathcal{B}}$ which propagates always perpendicular to $\boldsymbol{\mathcal{E}}$ and $\vect{k}$ (see Equation (\ref{eq:electric_magnetic})). By convention, the direction of the electric field $\boldsymbol{\mathcal{E}}$ \cite{feynman1964feynman} with respect to the incident plane defines the \textit{polarization} of an electromagnetic wave. The direction of $\boldsymbol{\mathcal{E}}$ is given by the incident and reflected rays as is shown in Figure \ref{fig:planeofincidence}. \\
+\indent Fresnel equations were introduced to describe the effect of an incident wave when encountering an interface located between two media having a different indices of refraction. In particular Fresnel coefficients determine the fractions of transmitted and reflected energy.  
+In the following we provide Fresnel coefficients and we briefly explain their physical interpretation. 
+We refer the reader to \cite{born2013principles, hecht1998hecht, feynman2011feynman} for more details. To derive Fresnel equations the polarization of light must be taken into account.
+\\ \indent Light is said to be \textit{polarized} if the electric field oscillates in a single plane. Light is \textit{unpolarized} when the direction of this electric field changes randomly in time.
 \begin{figure}[t]
  \label{fig:planeofincidence}
      \begin{center}
      \includegraphics[width=10cm]{plane_of_incidence1}
      \end{center}
-     \caption{Light ray that hits a mirror located on the reflecting plane. The incident and the reflected ray are coplanar to the normal to the mirror. The plane of incidence is spanned by the reflected and the refracted rays. The plane of interface is perpendicular to the plane of incidence.}
+     \caption{\textbf{Light ray that hits a mirror located on the reflecting plane.} The incident and the reflected ray are coplanar to the normal to the mirror. The plane of incidence is spanned by the reflected and the refracted rays. The plane of interface is perpendicular to the plane of incidence.}
 \label{fig:planeofincidence}
  \end{figure}
-% Say something about linear, circular polarization
-\\ \indent Fresnel equations were introduced to describe the effect of an incident wave when encountering an interface located between two media having a different indices of refraction. In particular Fresnel coefficients determine the fraction of energy transmitted and the fraction of reflected energy. 
-%Those coefficients are obtained considering Maxwell's equations and the boundary conditions due to the conservation of energy.
-The details of Fresnel equations can be found in the literature. 
-In the following we provide Fresnel coefficients and we briefly explain their physical interpretation. 
-We refer the reader to \cite{born2013principles, hecht1998hecht, feynman2011feynman} for more details. To derive Fresnel equations the polarization of light must be taken into account.
+The light polarization can be classified into three different kinds of polarization:
+\begin{itemize}
+\item \textit{Linear polarization}: The electric filed is confined to a single plane perpendicular along the direction of propagation;
+\item \textit{Circular polarization}: The electric field describes a circle around the direction of polarization;
+\item \textit{Elliptic polarization}: The electric field describes an ellipse around the direction of polarization.
+\end{itemize}
 Any form of light can be defined by two ortogonal linear polarization.
 Hence, the two following cases of light polarization are considered: 
 \begin{enumerate}
-\item $\boldsymbol{\mathcal{E}}$ is perpendicular to the plane of incidence and, therefore $\boldsymbol{\mathcal{B}}$ is parallel to it (see Fig. \ref{fig:electric_field}). In this case light is said to be \textit{s-polarized} (from the German word \textit{senkrecht}).
-\item $\boldsymbol{\mathcal{E}}$ is parallel to the plane of incidence and, therefore $\boldsymbol{\mathcal{B}}$ is perpendicular it (see Fig. \ref{fig:electric_field_p}). In this case light is said to be \textit{p-polarized} (from the German word \textit{parallel}).
+\item $\boldsymbol{\mathcal{E}}$ is perpendicular to the plane of incidence and, therefore $\boldsymbol{\mathcal{B}}$ is parallel to it (see Figure \ref{fig:electric_field}). In this case light is said to be \textit{s-polarized} (from the German word \textit{senkrecht}).
+\item $\boldsymbol{\mathcal{E}}$ is parallel to the plane of incidence and, therefore $\boldsymbol{\mathcal{B}}$ is perpendicular it (see Figure \ref{fig:electric_field_p}). In this case light is said to be \textit{p-polarized} (from the German word \textit{parallel}).
 \end{enumerate}
 \begin{figure}[h]
  \label{fig:electric_field}
      \begin{center}
      \includegraphics[width=8cm]{electric_field}
      \end{center}
-     \caption{Propagation of an electromagnetic wave where $\boldsymbol{\mathcal{E}}$ is perpendicular to the incident plane. The components of $\boldsymbol{\mathcal{E}}$ are indicated with the green circles.
+     \caption{\textbf{Propagation of an electromagnetic wave where $\boldsymbol{\mathcal{E}}$ is perpendicular to the incident plane.} The components of $\boldsymbol{\mathcal{E}}$ are indicated with the green circles.
 The components of $\boldsymbol{\mathcal{B}}$ are indicated with red arrows.}
+\label{fig:electric_field}
  \end{figure}
 \begin{figure}[h]
  \label{fig:electric_field_p}
      \begin{center}
      \includegraphics[width=8cm]{electric_field_p}
      \end{center}
- \caption{Propagation of an electromagnetic wave where $\boldsymbol{\mathcal{E}}$ is parallel to the incident plane. The components of $\boldsymbol{\mathcal{B}}$ are indicated with the red circle.
+ \caption{\textbf{Propagation of an electromagnetic wave where $\boldsymbol{\mathcal{E}}$ is parallel to the incident plane.} The components of $\boldsymbol{\mathcal{B}}$ are indicated with the red circle.
 %, they are in the $(\variabile{x},\variabile{z})$ plane and they are oriented in the positive direction of $\variabile{z}$. 
 The components of $\boldsymbol{\mathcal{E}}$ are indicated with greed arrows.}
 %and they are located in the $(\variabile{x}, \variabile{z})$ plane.}
 \label{fig:electric_field_p}
  \end{figure}
-Energy conservation gives the boundary conditions of the electromagnetic field at the plane of the interface (perpendicular to the incident plane) from whose the Fresnel coefficients are derived. The Fresnel coefficients are defined in both case $1$ and case $2$. Since the mathematical formulation is similar for the two cases, in the following we only explain in details the computation of the Fresnel coefficients s-polarized light (case $1$).\\ 
+Energy conservation gives the boundary conditions of the electromagnetic field at the plane of the interface (perpendicular to the incident plane), from which the Fresnel coefficients are derived. They are defined in both case $1$ and case $2$. Since the mathematical formulation is similar for the two cases, in the following we explain in details the computation of the Fresnel coefficients only for s-polarized light (case $1$).\\ 
 \indent For s-polarized light the tangential components of $\boldsymbol{\mathcal{E}}$ and $\boldsymbol{\mathcal{B}}/\mu$ across the boundary between the two different media must be continuous. From now on, all quantities defined in the medium of the incident, reflective and transmitted light are indicated with the subscripts \textrm{i}, \textrm{r} and \textrm{t}, respectively. The continuity of the tangential component of $\boldsymbol{\mathcal{E}}$ leads to:
 \begin{equation}\label{Econservation}
 |\boldsymbol{\mathcal{E}}_{0\textrm{i}}|+|\boldsymbol{\mathcal{E}}_{0\textrm{r}}|= |\boldsymbol{\mathcal{E}}_{0\textrm{t}}|,
@@ -341,16 +345,16 @@ while the continuity of the tangential component of $\boldsymbol{\mathcal{B}}/\m
 where the sign convention is chosen as illustrated in Figure \ref{fig:electric_field}.
 %where we have indicated with $\mathcal{B}_{\textrm{i}}$, $\mathcal{B}_{\textrm{r}}$ and $\mathcal{B}_{\textrm{t}}$
 %the absolute values of $\boldsymbol{\mathcal{B}}_{\textrm{i}}$,$\boldsymbol{\mathcal{B}}_{\textrm{r}}$ and $\boldsymbol{\mathcal{B}}_{\textrm{t}}$, respectively.
-Since $|\boldsymbol{\mathcal{B}}| = |\boldsymbol{\mathcal{E}}|/v$, Eq. (\ref{Bconservation}) can be written as 
+Since $|\boldsymbol{\mathcal{B}}| = |\boldsymbol{\mathcal{E}}|/v$, Equation (\ref{Bconservation}) can be written as 
 \begin{equation}
 \frac{1}{\mu_{\textrm{i}}v_{\textrm{i}}}(|\boldsymbol{\mathcal{E}}_{0,\textrm{i}}|-|\boldsymbol{\mathcal{E}}_{0,\textrm{r}}|)\cos\myangle_{\textrm{i}} = \frac{1}{\mu_{\textrm{t}}v_{\textrm{t}}}|\boldsymbol{\mathcal{E}}_{0,\textrm{t}}|\cos\myangle_{\textrm{t}},
 \end{equation}
 where we employed the fact that $v_{\textrm{i}}= v_{\textrm{r}}$, and $\myangle_{\textrm{i}}= \myangle_{\textrm{r}}$. 
-Using Eq. (\ref{electric_field}) and $n = c/v$, the previous equation becomes:
+Since $n = c/v$, the previous equation becomes:
 \begin{equation}
 \frac{n_{\textrm{i}}}{\mu_{\textrm{i}}}(|\boldsymbol{\mathcal{E}}_{0\textrm{i}}|-|\boldsymbol{\mathcal{E}}_{0\textrm{r}}|)\cos\myangle_{\textrm{i}} = \frac{n_{\textrm{t}}}{\mu_{\textrm{i}}}|\boldsymbol{\mathcal{E}}_{0\textrm{t}}|\cos\myangle_{\textrm{t}}.
 \end{equation}
-Most often used optical materials non-magnetic, that is $\mu_{\textrm{i}}=\mu_{\textrm{t}}=\mu_{0}$ \cite{lvovsky2013fresnel}. Employing Equation (\ref{Econservation}) we arriving at the Fresnel coefficient for s-polarized light:
+Most often used optical materials are non-magnetic, hence we will assume that $\mu_{\textrm{i}}=\mu_{\textrm{t}}=\mu_{0}$ \cite{lvovsky2013fresnel}. Employing Equation (\ref{Econservation}) we arriving at the Fresnel coefficient for s-polarized light:
 \begin{equation} \label{Fresnel_perpendicular}
 \begin{split}
 r_{s} & =\frac{|\boldsymbol{\mathcal{E}}_{0 \textrm{r}}|_{s}}{|\boldsymbol{\mathcal{E}}_{0\textrm{i}}|_s} = 
@@ -403,8 +407,8 @@ t_s-r_s &= 1, \\
 t_p+r_p &=  1.
 \end{split}
 \end{equation}
-The amplitude coefficients are shown in Fig. \ref{fig:coefficients} for the case in which light travels from a less dense to a more dense medium, i.e. $n_\textrm{i}<n_\textrm{t}$ where $n_{\textrm{i}}= 1$ and $n_{\textrm{t}}=1.5$. 
-In Fig. \ref{fig:coefficients2} the reflection coefficients are shown for the case in which $n_\textrm{i}>n_\textrm{t}$ with $n_{\textrm{i}}= 1.5$ and $n_{\textrm{t}}=1$. Note from Fig. \ref{fig:coefficients} that $r_p$ approaches to $0$ when $\myangle_i$ approaches to $\myangle_p$ and it gradually decreases reaching $-1$ for an incident angle $\myangle_i=90^\circ$. The angle $\myangle_p$ is called \textit{Brewster's angle} or polarization angle as only the component perpendicular to the incident plane is reflected at that angle and therefore light is perfectly polarized. Similarly, Fig. \ref{fig:coefficients2} shows that $r_p=0$ for $\myangle_i= \myangle_{p\prime}$. It can be show that $\myangle_p+ \myangle_{p\prime}= 90^\circ$. Both $r_p$ and $r_s$ reach $1$ when $\myangle_i= $ $\myangle_c$. $\myangle_c$ is called the critical angle. Light that hits the incident plane with an incident angle equal to or greater than the critical angle is totally reflected back and no transmitted light is observed. This phenomenon is called total internal reflection. 
+The amplitude coefficients are shown in Figure \ref{fig:coefficients} for the case in which light travels from a less dense to a more dense medium, i.e. $n_\textrm{i}<n_\textrm{t}$ where $n_{\textrm{i}}= 1$ and $n_{\textrm{t}}=1.5$. 
+In Figure \ref{fig:coefficients2} the reflection coefficients are shown for the case in which $n_\textrm{i}>n_\textrm{t}$ with $n_{\textrm{i}}= 1.5$ and $n_{\textrm{t}}=1$. Note from Figure \ref{fig:coefficients} that $r_p$ approaches to $0$ when $\myangle_i$ approaches to $\myangle_p$ and it gradually decreases reaching $-1$ for an incident angle $\myangle_i=90^\circ$. The angle $\myangle_p$ is called \textit{Brewster's angle} or polarization angle as only the component perpendicular to the incident plane is reflected at that angle and therefore light is perfectly polarized. Similarly, Figure \ref{fig:coefficients2} shows that $r_p=0$ for $\myangle_i= \myangle_{p\prime}$. It can be show that $\myangle_p+ \myangle_{p\prime}= 90^\circ$. Both $r_p$ and $r_s$ reach $1$ when $\myangle_i= $ $\myangle_c$. $\myangle_c$ is called the critical angle. Light that hits the incident plane with an incident angle equal to or greater than the critical angle is totally reflected back and no transmitted light is observed. This phenomenon is called total internal reflection. 
 \begin{figure}[h]
   \begin{minipage}[h]{0.4\textwidth}
     \includegraphics[width=\textwidth]{amplitude_coefficients}
@@ -433,7 +437,7 @@ In Fig. \ref{fig:coefficients2} the reflection coefficients are shown for the ca
 %\end{equation}
 %we can write the irradiance $E$ as:
 \begin{equation}
-P = \frac{c\, n \, \varepsilon_0}{2}\varepsilon|\boldsymbol{\mathcal{E}_0}|^2 \,.
+P = \frac{c\, n \, \varepsilon_0}{2}|\boldsymbol{\mathcal{E}_0}|^2 \,.
 \end{equation}
 For a beam of light that hits a surface such that an area $A$ is illuminated,
 $P$ is the average energy that crosses in unit time a unit area $A$ perpedicular to the direction of the energy flow.
@@ -441,7 +445,7 @@ We indicate with $P_{\textrm{i}}$, $P_{\textrm{r}}$ and $P_{\textrm{t}}$ the inc
 The incident, reflected and transmitted beams are 
 $P_\textrm{
 i} A\cos\myangle_\textrm{i}$ $P_\textrm{r} A\cos\myangle_\textrm{r}$ and 
-$P_\textrm{t} A\cos\myangle_\textrm{t}$, respectively. % as is shown in Fig. \ref{}
+$P_\textrm{t} A\cos\myangle_\textrm{t}$, respectively. % as is shown in Figure \ref{}
 The reflectance $\mathcal{R}$ is the ratio of the reflected power to the incident power:
 \begin{equation}\label{reflectance}
 \mathcal{R} = \frac{P_\textrm{r}\cos\myangle_r}{P_\textrm{i}\cos\myangle_\textrm{i}} = \frac{|\boldsymbol{\mathcal{E}}_{0 \textrm{r}}|^2}{|\boldsymbol{\mathcal{E}}_{0 \textrm{i}}|^2} = r^2
