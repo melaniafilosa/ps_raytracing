@@ -354,14 +354,14 @@ For the functions we analyze in this thesis the corresponding variation function
 The convergence of QMC methods strongly depends on the low-discrepancy sequence that is used.\\ \indent
 There are many ways to generate low-discrepancy sequences \cite{dalal2008low}. The most common QMC approach uses the so-called Sobol sequence. The algorithm for generating Sobol sequences is widely explained in the literature, (see for instance \cite{bratley1988algorithm}). In appendix \ref{app:Sobol} we give an overview of how these kind of sequences can be constructed. When using Sobol sequences QMC error can be estimated by:
 \begin{equation}
-\const{err}(f, S_{N})<C \frac{\log(N)}{N}, 
+\const{err}(f, S_{N})<C \frac{\log(N)^2}{N}, 
 \end{equation}
 for some $C>0$.
 For higher dimensions $d>2$, the general relation holds
 \begin{equation}
-\const{err}(f, S_{N})<C \frac{\log(N)^d-1}{N}.
+\const{err}(f, S_{N})<C \frac{\log(N)^d}{N}.
 \end{equation}
-For small dimensions, QMC performs much better than MC methods, while for large dimension the factor $\log(\const{N})$ could be very big. 
+%For small dimensions, QMC performs much better than MC methods, while for large dimension the factor $\log(\const{N})$ could be very big. 
 % In the following we show a particular construction of a low-discrepancy sequence for $d=1$ that was introduced the first time by Van der Corput in 1935.  
 %This kind of sequences, called \textit{van der Corput} sequences, are particular interesting not only because they give an intuition of how to construct low discrepancy sequences but also because many other kind of sequences in higher dimensions are based on this one-dimensional case. Before introducing these sequences we need to give the concept of radical inverse function. Let $\const{b}\geq 2$ be an integer base. Any natural number $\variabile{n}\in \mathbb{N}_0$ can be decomposed in base $\const{b}$ as follows:
 %\begin{equation}
@@ -436,7 +436,7 @@ Second, likewise MC ray tracing, QMC ray tracing is a binning procedure, therefo
     \label{fig:qmc_intensity}
 \end{center}
   \end{figure}
-\begin{figure}[h]\vspace{-5cm}
+\begin{figure}[h]
 \begin{center}
     \includegraphics[width=0.8\textwidth]{Error_cup}
     \caption{Error as function of the number of rays traced in a logarithmic scale for fixed number of bins $\nbin=100$.
