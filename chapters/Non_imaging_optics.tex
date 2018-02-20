@@ -26,10 +26,10 @@ i.e. $683 \, \bar{y}(\lambda)$. Hence, the total luminous flux $\Phi$ has unit l
 \begin{equation}\label{eq:luminous_flux}
 \Phi = 683 \int_0^\infty \Psi_\textrm{r}(\lambda) \bar{y}(\lambda)\textrm{d}\lambda,
 \end{equation}
-where $\Psi_\textrm{r}(\lambda)$ is the spectral radiant flux, i.e. the power (in Watt) per unit wavelength (unit \textrm{W}/\textrm{m}). The corresponding photometric variable of is the spectral luminous flux $\Psi(\lambda)$ (unit \textrm{lm}/\textrm{m}), i.e. the flux as perceived by the human eye as a function of the wavelength. 
+where $\Psi_\textrm{r}(\lambda)$ is the spectral radiant flux, i.e., the power (in Watt) per unit wavelength (unit \textrm{W}/\textrm{m}). The corresponding photometric variable of is the spectral luminous flux $\Psi(\lambda)$ (unit \textrm{lm}/\textrm{m}), i.e. the flux as perceived by the human eye as a function of the wavelength. 
 Using the relation following between $\Psi_\textrm{r}$ and $\Psi$:
 \begin{equation}
-683 \bar{y} = \frac{\Psi}{\Psi}, 
+683 \bar{y}(\lambda) = \frac{\Psi_\textrm{r}(\lambda)}{\Psi(\lambda)}, 
 \end{equation}
 Equation (\ref{eq:luminous_flux}) can be written as:
 \begin{equation}
@@ -51,7 +51,7 @@ the infinitesimal solid angle $\textrm{d}\Omega$ is given by:
 \textrm{d}\Omega = \textrm{d}S= \sin(\theta)\textrm{d}\theta \textrm{d}\phi\,
 \end{equation}
  where $\myangle$ and $\phi$ are the polar and the azimuthal angle that the normal $\boldsymbol{\nu}$ to the infinitesimal area $\textrm{d}A$ makes with the direction of the central line of $\textrm{d}\Omega$, respectively (see Figure \ref{fig:rad}).
-The solid angle on the entire unit sphere is $\Omega = 4\pi$ and its unit is steradian $\textrm{sr}$ \cite{arecchi2007field}.
+The solid angle on the entire unit sphere is $\Omega = 4\pi$ and its unit is steradian ($\textrm{sr}$) \cite{arecchi2007field}.
 The luminous intensity $I$ (unit candela $\textrm{cd}=\textrm{lm}/\textrm{sr}$) is defined as the luminous flux $\textrm{d}\Phi$ per solid angle
 $\textrm{d}\Omega$ and is given by:
 \begin{equation}\label{intensity}
@@ -167,7 +167,7 @@ The luminous intensity \big(unit $\big[\textrm{lm}/\textrm{rad}\big]$\big) is th
 where $x$ is a certain position at the light source $\textrm{d}\variabile{a}$. 
  Finally, the \'{e}tendue $\textrm{d}U $ (unit $\textrm{m}\;\textrm{rad}$) in two-dimensions is given by:
 \begin{equation}\label{etendue2d}
-\textrm{d}U = n\cos\myangle\textrm{d}\variabile{a}\,\textrm{d}\myangle.
+\textrm{d}U = \n\cos\myangle\textrm{d}\variabile{a}\,\textrm{d}\myangle.
 \end{equation}
 An overview of the photometric variables used in this thesis is given in Table \ref{tab:photometric_variables}
 \begin{table}[t] 
@@ -188,7 +188,7 @@ Etendue & $U$  & $\textrm{m}^2\; \textrm{srad}$   & $\textrm{m}\; \textrm{rad}$ 
 \label{tab:photometric_variables}
  \end{table}
 \\ \indent In order to determine the light distribution on a surface and to compute the photometric variables on that surface, we need to understand how the light emitted from the source propagates. In the field of geometric optics the light propagation is described by light rays.
-The propagation of a light ray traveling through  different media is determined by the reflection and refraction law.
+The propagation of a light ray traveling through different media is determined by the reflection and refraction law.
 In the following we introduce these two laws and we explain the total internal reflection phenomenon.
 \section{Reflection and refraction law}\label{sec:reflection}
 A light ray is described by a position vector \vect{x} on a surface and a direction vector \vect{t} and can be parameterized by the arc length \variabile{s}.
@@ -213,7 +213,7 @@ the reflection law states that $\myangle_\textrm{i}=\myangle_\textrm{r}$, see Fi
      \begin{center}
      \includegraphics[width=8cm]{reflection}
      \end{center}
-     \caption{\textbf{Propagation of a ray.} The ray travels through two materials with index of refraction $n_\textrm{i}$ and $n_\textrm{t}$.}% \bolsymbol{$\nu$} is the normal to the surface $A$ that the incident ray hits.
+     \caption{\textbf{Propagation of a ray.} The ray travels through two materials with index of refraction $\n_\textrm{i}$ and $\n_\textrm{t}$.}% \bolsymbol{$\nu$} is the normal to the surface $A$ that the incident ray hits.
 %$\vect{t}_i$, $\vect{t}_r$ and $\vect{t}_t$ are the direction vectors of the incident, reflected and refracted (or transmitted) ray, respectively. }}
 %\myangle$_{i}$, \myangle$_{r}$ and \myangle$_{t}$ are the angles between \bolsymbol{$\nu$} and the incident, reflected and transmitted ray, respectively.}}
 \label{fig:Snell}
@@ -227,7 +227,7 @@ $n_\textrm{t}$ the index of refraction of the medium of the transmitted ray, the
 n_{\textrm{i},\textrm{t}}^2(\boldsymbol{\nu}\boldsymbol{\cdot}\vect{t}_\textrm{i})^2}
 -n_{\textrm{i},\textrm{t}}(\boldsymbol{\nu}\boldsymbol{\cdot}\vect{t}_\textrm{i}) \Big]\boldsymbol{\nu}\,,
 \end{equation}
-where $n_{\textrm{i},\textrm{t}}=n_\textrm{i}/n_\textrm{t}$ \cite{chaves2015introduction}.
+where $n_{\textrm{i},\textrm{t}}=\n_\textrm{i}/\n_\textrm{t}$ \cite{chaves2015introduction}.
 While the direction of the normal $\boldsymbol{\nu}$ to the surface is not relevant for the computation of the direction of the reflected ray, in fact:
 \begin{equation}
 \vect{t}_\textrm{r} = \vect{t}_\textrm{i}-2(\vect{t}_\textrm{i}\boldsymbol{\cdot}\boldsymbol{\nu})\boldsymbol{\nu}= \vect{t}_\textrm{i}-2(\vect{t}_\textrm{i}\boldsymbol{\cdot}(-\boldsymbol{\nu}))(-\boldsymbol{\nu}), 
@@ -239,24 +239,24 @@ Considering the cross product of both the terms in Equation (\ref{Refraction}) a
 \end{equation}
 which leads to the Snell's law:
 \begin{equation}\label{eq:snell}
-n_\textrm{t}\sin(\myangle_\textrm{t}) = n_\textrm{i}\sin(\myangle_\textrm{i}).
+n_\textrm{t}\sin(\myangle_\textrm{t}) = \n_\textrm{i}\sin(\myangle_\textrm{i}).
 \end{equation}
 \\\indent
 Note that Equation (\ref{Refraction}) is only valid for 
 \begin{equation}\label{tir}
-1-n_{\textrm{i},\textrm{t}}^2+n_{\textrm{i},\textrm{t}}^2(\boldsymbol{\nu}\boldsymbol{\cdot}\vect{t}_\textrm{i})^2\geq 0 
+1-\n_{\textrm{i},\textrm{t}}^2+\n_{\textrm{i},\textrm{t}}^2(\boldsymbol{\nu}\boldsymbol{\cdot}\vect{t}_\textrm{i})^2\geq 0 
 \end{equation} which implies that
 \begin{equation}
-\frac{n_\textrm{t}}{n_\textrm{i}}\geq \sqrt{1-(\boldsymbol{\nu}\boldsymbol{\cdot}\vect{t}_\textrm{i})^2},
+\frac{\n_\textrm{t}}{\n_\textrm{i}}\geq \sqrt{1-(\boldsymbol{\nu}\boldsymbol{\cdot}\vect{t}_\textrm{i})^2},
 \end{equation}
 from which we obtain:
 \begin{equation}
  %n_\textrm{t}\geq n_\textrm{i}\sqrt{1-\cos^2\myangle_\textrm{i}}= 
- n_\textrm{t}\geq n_\textrm{i} \sin\myangle_\textrm{i}\,.
+ n_\textrm{t}\geq \n_\textrm{i} \sin\myangle_\textrm{i}\,.
 \end{equation}
  The angle $\myangle_{\textrm{c}}$ for which the equality holds is
 \begin{equation}\label{critical}
-\myangle_{\textrm{c}} = \arcsin\Big(\frac{n_\textrm{t}}{n_\textrm{i}}\Big),
+\myangle_{\textrm{c}} = \arcsin\Big(\frac{n_\textrm{t}}{\n_\textrm{i}}\Big),
 \end{equation} and it is called the critical angle \cite{chaves2015introduction}.
 %Note that the condition $\frac{n_t}{n_i}<1$ is verified as in this case $\sin(\myangle_\textrm{i})<1$.
 When the incident angle $\myangle_{\textrm{i}}$ is exactly equal to the critical angle $\myangle_{\textrm{c}}$, the square root in Equation (\ref{Refraction}) is zero and $\vect{t}_\textrm{t}\boldsymbol{\cdot}\boldsymbol{\nu})=0$, hence the transmitted ray propagates parallel to the refractive surface. 
@@ -272,7 +272,7 @@ The electric field $\boldsymbol{\mathcal{E}}$ can be written as:
 \boldsymbol{\mathcal{E}}(\vect{x}, \mytime) = \boldsymbol{\mathcal{E}}_0(\vect{x} )e^{i( \vect{k}\boldsymbol{\cdot}\vect{x}-\omega \mytime)},
 \end{equation}
 where \vect{k} is the vector in the direction of the field propagation with modulus 
-$|\vect{k}| = k$, \vect{x} is the position vector and $\mytime$ is the time. The amplitude $\boldsymbol{\mathcal{E}}_0(\vect{x})$ is constant in time and $\omega = \frac{c |\vect{k}|}{n}$ is the value of the angular frequency with $c$ the velocity of light and $n$ the index of refraction in which the wave is traveling, which is the ratio of $c$ and the speed of light $v$ in the material. Note that the angular frequency can be also written as $\omega = v\, k$ (in vacuum $n=1$ and $\omega=ck$). The value
+$|\vect{k}| = k$, \vect{x} is the position vector and $\mytime$ is the time. The amplitude $\boldsymbol{\mathcal{E}}_0(\vect{x})$ is constant in time and $\omega = \frac{c |\vect{k}|}{n}$ is the value of the angular frequency with $c$ the velocity of light and $\n$ the index of refraction in which the wave is traveling, which is the ratio of $c$ and the speed of light $v$ in the material. Note that the angular frequency can be also written as $\omega = v\,k$ (in vacuum $\n=1$ and $\omega=c\,k$). The value
 $k = \frac{2\pi}{\lambda}$ is the wave number in vacuum, with $\lambda$ the wavelength. \\ \indent Similarly, the magnetic field has the form:
 \begin{equation}
 \boldsymbol{\mathcal{B}}(\vect{x}, \mytime) = \boldsymbol{\mathcal{B}}_0(\vect{x}) e^{i( \vect{k}\boldsymbol{\cdot} \vect{x}-\omega \mytime )}\,.
@@ -357,14 +357,14 @@ Since $n = c/v$, the previous equation becomes:
 Most often used optical materials are non-magnetic, hence we assume that $\mu_{\textrm{i}}=\mu_{\textrm{t}}=\mu_{0}$ \cite{lvovsky2013fresnel}. Employing Equation (\ref{Econservation}) we arriving at the Fresnel coefficient for s-polarized light:
 \begin{equation} \label{Fresnel_perpendicular}
 \begin{split}
-r_{s} & =\frac{|\boldsymbol{\mathcal{E}}_{0 \textrm{r}}|_{s}}{|\boldsymbol{\mathcal{E}}_{0\textrm{i}}|_s} = 
+r_{s} & =\frac{|\boldsymbol{\mathcal{E}}_{0 \textrm{r}}|_{s}}{|\boldsymbol{\mathcal{E}}_{0\textrm{i}}|_\textrm{s}} = 
 \frac{n_\textrm{i}\cos\myangle_\textrm{i}-n_\textrm{t} \cos\myangle_\textrm{t}}{n_\textrm{i}
 \cos\myangle_\textrm{i}+n_\textrm{t}\cos\myangle_\textrm{t}},\\
-t_{s} & = \frac{|\boldsymbol{\mathcal{E}}_{0 \textrm{t}}|_s}{|\boldsymbol{\mathcal{E}}_{0\textrm{i}}|_s} 
-=\frac{2n_\textrm{i}\cos\myangle_\textrm{i}}{n_\textrm{i}\cos\myangle_\textrm{i}+n_\textrm{t}\cos\myangle_\textrm{t}},\\
+t_{\textrm{s}} & = \frac{|\boldsymbol{\mathcal{E}}_{0 \textrm{t}}|_\textrm{s}}{|\boldsymbol{\mathcal{E}}_{0\textrm{i}}|_\textrm{s}} 
+=\frac{2\n_\textrm{i}\cos\myangle_\textrm{i}}{n_\textrm{i}\cos\myangle_\textrm{i}+\n_\textrm{t}\cos\myangle_\textrm{t}},\\
 \end{split}
 \end{equation}
-where the subscript $s$ is used to remind the reader that we are considering s-polarized light. The coefficients $r_s$ and $t_s$ are perpendicular components of the amplitude coefficients of the reflected and transmitted light:
+where the subscript $\textrm{s}$ is used to remind the reader that we are considering s-polarized light. The coefficients $r_\textrm{s}$ and $t_\textrm{s}$ are perpendicular components of the amplitude coefficients of the reflected and transmitted light:
 \begin{equation}
 \begin{split}
 r & =\frac{|\boldsymbol{\mathcal{E}}_{0 \textrm{r}}|}{|\boldsymbol{\mathcal{E}}_{0\textrm{i}}|}, \\
@@ -374,52 +374,52 @@ t & =\frac{|\boldsymbol{\mathcal{E}}_{0 \textrm{t}}|}{|\boldsymbol{\mathcal{E}}_
 Using Snell's law (Equation (\ref{eq:snell})) the first pair of Fresnel equation become:
 \begin{equation} \label{simple_Fresnel}
 \begin{split}
-r_{s} & = -\frac{\sin(\myangle_i-\myangle_t)}{\sin(\myangle_i+\myangle_t)},\\
-t_{s} & = -\frac{2\sin \myangle_t \cos \myangle_i}{\sin(\myangle_i+\myangle_t)}\,.
+r_{\textrm{s}} & = -\frac{\sin(\myangle_\textrm{i}-\myangle_\textrm{t})}{\sin(\myangle_\textrm{i}+\myangle_\textrm{t})},\\
+t_{\textrm{s}} & = -\frac{2\sin \myangle_\textrm{t} \cos \myangle_\textrm{i}}{\sin(\myangle_\textrm{i}+\myangle_\textrm{t})}\,.
 \end{split}
 \end{equation}
-\indent A similar argument for the p-polarized light leads to the calculation of the parallel components $r_p$ and $t_p$ of $r$ and $t$. 
+\indent A similar argument for the p-polarized light leads to the calculation of the parallel components $r_\textrm{p}$ and $t_\textrm{p}$ of $r$ and $t$. 
 The boundaries conditions for the electric and magnetic field:
 \begin{subequations}
 \begin{align}
-|\mathcal{E}_{0 i}|\cos(\myangle_{\textrm{i}}) - |\mathcal{E}_{0 r}|\cos(\myangle_{\textrm{r}}) &= |\mathcal{E}_{0 t}|\cos(\myangle_{\textrm{t}})\\
-|\mathcal{B}_{0 i}| + |\mathcal{B}_{0 r}| &= |\mathcal{B}_{0 t}|
+|\mathcal{E}_{0 \textrm{i}}|\cos(\myangle_{\textrm{i}}) - |\mathcal{E}_{0 \textrm{r}}|\cos(\myangle_{\textrm{r}}) &= |\mathcal{E}_{0 \textrm{t}}|\cos(\myangle_{\textrm{t}})\\
+|\mathcal{B}_{0 \textrm{i}}| + |\mathcal{B}_{0 \textrm{r}}| &= |\mathcal{B}_{0 \textrm{t}}|
 \end{align}
 \end{subequations}
 leads to the second pair of Fresnel equations:
 \begin{equation}\label{Fresnel_parallel}
 \begin{split}
-r_{p} & = \frac{|\boldsymbol{\mathcal{E}}_{0 \textrm{r}}|_{p}}{|\boldsymbol{\mathcal{E}}_{0\textrm{i}}|_p} = \frac{n_t\cos\myangle_i-n_i \cos\myangle_t}{n_i \cos\myangle_t+n_t\cos\myangle_i},\\
-t_{p} & =\frac{|\boldsymbol{\mathcal{E}}_{0 \textrm{t}}|_{p}}{|\boldsymbol{\mathcal{E}}_{0\textrm{i}}|_p} =  \frac{2n_i\cos\myangle_i}{n_i\cos\myangle_t+n_t\cos\myangle_i}\,,
+r_{\textrm{p}} & = \frac{|\boldsymbol{\mathcal{E}}_{0 \textrm{r}}|_{\textrm{p}}}{|\boldsymbol{\mathcal{E}}_{0\textrm{i}}|_\textrm{p}} = \frac{\n_\textrm{t}\cos\myangle_\textrm{i}-n_\textrm{i} \cos\myangle_\textrm{t}}{n_\textrm{i} \cos\myangle_\textrm{t}+n_\textrm{t}\cos\myangle_\textrm{i}},\\
+t_{\textrm{p}} & =\frac{|\boldsymbol{\mathcal{E}}_{0 \textrm{t}}|_{\textrm{p}}}{|\boldsymbol{\mathcal{E}}_{0\textrm{i}}|_\textrm{p}} =  \frac{2\n_\textrm{i}\cos\myangle_\textrm{i}}{n_\textrm{i}\cos\myangle_\textrm{t}+n_\textrm{t}\cos\myangle_\textrm{i}}\,,
 \end{split}
 \end{equation}
 and their simplified versions reduce to:
 \begin{equation} \label{simple_Fresnel}
 \begin{split}
-r_{p} & =  \frac{\tan(\myangle_i-\myangle_t)}{\tan(\myangle_i+\myangle_t)},\\
-t_{p} & = \frac{2\sin \myangle_t \cos \myangle_i}{\sin(\myangle_i+\myangle_t)\cos(\myangle_i- \myangle_t)}.
+r_{\textrm{p}} & =  \frac{\tan(\myangle_\textrm{i}-\myangle_\textrm{t})}{\tan(\myangle_\textrm{i}+\myangle_\textrm{t})},\\
+t_{\textrm{p}} & = \frac{2\sin \myangle_\textrm{t} \cos \myangle_\textrm{i}}{\sin(\myangle_\textrm{i}+\myangle_\textrm{t})\cos(\myangle_\textrm{i}- \myangle_\textrm{t})}.
 \end{split}
 \end{equation}
 Furthermore, it can be checked that
  \begin{equation}
 \begin{split}
-t_s-r_s &= 1, \\
-t_p+r_p &=  1.
+t_\textrm{s}-r_\textrm{s} &= 1, \\
+t_\textrm{p}+r_\textrm{p} &=  1.
 \end{split}
 \end{equation}
-\\ \indent The amplitude coefficients are shown in Figure \ref{fig:coefficients} for the case in which light travels from a less dense to a more dense medium, i.e. $n_\textrm{i}<n_\textrm{t}$ where $n_{\textrm{i}}= 1$ and $n_{\textrm{t}}=1.5$. 
-In Figure \ref{fig:coefficients2} the reflection coefficients are shown for the case in which $n_\textrm{i}>n_\textrm{t}$ with $n_{\textrm{i}}= 1.5$ and $n_{\textrm{t}}=1$. Note from Figure \ref{fig:coefficients} that $r_p$ approaches to $0$ when $\myangle_i$ approaches to $\myangle_p$ and it gradually decreases reaching $-1$ for an incident angle $\myangle_i=90^\circ$. The angle $\myangle_p$ is called \textit{Brewster's angle} or polarization angle as only the component perpendicular to the incident plane is reflected at that angle and therefore light is perfectly polarized. Similarly, Figure \ref{fig:coefficients2} shows that $r_p=0$ for $\myangle_i= \myangle_{p\prime}$. It can be show that $\myangle_p+ \myangle_{p\prime}= 90^\circ$. Both $r_p$ and $r_s$ reach $1$ when $\myangle_i= $ $\myangle_c$. $\myangle_c$ is called the critical angle. Light that hits the incident plane with an incident angle equal to or greater than $\myangle_{c}$ is totally reflected back and no transmitted light is observed. This phenomenon is called total internal reflection. 
+\\ \indent The amplitude coefficients are shown in Figure \ref{fig:coefficients} for the case in which light travels from a less dense to a more dense medium, i.e. $\n_\textrm{i}<n_\textrm{t}$ where $\n_{\textrm{i}}= 1$ and $\n_{\textrm{t}}=1.5$. 
+In Figure \ref{fig:coefficients2} the reflection coefficients are shown for the case in which $\n_\textrm{i}>n_\textrm{t}$ with $\n_{\textrm{i}}= 1.5$ and $\n_{\textrm{t}}=1$. Note from Figure \ref{fig:coefficients} that $r_\textrm{p}$ approaches to $0$ when $\myangle_\textrm{i}$ approaches to $\myangle_\textrm{p}$ and it gradually decreases reaching $-1$ for an incident angle $\myangle_\textrm{i}=90^\circ$. The angle $\myangle_\textrm{p}$ is called \textit{Brewster's angle} or polarization angle as only the component perpendicular to the incident plane is reflected at that angle and therefore light is perfectly polarized. Similarly, Figure \ref{fig:coefficients2} shows that $r_\textrm{p}=0$ for $\myangle_\textrm{i}= \myangle_{\textrm{p}\prime}$. It can be show that $\myangle_\textrm{p}+ \myangle_{\textrm{p}\prime}= 90^\circ$. Both $r_\textrm{p}$ and $r_\textrm{s}$ reach $1$ when $\myangle_\textrm{i}= $ $\myangle_\textrm{c}$. $\myangle_\textrm{c}$ is called the critical angle. Light that hits the incident plane with an incident angle equal to or greater than $\myangle_{\textrm{c}}$ is totally reflected back and no transmitted light is observed. This phenomenon is called total internal reflection. 
 \begin{figure}[h]
   \begin{minipage}[h]{0.48\textwidth}
     \includegraphics[width=\textwidth]{amplitude_coefficients}
     \caption{\textbf{Amplitude coefficients of reflection and transmission.} $n_\textrm{t}<n_\textrm{i}$
-($n_\textrm{t} = 1$ and $n_\textrm{i}=1.5$). $\myangle_p = 56.3^\circ$ is the polarization angle.}
+($n_\textrm{t} = 1$ and $\n_\textrm{i}=1.5$). $\myangle_\textrm{p} = 56.3^\circ$ is the polarization angle.}
     \label{fig:coefficients}
   \end{minipage}\hfill
   \begin{minipage}[h]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{rprs}
-    \caption{\textbf{Amplitude reflection coefficients.} $n_\textrm{t}>n_i$
-($n_\textrm{t} = 1.5$ and $n_\textrm{i}=1$). $\myangle_{p\prime}= 33.7^\circ$ is the polarization angle and $\myangle_c= 41.8^\circ$ is the critical angle.}
+    \includegraphics[width=\textwidth]{amplitude_coefficients3}
+    \caption{\textbf{Amplitude reflection coefficients.} $n_\textrm{t}>n_\textrm{i}$
+($n_\textrm{t} = 1.5$ and $n_\textrm{i}=1$). $\myangle_{p\prime}= 33.7^\circ$ is the polarization angle and $\myangle_\textrm{c}= 41.8^\circ$ is the critical angle.}
    \label{fig:coefficients2}
  \end{minipage}
 \end{figure}\\
@@ -448,7 +448,7 @@ i} A\cos\myangle_\textrm{i}$ $P_\textrm{r} A\cos\myangle_\textrm{r}$ and
 $P_\textrm{t} A\cos\myangle_\textrm{t}$, respectively. % as is shown in Figure \ref{}
 The reflectance $\mathcal{R}$ is the ratio of the reflected power to the incident power:
 \begin{equation}\label{reflectance}
-\mathcal{R} = \frac{P_\textrm{r}\cos\myangle_r}{P_\textrm{i}\cos\myangle_\textrm{i}} = \frac{|\boldsymbol{\mathcal{E}}_{0 \textrm{r}}|^2}{|\boldsymbol{\mathcal{E}}_{0 \textrm{i}}|^2} = r^2
+\mathcal{R} = \frac{P_\textrm{r}\cos\myangle_\textrm{r}}{P_\textrm{i}\cos\myangle_\textrm{i}} = \frac{|\boldsymbol{\mathcal{E}}_{0 \textrm{r}}|^2}{|\boldsymbol{\mathcal{E}}_{0 \textrm{i}}|^2} = r^2
 \end{equation}
 where the second equality holds because $v_{\textrm{i}}= v_{\textrm{t}}$, $\varepsilon_{\textrm{i}} = \varepsilon_{\textrm{t}}$ and $\myangle_{\textrm{i}} = \myangle_{\textrm{t}}$.
 Similarly, the transmittance $\mathcal{T}$ is the ratio between the transmitted to the incident power:
@@ -466,33 +466,33 @@ we can easily prove that:
  The parallel and perpendicular components of $\mathcal{R}$ and $\mathcal{T}$ are:
 \begin{equation}\label{Fresnel_pands}
 \begin{split}
-\mathcal{R}_p& =  {r_p^2},\\
-\mathcal{T}_p &=  \frac{n_t \cos\myangle_t}{n_t \cos\myangle_i}t_p^2,\\
-\mathcal{R}_s &=  r_s^2,\\
-\mathcal{T}_s &= \frac{n_t \cos\myangle_t}{n_t \cos\myangle_i}t_s^2.\\
+\mathcal{R}_\textrm{p}& =  {r_\textrm{p}^2},\\
+\mathcal{T}_\textrm{p} &=  \frac{n_\textrm{t} \cos\myangle_\textrm{t}}{n_\textrm{t} \cos\myangle_\textrm{i}}t_\textrm{p}^2,\\
+\mathcal{R}_\textrm{s} &=  r_\textrm{s}^2,\\
+\mathcal{T}_\textrm{s} &= \frac{n_\textrm{t} \cos\myangle_\textrm{t}}{n_\textrm{t} \cos\myangle_\textrm{i}}t_\textrm{s}^2.\\
 \end{split}
 \end{equation}
 It can be show that
 \begin{equation}
 \begin{split}
-\mathcal{R}_s+\mathcal{R}_p &= 1,\\
-\mathcal{T}_s+\mathcal{T}_p &=1\,.
+\mathcal{R}_\textrm{s}+\mathcal{R}_\textrm{p} &= 1,\\
+\mathcal{T}_\textrm{s}+\mathcal{T}_\textrm{p} &=1\,.
 \end{split}
 \end{equation}
-For normal incidence, i.e. $\myangle_i = 0$, the incident plane is not defined and there is no distinction between the perpendicular and the parallel components of $\mathcal{R}$ and $\mathcal{T}$. As a consequence, (\ref{Fresnel_pands}) leads to:
+For normal incidence, i.e. $\myangle_\textrm{i} = 0$, the incident plane is not defined and there is no distinction between the perpendicular and the parallel components of $\mathcal{R}$ and $\mathcal{T}$. As a consequence, (\ref{Fresnel_pands}) leads to:
 \begin{equation}\label{eq:fresnel_pands2}
 \begin{split}
-\mathcal{R} &= \mathcal{R}_p = \mathcal{R}_s = \Bigg(\frac{n_i-n_t}{n_t+n_i}\Bigg)^2, \\
-\mathcal{T} &= \mathcal{T}_p = \mathcal{T}_s = \frac{4n_i n_t}{(n_t+n_i)^2}\,.
+\mathcal{R} &= \mathcal{R}_\textrm{p} = \mathcal{R}_\textrm{s} = \Bigg(\frac{n_\textrm{i}-n_\textrm{t}}{n_\textrm{t}+n_\textrm{i}}\Bigg)^2, \\
+\mathcal{T} &= \mathcal{T}_\textrm{p} = \mathcal{T}_\textrm{s} = \frac{4n_\textrm{i} n_\textrm{t}}{(n_\textrm{t}+n_\textrm{i})^2}\,.
 \end{split}
 \end{equation}
 \indent %In two dimensions light hits lines instead of surfaces. Therefore only the plane of incidence is defined and it has no sense to consider separately the parallel and the perpendicular polarization. 
 Many common light sources such as the sun, halogen lighting, LED spotlights, and incandescent bulbs produce unpolarized light. 
-In this case, light can be represented by the sum of two ortogonal states. If $\mathcal{R}_p = \mathcal{R}_s$ and $\mathcal{T}_p = \mathcal{T}_s$, then the amount of energy in one of the two polarization states is the same of that in the other \cite{hecht1998hecht}.
+In this case, light can be represented by the sum of two ortogonal states. If $\mathcal{R}_\textrm{p} = \mathcal{R}_\textrm{s}$ and $\mathcal{T}_\textrm{p} = \mathcal{T}_\textrm{s}$, then the amount of energy in one of the two polarization states is the same of that in the other \cite{hecht1998hecht}.
 Hence it is reasonable to take as reflectance and transmittance the average of the quantities calculated considering first p-polarized light and then $s$-polarization, that is:
 \begin{equation}\begin{split}
-\mathcal{R} &= \frac{\mathcal{R}_p+ \mathcal{R}_s}{2},\\
-\mathcal{T} &= \frac{\mathcal{T}_p+ \mathcal{T}_s}{2}.
+\mathcal{R} &= \frac{\mathcal{R}_\textrm{p}+ \mathcal{R}_\textrm{s}}{2},\\
+\mathcal{T} &= \frac{\mathcal{T}_\textrm{p}+ \mathcal{T}_\textrm{s}}{2}.
 \end{split}
 \label{eq:RandTin2D}
 \end{equation}
