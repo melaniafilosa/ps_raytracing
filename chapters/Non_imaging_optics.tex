@@ -13,7 +13,7 @@ where $Q$ is the energy and $\mytime$ the time.\\
  The luminous efficacy function reaches its maximum  at a wavelength of $555$ $\textrm{nm}$ where it is equal to $683$ $\textrm{lm}/\textrm{W}$.
   We may normalize the luminous efficacy function with its maximum value of $683$.
   The normalized function $\bar{y}(\lambda)$ is the luminous efficiency shown in Figure $\ref{fig:luminosityfunction}$ where $\lambda$ is the wavelength. It is a \textit{dimensionless} quantity with a range of value between $0$ and $1$ \cite{schubert2005light}.
-\begin{figure}[h]
+\begin{figure}[t]
 %\label{fig:luminousfunction}  
   \begin{center}
   \includegraphics[width=7cm]{CIELuminosity}
@@ -57,7 +57,7 @@ $\textrm{d}\Omega$ and is given by:
 \begin{equation}\label{intensity}
 I = I(\myangle, \phi) = \frac{\textrm{d}\Phi}{\textrm{d}\Omega}\;.
 \end{equation}
- \begin{figure}[h]
+ \begin{figure}[t]
 %\label{fig:cup}
   \begin{center}
   \includegraphics[width=6 cm]{SolidAngle}
@@ -310,7 +310,7 @@ Hence, the two following cases of light polarization are considered:
 \item $\boldsymbol{\mathcal{E}}$ is perpendicular to the plane of incidence and, therefore $\boldsymbol{\mathcal{B}}$ is parallel to it (see Figure \ref{fig:electric_field}). In this case light is said to be \textit{s-polarized} (from the German word \textit{senkrecht}).
 \item $\boldsymbol{\mathcal{E}}$ is parallel to the plane of incidence and, therefore $\boldsymbol{\mathcal{B}}$ is perpendicular it (see Figure \ref{fig:electric_field_p}). In this case light is said to be \textit{p-polarized} (from the German word \textit{parallel}).
 \end{enumerate}
-\begin{figure}[h]
+\begin{figure}[t]
  \label{fig:electric_field}
      \begin{center}
      \includegraphics[width=8cm]{electric_field}
@@ -319,7 +319,7 @@ Hence, the two following cases of light polarization are considered:
 The components of $\boldsymbol{\mathcal{B}}$ are indicated with red arrows.}
 \label{fig:electric_field}
  \end{figure}
-\begin{figure}[h]
+\begin{figure}[t]
  \label{fig:electric_field_p}
      \begin{center}
      \includegraphics[width=8cm]{electric_field_p}
@@ -331,7 +331,7 @@ The components of $\boldsymbol{\mathcal{E}}$ are indicated with greed arrows.}
 \label{fig:electric_field_p}
  \end{figure}
 Energy conservation gives the boundary conditions of the electromagnetic field at the plane of the interface (perpendicular to the incident plane), from which the Fresnel coefficients are derived. They are defined in both case $1$ and case $2$. Since the mathematical formulation is similar for the two cases, in the following we explain in details the computation of the Fresnel coefficients only for s-polarized light (case $1$).\\ 
-\indent For s-polarized light the tangential components of $\boldsymbol{\mathcal{E}}$ and $\boldsymbol{\mathcal{B}}/\mu$ across the boundary between the two different media must be continuous. From now on, all quantities defined in the medium of the incident, reflective and transmitted light are indicated with the subscripts \textrm{i}, \textrm{r} and \textrm{t}, respectively. The continuity of the tangential component of $\boldsymbol{\mathcal{E}}$ leads to:
+\indent For s-polarized light the tangential components of $\boldsymbol{\mathcal{E}}$ and $\boldsymbol{\mathcal{B}}/\mu$ across the boundary between the two different media must be continuous, where $\mu$ is the permeability of the material in which the electromagnetic field is located. From now on, all quantities defined in the medium of the incident, reflective and transmitted light are indicated with the subscripts \textrm{i}, \textrm{r} and \textrm{t}, respectively. The continuity of the tangential component of $\boldsymbol{\mathcal{E}}$ leads to:
 \begin{equation}\label{Econservation}
 |\boldsymbol{\mathcal{E}}_{0\textrm{i}}|+|\boldsymbol{\mathcal{E}}_{0\textrm{r}}|= |\boldsymbol{\mathcal{E}}_{0\textrm{t}}|,
 \end{equation} 
@@ -339,22 +339,22 @@ Energy conservation gives the boundary conditions of the electromagnetic field a
 %the magnitudes of $\boldsymbol{\mathcal{E}}_{0\textrm{i}}$, $\boldsymbol{\mathcal{E}}_{0\textrm{r}}$ and $\boldsymbol{\mathcal{E}}_{0\textrm{t}}$, respectively.
 while the continuity of the tangential component of $\boldsymbol{\mathcal{B}}/\mu$ gives:
 \begin{equation}\label{Bconservation}
--\frac{|\boldsymbol{\mathcal{B}}_{0,\textrm{i}}|}{\mu_\textrm{i}}\cos\myangle_{\textrm{i}}+\frac{|\boldsymbol{\mathcal{B}}_{0,\textrm{r}}|}{\mu_\textrm{r}}\cos\myangle_{\textrm{r}} = 
--\frac{|\boldsymbol{\mathcal{B}}_{0,\textrm{t}}|}{\mu_\textrm{t}}\cos\myangle_{\textrm{t}},
+-\frac{|\boldsymbol{\mathcal{B}}_{0\textrm{i}}|}{\mu_\textrm{i}}\cos\myangle_{\textrm{i}}+\frac{|\boldsymbol{\mathcal{B}}_{0\textrm{r}}|}{\mu_\textrm{r}}\cos\myangle_{\textrm{r}} = 
+-\frac{|\boldsymbol{\mathcal{B}}_{0\textrm{t}}|}{\mu_\textrm{t}}\cos\myangle_{\textrm{t}},
 \end{equation}
 where the sign convention is chosen as illustrated in Figure \ref{fig:electric_field}.
 %where we have indicated with $\mathcal{B}_{\textrm{i}}$, $\mathcal{B}_{\textrm{r}}$ and $\mathcal{B}_{\textrm{t}}$
 %the absolute values of $\boldsymbol{\mathcal{B}}_{\textrm{i}}$,$\boldsymbol{\mathcal{B}}_{\textrm{r}}$ and $\boldsymbol{\mathcal{B}}_{\textrm{t}}$, respectively.
 Since $|\boldsymbol{\mathcal{B}}| = |\boldsymbol{\mathcal{E}}|/v$, Equation (\ref{Bconservation}) can be written as 
 \begin{equation}
-\frac{1}{\mu_{\textrm{i}}v_{\textrm{i}}}(|\boldsymbol{\mathcal{E}}_{0,\textrm{i}}|-|\boldsymbol{\mathcal{E}}_{0,\textrm{r}}|)\cos\myangle_{\textrm{i}} = \frac{1}{\mu_{\textrm{t}}v_{\textrm{t}}}|\boldsymbol{\mathcal{E}}_{0,\textrm{t}}|\cos\myangle_{\textrm{t}},
+\frac{1}{\mu_{\textrm{i}}v_{\textrm{i}}}(|\boldsymbol{\mathcal{E}}_{0\textrm{i}}|-|\boldsymbol{\mathcal{E}}_{0\textrm{r}}|)\cos\myangle_{\textrm{i}} = \frac{1}{\mu_{\textrm{t}}v_{\textrm{t}}}|\boldsymbol{\mathcal{E}}_{0\textrm{t}}|\cos\myangle_{\textrm{t}},
 \end{equation}
 where we employed the fact that $v_{\textrm{i}}= v_{\textrm{r}}$, and $\myangle_{\textrm{i}}= \myangle_{\textrm{r}}$. 
 Since $n = c/v$, the previous equation becomes:
 \begin{equation}
 \frac{n_{\textrm{i}}}{\mu_{\textrm{i}}}(|\boldsymbol{\mathcal{E}}_{0\textrm{i}}|-|\boldsymbol{\mathcal{E}}_{0\textrm{r}}|)\cos\myangle_{\textrm{i}} = \frac{n_{\textrm{t}}}{\mu_{\textrm{i}}}|\boldsymbol{\mathcal{E}}_{0\textrm{t}}|\cos\myangle_{\textrm{t}}.
 \end{equation}
-Most often used optical materials are non-magnetic, hence we assume that $\mu_{\textrm{i}}=\mu_{\textrm{t}}=\mu_{0}$ \cite{lvovsky2013fresnel}. Employing Equation (\ref{Econservation}) we arriving at the Fresnel coefficient for s-polarized light:
+Most often used optical materials are non-magnetic, hence we assume $\mu_{\textrm{i}}=\mu_{\textrm{t}}=\mu_{0}$ \cite{lvovsky2013fresnel}. Employing Equation (\ref{Econservation}) we arriving at the Fresnel coefficient for s-polarized light:
 \begin{equation} \label{Fresnel_perpendicular}
 \begin{split}
 r_{s} & =\frac{|\boldsymbol{\mathcal{E}}_{0 \textrm{r}}|_{s}}{|\boldsymbol{\mathcal{E}}_{0\textrm{i}}|_\textrm{s}} = 
@@ -409,7 +409,7 @@ t_\textrm{p}+r_\textrm{p} &=  1.
 \end{equation}
 \\ \indent The amplitude coefficients are shown in Figure \ref{fig:coefficients} for the case in which light travels from a less dense to a more dense medium, i.e. $\n_\textrm{i}<n_\textrm{t}$ where $\n_{\textrm{i}}= 1$ and $\n_{\textrm{t}}=1.5$. 
 In Figure \ref{fig:coefficients2} the reflection coefficients are shown for the case in which $\n_\textrm{i}>n_\textrm{t}$ with $\n_{\textrm{i}}= 1.5$ and $\n_{\textrm{t}}=1$. Note from Figure \ref{fig:coefficients} that $r_\textrm{p}$ approaches to $0$ when $\myangle_\textrm{i}$ approaches to $\myangle_\textrm{p}$ and it gradually decreases reaching $-1$ for an incident angle $\myangle_\textrm{i}=90^\circ$. The angle $\myangle_\textrm{p}$ is called \textit{Brewster's angle} or polarization angle as only the component perpendicular to the incident plane is reflected at that angle and therefore light is perfectly polarized. Similarly, Figure \ref{fig:coefficients2} shows that $r_\textrm{p}=0$ for $\myangle_\textrm{i}= \myangle_{\textrm{p}\prime}$. It can be show that $\myangle_\textrm{p}+ \myangle_{\textrm{p}\prime}= 90^\circ$. Both $r_\textrm{p}$ and $r_\textrm{s}$ reach $1$ when $\myangle_\textrm{i}= $ $\myangle_\textrm{c}$. $\myangle_\textrm{c}$ is called the critical angle. Light that hits the incident plane with an incident angle equal to or greater than $\myangle_{\textrm{c}}$ is totally reflected back and no transmitted light is observed. This phenomenon is called total internal reflection. 
-\begin{figure}[h]
+\begin{figure}[t]
   \begin{minipage}[h]{0.48\textwidth}
     \includegraphics[width=\textwidth]{amplitude_coefficients}
     \caption{\textbf{Amplitude coefficients of reflection and transmission.} $n_\textrm{t}<n_\textrm{i}$

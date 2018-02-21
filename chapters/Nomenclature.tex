@@ -69,6 +69,7 @@ $\mathcal{E}$ &{Electric field}\\
 $\mathcal{B}$ &{Magnetic field}\\
 $\mathcal{E}_0$ &{Amplitude of the electric field}\\
 $\mathcal{B}_0$ &{Amplitude of the magnetic field}\\
+$\mu$ &{Magnetic permeability}\\
 $\omega$ &{Angular frequency}\\
 $c$ &{Speed of light in vacuum}\\
 $v$ &{Speed of light in medium}\\
@@ -85,10 +86,78 @@ $\mathcal{T}_{\textrm{s}}$ &{Transmittance for s-polarized light}\\
 $\mathcal{R}_{\textrm{p}}$ &{Reflectance for p-polarized light}\\
 $\mathcal{T}_{\textrm{p}}$ &{Transmittance for p-polarized light}\\
 $\myangle_\const{c}$& {Critical angle}\\
-$\boldsymbol{\nu}_{\lineai}$ & {Normal to the line $\lineai$}\\
-$\optangle_\lineai$ & {Angle that the ray located on line $\lineai$ forms with respect to the optical axis}\\
-$\myangle_{\lineai}$ & {Angle between the ray and the normal $\boldsymbol{\nu}_{\lineai}$ to line $\lineai$ }\\
-$\n_\lineai$ &{Index of refraction of the medium in which line $\lineai$ is located}\\
+$\myangle_\const{p}$& {Brewster's angle for $\n_{\textrm{t}}<\n_{\textrm{i}}$}\\
+$\myangle_\const{p}^{\prime}$ & {Brewster's angle for $\n_{\textrm{t}}>\n_{\textrm{i}}$}\\
+$\point{S}$ &{Light source}\\
+\point{T} &{Light target}\\
+$(\variabile{x}_{\lineai}, \variabile{z}_{\lineai})$ 
+&{Position coordinates of the rays on line $\lineai$ in real space}\\
+$\optangle_\lineai$ &{Angle that the ray incident line $\lineai$ makes with respect to the optical axis}\\
+$\vect{r}(\variabile{s} $ & Ray parametrization\\
+$\nrays$ & Number of rays \\
+$\nbin$ & Number of bins \\
+$\n_{\lineai}$ &{Index of refraction of the medium in which line $\lineai$ is located}\\
+$\nline$ &{Number of lines that constitute the system = Index of the target}\\
+$\vect{Y}$ &{Random variable}\\
+$\vect{y}$ &{Values that a random variable assumes}\\
+$\rho(\vect{y})$ &{Probability density function}\\
+$\mathbb{E}[f]$ &{Expected value of function $f$}\\
+$S_{N}[f]$ &{}\\
+$\textrm{Var}[f] = \sigem$ &{Variance of function $f$}\\
+
+$(\variabile{x}_{\lineai}, \variabile{z}_{\lineai})$ 
+&{Position coordinates of the on line $\lineai$ of the $\lineai$-th ray traced}\\
+$\optangle_\lineai$ &{Angular coordinate of the $\lineai$-th ray traced}\\
+
+
+
+
+%$\textrm{Nl}$ & Number of optical lines \\
+%\set{Q}{}{} & Set of the position coordinates of the rays\\
+%\set{P}{}{} & Set of the direction coordinates of the rays\\
+%\set{S}{}{}$=$\set{Q}{}{} $\times$ \set{P}{}{} & Phase space of the rays with position in \set{Q}{}{} and direction in \set{P}{}{}\\
+%\set{S}{i}{} & Source phase space of line $\var{i}$ \\
+%\set{S}{i,}{j} & Part of \set{S}{i}{} that illuminates line $\var{j}$ with $\var{i}\neq \var{j}$\\
+%\set{T}{i}{} & Target phase space of line $\var{i}$ \\
+%\set{T}{i,}{j} & Part of \set{T}{i}{} that is illuminated by line $\var{j}$ with $\var{i}\neq \var{j}$ \\
+%$n_\var{i}$ & Index of refraction of the medium in which the line \var{i} is located \\
+%$\vect{$\nu$}_\var{i}$ & Normal to line $\var{i}$\\
+%$\pos{s,}{i}$ & Position coordinates of the rays on \set{S}{i}{} \\
+%$\pos{t,}{j}$ & Position coordinates of the rays on \set{T}{j}{} \\
+%$\tau_{\var{i}}$ & Angle between the ray that hits line $\var{i}$ and the normal $\vect{$\nu$}_\var{i}$, measured counterclockwise.\\
+%$\dir{s,}{i}$ & Direction coordinates on \set{S}{i}{}, $\dir{s,}{i} = n_\var{i}\sin(\tau_{\var{i}})$ \\
+%$\dir{t,}{i}$ & Direction coordinates on \set{T}{i}{}, $\dir{s,}{i} = n_\var{i}\sin(\tau_{\var{i}})$ \\
+%$\Pi$ & Path followed by the rays \\
+%\set{R}{}{}($\Pi$) & Regions in target phase space formed by the rays that follow the path $\Pi$, \set{R}{}{}($\Pi$)$\subset$\set{T}{Nl}{} \\
+%\map{M}{$1$,}{\textrm{Nl}} & Map from \set{S}{$1$}{} into \set{T}{Nl}{} \\
+%\map{M}{$1$,}{\textrm{Nl}}($\Pi$) & Map from \set{S}{$1$}{} to \set{R}{}{}($\Pi$)
+%\\
+%\map{P}{i,}{j} & Propagation map from \set{S}{i}{} to \set{T}{j}{}
+%\\
+%\map{R}{j}{} & Reflection map from \set{T}{j}{} to \set{S}{j}{}
+%\\
+%$\var{q}^\textrm{\,min}(\Pi,\var{p})$ & Minimum position coordinate on $\partial$\set{R}{}{}($\Pi$) along the direction $\var{p}$.
+%\\
+%$\var{q}^\textrm{\,max}(\Pi,\var{p})$ & Maximum position coordinate on $\partial$\set{R}{}{}($\Pi$) along the direction $\var{p}$.\\
+%$\pos{t,}{j}^\textrm{\,min}(\dir{}{})$ & Minimum position coordinate on \set{T}{j}{} with momentum $\dir{}{}$\\
+%$\pos{t,}{j}^ \textrm{\,max}(\dir{}{})$ & Maximum position coordinate on \set{T}{j}{} with momentum $\dir{}{}$\\
+%$\var{u}_{\var{j},\var{i}}^\textrm{\,min}(\dir{}{})$ & Minimum position coordinate of the intersection points of $\var{p}=\var{p}_{\textrm{t}, \var{j}}$ 
+%with $\partial$\set{T}{j,}{i} \\
+%$\var{u}_{\var{j},\var{i}}^\textrm{\,max}(\dir{}{})$ & Maximum position coordinate of the intersection points of $\var{p}=\var{p}_{\textrm{t}, \var{j}}$
+%with $\partial$\set{T}{j,}{i} \\
+%$\var{v}_{\var{j},\var{i}}^\textrm{\,min}$ & $\max(\pos{j,}{i}^\textrm{\,min},\var{u}_{\var{j},\var{i}}^\textrm{\,min})$ \\
+%$\var{v}_{\var{j},\var{i}}^\textrm{\,max}$ & $\min(\pos{j,}{i}^\textrm{\,max},\var{u}_{\var{j},\var{i}}^\textrm{\,max})$ \\
+%$L(\var{q}, \var{p})$ & Luminance at the target \\
+%$\hat{I}_{\textrm{MC}}(\var{p})$ & Monte Carlo normalized intensity at the target \\
+%$\hat{I}_{\textrm{PS}}(\var{p})$ & Phase space averaged and normalized intensity at the target \\
+%$\hat{I}_{\textrm{ref}}(\var{p})$ & Reference normalized intensity at the target \\
+
+
+
+%$\boldsymbol{\nu}_{\lineai}$ & {Normal to the line $\lineai$}\\
+%$\optangle_\lineai$ & {Angle that the ray located on line $\lineai$ forms with respect to the optical axis}\\
+%$\myangle_{\lineai}$ & {Angle between the ray and the normal $\boldsymbol{\nu}_{\lineai}$ to line $\lineai$ }\\
+%$\n_\lineai$ &{Index of refraction of the medium in which line $\lineai$ is located}\\
 \end{longtable}
 
 %\end{document}

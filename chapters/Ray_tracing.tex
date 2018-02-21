@@ -4,7 +4,7 @@ Given an optical system and a set of rays at the source, ray tracing relates the
 The influence of diffraction on the transport of a ray is neglected. \\ \indent
 Although the method can be implemented for two or more dimensions and for any optical system, here we consider the two-dimensional case only. 
 We will thus refer to optical lines instead of optical surfaces.
-The two-dimensional case has limitations. For example, it may not identify skew rays that are turned back by the system, with the consequence that a 2D analysis cannot guarantee a proper treatment of non-meridional rays in 3D. 
+The two-dimensional case has some limitations. For example, it may not identify skew rays that are turned back by the system, with the consequence that a 2D analysis cannot guarantee a proper treatment of non-meridional rays in 3D. 
 Nevertheless, the two-dimensional case is particularly relevant because it is a good test case to demonstrate the performance of new methods.
 Optical designers often start with 2D systems, where only the meridional plane is taken into account because it gives a good prediction of the target distribution of the rays
 (see \cite{winston2005nonimaging}, chapter $4$).
@@ -57,7 +57,7 @@ Ray tracing relates the position coordinates
 The ray tracing algorithm can be outlined as follows:
 \begin{enumerate}
 \item Indicating with $\variabile{i}$ the index of the line that rays leave, start considering a ray thet leaves the source $\point{S}$ (line \variabile{i}=1);
- \item Consider a ray with position coordinates $(\variabile{x}_\variabile{i}, \variabile{z}_\variabile{i})$ and initial direction $\vect{s}_\variabile{i}~=~(-\sin \optangle_\variabile{i}, \cos \optangle_\variabile{i})$, use Equation ($\ref{parametrization}$) to implement the ray parametrization $\vect{r}(\variabile{s}_\variabile{i})$;
+ \item Consider a ray with position coordinates $(\variabile{x}_\variabile{i}, \variabile{z}_\variabile{i})$ and direction $\vect{s}_\variabile{i}~=~(-\sin \optangle_\variabile{i}, \cos \optangle_\variabile{i})$, use Equation ($\ref{parametrization}$) to implement the ray parametrization $\vect{r}(\variabile{s}_\variabile{i})$;
 \item Compute the coordinates $(\variabile{x}_\variabile{k}, \variabile{z}_\variabile{k})_{\variabile{k} = 1\cdots, \nline}$ of the intersection point of the parameterized ray $\vect{r}(\variabile{s})$ with all the lines that it crosses
 \begin{itemize}
 \item[a)] if the shape of the lines is described by an explicit equation, the intersection points are determined analytically;
