@@ -57,7 +57,7 @@ Ray tracing relates the position coordinates
 The ray tracing algorithm can be outlined as follows:
 \begin{enumerate}
 \item Indicating with $\variabile{i}$ the index of the line that rays leave, start considering a ray thet leaves the source $\point{S}$ (line \variabile{i}=1);
- \item Consider a ray with position coordinates $(\variabile{x}_\variabile{i}, \variabile{z}_\variabile{i})$ and direction $\vect{s}_\variabile{i}~=~(-\sin \optangle_\variabile{i}, \cos \optangle_\variabile{i})$, use Equation ($\ref{parametrization}$) to implement the ray parametrization $\vect{r}(\variabile{s}_\variabile{i})$;
+ \item Consider a ray with position coordinates $(\variabile{x}_\variabile{i}, \variabile{z}_\variabile{i})$ and direction $\vect{s}_\variabile{i}~=~(-\sin \optangle_\variabile{i}, \cos \optangle_\variabile{i})$, use Equation ($\ref{parametrization}$) to implement the ray parametrization $\vect{r}(\variabile{s})$;
 \item Compute the coordinates $(\variabile{x}_\variabile{k}, \variabile{z}_\variabile{k})_{\variabile{k} = 1\cdots, \nline}$ of the intersection point of the parameterized ray $\vect{r}(\variabile{s})$ with all the lines that it crosses
 \begin{itemize}
 \item[a)] if the shape of the lines is described by an explicit equation, the intersection points are determined analytically;
@@ -77,22 +77,21 @@ The ray tracing algorithm can be outlined as follows:
 % The goal intensity
 % Same approach of computing an integral
 % How to chose the initial rays at the source
-The procedure explained above is repeated for every ray traced through the system, \cite{Gross2005Handbook}. 
-Once the target position and the direction of every ray traced are computed, the target photometric variables can be calculated using the definitions explained in the previous chapter, see Section \ref{sec:photometry}.
+The procedure explained above is repeated for every ray traced through the system \cite{Gross2005Handbook}. 
+Once the target position and the direction of every ray are computed, the target photometric variables can be calculated using the definitions explained in the previous chapter, see Section \ref{sec:photometry}.
 % Put the algorithm
 \\ \indent
 There are different ways to implement the ray tracing procedure. The efficiency of the ray tracing can be related to the distribution of the rays at the source. 
 If the initial position and direction of the rays are chosen randomly we have Monte Carlo (MC) ray tracing. 
-This is a very common method in non-imaging optics as it is very powerful and easy to implement. MC ray tracing will be explained in detail in the next paragraph.
+This is a very common method in non-imaging optics as it is very powerful and easy to implement. MC ray tracing will be explained in the next paragraph.
 If the rays are chosen from a so-called low discrepancy sequence we have Quasi-Monte Carlo (QMC) ray tracing.
-This approach is discussed in Section \ref{sec:QMC}.
+This method is discussed in Section \ref{sec:QMC}.
 \section{Monte Carlo ray tracing}
 As explained above, the aim of ray tracing is to calculate the target photometric variables given an initial light distribution at the source. To this purpose, we can think of a light source as
-emitting a very large number of random rays and keep track of where they go. In this way we can calculate, for instance the target luminance distribution. Next the target intensity is given by the integral of the luminance (see Equation \ref{eq:int_lum}) which can be approximated by the average of the luminance values. This simple method uses the same idea of a family of techniques called Monte Carlo simulation and can be a very easy way to numerically
+emitting a very large number of random rays and keep track of where they go. In this way we can calculate, for instance the target luminance distribution. Next the target intensity is given by the integral of the luminance (see Equation (\ref{eq:int_lum})) which can be approximated by the average of the luminance values. This simple method uses the same idea of a family of techniques called Monte Carlo simulation and can be a very easy way to numerically
 solve physics problems based on numerical integration \cite{jensen2003monte}.
 \\ \indent Before explaining the details of MC ray tracing, we give an introduction to MC methods for the two-dimensional case. Let us consider a set $D = [\vect{a}, \vect{b}]$ with $\vect{a} = (a_1, a_2)$ and $\vect{b} = (b_1, b_2)$ elements of $\mathbb{R}^2$ such that
-$[\vect{a}, \vect{b}]  = [a_1, b_1] \times [a_2, b_2]$. Consider function $f:[\vect{a},\vect{b}]\subset \mathbb{R}^2 \mapsto \mathbb{R}$ and a random variable 
-$\vect{Y}$ with values in $D$ with probability density function $\rho(\vect{y})$, where $\vect{y}$ are the values $\vect{Y}$ in $D$. Note that we indicate the random variables with capital letters and the corresponding deterministic values with lowercase letters. The expected value of $f$ with respect of $\rho$ is:
+$[\vect{a}, \vect{b}]  = [a_1, b_1] \times [a_2, b_2]$. Consider a function $f:[\vect{a},\vect{b}]\subset \mathbb{R}^2 \mapsto \mathbb{R}$ and a random variable $\vect{Y}$ with values in $D$ with probability density function $\rho(\vect{y})$, where $\vect{y}$ are the values $\vect{Y}$ in $D$. Note that we indicate the random variables with capital letters and the corresponding deterministic values with lowercase letters. The expected value of $f$ with respect of $\rho$ is:
 \begin{equation}
 \mathbb{E}[f] =\int_{D}f(\vect{y})\rho(\vect{y}) \textrm{d}\vect{y}.
 \end{equation}
@@ -158,7 +157,7 @@ Hence, the absolute value of the integration error is, on average, bounded by $\
 \\ \indent The MC technique can be combined with ray tracing procedure in order to compute the light distribution at the target of an optical system.
 In MC ray tracing the position and the direction of  every ray at the source are chosen randomly. 
 In the two-dimensional case, for every ray we need to choose one position coordinate $\variabile{x}_1$ and one angular coordinate $\optangle_1$ at the source, while the $\variabile{z}_1$ coordinate of every ray at the source is always given (for instance, for the two-faceted cup in Figure \ref{fig:cup}, $\variabile{z}_1=0$ for every ray). 
-Indicating with $\variabile{x}_{1}^{\variabile{i}}$ $\variabile{x}$-coordinate of the $\variabile{i}$-th ray and with $\optangle_1^{\variabile{i}}$ its angular coordinate, a set of random variables $\{\vect{Y}_1, \cdots, \vect{Y}_N\}\in [\vect{a}, \vect{b}]\subset\mathbb{R}^2$ is chosen such that $\vect{Y}_{\variabile{i}}= (\variabile{x}_{1}^{\variabile{i}},\optangle_1^{\variabile{i}})$.
+Indicating with $\variabile{x}_{1}^{\variabile{i}}$ the $\variabile{x}$-coordinate of the $\variabile{i}$-th ray and with $\optangle_1^{\variabile{i}}$ its angular coordinate, a set of random variables $\{\vect{Y}_1, \cdots, \vect{Y}_N\}\in [\vect{a}, \vect{b}]\subset\mathbb{R}^2$ is chosen such that $\vect{Y}_{\variabile{i}}= (\variabile{x}_{1}^{\variabile{i}},\optangle_1^{\variabile{i}})$.
 % the initial position coordinate $\variabile{x}_1$ of the $\variabile{k}$-th ray corresponds to the first component of the $\variabile{k}$-th random variable $\vect{y}_\variabile{k}$ and, the starting angular coordinate $\optangle_1$ of the $\variabile{k}$-th ray corresponds to the second component of the $\variabile{k}$-th random variable $\vect{y}_\variabile{k}$.
 Rays with those random coordinates at \point{S} are traced from \point{S} to \point{T} and, a probabilistic interpretation of the output photometric variables is provided.
 In particular, we are interested in the target intensity $I$ as a function of the angular coordinate $\optangle$. Using the idea of MC method we approximate its expected value $\mathbb{E}[I]$ by a sum as described in Equation (\ref{eq:approx_MC_QMC}) where the function $f$ is now the intensity $I$.
