@@ -4,7 +4,7 @@ Methods based on $\alpha$-shapes are widely used to reconstruct an unknown shape
 hull \cite{xu2003automatic}. The disadvantage of such methods is that it can be very hard to choose the appropriate value of the parameter $\alpha$ and, in most cases it can be selected only by numerical simulations.\\ \indent
 We develop a technique based on $\alpha$-shape that gives a criterion to determine the value of the parameter $\alpha$, for which the boundaries are approximated well \cite{filosa2015new}.\\ \indent This chapter is organized as follows. An overview of the-state-of-the-art about $\alpha$-shape methods is provided in Section \ref{sec:alpha-shapes}; the technique used for computing the $\alpha$ value is explained in Section \ref{sec:Tir_alpha}; the results for two different kind of total internal reflection (TIR)-collimators are given in Section \ref{sec:results-Tir-alpha}. Discussions and conclusions are provided in the last paragraph of this chapter.
 \section{$\alpha$-shapes theory}\label{sec:alpha-shapes}
-Given a finite set $\emph{U} = \{u_1, \cdots, u_N\}\subset \mathbb{R}^2$ of points, $\alpha$-shapes are geometrical objects that give us an approximation of the shape formed by the point cloud. For now we do not further specify the notion of shape. A more precise definition will be provided later.\\ \indent
+Given a finite set $\mbox{\insieme{U}} = \{\point{u}_1, \cdots, \point{u}_N\}\subset \mathbb{R}^2$ of points, $\alpha$-shapes are geometrical objects that give us an approximation of the shape formed by the point cloud. For now we do not further specify the notion of shape. A more precise definition will be provided later.\\ \indent
 Before giving a formal definition, we explain an intuitive and nice interpretation of $\alpha$-shapes \cite{lucieer2004alpha}. 
 Let us think of a stracciatella ice-cream\footnote{Stracciatella ice cream is made with milk-based ice-cream and fine pieces of chocolate \cite{Wiki3}.}. If we desire to know the shape formed by the chocolate pieces we can start eating the ice cream using a spoon with a spherical scoop and try not to remove any piece of chocolate. 
 We will obtain a shape formed by arcs and points (see Figure \ref{fig:shape2d} for the two-dimensional case).
@@ -16,68 +16,67 @@ We will obtain a shape formed by arcs and points (see Figure \ref{fig:shape2d} f
 \label{fig:shape2d}
 \end{center}
 \end{figure}
-Straightening the arcs to line segments we obtain broken lines which constitute the boundary of the so-called $\alpha$-shape of the point set $\emph{U}$. 
-A very small spoon will allow us to eat the entire ice cream without eating any piece of chocolate, while with a larger spoon we are not able to eat any chunk of the ice cream without chocolate pieces. In this example, the chocolates peaces are the points of set $\emph{U}$ and, the parameter $\alpha$ determines the radius of the carving spoon (the spherical spoon in two-dimension is simply a circle).\\ \indent 
+Straightening the arcs to line segments we obtain broken lines which constitute the boundary of the so-called $\alpha$-shape of the point set $\mbox{\insieme{U}}$. 
+A very small spoon will allow us to eat the entire ice cream without eating any piece of chocolate, while with a larger spoon we are not able to eat any chunk of the ice cream without chocolate pieces. In this example, the chocolates pieces are the points of set $\mbox{\insieme{U}}$ and, the parameter $\alpha$ determines the radius of the carving spoon (the spherical spoon in two-dimension is simply a circle).\\ \indent 
 The formal definition of $\alpha$-shape was first given by Edelsbrunner, Kirkpatrick and Seidel in 1983 \cite{edelsbrunner1983shape}. They describe $\alpha$-shape as a generalization of the convex hull of a finite set of points in the plane. Let $\alpha$ be a non negative number $0\leq\alpha<\infty$. 
-If $\alpha = 0$ the shape degenerates to the point set $\emph{U}$. On the other hand, when $\alpha\rightarrow\infty$ the $\alpha$-shape is simply the convex hull of $V$. If $0<\alpha<\infty$ the $\alpha$-shape is a polytope of $V$ \cite{edelsbrunner1994three}. The construction of the $\alpha$-shape is closely related to the Delaunay triangulation of $V$ \cite{mucke1993shapes}. Therefore, a formal definition of triangulation and Delanauy triangulation is now required. \\ \indent
-Given a set $\emph{U}$ of not all aligned points, let us consider the set $\emph{E}$ of all the straight-line segments whose endpoints are in $V$. 
-A triangulation $T$ of $\emph{U}$ is the subset of $\emph{E}$ with the maximum number of segments such that all the line segments of $T$ intersect only at their endpoints \cite{lloyd1977triangulations}. 
-A more formal definition of triangulation is provided in the following.
-\\ \indent Let us first define a partition of a set $\emph{X}\subset \mathbb{R}^2$ as a collection of the subsets which divide $X$ into non-overlapping regions so that any point in $X$ is located in only one region. 
-\begin{definition} \indent Let $\Omega\subset \mathbb{R}^2$ be the convex hull of $\emph{U}$ and $T = \{T_1, \cdots, T_\variabile{h}\}$ be a partition of $\Omega$ into closed triangles, that is triangles that included their edges. Suppose that the following properties are verified:
+If $\alpha = 0$ the shape degenerates to the point set $\mbox{\insieme{U}}$. On the other hand, when $\alpha\rightarrow\infty$ the $\alpha$-shape is simply the convex hull of \insieme{U}. If $0<\alpha<\infty$ the $\alpha$-shape is a polytope of \insieme{U} \cite{edelsbrunner1994three}. The construction of the $\alpha$-shape is closely related to the Delaunay triangulation of \insieme{U} \cite{mucke1993shapes}. Therefore, a formal definition of triangulation and Delanauy triangulation is now required. \\ \indent
+Given a set $\mbox{\insieme{U}}$ of not all aligned points, let us consider the set \insieme{E} of all the straight-line segments whose endpoints are in \insieme{U}. 
+A triangulation \insieme{T} of $\mbox{\insieme{U}}$ is the subset of \insieme{E} with the maximum number of segments such that all the line segments of \insieme{T} intersect only at their endpoints \cite{lloyd1977triangulations}. 
+\\ \indent Before giving a more formal definition of triangulation, let us define a partition of a set $\mbox{\insieme{X}}\subset \mathbb{R}^2$ as a collection of the subsets which divide \insieme{X} into non-overlapping regions so that any point in \insieme{X} is located in only one region. 
+\begin{definition} \indent Let $\mbox{\insieme{P}}\subset \mathbb{R}^2$ be the convex hull of $\mbox{\insieme{U}}$ and $\mbox{\insieme{T}} = \{\mbox{\insieme{T}}_1, \cdots, \mbox{\insieme{T}}_\variabile{h}\}$ be a partition of $\mbox{\insieme{P}}$ into closed triangles, that is triangles that included their edges. Suppose that the following properties are verified:
 \begin{itemize}
-\item[$(a)$] $\Omega = \bigcup_{\variabile{i} = 1}^{\variabile{h}}T_\variabile{i}$;
-\item[b)] For $T_\variabile{i}, T_\variabile{j} \in T$, $T_\variabile{i} \neq T_\variabile{j}$, and 
+\item[a)] $\mbox{\insieme{P}} = \bigcup_{\variabile{i} = 1}^{\variabile{h}}\mbox{\insieme{T}}_\variabile{i}$;
+\item[b)] For $\mbox{\insieme{T}}_\variabile{i}, \mbox{\insieme{T}}_\variabile{j} \in \mbox{\insieme{T}}$, $\mbox{\insieme{T}}_\variabile{i} \neq \mbox{\insieme{T}}_\variabile{j}$, and 
 \begin{equation*}
-\textrm{int}(T_\variabile{i})\cap \textrm{int}(T_\variabile{j}) = \emptyset,
+\textrm{int}(\mbox{\insieme{T}}_\variabile{i})\cap \textrm{int}(\mbox{\insieme{T}}_\variabile{j}) = \emptyset,
 \end{equation*}
-where $\textrm{int}(T) = T-\partial T$.
+where $\textrm{int}(\mbox{\insieme{T}}) = \mbox{\insieme{T}}-\partial \mbox{\insieme{T}}$.
 \end{itemize}
-Then $T$ is called a \textit{triangulation} of $\Omega$ \cite{Numericalmethods}.
+Then $\mbox{\insieme{T}}$ is called a \textit{triangulation} of $\mbox{\insieme{P}}$ \cite{Numericalmethods}.
 \end{definition}
-The Delaunay triangulation $T^{\prime}$ of the points set $\emph{V}$ has the property that the circle circumcircle of any triangle of $T^{\prime}$ does not contain any point of $\emph{V}$. This is called the Delaunay property. A very commonly used algorithm to construct such triangulation is the following.\\ \indent 
-$T^\prime$ is constructed by modifying a general triangulation $T$ such that every point satisfies the Delaunay property. 
-Therefore, every triangle (or tetrahedron in three dimensions) that does not satisfy such property is flipped such that the new edge is part of the triangulation. 
-Given, for example, an arbitrary triangulation $T$ in two-dimensions, for each edge $\overline{\textrm{ab}}$ in $T$ which is not on the boundary of the convex hull the two triangles 
-$\Delta_{\textrm{abc}}$ and $\Delta_{\textrm{abd}}$ with the common edge $\overline{\textrm{ab}}$ are found. Then, if either the circumcircle of triangle $\Delta_{\textrm{abc}}$ contains point \textrm{d} or the circumcircle of triangle $\Delta_{\textrm{abd}}$ contains point \textrm{c}, the edge $\overline{ab}$ cannot be included in the Delaunay triangulation and, therefore, $\overline{\textrm{ab}}$ is flipped such that the other two possible triangles $\Delta_{\textrm{acd}}$ and $\Delta_{\textrm{bcd}}$ are found. The new edge $\overline{\textrm{cd}}$ locally satisfies the Delaunay property and the triangles $\Delta_{\textrm{acd}}$ and  $\Delta_{\textrm{bcd}}$ are added to the Delaunay triangulation $T^\prime$, see Figure \ref{fig:Delaunay}.  
+The Delaunay triangulation $\mbox{\insieme{T}}^{\prime}$ of the points set \insieme{U} has the property that the circle circumcircle of any triangle of $\mbox{\insieme{T}}^{\prime}$ does not contain any point of \insieme{U}. This is called the Delaunay property. A very commonly used algorithm to construct such triangulation is the following.\\ \indent 
+$\mbox{\insieme{T}}^\prime$ is constructed by modifying a general triangulation \insieme{T} such that every point satisfies the Delaunay property. 
+Therefore, every triangle that does not satisfy such property is flipped such that the new edge is part of the triangulation. 
+Given, for example, an arbitrary triangulation \insieme{T} in two-dimensions, for each edge $\overline{\point{ab}}$ in \insieme{T} which is not on the boundary of the convex hull the two triangles 
+$\Delta_{\point{abc}}$ and $\Delta_{\point{abd}}$ with the common edge $\overline{\point{ab}}$ are found. Then, if either the circumcircle of triangle $\Delta_{\point{abc}}$ contains point \point{d} or the circumcircle of triangle $\Delta_{\point{abd}}$ contains point \point{c}, the edge $\overline{\point{ab}}$ cannot be included in the Delaunay triangulation and, therefore, $\overline{\point{ab}}$ is flipped such that the other two possible triangles $\Delta_{\point{acd}}$ and $\Delta_{\point{bcd}}$ are found. The new edge $\overline{\point{cd}}$ locally satisfies the Delaunay property and the triangles $\Delta_{\point{acd}}$ and  $\Delta_{\point{bcd}}$ are added to the Delaunay triangulation $\mbox{\insieme{T}}^\prime$, see Figure \ref{fig:Delaunay}.  
 \begin{figure}[t]\label{fig:Delaunay}
 \begin{subfigure}[t]{0.48\textwidth}
 \centering
 \includegraphics[]{triangle_alpha_shapes}
 \label{fig:shape}
-\caption{The point $d$ is inside the circle circumscribing the triangle $\Delta_{\textrm{abc}}$, therefore the edge $\overline{\textrm{ab}}$ cannot be included in the Delaunay triangulation.}
+\caption{\textbf{Not acceptable triangle.} The point \point{d} is inside the circle circumscribing the triangle $\Delta_{\point{abc}}$, therefore the edge $\overline{\point{ab}}$ cannot be included in the Delaunay triangulation.}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.48\textwidth}
 \centering
 \includegraphics[]{triangle_alpha_shapes_flipped}
-\caption{The flipped triangle $\Delta_{\textrm{acd}}$ satisfies the Delaunay property, thus it is included in the Delaunay triangulation.}
+\caption{\textbf{Acceptable triangle.} The flipped triangle $\Delta_{\point{acd}}$ satisfies the Delaunay property, thus it is included in the Delaunay triangulation.}
 \end{subfigure}
 \caption{Construction of the Delaunay triangulation in 2D.}
 \label{fig:Delaunay}
 \end{figure}
 \\ \indent Several other algorithms have been developed to construct a Delaunay triangulation, see for example \cite{lee1980two, renka1997algorithm}.
- Given a point set $\emph{U}$ and a triangulation $T$, it can be proved that the corresponding Delaunay triangulation $T^\prime$ is unique. Moreover, it has the property to have the largest minimum angle among all possible triangulations of a point set $\emph{U}$ \cite{press2007numerical}.
-\\ \indent Alternatively the Delaunay triangulation can be constructed as the dual of the Voronoi diagram \cite{fortune1992voronoi}.\\\indent Let be $\emph{X}\subset\mathbb{R}^2$ a metric space endowed of the euclidean distance $d(\variabile{x}, \variabile{y})$ for every couple of points $\variabile{x}, \variabile{y}\in \emph{X}$. For \textit{almost}\footnote{Note the importance of the word \textit{almost}. Some points can have the same distance with two or more points of $\emph{U}$.} every point $\variabile{x}\in \mathbb{R}^2$, there is a point which is the closest point to $\variabile{x}$. The Voronoi cell of a point $u_\variabile{i}\in \emph{U}$ contains all points in $\mathbb{R}^2$ which are closer to $\variabile{u}_{\variabile{i}}$, see Figure \ref{fig:Voronoi}. The Voronoi diagram of $\emph{U}\subset \mathbb{R}^2$ is defined as the set of all Voronoi cells \cite{cazals2005conformal}. A more formal definition of the Voronoi diagram is given in the following.
+ Given a point set $\mbox{\insieme{U}}$ and a triangulation \insieme{T}, it can be proved that the corresponding Delaunay triangulation $\mbox{\insieme{T}}^\prime$ is unique. Moreover, it has the property to have the largest minimum angle among all possible triangulations of a point set $\mbox{\insieme{U}}$ \cite{press2007numerical}.
+\\ \indent Alternatively the Delaunay triangulation can be constructed as the dual of the Voronoi diagram \cite{fortune1992voronoi}.\\\indent Let be $\mbox{\insieme{X}}\subset\mathbb{R}^2$ a metric space endowed of the euclidean distance $d(\point{x}, \point{y})$ for two points $\point{x}, \point{y}\in \mbox{\insieme{X}}$. For \textit{almost}\footnote{Note the importance of the word \textit{almost}. Some points can have the same distance with two or more points of $\mbox{\insieme{U}}$.} every point $\point{x}\in \mathbb{R}^2$, there is a point which is the closest point to $\point{x}$. The Voronoi cell of a point $\point{u}_\variabile{i}\in \mbox{\insieme{U}}$ contains all points in $\mathbb{R}^2$ which are closer to $\point{u}_{\variabile{i}}$, see Figure \ref{fig:Voronoi}. The Voronoi diagram of $\mbox{\insieme{U}}\subset \mathbb{R}^2$ is defined as the set of all Voronoi cells \cite{cazals2005conformal}. A more formal definition of the Voronoi diagram is given in the following.
 \begin{defn}
-Let $\emph{U}=\{\variabile{u}_1,\cdots,\variabile{u}_N\}$ be a set of point in $\mathbb{R}^2$. The Voronoi cell $\emph{V}_\variabile{i}$ associated to point $\variabile{u}_\variabile{i}$ is defined as:
+Let $\mbox{\insieme{U}}=\{\point{u}_1,\cdots,\point{u}_N\}$ be a set of point in $\mathbb{R}^2$. The Voronoi cell $\mbox{\insieme{V}}_\variabile{i}$ associated to point $\point{u}_\variabile{i}$ is defined as:
 \begin{equation}
-\emph{V}_\variabile{i}=\{x\in \mathbb{R}^2\; | \;|x-u_\variabile{i}|<|x-u_\variabile{j}| \quad \forall \variabile{j}\neq \variabile{i} \}\,,
+\mbox{\insieme{V}}_\variabile{i}=\{\point{x}\in \mathbb{R}^2\; | \;|\point{x}-\point{u}_\variabile{i}|<|\point{x}-\point{u}_\variabile{j}| \quad \forall \variabile{j}\neq \variabile{i} \}\,,
 \end{equation}
-The Voronoi diagram $\emph{U}$ is defined as 
+The Voronoi diagram $\mbox{\insieme{V}}$ is defined as 
 \begin{equation}
-\emph{V} = \bigcup_{\variabile{i}=1}^N \emph{V}_\variabile{i}
+\mbox{\insieme{V}} = \bigcup_{\variabile{i}=1}^N \emph{V}_\variabile{i}
 \end{equation}
- where $\emph{V}_{\variabile{i}}\cap \emph{V}_{\variabile{j}}= \emptyset$ for $\variabile{i}\neq\variabile{j}$.
+ where $\mbox{\insieme{V}}_{\variabile{i}}\cap \mbox{\insieme{V}}_{\variabile{j}}= \emptyset$ for $\variabile{i}\neq\variabile{j}$.
 \end{defn}
 For the definition of Voronoi diagram in higher dimensions see \cite{brown1979voronoi}.
 \begin{figure}[t]
 \centering
 \includegraphics[width = 8cm]{Delanay_Voronoi1}
-\caption{Relationship between the Delaunay triangulation and the Voronoi Diagram \cite{Wiki4}. The black line segments are the boundaries of the Delaunay triangulation, the red line segments constitutes the boundaries of the Voronoi diagram.}
+\caption{\textbf{Relationship between the Delaunay triangulation and the Voronoi Diagram \cite{Wiki4}.} The black line segments are the boundaries of the Delaunay triangulation, the red line segments constitutes the boundaries of the Voronoi diagram.}
 \label{fig:Voronoi}
 \end{figure}
-\\ \indent The Delaunay triangulation triangulates the convex hull of $V$ and, therefore it does not constitute a suitable method for reconstructing the contour formed by a point cloud. The $\alpha$-shape methods were developed to solve such problem \cite{edelsbrunner2010alpha, guo1997surface}. Starting from the Delaunay triangulation $T^\prime$ of a point set $V$, the corresponding $\alpha$-shape of $V$ is formed by the only triangles of $T^\prime$ that satisfy the so-called "$\alpha$-test" which is now briefly explained.
+\\ \indent The Delaunay triangulation triangulates the convex hull of \insieme{U} and, therefore it does not constitute a suitable method for reconstructing the contour formed by a point cloud. The $\alpha$-shape methods were developed to solve such problem \cite{edelsbrunner2010alpha, guo1997surface}. Starting from the Delaunay triangulation $\mbox{\insieme{T}}^\prime$ of a point set \insieme{U}, the corresponding $\alpha$-shape of $V$ is formed by the only triangles of $\mbox{\insieme{T}}^\prime$ that satisfy the so-called "$\alpha$-test" which is now briefly explained.
 For each triangle we calculate the circumradius, i.e. the radius of the circumcircle. If the radius is larger than $\alpha$ the triangle is removed from the shape. The choice of the parameter $\alpha$ is highly significant in the $\alpha$-shapes procedure and, it has to be selected such that the desired approximation of the shape formed by the points of $V$ is obtained.\\ \indent
 %Therefore, $\alpha$ is closely related to the radius of the circumcircles. A possible strategy is to find the radius of the greater empty circumcircle. Thus $\alpha$ can be selected according to the density $\delta$ of the point sets $V$
 %with $C$ a constant and $\delta$:
@@ -93,11 +92,11 @@ For each triangle we calculate the circumradius, i.e. the radius of the circumci
 %Note that, while $\delta$ is given for a fixed point set $V$, the value of $C$ needs to be determined by numerical simulations.\\ \indent 
 To summarize, the $\alpha$-shape construction can be outlined as follows:
 \begin{enumerate}
-\item Construct a Delaunay triangulation\footnote{In the simulations we present in this chapter the Matlab function \textit{Delaunay} is used.} $T^\prime$ of the point cloud $\emph{U}$;
-\item For every triangle $T^\prime(i)\in T^\prime$ calculate its circumradius $r(i)$;
-\item If $r(i)\leq\alpha$ keep the triangle $T^\prime(i)$ in the triangulation;
+\item Construct a Delaunay triangulation\footnote{In the simulations we present in this chapter the Matlab function \textit{Delaunay} is used.} $\mbox{\insieme{T}}^\prime$ of the point cloud $\mbox{\insieme{U}}$;
+\item For every triangle $\mbox{\insieme{T}}^\prime(i)\in \mbox{\insieme{T}}^\prime$ calculate its circumradius $r(i)$;
+\item If $r(i)\leq\alpha$ keep the triangle $\mbox{\insieme{T}}^\prime(i)$ in the triangulation;
 \item If $r(i)>\alpha$ remove the triangle from the triangulation;
-\item For every triangle return the edges belong to only one triangle of $T^{\prime}$, the so-called \textit{free boundary} edges\footnote{In the simulations we present in this chapter the Matlab function \textit{freeBoundary} is used.}. By definition, the free boundary edges are not a common edge of two triangles.
+\item For every triangle return the edges belong to only one triangle of $\mbox{\insieme{T}}^{\prime}$, the so-called \textit{free boundary} edges\footnote{In the simulations we present in this chapter the Matlab function \textit{freeBoundary} is used.}. By definition, the free boundary edges are not a common edge of two triangles.
 \end{enumerate}
 %% Insert algorithm
 %\begin{algorithm}[h]
@@ -250,7 +249,7 @@ Using PS ray tracing explained in Section \ref{sec:PS_raytracing} with parameter
   \includegraphics[width=7.7cm]{source1}
   \end{center}
   \caption{\textbf{Distribution of the rays on \point{S}{}{}}. Around $1.67 \cdot 10^4$ rays are traced using the triangulation refinement with parameters:
-  $\varepsilon_\variabile{q}^\textrm{max} = 0.1 ,$ $ \varepsilon_{\variabile{p}}^\textrm{max} = 5\cdot 10^{-2}, $ $\varepsilon_{\variabile{q}}^\textrm{min} = 9\cdot 10^{-3}, \varepsilon_\variabile{p}^\textrm{min} = 4.5 \cdot 10^{-3}$. Rays that belong to the same region are depicted with the same color. The rays located inside the white areas do not reach the target. The boundaries of the two white regions are approximated by triangles depicted with black lines.}
+  $\varepsilon_\variabile{q}^\textrm{max} = 0.8/4 ,$ $ \varepsilon_{\variabile{p}}^\textrm{max} = 0.08/8, $ $\varepsilon_{\variabile{q}}^\textrm{min} = 0.05/4, \varepsilon_\variabile{p}^\textrm{min} = 0.05/8$. Rays that belong to the same region are depicted with the same color. The rays located inside the white areas do not reach the target. The boundaries of the two white regions are approximated by triangles depicted with black lines.}
  \label{fig:sourcePS}
 \end{figure}
 Note that, given two adjacent paths, the regions $\mbox{\set{R}{$1$}{}}(\Pi)$ in \set{S}{}{} have usually a common boundary. 
@@ -265,7 +264,7 @@ $\Pi_7$ are discarded). To this purpose $U_1$ is calculated by removing from the
 \\ \indent To clarify this concept, in Figure \ref{fig:etendueTS} we provide an example where the source $U_1$ and target $U_{\textrm{t}}$ \'{e}tendue are computed from a set of around $1.67\cdot 10^4$ rays. The approximated source \'{e}tendue $U_1\approx 7.77$ is depicted with the red line. The blue line shows how the \'{e}tendue at the target changes as a function of $\alpha$. The smaller difference $\Delta U = |U_1-U_{\textrm{t}}|$ is obtained using $\alpha = \alpha_c = 0.08$.
  \begin{figure}[h]
   \begin{center}
-  \includegraphics[width=7.7cm]{etendue_alpha}
+  \includegraphics[width=7.7cm]{etendue_alpha_shapes}
   \end{center}
   \caption{\textbf{Etendue for the TIR-.collimator}
   $U_\textrm{t}$ is computed for a range of values for $\alpha$. $U_1 \approx 7.77$
@@ -364,7 +363,7 @@ This is because the approximation of the boundaries in PS depends on the accurac
 The $\alpha$-shapes procedure is unable to properly detect the boundaries of regions with a sharp turn if not enough points are given
 \cite{teichmann1998surface}. Indeed, on the one hand a low density requires a large value of $\alpha$ to accept the triangles in a region, on the other hand,
  choosing $\alpha$ large, the shape of the region could be destroyed (some triangles inside the regions could be taken into account).
-\begin{figure}[t]
+\begin{figure}[h]
 \centering
 \begin{subfigure}{.48\textwidth}
   \centering

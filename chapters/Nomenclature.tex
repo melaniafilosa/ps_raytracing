@@ -1,8 +1,9 @@
 %\documentclass{article}
-\newcommand{\set}[3]{$\emph{#1}_{\textit{#2#3}}$}
-\newcommand{\map}[3]{\mathrm{#1}_{\textit{#2#3}}}
+\newcommand{\set}[3]{$\textup{#1}_{\textit{#2#3}}$}
+\newcommand{\insieme}[1]{$\textup{#1}$}
+\newcommand{\map}[3]{\mathrm{#1}_{\textit{#2#3}}} % \textsl
 \newcommand{\mapnumb}[1]{\mathrm{#1}}
-\newcommand{\setbound}[4]{$\emph{#1}_{\textit{#2#3}}^{#4}$}
+\newcommand{\setbound}[4]{$\textup{#1}_{\textit{#2#3}}^{#4}$}
 \newcommand{\variabile}[1]{\textit{#1}}
 \newcommand{\inversemap}[3]{\mathrm{#1}_{{#2#3}}^{-1}}
 \newcommand{\vect}[1]{\textit{\textbf{#1}}}
@@ -91,9 +92,9 @@ $\myangle_\const{p}^{\prime}$ & {Brewster's angle for $\n_{\textrm{t}}>\n_{\text
 $\point{S}$ &{Light source}\\
 \point{T} &{Light target}\\
 $(\variabile{x}_{\lineai}, \variabile{z}_{\lineai})$ 
-&{Position coordinates of the rays on line $\lineai$ in real space}\\
+&{Coordinates of the intersection point of the rays with line $\lineai$ in real space}\\
 $\optangle_\lineai$ &{Angle that the ray incident line $\lineai$ makes with respect to the optical axis}\\
-$\vect{r}(\variabile{s} $ & Ray parametrization\\
+$\vect{r}(\variabile{s}) $ & Ray parametrization\\
 $\nrays$ & Number of rays \\
 $\nbin$ & Number of bins \\
 $\n_{\lineai}$ &{Index of refraction of the medium in which line $\lineai$ is located}\\
@@ -101,26 +102,57 @@ $\nline$ &{Number of lines that constitute the system = Index of the target}\\
 $\vect{Y}$ &{Random variable}\\
 $\vect{y}$ &{Values that a random variable assumes}\\
 $\rho(\vect{y})$ &{Probability density function}\\
-$\mathbb{E}[f]$ &{Expected value of function $f$}\\
-$S_{N}[f]$ &{}\\
-$\textrm{Var}[f] = \sigem$ &{Variance of function $f$}\\
-
+$\mathbb{E}[f]$ &{Expected value of $f$}\\
+%$S_{N}[f]$ &{}\\
+$\textrm{Var}[f] = \sigma$ &{Variance of $f$}\\
+$\sigma^2 [f]$ &{Standard deviation of $f$}\\
 $(\variabile{x}_{\lineai}, \variabile{z}_{\lineai})$ 
 &{Position coordinates of the on line $\lineai$ of the $\lineai$-th ray traced}\\
 $\optangle_\lineai$ &{Angular coordinate of the $\lineai$-th ray traced}\\
+$\hat{I}_{\textrm{MC}}$ &{Averaged Monte Carlo intensity}\\
+$\hat{I}_{\textrm{QMC}}$ &{Averaged Quasi-Monte Carlo intensity}\\
+$\textrm{card}(\mbox{\insieme{A}})$ &{Cardinality of the set $\insieme{A}$}\\
+$D_{N}(\mbox{\insieme{Y}})$ &{Discrepancy of the finite set $\insieme{Y}$ of $N$ points.}\\
+$D_{N}^*(\mbox{\insieme{Y}})$ &{Discrepancy of the finite set $\insieme{Y}$ of $N$ points.}\\
+$V(f)$ &{Hardy-Krause variation function.}\\
+$\insieme{Q}$ &{Set of the position coordinates of the rays}\\
+$\insieme{P}$  &{Set of the direction coordinates of the rays}\\
+\set{S}{}{}=\set{Q}{}{} $\times$ \set{P}{}{} & Phase space of the rays with position in \set{Q}{}{} and direction in \set{P}{}{}\\
+$\insieme{S}$ &{Source phase space}\\
+$\insieme{T}$ &{Target phase space}\\
+$(\variabile{q}_1, \variabile{q}_1)$ 
+&{Coordinates of the ray on source PS \insieme{S}}\\ 
+$(\variabile{q}, \variabile{q})$ 
+&{Coordinates of the ray on target PS \insieme{T}}\\
+$\Pi$ &{Ray path}\\
+$\map{M}{}{}$ &{Ray mapping form source to target PS}\\
+\insieme{R}$_\textrm{s}$ &{Regions in source PS related to path $\Pi$}\\
+\insieme{R}$_\textrm{t}$ &{Positive luminance regions in target PS related to path $\Pi$}\\
+$(\variabile{q}_1^{\variabile{k}}, \variabile{p}_1^{\variabile{k}})$ 
+&{Source PS coordinates of the \variabile{k}-th ray traced}\\
+$\Pi^{\variabile{k}}$ &{Path followed by the \variabile{k}-th ray traced}\\
+$\npath$ &{Number of paths}\\
+$(\Pi_{\variabile{j}})_{\variabile{j}=1, \cdots, \npath}$ &{\variabile{j}-th possible path}\\
+$\varepsilon_\variabile{q}^\textrm{min}$ & {Minimum triangulation parameter for the $\variabile{q}$-axis}\\
+$\varepsilon_\variabile{p}^\textrm{min}$ & {Minimum triangulation parameter for the $\variabile{p}$-axis}\\
+$\varepsilon_\variabile{q}^\textrm{max}$ & {Maximum triangulation parameter for the $\variabile{q}$-axis}\\
+$\varepsilon_\variabile{p}^\textrm{max}$ & {Maximum triangulation parameter for the $\variabile{p}$-axis}\\
+\insieme{T} &{Triangulation in $\mathbb{R}^2$}\\
+\insieme{T}$^{\prime}$ &{Delaunay triangulation in $\mathbb{R}^2$}\\
+\insieme{V}$_{\variabile{i}}$ &{Voronoi cell}\\
+\insieme{V} &{Voronoi diagram}\\
+\set{S}{i}{} & Source phase space of line $\variabile{i}$ \\
+\set{T}{i}{} & Target phase space of line $\variabile{i}$ \\
+\set{T}{i,}{j} & Part of \set{T}{i}{} that is illuminated by line 
+$\variabile{j}$ with $\variabile{i}\neq \variabile{j}$ \\
+$\pos{s,}{i}$ & Position coordinates of the rays on \set{S}{i}{} \\
+$\pos{t,}{j}$ & Position coordinates of the rays on \set{T}{j}{} \\
 
-
-
-
-%$\textrm{Nl}$ & Number of optical lines \\
 %\set{Q}{}{} & Set of the position coordinates of the rays\\
 %\set{P}{}{} & Set of the direction coordinates of the rays\\
-%\set{S}{}{}$=$\set{Q}{}{} $\times$ \set{P}{}{} & Phase space of the rays with position in \set{Q}{}{} and direction in \set{P}{}{}\\
-%\set{S}{i}{} & Source phase space of line $\var{i}$ \\
 %\set{S}{i,}{j} & Part of \set{S}{i}{} that illuminates line $\var{j}$ with $\var{i}\neq \var{j}$\\
-%\set{T}{i}{} & Target phase space of line $\var{i}$ \\
-%\set{T}{i,}{j} & Part of \set{T}{i}{} that is illuminated by line $\var{j}$ with $\var{i}\neq \var{j}$ \\
-%$n_\var{i}$ & Index of refraction of the medium in which the line \var{i} is located \\
+%
+
 %$\vect{$\nu$}_\var{i}$ & Normal to line $\var{i}$\\
 %$\pos{s,}{i}$ & Position coordinates of the rays on \set{S}{i}{} \\
 %$\pos{t,}{j}$ & Position coordinates of the rays on \set{T}{j}{} \\

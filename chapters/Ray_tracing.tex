@@ -90,23 +90,23 @@ This method is discussed in Section \ref{sec:QMC}.
 As explained above, the aim of ray tracing is to calculate the target photometric variables given an initial light distribution at the source. To this purpose, we can think of a light source as
 emitting a very large number of random rays and keep track of where they go. In this way we can calculate, for instance the target luminance distribution. Next the target intensity is given by the integral of the luminance (see Equation (\ref{eq:int_lum})) which can be approximated by the average of the luminance values. This simple method uses the same idea of a family of techniques called Monte Carlo simulation and can be a very easy way to numerically
 solve physics problems based on numerical integration \cite{jensen2003monte}.
-\\ \indent Before explaining the details of MC ray tracing, we give an introduction to MC methods for the two-dimensional case. Let us consider a set $D = [\vect{a}, \vect{b}]$ with $\vect{a} = (a_1, a_2)$ and $\vect{b} = (b_1, b_2)$ elements of $\mathbb{R}^2$ such that
-$[\vect{a}, \vect{b}]  = [a_1, b_1] \times [a_2, b_2]$. Consider a function $f:[\vect{a},\vect{b}]\subset \mathbb{R}^2 \mapsto \mathbb{R}$ and a random variable $\vect{Y}$ with values in $D$ with probability density function $\rho(\vect{y})$, where $\vect{y}$ are the values $\vect{Y}$ in $D$. Note that we indicate the random variables with capital letters and the corresponding deterministic values with lowercase letters. The expected value of $f$ with respect of $\rho$ is:
+\\ \indent Before explaining the details of MC ray tracing, we give an introduction to MC methods for the two-dimensional case. Let us consider a set $\mbox{\insieme{D}} = [\vect{a}, \vect{b}]$ with $\vect{a} = (a_1, a_2)$ and $\vect{b} = (b_1, b_2)$ elements of $\mathbb{R}^2$ such that
+$[\vect{a}, \vect{b}]  = [a_1, b_1] \times [a_2, b_2]$. Consider a function $f:[\vect{a},\vect{b}]\subset \mathbb{R}^2 \mapsto \mathbb{R}$ and a random variable $\vect{Y}$ with values in \insieme{D} with probability density function $\rho(\vect{y})$, where $\vect{y}$ are the values $\vect{Y}$ in \insieme{D}. Note that we indicate the random variables with capital letters and the corresponding deterministic values with lowercase letters. The expected value of $f$ with respect of $\rho$ is:
 \begin{equation}
-\mathbb{E}[f] =\int_{D}f(\vect{y})\rho(\vect{y}) \textrm{d}\vect{y}.
+\mathbb{E}[f] =\int_{\mbox{\insieme{D}}}f(\vect{y})\rho(\vect{y}) \textrm{d}\vect{y}.
 \end{equation}
 If $\rho$ is a uniform probability density function, the expected value is given by:
 \begin{equation}\label{eq:expected_value}
-\mathbb{E}[f] =\frac{1}{\lambda([\vect{a},\vect{b}])} \int_{D}f(\vect{y}) \textrm{d}\vect{y},
+\mathbb{E}[f] =\frac{1}{\lambda([\vect{a},\vect{b}])} \int_{\mbox{\insieme{D}}}f(\vect{y}) \textrm{d}\vect{y},
 \end{equation}
 where $\lambda([\vect{a},\vect{b}]) = (b_1-a_1)\times (b_2-a_2)$.
 Monte Carlo method approximates the integral in Equation (\ref{eq:expected_value}) by the sum:
 \begin{equation}
 S_{N}[f] = \frac{1}{N} \sum_{\variabile{i}=1}^{N} f(\vect{Y}_\variabile{i}),
 \end{equation}
-where $\{\vect{Y}_\variabile{i}\}_{\variabile{i} = 1, \cdots, \const{N}}$ are independent samples of the probability density function $\rho$ with values in $D$ \cite{owen2003quasi}. Thus, MC is based on the following approximation:
+where $\{\vect{Y}_\variabile{i}\}_{\variabile{i} = 1, \cdots, N}$ are independent samples of the probability density function $\rho$ with values in \mbox{\insieme{D}} \cite{owen2003quasi}. Thus, MC is based on the following approximation:
 \begin{equation}\label{eq:approx_MC_QMC}
-\int_{D}f(\vect{y})\rho(\vect{y}) \textrm{d}\vect{y}\approx\frac{1}{N} \sum_{\variabile{i}=1}^{N} f(\vect{Y}_\variabile{i}).
+\int_{\mbox{\insieme{D}}}f(\vect{y})\rho(\vect{y}) \textrm{d}\vect{y}\approx\frac{1}{N} \sum_{\variabile{i}=1}^{N} f(\vect{Y}_\variabile{i}).
 \end{equation}
 According to the strong law of large numbers,
 \begin{equation}
@@ -135,12 +135,12 @@ Suppose that $f$ has variance $\textrm{Var}[f]=\mathbb{E}[(f-\mathbb{E}(f))]^2 =
 \end{equation}
 Let us denote the integration error with:
 \begin{equation}\label{eq:error1}
-\const{err}(f, S_{\const{N}}) =\int_{D}f(\vect{y})\rho(\vect{y}) \textrm{d}\vect{y}-S_{\const{N}}(f) = \mathbb{E}[f]-S_\const{N}(f).
+\const{err}(f, S_{N}) =\int_{\mbox{\insieme{D}}}f(\vect{y})\rho(\vect{y}) \textrm{d}\vect{y}-S_{N}(f) = \mathbb{E}[f]-S_N(f).
 \end{equation}
-Considering a convex function $g:\variabile{x}\in D\mapsto\variabile{x}^2$ we can write:
+Considering a convex function $g:\vect{x}\mapsto\vect{x}^2$ we can write:
 \begin{equation}
 \begin{aligned}
-&\mathbb{E}[|\const{err}(f, S_{\const{N}})|] = \sqrt{\mathbb{E}[|\const{err}(f, S_{\const{N}})|^2]} = \sqrt{g\big(\mathbb{E}[|\const{err}(f, S_{\const{N}})|]\big)}) \\&\leq\sqrt{\mathbb{E}[g(|\const{err}(f, S_{\const{N}})|]}) = \sqrt{\mathbb{E}[\const{err}^2(f, S_{\const{N}})]})
+&\mathbb{E}[|\const{err}(f, S_{N})|] = \sqrt{\mathbb{E}[|\const{err}(f, S_{N})|^2]} = \sqrt{g\big(\mathbb{E}[|\const{err}(f, S_{N})|]\big)}) \\&\leq\sqrt{\mathbb{E}[g(|\const{err}(f, S_{N})|]}) = \sqrt{\mathbb{E}[\const{err}^2(f, S_{N})]})
 \end{aligned}
 %\begin{aligned}
 %\mathbb{E}\big[|\const{err}(f, S_{\const{N}})|\big] &= \frac{1}{\const{N}}\sqrt{\Bigg(\sum_{\variabile{1}=1}^\const{N}|\const{err}(f, S_{\const{N}})|\Bigg)^2}  \leq \frac{1}{\const{N}}\sqrt{\const{N}\sum_{\variabile{1}=1}^\const{N}\big(\const{err}(f, S_{\const{N}})\big)^2}  \\
@@ -150,17 +150,17 @@ Considering a convex function $g:\variabile{x}\in D\mapsto\variabile{x}^2$ we ca
 where the inequality follows from the Jensen's inequality (\cite{williams1991probability} Chapter $6$).
 Using the previous relation and Equations (\ref{eq:variance2}) and (\ref{eq:error1}), we obtain:
 \begin{equation}\label{eq:mean_error}
-\mathbb{E}\big[|\const{err}(f, S_{\const{N}})|\big]\leq
-\sqrt{\mathbb{E}\big[\const{err}(f, S_{\const{N}})^2\big]} = \frac{\sigma[f]}{\sqrt{\const{N}}},
+\mathbb{E}\big[|\const{err}(f, S_{N})|\big]\leq
+\sqrt{\mathbb{E}\big[\const{err}(f, S_{N})^2\big]} = \frac{\sigma[f]}{\sqrt{N}},
 \end{equation}
-Hence, the absolute value of the integration error is, on average, bounded by $\sigma[f]/\sqrt{\const{N}}$, where $\sigma[f]$ is the standard deviation of $f$ \cite{leobacher2014introduction}. It is very important to note that $\const{err}(f, S_{\const{N}})$ does not depend on the dimension of $f$.
+Hence, the absolute value of the integration error is, on average, bounded by $\sigma[f]/\sqrt{N}$, where $\sigma[f]$ is the standard deviation of $f$ \cite{leobacher2014introduction}. It is very important to note that $\const{err}(f, S_{N})$ does not depend on the dimension of $f$.
 \\ \indent The MC technique can be combined with ray tracing procedure in order to compute the light distribution at the target of an optical system.
 In MC ray tracing the position and the direction of  every ray at the source are chosen randomly. 
 In the two-dimensional case, for every ray we need to choose one position coordinate $\variabile{x}_1$ and one angular coordinate $\optangle_1$ at the source, while the $\variabile{z}_1$ coordinate of every ray at the source is always given (for instance, for the two-faceted cup in Figure \ref{fig:cup}, $\variabile{z}_1=0$ for every ray). 
 Indicating with $\variabile{x}_{1}^{\variabile{i}}$ the $\variabile{x}$-coordinate of the $\variabile{i}$-th ray and with $\optangle_1^{\variabile{i}}$ its angular coordinate, a set of random variables $\{\vect{Y}_1, \cdots, \vect{Y}_N\}\in [\vect{a}, \vect{b}]\subset\mathbb{R}^2$ is chosen such that $\vect{Y}_{\variabile{i}}= (\variabile{x}_{1}^{\variabile{i}},\optangle_1^{\variabile{i}})$.
 % the initial position coordinate $\variabile{x}_1$ of the $\variabile{k}$-th ray corresponds to the first component of the $\variabile{k}$-th random variable $\vect{y}_\variabile{k}$ and, the starting angular coordinate $\optangle_1$ of the $\variabile{k}$-th ray corresponds to the second component of the $\variabile{k}$-th random variable $\vect{y}_\variabile{k}$.
-Rays with those random coordinates at \point{S} are traced from \point{S} to \point{T} and, a probabilistic interpretation of the output photometric variables is provided.
-In particular, we are interested in the target intensity $I$ as a function of the angular coordinate $\optangle$. Using the idea of MC method we approximate its expected value $\mathbb{E}[I]$ by a sum as described in Equation (\ref{eq:approx_MC_QMC}) where the function $f$ is now the intensity $I$.
+Rays with those random initial coordinates are traced from \point{S} to \point{T} and, a probabilistic interpretation of the output photometric variables is provided.
+In particular, we are interested in the target intensity $I$ as a function of the angular coordinate $\optangle$. Using the idea of MC method we approximate its expected value $\mathbb{E}[I]$ by a sum as described in Eq. (\ref{eq:approx_MC_QMC}) where the function $f$ is now the intensity $I$.
 %which is given by:
 %\begin{equation}\label{eq:MC_intensity}
 %I(\optangle) = \int_{\variabile{x}^{\textrm{min}}}^{\variabile{x}^{\textrm{max}}}L(\variabile{x}, \optangle)\textrm{d}\variabile{x}\,
@@ -174,14 +174,14 @@ In the following we explain how the value of the intensity in each bin is calcul
 $P_1: -\pi/2 = \optangle_{0}<\optangle_{1}<\cdots <\optangle_{\nbin}=\pi/2$ of the interval $[-\pi/2, \pi/2]$ is defined where $\nbin$ is the number of bins in $P_1$.
 We remark that, with a slight abuse of notation, we indicated the angular coordinates of the rays at the target (line $\nline$) with $\optangle_{\variabile{j}}$ instead of $\optangle_{\nline,\variabile{j}}$ for every $\variabile{j}\in\{0, \cdots, \nbin\}$. 
 The normalized approximated intensity $\hat{I}_{\const{MC}}(\optangle)$ is a piecewise constant function, whose value over the $\variabile{j}$-th bin is the ratio between the number of rays that fall into that bin
-$\const{Nr}[\optangle_{\variabile{j}-1},\optangle_{\variabile{j}})$ and the total number of rays traced $\const{Nr}[-\pi/2, \pi/2)$.
-The averaged normalized MC intensity $\hat{I}_{\const{MC}}$ in a single bin is defined by:
+$\const{Nr}[\optangle_{\variabile{j}-1},\optangle_{\variabile{j}})$ and the total number of rays traced $\const{Nr}[-\pi/2, \pi/2)$:
+%The averaged normalized MC intensity $\hat{I}_{\const{MC}}$ in a single bin is defined by:
 \begin{equation} \label{g_mc}
-\hat{I}_{\const{MC}}(\optangle) = \frac{\const{Nr}[\optangle_{\variabile{j}-1},\optangle_{\variabile{j}})}{\const{Nr}[-\pi/2, \pi/2)} \qquad \mbox{ for } \optangle\in[\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}}).
+\hat{I}_{\const{MC}}(\optangle) = \frac{\nrays[\optangle_{\variabile{j}-1},\optangle_{\variabile{j}})}{\nrays[-\pi/2, \pi/2)} \qquad \mbox{ for } \optangle\in[\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}})_{\variabile{j}=1, \cdots, \nbin}.
 \end{equation}
-The output intensity is computed from the value of the intensity $I_{\const{MC}}(\optangle_{\variabile{j}-1/2})$ along the direction $\optangle_{\variabile{j}-1/2}=(\optangle_{\variabile{j}-1}+
+The output intensity is computed from the value of the intensity $\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})$ along the direction $\optangle_{\variabile{j}-1/2}=(\optangle_{\variabile{j}-1}+
 \optangle_{\variabile{j}})/2$ for every bin $[\optangle_{\variabile{j}-1},\optangle_{\variabile{j}})_{\variabile{j} = 1, \cdots, \nbin}$.
- The intensity $I_{\const{MC}}(\optangle_{\variabile{j}-1/2})$ gives an estimate of the probability that a ray reaches the target with an angle in the $\variabile{j}$-th interval
+ The intensity $\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})$ gives an estimate of the probability that a ray reaches the target with an angle in the $\variabile{j}$-th interval
 $[\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}})$ of the partitioning $P_1$. This probability $\const{P}_{\variabile{j}, \Delta\optangle}$ is given by
 \begin{equation}\label{eq:probability}
 \const{P}_{\variabile{j}, \Delta\optangle} = \Pr(\optangle_{\variabile{j}-1}\leq\optangle<\optangle_{\variabile{j}})=
@@ -194,26 +194,25 @@ $I(\optangle)$, which is continuous in $[\optangle_{\variabile{j}-1}, \optangle_
 \int_{\optangle_{\variabile{j}-1}}^{\optangle_{\variabile{j}}} I(\optangle) \textrm{d}\optangle = \Delta \optangle\;I(\optangle_{\variabile{j}}).
 \end{equation}
 Hence, $\const{P}_{\variabile{j}, \Delta\optangle}$ is proportional to the size $\Delta\optangle= (\optangle_{\nbin}-\optangle_{0})/{\nbin}$
-of the bins and to $I(\optangle_{\variabile{j}})$. Although $I(\optangle_{\variabile{j}})$ does depend on the number of bins \nbin, it is taken constant as it is the value of the intensity on a given direction\footnote{This is possible since $I(\optangle_{\variabile{k}})$ is a continuous function in the closed interval $[\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}}]$.}, so Equation (\ref{eq:deltatI}) proves that $\const{P}_{\variabile{j}, \Delta\optangle}$ is inversely proportional to the number of bins $\nbin$ of the partitioning $P_1$.
+of the bins and to $I(\optangle_{\variabile{j}})$. Although $I(\optangle_{\variabile{j}})$ does depend on the number of bins \nbin, it is taken constant as it is the value of the intensity on a given direction\footnote{This is possible since $I(\optangle_{\variabile{j}})$ is a continuous function in the closed interval $[\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}}]$.}, so Equation (\ref{eq:deltatI}) proves that $\const{P}_{\variabile{j}, \Delta\optangle}$ is inversely proportional to the number of bins $\nbin$ of the partitioning $P_1$.
 Indicating with $\Phi = \int_{-\pi/2}^{\pi/2}I(\optangle) \textrm{d}\optangle$ the total flux (measured in lumen, $\textrm{lm}$),
 the error between the intensity $I(\optangle_{\variabile{j}-1/2})$
- and the averaged \const{MC} intensity $\Phi I_{\const{MC}}(\optangle_{\variabile{j}-1/2})/\Delta\optangle$ is given by
+ and the averaged \const{MC} intensity $\Phi I_{\const{MC}}(\optangle_{\variabile{j}-1/2})/\Delta\optangle$ (not normalized) is given by
 \begin{equation}\label{eq:error_int}
 \begin{aligned}
 \Big|I(\optangle_{\variabile{j}-1/2})&-\frac{\Phi}
 {\Delta\optangle}I_{\const{MC}}(\optangle_{\variabile{j}-1/2})\Big| \leq\\
  &\Big|I(\optangle_{\variabile{j}-1/2})-\frac{1}{\Delta \optangle}\int_{\optangle_{\variabile{j}-1}}^{\optangle_{\variabile{j}}} I(\optangle)\textrm{d}\optangle\Big|+\\
 &\frac{1}{\Delta \optangle}\Big|\int_{\optangle_{\variabile{j}-1}}^{\optangle_{\variabile{j}}} I(\optangle)\textrm{d}\optangle-
-\Phi\, I_{\const{MC}}(\optangle_{\variabile{j}-1/2})\Big| \,.
+\Phi\, \hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})\Big| \,.
 \end{aligned}
 \end{equation}
 \indent The first term on the right hand side of inequality (\ref{eq:error_int}) gives an estimate of how much the averaged intensity
  $\frac{1}{\Delta \optangle}\int_{\optangle_{\variabile{j}-1}}^{\optangle_{\variabile{j}}} I(\optangle)\textrm{d}\optangle$ differs from the exact intensity $I(\optangle_{\variabile{j}-1/2})$.
 This term is due to the discretization of the target and therefore depends on the number of bins $\nbin$ considered.
-  Substituting $I(\optangle)$ with its Taylor expansion around the point $\optangle_{\variabile{j}-1/2}$ we obtain that this term is proportional to the square of the size of the bins. 
-Therefore,
+  Substituting $I(\optangle)$ with its first order Taylor expansion around the point $\optangle_{\variabile{j}-1/2}$ we obtain:
 \begin{equation}\Big|I(\optangle_{\variabile{j}-1/2})-\frac{1}{\Delta \optangle}\int_{\optangle_{\variabile{j}-1}}^{\optangle_{\variabile{j}}} I(\optangle)\textrm{d}\optangle\Big| = \const{C}_1/\nbin^2\end{equation}
-with $C_1>0$ a certain constant. \\
+with $\const{C}_1>0$ a certain constant. \\
 \indent
 The second part on the right hand side of inequality (\ref{eq:error_int}) gives an estimate of the statistic MC error and therefore depends also on the
 number of rays traced.
@@ -229,49 +228,49 @@ is inside the interval $[\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}})
 \end{equation}
 The Bernoulli trial $ \variabile{X}_{\variabile{j}}$ follows a binomial distribution $B(1,\const{P}_{\variabile{j}, \Delta\optangle})$.
 Considering a sample of $\const{Nr}$ rays, the variable $\variabile{Y}_{\variabile{j}} = \sum_{\variabile{k}=1}^{\const{Nr}} \variabile{X}_{\variabile{j}}(\optangle^{\variabile{k}})$
-follows a binomial distribution $B(\const{Nr}, \const{P}_{\variabile{j},\Delta \optangle})$, where $\optangle^{\variabile{k}}$ is the angle that the $\variabile{k}$-th ray forms
+follows a binomial distribution $B(\nrays, \const{P}_{\variabile{j},\Delta \optangle})$, where $\optangle^{\variabile{k}}$ is the angle that the $\variabile{k}$-th ray forms
  with the optical axis. Then, using the de Moivre-Laplace theorem, we conclude that, when a large number of rays is considered, the variable $\variabile{Y}_{\variabile{j}}$ is approximated by a normal distribution with mean value and variance given by 
 \begin{subequations}
 \begin{align}
-\variabile{E}[\variabile{Y}_{\variabile{j}}] &= \const{Nr}\const{P}_{\variabile{j}, \Delta\optangle}, \\ \sigma^2[\variabile{Y}_{\variabile{j}}] &= \const{Nr}\const{P}_{\variabile{j}, \Delta\optangle}(1~-~\const{P}_{\variabile{j}, \Delta\optangle}),\end{align}
+\variabile{E}[\variabile{Y}_{\variabile{j}}] &= \nrays\const{P}_{\variabile{j}, \Delta\optangle}, \\ \sigma^2[\variabile{Y}_{\variabile{j}}] &= \nrays\const{P}_{\variabile{j}, \Delta\optangle}(1~-~\const{P}_{\variabile{j}, \Delta\optangle}),\end{align}
 \end{subequations}
-respectively see \cite{zolotarev1997modern, rubinstein2016simulation}.
+(see \cite{zolotarev1997modern, rubinstein2016simulation}).
 Thus, the normalized intensity along the direction $\optangle_{\variabile{j}-1/2}$ is given by:
-\begin{equation}I_{\const{MC}}(\optangle_{\variabile{j}-1/2}) = \sum_{\variabile{k}=1}^{\const{Nr}}\variabile{X}_{\variabile{j}}(\optangle^{\variabile{k}})/\const{Nr}.\end{equation}
+\begin{equation}\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2}) = \sum_{\variabile{k}=1}^{\nrays}\variabile{X}_{\variabile{j}}(\optangle^{\variabile{k}})/\nrays.\end{equation}
 The corresponding expected value and variance are:
 \begin{subequations}
-\begin{align}E[I_{\const{MC}}(\optangle_{\variabile{j}-1/2})]&=\const{P}_{\variabile{j}, \Delta\optangle},\\ \label{eq:variance_I}
-\sigma^2[I_{\const{MC}}(\optangle_{\variabile{j}-1/2})] &= \const{P}_{\variabile{j}, \Delta\optangle}(1-\const{P}_{\variabile{j}, \Delta\optangle})/\const{Nr}.
+\begin{align}E[\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})]&=\const{P}_{\variabile{j}, \Delta\optangle},\\ \label{eq:variance_I}
+\sigma^2[\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})] &= \const{P}_{\variabile{j}, \Delta\optangle}(1-\const{P}_{\variabile{j}, \Delta\optangle})/\nrays.
 \end{align}
 \end{subequations}
-Note that the standard deviation $\sigma_\variabile{j}:=\sigma[I_{\const{MC}}(\optangle_{\variabile{j}-1/2})]$ is approximated by
+Note that the standard deviation $\sigma_\variabile{j}:=\sigma[\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})]$ is approximated by
 \begin{equation}\label{sigma}
-\sigma_\variabile{j}= \sqrt{\const{P}_{\variabile{j}, \Delta\optangle}(1-\const{P}_{\variabile{j}, \Delta\optangle})/\const{Nr}}\approx \frac{\const{C}_2}{\sqrt{\nbin\const{Nr}}}\,, \end{equation}
- for some $\const{C}_{2}>0$. $\sigma_\variabile{j}$ can be used to give an estimate of the difference between the intensity $I_{\const{MC}}(\optangle_{\variabile{j}-1/2})$ and its mean value $\const{P}_{\variabile{j}, \Delta\optangle}$.
+\sigma_\variabile{j}= \sqrt{\const{P}_{\variabile{j}, \Delta\optangle}(1-\const{P}_{\variabile{j}, \Delta\optangle})/\const{Nr}}\approx \frac{\const{C}_2}{\sqrt{\nbin\nrays}}\,, \end{equation}
+ for some $\const{C}_{2}>0$. $\sigma_\variabile{j}$ can be used to give an estimate of the difference between the intensity $\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})$ and its mean value $\const{P}_{\variabile{j}, \Delta\optangle}$.
 Therefore, the second term of the right hand side of relation ($\ref{eq:error_int}$) becomes
 \begin{equation}\begin{aligned}
 \frac{1}{\Delta \optangle}\Big|\int_{\optangle_{\variabile{j}-1}}^{\optangle_{\variabile{j}}} I(\optangle)\textrm{d}\optangle -
-\Phi\, I_{\const{MC}}(\optangle_{\variabile{j}-1/2})\Big| &=  \\
-\frac{\Phi}{\Delta \optangle}\Big|\const{P}_{\variabile{j}, \Delta\optangle} -I_{\const{MC}}(\optangle_{\variabile{j}-1/2})\Big| &\approx  \\
+\Phi\, \hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})\Big| &=  \\
+\frac{\Phi}{\Delta \optangle}\Big|\const{P}_{\variabile{j}, \Delta\optangle} -\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})\Big| &\approx  \\
   \frac{\Phi}{\Delta \optangle}
-\sigma_{\variabile{j}}[I_{\const{MC}}(\optangle_{\variabile{j}-1/2})]\approx\const{C}_3\frac{\nbin}{\sqrt{\nbin\const{Nr}}} & = \const{C}_3\sqrt{\frac{\nbin}{\const{Nr}}}\,,
+\sigma_{\variabile{j}}[\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})]\approx\const{C}_3\frac{\nbin}{\sqrt{\nbin\nrays}} & = \const{C}_3\sqrt{\frac{\nbin}{\nrays}}\,,
 \end{aligned}
 \end{equation}
 for some $\const{C}_3>0$, where the approximation holds because $\sigma_{\variabile{j}}$ gives a measure for the error between
-$I_{\const{MC}}(\optangle_{\variabile{j}-1/2})$ and the probability $\const{P}_{\variabile{j}, \Delta\optangle}$ \cite{diez2012openintro}. The second approximation follows from (\ref{sigma}). The MC error over the $\variabile{j}$-th bin is estimated by
+$\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})$ and the probability $\const{P}_{\variabile{j}, \Delta\optangle}$ \cite{diez2012openintro}. The second approximation follows from (\ref{sigma}). The MC error over the $\variabile{j}$-th bin is estimated by
 \begin{equation} \begin{aligned}
 \Big|I(\optangle_{\variabile{j}-1/2})&-\frac{\Phi}
-{\Delta\optangle}I_{\const{MC}}(\optangle_{\variabile{j}-1/2})\Big| \leq
+{\Delta\optangle}\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})\Big| \leq
 \frac{\const{C}_1}{\nbin^2} + \const{C}_4\sqrt{\frac{\nbin}{\const{Nr}}},
 \end{aligned}
 \end{equation}
-for some $\const{C}_4>0$.
-Considering a fixed number of bins, we obtain that the minimal error is reached when $\const{Nr}\approx \nbin^5$.
+for some $\const{C}_1>0$ and $\const{C}_4>0$.
+Considering a fixed number of bins, we obtain that the minimal error is reached when $\nrays\approx \nbin^5$.
 Hence, if we double the number of bins we need to trace $2^5 = 32$ times more rays.\\ \indent
 We conclude this section implementing MC ray tracing for the two-faceted cup, the profile of which is depicted in Figure \ref{fig:cup}. 
-Considering a set of $\const{Nr} = 10^3$ random rays 
+Considering a set of $\nrays = 10^3$ random rays 
 %with coordinates $(\variabile{x}_{\variabile{k}}, \optangle_{\variabile{k}})_{\variabile{k}= 1, \cdots, \const{Nr}}$ is generated at the source.
-at the source, we obtain an example of the ray distribution on the $(\variabile{x}, \optangle)$-plane shown in Figure \ref{fig:mc_sample1}. 
+at the source, we obtain an example of the ray distribution on the $(\variabile{x}_1, \optangle_1)$-plane shown in Figure \ref{fig:mc_sample1}. 
 Since the rays are chosen randomly, the distribution at the source could be different from the one shown in this figure.
 \begin{figure}[h]
 \begin{center}
@@ -281,7 +280,6 @@ Since the rays are chosen randomly, the distribution at the source could be diff
 \end{center}
   \end{figure}
 \\ \indent For the intensity computation we consider a sample of $10^4$ random rays and we divide the target target $\point{T} = [-\variabile{b}, \variabile{b}]$ into $\nbin= 100$ bins.
-%Using Eq. (\ref{g_mc}), the normalized intensity $I_{\const{MC}}$ is computed. $I_{\const{MC}}$  is a piecewise constant function, therefore the averaged normalized intensity  $\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})$ is given considering the values that the intensity $I_{\const{MC}}$ assumes on the middle point $(\optangle_{\variabile{j}-1/2})_{\variabile{j} = 0, \cdots, \nbin}$ of every bin of the partitioning $P_1$. 
 The profile of $\hat{I}_{\const{MC}}$ is depicted in Figure \ref{fig:mc_intensity} with the red line. The exact intensity is shown with the green line in the same figure.
 \begin{figure}[t]
 \begin{center}
@@ -291,24 +289,25 @@ The profile of $\hat{I}_{\const{MC}}$ is depicted in Figure \ref{fig:mc_intensit
 \end{center}
 \end{figure}
 MC ray tracing has the advantages of being very easy to implement and it does not require too much regularity of the function that has to be approximated. Furthermore, the error convergence does not depend on the dimension of the domain in which the function is defined.
-On the other hand, the MC method is time consuming as the error, for a fixed number of bins, has a speed of convergence of order $O(1/\sqrt{\const{Nr}})$. 
+On the other hand, the MC method is time consuming as the error has a speed of convergence of order $\mathcal{O}(1/\sqrt{\nrays})$ for a large number of rays and a fixed number of bins. 
 Thus, to decrease the error of a factor $10$ we need to increase the number of rays by a factor $100$.
 Since MC ray tracing is a binning procedure, the error depends also on the number of bins in which the target is divided. Finally we remark that the error bound is only a \emph{probabilistic} error as shown in Equation (\ref{eq:mean_error}). This means that, to calculate the value of the error, several simulations have to be repeated and the average of the errors obtained in every simulation has to be calculated. \\ \indent 
 The MC noise can be reduced considering a different distribution of the initial rays set.
-Instead of considering random variable the sample of rays can be defined such that they are regularly distributed on the domain $D\subseteq\mathbb{R}^2$ of $f$. Methods based on this deterministic approach are called Quasi-Monte Carlo (QMC) methods. The ray tracing procedure that considers such rays distribution is called QMC ray tracing.
+Instead of considering random variables, the sample of rays can be defined such that they are regularly distributed on the domain $\mbox{\insieme{D}}\subseteq\mathbb{R}^2$ of $f$. Methods based on this deterministic approach are called Quasi-Monte Carlo (QMC) methods. The ray tracing procedure that considers such rays distribution is called QMC ray tracing.
 \section{Quasi-Monte Carlo ray tracing}\label{sec:QMC}
 As in the previous section we first introduce QMC methods and then we briefly explain QMC ray tracing. QMC methods were proposed for the first time in the 1950s in order to speed up MC. Like MC methods, QMC procedures can be used to approximate the integral of a function $f$ using the approximation in (\ref{eq:approx_MC_QMC}).\\ \indent
 This section provides basic the notions about uniform distribution theory following the Chapter $2$ of \cite{leobacher2014introduction}. 
-It is useful to restrict ourselves to sets of the form $[\vect{a}, \vect{b})= [a_1,b_1)\times[a_2, b_2)\subseteq[0,1)^2$ and introduce the concept of sequences uniformly distributed modulo $1$.
+We restrict ourselves to sets of the form $$[\vect{a}, \vect{b})= [a_1,b_1)\times[a_2, b_2)\subseteq[0,1)^2$$ and introduce the concept of sequences uniformly distributed modulo $1$.
 \begin{definition}
 An infinite sequence $\{\vect{y}_\variabile{n}\}_{\variabile{n}\in\mathbb{N}_0} \in [0,1)^2$ is said to be \textit{uniformly distributed modulo $1$} (or equidistributed), if for every subset $[\vect{a},\vect{b})\subseteq[0,1)^2$
 \begin{equation}
-\lim_{N\rightarrow \infty}\frac{\textrm{card}(A([\vect{a},\vect{b}), N))}{N} = \lambda([\vect{a},\vect{b}))
+\lim_{N\rightarrow \infty}\frac{\textrm{card}(\mbox{\insieme{A}}([\vect{a},\vect{b}), N))}{N} = \lambda([\vect{a},\vect{b}))
 \end{equation}
-where $\textrm{card}(A([\vect{a},\vect{b}), N))$ is the cardinality of the following set
+where $\textrm{card}(\insieme{A}([\vect{a},\vect{b}), N))$ is the cardinality of the following set
 \begin{equation}
-A([\vect{a},\vect{b}), N) = \{\variabile{n}\in \mathbb{N}_0 | 0\leq\variabile{n}\leq \const{N}-1 \mbox{ and } \vect{y}_{\variabile{n}}\in [\vect{a},\vect{b})\}\,,
-\end{equation} that is the number of $\vect{y}_{\variabile{n}}$ such that $\vect{y}_{\variabile{n}}\in [\vect{a},\vect{b})$ and $\lambda([\vect{a},\vect{b})) =(b_1-a_1)\times (b_2-a_2)$.
+\mbox{\insieme{A}}([\vect{a},\vect{b}), N) = \{\variabile{n}\in \mathbb{N}_0 | 0\leq\variabile{n}\leq \const{N}-1 \mbox{ and } \vect{y}_{\variabile{n}}\in [\vect{a},\vect{b})\}\,,
+\end{equation} 
+that is the number of $\vect{y}_{\variabile{n}}$ such that $\vect{y}_{\variabile{n}}\in [\vect{a},\vect{b})$ and $\lambda([\vect{a},\vect{b})) =(b_1-a_1)\times (b_2-a_2)$.
 \end{definition}
 Given a sequence $\{\vect{y}_\variabile{i}\}_{\variabile{i} = 1, \cdots, N}\in[0,1)^2$ uniformly distributed modulo $1$ and a 
 Riemann integrable function $f:[0,1]^2\rightarrow \mathbb{R}$, the integral of $f$ can be approximated as the average of the values that $f$ assumes on $\{\vect{y}_\variabile{i}\}$ for every $\lineai=\{1, \cdots, N\}$, that is:
@@ -316,49 +315,49 @@ Riemann integrable function $f:[0,1]^2\rightarrow \mathbb{R}$, the integral of $
  \lim_{N\rightarrow \infty}\frac{1}{N}\sum_{\variabile{i}=1}^{N}f(\variabile{y}_{\variabile{i}}) = \int_{[0,1]^2}f(\vect{y})\textrm{d}\vect{y}.
 \end{equation}
 The idea of QMC methods is to generate the set of points $\vect{y}_{\variabile{i}}$ in $[\vect{a},\vect{b})$ such that they are not randomly distributed but also not exactly uniformly distributed. 
-To measure how much the distribution of these points differs from a uniform distribution, the concept of discrepancy was introduced. 
-Intuitively, discrepancy measures how much the samples differ from a uniform distribution. 
-Therefore, random sequences have a very high discrepancy, while uniformly distributed sequences have zero discrepancy. 
-\textit{Low-discrepancy sequences} are sequences with a low discrepancy \cite{owen2003quasi}. A discrepancy of a sequence is \textit{low} if the portion of points of the sequences belonging to an arbitrary set is close to the measure of that set.
+To measure how much the distribution of these points differs from a uniform distribution, the concept of discrepancy was introduced.  
+Random sequences have a very high discrepancy, while uniformly distributed sequences have zero discrepancy. 
+\textit{Low-discrepancy sequences} are sequences with a low discrepancy \cite{owen2003quasi} where a discrepancy of a sequence is \textit{low} if the portion of points of the sequences belonging to an arbitrary set is close to the measure of that set.
 The definition of discrepancy in more mathematical terms is provided next. 
 \begin{definition}
-Given a set $\mathcal{S} = \{\vect{y}_1, \cdots, \vect{y}_\const{N}\}$ of $\const{N}$ points in $[0,1)^2$. The discrepancy $D_\const{N}({\mathcal{S}})$ of $\mathcal{S}$ is defined as
+Given a set $\mbox{\insieme{Y}} = \{\vect{y}_1, \cdots, \vect{y}_N\}$ of $N$ points in $[0,1)^2$. The discrepancy $D_N(\mbox{\insieme{Y}})$ of $\mbox{\insieme{Y}}$ is defined as
 \begin{equation}
-D_\const{N}({\mathcal{S}}) = \sup_{\vect{a}, \vect{b}\in[0,1)^2}\Big|\frac{\textrm{card}(A([\vect{a},\vect{b}), \const{N}))}{\const{N}}-\lambda([\vect{a}, \vect{b}))\Big|
+D_N(\mbox{\insieme{Y}}) = \sup_{\vect{a}, \vect{b}\in[0,1)^2}\Big|\frac{\textrm{card}(\mbox{\insieme{A}}([\vect{a},\vect{b}), N))}{N}-\lambda([\vect{a}, \vect{b}))\Big|
 \end{equation}
-\end{definition}
+\end{definition} 
 Often, it is enough to consider the discrepancy in the subset $[\vect{a},\vect{b})\subseteq[0,1)^2$ with $\vect{a}=0$, in which case we talk about star discrepancy.
  \begin{definition}
-Let $\mathcal{S} = \{\vect{y}_1, \cdots, \vect{y}_N\}$ be a set of $N$ points in $[0,1)^2$. The  star discrepancy $D^*_N({\mathcal{S}})$ of $\mathcal{S}$ is defined as:
+Let $\mbox{\insieme{Y}} = \{\vect{y}_1, \cdots, \vect{y}_N\}$ be a set of $N$ points in $[0,1)^2$. The  star discrepancy $D^*_N(\mbox{\insieme{Y}})$ of $\mbox{\insieme{Y}}$ is defined as:
 \begin{equation}
-D^*_N({\mathcal{S}}) = \sup_{\vect{b}\in[0,1)^2}\Big|\frac{\textrm{card}(A([0,\vect{b}), N))}{N}-\lambda([0, \vect{b}))\Big|.
+D^*_N(\mbox{\insieme{Y}}) = \sup_{\vect{b}\in[0,1)^2}\Big|\frac{\textrm{card}(\mbox{\insieme{A}}([0,\vect{b}), N))}{N}-\lambda([0, \vect{b}))\Big|.
 \end{equation}
-%where $\chi_{[0,\point{a})}(\variabile{y}_\variabile{i})$ is the indicator function of $[0,\point{a})\subseteq [0.1)^d$ and $\lambda_d([0, \point{a})) = \prod_{\variabile{j}=1}^d \point{a}_\variabile{j}$ denotes the the $d$-dimensional Lesbegue measure. For intervals of the form $[\point{a}, \point{b})\subseteq [0.1)^d$ we have $\lambda_d([\point{a}, \point{b}))=\prod_{\variabile{j}=1}^{d}(\point{b}_\variabile{j}-\point{a}_\variabile{j})$.
+where $\lambda([0, \point{b})) = \variabile{b}_1\;\variabile{b}_2$. 
+%For intervals of the form $[\point{a}, \point{b})\subseteq [0.1)^d$ we have $\lambda_d([\point{a}, \point{b}))=\prod_{\variabile{j}=1}^{d}(\point{b}_\variabile{j}-\point{a}_\variabile{j})$.
 \end{definition}
 % Maybe add a picture
 %Sequences constructed such that the corresponding star discrepancy is of the order of $\mathcal{O}(\log(N)^2/N)$ for $N\rightarrow\infty$ are called \textit{low-discrepancy sequences}, \cite{owen2003quasi}.
-An important result shows that, using a low-discrepancy sequence $\{\vect{y}_{\variabile{i}}\}_{\variabile{i}=1, \cdots, \const{N}}$, the absolute error of a QMC algorithm in two dimensions:
+An important result shows that, using a low-discrepancy sequence $\{\vect{y}_{\variabile{i}}\}_{\variabile{i}=1, \cdots, N}$, the absolute error of a QMC algorithm in two dimensions:
 \begin{equation}
-\const{err}(f, S_{\const{N}}) =\Bigg|\int_{[0,1)^2}f(\vect{y}) \textrm{d}\vect{y}-\frac{1}{\const{N}}\sum_{\variabile{i}=1}^{\const{N}}f(\vect{y}_\variabile{i})\Bigg|
+\const{err}(f, S_{N}) =\Bigg|\int_{[0,1)^2}f(\vect{y}) \textrm{d}\vect{y}-\frac{1}{N}\sum_{\variabile{i}=1}^{N}f(\vect{y}_\variabile{i})\Bigg|
 \end{equation}
  can be bounded by the product of a term that depends on $f$ and another term that depends on the discrepancy of the set $\{\vect{y}_{\variabile{i}}\}_{\variabile{i}=1, \cdots, N}.$ This is the result provided by the Koksma-Hlawka inequality which gives the following estimation of the error:
 \begin{equation}\label{eq:QMC_error}
-|\const{err}(f, S_{N})|= \Bigg|\int_{[0,1)^2}f(\vect{y}) \textrm{d}\vect{y}-\frac{1}{N}\sum_{\variabile{i}=1}^{N}f(\vect{y}_\variabile{i})\Bigg|\leq V(f)D^*_N({\mathcal{S}}),
+|\const{err}(f, S_{N})|= \Bigg|\int_{[0,1)^2}f(\vect{y}) \textrm{d}\vect{y}-\frac{1}{N}\sum_{\variabile{i}=1}^{N}f(\vect{y}_\variabile{i})\Bigg|\leq V(f)D^*_N(\mbox{\insieme{Y}}),
 \end{equation}
 % Explain better the variation function owen2005multidimensional
 where $V(f)$ is the so-called variation function of $f$ in the sense of Hardy-Krause (see \cite{brandolini2013koksma} for details). 
-The previous equation shows that for a function $f$ with finite variation $V(f)$ QMC methods performs much better than MC. However, Equation (\ref{eq:QMC_error}) is not good for predicting when this will happen because $V(f)$ is hard to estimate and in some cases is infinite \cite{wang2008low}. 
+The previous equation shows that for a function $f$ with finite variation $V(f)$, QMC methods perform much better than MC. However, Equation (\ref{eq:QMC_error}) is not good for predicting when this will happen because $V(f)$ is hard to estimate and in some cases is infinite \cite{wang2008low}. 
 %Schlier [32] reports that even for QMC the variance of f is more strongly related to the error than is the variation.
 For the functions we analyze in this thesis the corresponding variation function is always bounded. 
-The convergence of QMC methods strongly depends on the low-discrepancy sequence that is used.\\ \indent
+Therefore, the convergence of QMC methods strongly depends on the low-discrepancy sequence that is used.\\ \indent
 There are many ways to generate low-discrepancy sequences \cite{dalal2008low}. The most common QMC approach uses the so-called Sobol sequence. The algorithm for generating Sobol sequences is widely explained in the literature, (see for instance \cite{bratley1988algorithm}). In appendix \ref{app:Sobol} we give an overview of how these kind of sequences can be constructed. When using Sobol sequences QMC error can be estimated by:
 \begin{equation}
-\const{err}(f, S_{N})<C \frac{\log(N)^2}{N}, 
+\const{err}(f, S_{N})<\const{C} \frac{\log(N)^2}{N}, 
 \end{equation}
-for some $C>0$.
+for some $\const{C}>0$.
 For higher dimensions $d>2$, the general relation holds
 \begin{equation}
-\const{err}(f, S_{N})<C \frac{\log(N)^d}{N}.
+\const{err}(f, S_N)<\const{C} \frac{\log(N)^d}{N}.
 \end{equation}
 %For small dimensions, QMC performs much better than MC methods, while for large dimension the factor $\log(\const{N})$ could be very big. 
 % In the following we show a particular construction of a low-discrepancy sequence for $d=1$ that was introduced the first time by Van der Corput in 1935.  
@@ -395,14 +394,14 @@ For higher dimensions $d>2$, the general relation holds
 \\ \indent Ray tracing based on QMC methods considers as position and angular coordinates of the rays at the source, the coordinates of the corresponding points of a low-discrepancy sequence. 
 Therefore, to implement QMC ray tracing in two-dimensions we need to construct a low-discrepancy sequence in two-dimensions.  
 Given, for instance, a Sobol sequence $\{\vect{y}_{\variabile{i}}\}_{\variabile{i}=1, \cdots, N}$ with $\vect{y}_\variabile{i}\in[0,1)^2$ for every $\variabile{i}=1, \cdots, N$, the two dimensional QMC ray tracing the coordinates $(\variabile{x}_1^{\variabile{i}}, \optangle_1^{\variabile{i}})$ of the $\variabile{i}$-th ray at the source equal to those of the $\variabile{i}$-th points of the sequence, i.e., $(\variabile{x}_1^{\variabile{i}}, \optangle_1^{\variabile{i}})=\vect{y}_{\variabile{i}}$. A set of $\nrays = N$ rays with these initial coordinates is traced within the system and the target coordinates of all the rays traced are computed. \\ \indent 
-Similarly to MC ray tracing, the averaged and normalized QMC intensity $\hat{I}_{\const{MC}}$ is given by the approximation in (\ref{eq:approx_MC_QMC}), where now the variable $\vect{y}$ is a variable of the Sobol sequence instead of a random variable. Therefore, the target is divided into $\nbin$ bins and the averaged number of rays that follow into each bin is considered. The intensity is still a piecewise constant function, and its value over every bin $[\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}})_{\variabile{j}=1, \cdots, \nbin}$ is given by the intensity $I(\optangle_{\variabile{j}-1/2})$ calculated along the direction $\optangle_{\variabile{j}-1/2}$ (middle point of the bin). The only difference between MC and QMC ray tracing consists on the choice of the initial ray set. Thus, we expect that QMC and MC ray tracing have the same dependence of the error as a function of the number of bins $\nbin$. More precisely, since the discretization error (first term on the right hand side of inequality (\ref{eq:error_int})) does not depend on MC noise, we expect that it does not change for QMC error. Regarding the second terms on the right hand side of inequality (\ref{eq:error_int})), we showed in the previous section that it depends on the standard deviation of the approximated intensity $\hat{I}_{\const{MC}}$ and on the number of bins. Hence, indicating with $I(\optangle_{\variabile{j}-1/2})$ the exact value of the intensity at direction $\optangle_{\variabile{j}-1/2}$, we can predict that the QMC error over every bin is estimated by:
+Similarly to MC ray tracing, the averaged and normalized QMC intensity $\hat{I}_{\const{QMC}}$ is given by the approximation in (\ref{eq:approx_MC_QMC}), where now the variable $\vect{y}$ is a variable of the Sobol sequence instead of a random variable. Therefore, the target is divided into $\nbin$ bins and the averaged number of rays that follow into each bin is considered. The intensity is still a piecewise constant function, and its value over every bin $[\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}})_{\variabile{j}=1, \cdots, \nbin}$ is given by the intensity $\hat{I}_{\textrm{QMC}}(\optangle_{\variabile{j}-1/2})$ calculated along the direction $\optangle_{\variabile{j}-1/2} = \frac{(\optangle_{\variabile{j}-1}+\optangle_{\variabile{j}})}{2}$ (middle point of the bin). The only difference between MC and QMC ray tracing consists on the choice of the initial ray set. Thus, we expect that QMC and MC errors have the same dependence on the number of bins $\nbin$. More precisely, since the discretization error (first term on the right hand side of inequality (\ref{eq:error_int})) does not depend on MC noise, we expect that it does not change for QMC error. Regarding the second terms on the right hand side of inequality (\ref{eq:error_int}), we showed in the previous section that it depends on the standard deviation of the approximated intensity and on the number of bins. Hence, indicating with $I(\optangle_{\variabile{j}-1/2})$ the exact value of the intensity at direction $\optangle_{\variabile{j}-1/2}$, we can predict that the QMC error over every bin is estimated by:
 \begin{equation} \begin{aligned}
 \Big|I(\optangle_{\variabile{j}-1/2})&-\frac{\Phi}
-{\Delta\optangle}I_{\const{QMC}}(\optangle_{\variabile{j}-1/2})\Big| \leq
+{\Delta\optangle}\hat{I}_{\const{QMC}}(\optangle_{\variabile{j}-1/2})\Big| \leq
 \frac{\const{C}_1}{\nbin^2} + \const{C}_2\nbin\frac{\log(\nrays-\nbin)^2}{\nrays},
 \end{aligned}
 \end{equation}
-for some $C_1>0$ and $C_2>0$.
+for some $\const{C}_1>0$ and $\const{C}_2>0$.
 \\ \indent
 In Figure \ref{fig:qmc_sample1} we show the distribution of the position and direction coordinates of the rays at the source of the two-faceted cup in Figure \ref{fig:cup}. 
 A set of $10^3$ rays generated from a $2D$ Sobol sequence is considered, the coordinates $(\variabile{x}_1, \optangle_1)$ of every ray at the source are depicted with blue dots.
@@ -425,7 +424,7 @@ A comparison between Figure \ref{fig:mc_intensity} and \ref{fig:qmc_intensity} s
 % Explain the speed of convergence
 The speed of convergence for MC is shown in Figure \ref{fig:Error_cup} with the red, while the behavior of QMC ray tracing is depicted in the same picture with the blue line.
 The results shown for a simple optical system are indeed consistent with what we expected from the theoretical analysis.
-\\\indent Although QMC ray tracing is an improvement of MC ray tracing for small dimensions, it has two main disadvantages. 
+\\\indent Although QMC ray tracing is an improvement of MC ray tracing for small dimensions, it has still two main disadvantages. 
 First, its convergence is strongly related with the dimension in which it is implemented.
 Second, likewise MC ray tracing, QMC ray tracing is a binning procedure, therefore the error still depends on the number of bins in which the target is divided and only the averaged value of the intensity over every bin is provided.
 \begin{figure}[t]
@@ -444,7 +443,7 @@ QMC ray tracing convergence is of the order $\mathcal{O}(1/\nrays)$ and it is de
     \label{fig:Error_cup}
 \end{center}
   \end{figure}
- \\\ \indent
+ \\ \indent
 From the results provided in this chapter we can conclude that the choice of the initial ray set can make a big impact on the performance of the ray tracing procedure. 
 Based on the idea of taking a smart choice of the initial ray set, we develop a new ray tracing method which is based on phase space. 
 The phase space (PS) concept will be introduced in the next chapter. The new ray tracing method employs the PS of the source and the target of the optical systems.
