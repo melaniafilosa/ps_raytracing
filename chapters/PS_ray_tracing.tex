@@ -121,7 +121,7 @@ As mentioned in the previous paragraph, for some optical systems $\map{M}{}{}$ i
 Nevertheless, given a path $\Pi$, the restriction of $\map{M}{}{}$ to \insieme{R}$_\textrm{s}$, 
 i.e., $\map{M}{}{}(\Pi): \mbox{\insieme{R}}_\textrm{s}(\Pi)\mapsto 
 \mbox{\insieme{R}}_\textrm{t}(\Pi)$ is a continuous and bijective map. 
-The edge ray principle guarantees that $\map{M}{}{}(\Pi)$ maps \set{R}{\textrm{s}}{}$(\Pi)$ onto \set{R}{\textrm{t}}{}$(\Pi)$ preserving topological features. In particular, the boundary $\partial$\set{R}{\textrm{s}}{}$(\Pi)$ is mapped onto the boundary $\partial$\set{R}{\textrm{t}}{}$(\Pi)$. %, see \cite{Ries, Davies, Minano}.
+The edge ray principle guarantees that $\map{M}{}{}(\Pi)$ maps $\mbox{\insieme{R}}_\textrm{s}(\Pi)$ onto $\mbox{\insieme{R}}_\textrm{t}(\Pi)$ preserving topological features. In particular, the boundary $\partial\mbox{\insieme{R}}_\textrm{s}(\Pi)$ is mapped onto the boundary $\partial$\insieme{R}$_\textrm{t}(\Pi)$. %, see \cite{Ries, Davies, Minano}.
 Employing the maps $\map{M}{}{}(\Pi)$ for all the possible paths $\Pi$, the output light distribution is determined. Therefore, the photometric variables at the target can be calculated.
 \\ \indent The luminance $L(\variabile{q}, \variabile{p})$ at the target PS is given by:
 \begin{equation}
@@ -273,14 +273,14 @@ For this optical system, the width of the $\variabile{q}_1$-axis in source PS is
 Thus, our choice is $\varepsilon_\variabile{p}^{\textrm{min}}=\frac{1}{2}\varepsilon_\variabile{q}^{\textrm{min}}$ and $\varepsilon_\variabile{p}^{\textrm{max}} = \frac{1}{2}\varepsilon_\variabile{q}^{\textrm{max}}$
 with $\varepsilon_\variabile{q}^{\textrm{min}}=0.1$ and $\varepsilon_\variabile{q}^{\textrm{max}}=1$.
  \begin{figure}[h]
- \begin{minipage}[t]{0.48\textwidth}
+ \begin{minipage}[h]{0.48\textwidth}
 \centering
     \includegraphics[width=0.95\textwidth]{Triangulation_left}
     \caption{\textbf{Left triangulation refinement.} The algorithm used is the recursive function L$\footnotesize{\textrm{EFT}}$ T$\footnotesize{\textrm{RIANGLE}}$.}
     \label{fig:triangulation_left}
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.48\textwidth}
+\begin{minipage}[h]{0.48\textwidth}
 \centering
     \includegraphics[width = 0.95\textwidth]{Triangulation_right}
     \caption{\textbf{Right triangulation refinement.} The algorithm used is the recursive function R$\footnotesize{\textrm{IGHT}}$ T$\footnotesize{\textrm{RIANGLE}}$.}
@@ -293,10 +293,10 @@ with $\varepsilon_\variabile{q}^{\textrm{min}}=0.1$ and $\varepsilon_\variabile{
   \end{center}
   \caption{\textbf{Triangulation refinement of source phase space.} 
 Near the boundaries more rays are traced.
-    The values of the parameters are $\varepsilon_{\variabile{q}_1^\textrm{min}}~=~ 0.1$ and $\varepsilon_{\variabile{q}_1^\textrm{max}}~=~1$.}
+    The values of the parameters are $\varepsilon_{\variabile{q}_1}^\textrm{min}~=~ 0.1$ and $\varepsilon_{\variabile{q}_1}^\textrm{max}~=~1$.}
    \label{fig:triangulation_refinement}
   \end{figure}
-\\ \indent The triangulation refinement allows finding \textit{all} the possible paths $(\Pi_\variabile{j})_{\variabile{j} = 1, \cdots, \npath}$ are their corresponding regions \set{R}{\textrm{s}}{}$(\Pi_\variabile{j})_{\variabile{j} = 1, \cdots, \npath}$. Using the edge-ray principle, we conclude that also the regions $\mbox{\insieme{R}}_\textrm{t}(\Pi_\variabile{j})_{\variabile{j} = 1, \cdots, \npath}$ at the target are determined and only the rays close to the boundaries
+\\ \indent The triangulation refinement allows finding \textit{all} the possible paths $(\Pi_\variabile{j})_{\variabile{j} = 1, \cdots, \npath}$ are their corresponding regions \insieme{R}$_\textrm{s}(\Pi_\variabile{j})_{\variabile{j} = 1, \cdots, \npath}$. Using the edge-ray principle, we conclude that also the regions $\mbox{\insieme{R}}_\textrm{t}(\Pi_\variabile{j})_{\variabile{j} = 1, \cdots, \npath}$ at the target are determined and only the rays close to the boundaries
 $\partial\mbox{\insieme{R}}_\textrm{s}$ need to be considered to obtain the target ray distribution.
 \section{Conclusions}
 In this chapter we introduced the phase space concept. 

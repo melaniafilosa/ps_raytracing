@@ -31,8 +31,6 @@
 %\newcommand{\qmax}[1]{$\variabile{q}^{\textrm{\,max}}$}
 %\newcommand{\setbound}[4]{$\emph{#1}_{\textit{#2#3}}^{#4}$}
 \chapter*{List of symbols}
-
-
 \begin{longtable}{l l}
 $\Phi_{\textrm{r}}$ &{Radiant flux}\\
 $Q$ &{Total energy emitted from a light sorce or received by a target}\\
@@ -103,14 +101,13 @@ $\vect{Y}$ &{Random variable}\\
 $\vect{y}$ &{Values that a random variable assumes}\\
 $\rho(\vect{y})$ &{Probability density function}\\
 $\mathbb{E}[f]$ &{Expected value of $f$}\\
-%$S_{N}[f]$ &{}\\
 $\textrm{Var}[f] = \sigma$ &{Variance of $f$}\\
 $\sigma^2 [f]$ &{Standard deviation of $f$}\\
 $(\variabile{x}_{\lineai}, \variabile{z}_{\lineai})$ 
 &{Position coordinates of the on line $\lineai$ of the $\lineai$-th ray traced}\\
 $\optangle_\lineai$ &{Angular coordinate of the $\lineai$-th ray traced}\\
-$\hat{I}_{\textrm{MC}}$ &{Averaged Monte Carlo intensity}\\
-$\hat{I}_{\textrm{QMC}}$ &{Averaged Quasi-Monte Carlo intensity}\\
+$\hat{I}_{\textrm{MC}}$ &{Averaged and normalized Monte Carlo intensity}\\
+$\hat{I}_{\textrm{QMC}}$ &{Averaged and normalized Quasi-Monte Carlo intensity}\\
 $\textrm{card}(\mbox{\insieme{A}})$ &{Cardinality of the set $\insieme{A}$}\\
 $D_{N}(\mbox{\insieme{Y}})$ &{Discrepancy of the finite set $\insieme{Y}$ of $N$ points.}\\
 $D_{N}^*(\mbox{\insieme{Y}})$ &{Discrepancy of the finite set $\insieme{Y}$ of $N$ points.}\\
@@ -126,17 +123,23 @@ $(\variabile{q}, \variabile{q})$
 &{Coordinates of the ray on target PS \insieme{T}}\\
 $\Pi$ &{Ray path}\\
 $\map{M}{}{}$ &{Ray mapping form source to target PS}\\
-\insieme{R}$_\textrm{s}$ &{Regions in source PS related to path $\Pi$}\\
-\insieme{R}$_\textrm{t}$ &{Positive luminance regions in target PS related to path $\Pi$}\\
+\insieme{R}$_\textrm{s}(\Pi)$ &{ $\mbox{\insieme{R}}_1(\Pi)$ Regions in source PS related to path $\Pi$}\\
+\insieme{R}$_\textrm{t}(\Pi) $ &{$\mbox{\insieme{R}}_\textrm{t}(\Pi)$ Positive luminance regions in target PS related to path $\Pi$}\\
 $(\variabile{q}_1^{\variabile{k}}, \variabile{p}_1^{\variabile{k}})$ 
 &{Source PS coordinates of the \variabile{k}-th ray traced}\\
 $\Pi^{\variabile{k}}$ &{Path followed by the \variabile{k}-th ray traced}\\
 $\npath$ &{Number of paths}\\
-$(\Pi_{\variabile{j}})_{\variabile{j}=1, \cdots, \npath}$ &{\variabile{j}-th possible path}\\
+$\hat{I}_{\textrm{PS}}(\variabile{p})$ &{Averaged and normalized phase space intensity at the target}\\
+$\hat{I}_{\textrm{exact}}(\variabile{p})$ & {Exact averaged and normalized target intensity} \\
+$\hat{I}_{\textrm{ref}}(\variabile{p})$ & {Reference averaged and normalized target intensity} \\
+$\Pi_{\variabile{j}}$ &{\variabile{j}-th possible path ($\variabile{j}=1, \cdots, \npath$)}\\
 $\varepsilon_\variabile{q}^\textrm{min}$ & {Minimum triangulation parameter for the $\variabile{q}$-axis}\\
 $\varepsilon_\variabile{p}^\textrm{min}$ & {Minimum triangulation parameter for the $\variabile{p}$-axis}\\
 $\varepsilon_\variabile{q}^\textrm{max}$ & {Maximum triangulation parameter for the $\variabile{q}$-axis}\\
 $\varepsilon_\variabile{p}^\textrm{max}$ & {Maximum triangulation parameter for the $\variabile{p}$-axis}\\
+$\variabile{q}^\variabile{i}(\Pi, \variabile{p})$ &{$\variabile{q}$-coordinate on $\partial\mbox{\insieme{R}}(\Pi)$ along direction $\variabile{p}$}\\
+$\variabile{q}^\textrm{min}(\Pi, \variabile{p}) $ &{Minimum $\variabile{q}$-coordinate on $\partial\mbox{\insieme{R}}(\Pi)$ along direction $\variabile{p}$}\\
+$\variabile{q}^\textrm{max}(\Pi, \variabile{p}) $ &{Maximum $\variabile{q}$-coordinate on $\partial\mbox{\insieme{R}}(\Pi)$ along direction $\variabile{p}$}\\
 \insieme{T} &{Triangulation in $\mathbb{R}^2$}\\
 \insieme{T}$^{\prime}$ &{Delaunay triangulation in $\mathbb{R}^2$}\\
 \insieme{V}$_{\variabile{i}}$ &{Voronoi cell}\\
@@ -147,44 +150,25 @@ $\varepsilon_\variabile{p}^\textrm{max}$ & {Maximum triangulation parameter for 
 $\variabile{j}$ with $\variabile{i}\neq \variabile{j}$ \\
 $\pos{s,}{i}$ & Position coordinates of the rays on \set{S}{i}{} \\
 $\pos{t,}{j}$ & Position coordinates of the rays on \set{T}{j}{} \\
-
-%\set{Q}{}{} & Set of the position coordinates of the rays\\
-%\set{P}{}{} & Set of the direction coordinates of the rays\\
-%\set{S}{i,}{j} & Part of \set{S}{i}{} that illuminates line $\var{j}$ with $\var{i}\neq \var{j}$\\
-%
-
-%$\vect{$\nu$}_\var{i}$ & Normal to line $\var{i}$\\
-%$\pos{s,}{i}$ & Position coordinates of the rays on \set{S}{i}{} \\
-%$\pos{t,}{j}$ & Position coordinates of the rays on \set{T}{j}{} \\
+$\vect{$\nu$}_\variabile{i}$ & Normal to line $\variabile{i}$\\
 %$\tau_{\var{i}}$ & Angle between the ray that hits line $\var{i}$ and the normal $\vect{$\nu$}_\var{i}$, measured counterclockwise.\\
-%$\dir{s,}{i}$ & Direction coordinates on \set{S}{i}{}, $\dir{s,}{i} = n_\var{i}\sin(\tau_{\var{i}})$ \\
-%$\dir{t,}{i}$ & Direction coordinates on \set{T}{i}{}, $\dir{s,}{i} = n_\var{i}\sin(\tau_{\var{i}})$ \\
-%$\Pi$ & Path followed by the rays \\
-%\set{R}{}{}($\Pi$) & Regions in target phase space formed by the rays that follow the path $\Pi$, \set{R}{}{}($\Pi$)$\subset$\set{T}{Nl}{} \\
-%\map{M}{$1$,}{\textrm{Nl}} & Map from \set{S}{$1$}{} into \set{T}{Nl}{} \\
-%\map{M}{$1$,}{\textrm{Nl}}($\Pi$) & Map from \set{S}{$1$}{} to \set{R}{}{}($\Pi$)
-%\\
-%\map{P}{i,}{j} & Propagation map from \set{S}{i}{} to \set{T}{j}{}
-%\\
-%\map{R}{j}{} & Reflection map from \set{T}{j}{} to \set{S}{j}{}
-%\\
+$\dir{s,}{i}$ & Direction coordinates on \set{S}{i}{}, $\dir{s,}{i} = n_\variabile{i}\sin(\tau_{\variabile{i}})$ \\
+$\dir{t,}{i}$ & Direction coordinates on \set{T}{i}{}, $\dir{s,}{i} = n_\variabile{i}\sin(\tau_{\variabile{i}})$ \\
+$\map{M}{$1$,}{\mbox{\textrm{Nl}}}$ & Map from \set{S}{$1$}{} into \set{T}{Nl}{} \\
+$\map{M}{$1$,}{\mbox{\textrm{Nl}}}(\Pi)$ & Map from \set{S}{$1$}{} to \set{R}{}{}($\Pi$)\\
+$\map{P}{i,}{j}$ & Propagation map from \set{S}{i}{} to \set{T}{j}{}\\
+$\map{R}{j}{}$ & Reflection map from \set{T}{j}{} to \set{S}{j}{}\\
 %$\var{q}^\textrm{\,min}(\Pi,\var{p})$ & Minimum position coordinate on $\partial$\set{R}{}{}($\Pi$) along the direction $\var{p}$.
 %\\
 %$\var{q}^\textrm{\,max}(\Pi,\var{p})$ & Maximum position coordinate on $\partial$\set{R}{}{}($\Pi$) along the direction $\var{p}$.\\
 %$\pos{t,}{j}^\textrm{\,min}(\dir{}{})$ & Minimum position coordinate on \set{T}{j}{} with momentum $\dir{}{}$\\
 %$\pos{t,}{j}^ \textrm{\,max}(\dir{}{})$ & Maximum position coordinate on \set{T}{j}{} with momentum $\dir{}{}$\\
-%$\var{u}_{\var{j},\var{i}}^\textrm{\,min}(\dir{}{})$ & Minimum position coordinate of the intersection points of $\var{p}=\var{p}_{\textrm{t}, \var{j}}$ 
-%with $\partial$\set{T}{j,}{i} \\
-%$\var{u}_{\var{j},\var{i}}^\textrm{\,max}(\dir{}{})$ & Maximum position coordinate of the intersection points of $\var{p}=\var{p}_{\textrm{t}, \var{j}}$
-%with $\partial$\set{T}{j,}{i} \\
-%$\var{v}_{\var{j},\var{i}}^\textrm{\,min}$ & $\max(\pos{j,}{i}^\textrm{\,min},\var{u}_{\var{j},\var{i}}^\textrm{\,min})$ \\
-%$\var{v}_{\var{j},\var{i}}^\textrm{\,max}$ & $\min(\pos{j,}{i}^\textrm{\,max},\var{u}_{\var{j},\var{i}}^\textrm{\,max})$ \\
-%$L(\var{q}, \var{p})$ & Luminance at the target \\
-%$\hat{I}_{\textrm{MC}}(\var{p})$ & Monte Carlo normalized intensity at the target \\
-%$\hat{I}_{\textrm{PS}}(\var{p})$ & Phase space averaged and normalized intensity at the target \\
-%$\hat{I}_{\textrm{ref}}(\var{p})$ & Reference normalized intensity at the target \\
-
-
+$\variabile{u}_{\variabile{j},\variabile{i}}^\textrm{\,min}(\dir{}{})$ & Minimum position coordinate on $\partial$\set{T}{j,}{i} along direction $\variabile{p}=\variabile{p}_{\textrm{t}, \variabile{j}}$ \\
+$\variabile{u}_{\variabile{j},\variabile{i}}^\textrm{\,max}(\dir{}{})$ & Maximum position coordinate on $\partial$\set{T}{j,}{i} along direction $\variabile{p}=\variabile{p}_{\textrm{t}, \variabile{j}}$ \\
+$\variabile{v}_{\variabile{j},\variabile{i}}^\textrm{\,min}$ & $\max(\pos{j,}{i}^\textrm{\,min},\variabile{u}_{\variabile{j},\variabile{i}}^\textrm{\,min})$ \\
+$\variabile{v}_{\variabile{j},\variabile{i}}^\textrm{\,max}$ & $\min(\pos{j,}{i}^\textrm{\,max},\variabile{u}_{\variabile{j},\variabile{i}}^\textrm{\,max})$ \\
+$(\variabile{q}^{\,\textrm{a}}, \variabile{p})$ &{Coordinates of the left end point of \insieme{T}}\\
+$(\variabile{q}^{\,\textrm{b}}, \variabile{p})$ &{Coordinates of the right end point of \insieme{T}}\\
 
 %$\boldsymbol{\nu}_{\lineai}$ & {Normal to the line $\lineai$}\\
 %$\optangle_\lineai$ & {Angle that the ray located on line $\lineai$ forms with respect to the optical axis}\\

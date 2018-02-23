@@ -186,21 +186,21 @@ U_\textrm{t}= \sum_\Pi{U\big(\mbox{\set{R}{}{}}(\Pi)\big)},
 \end{equation}
 with
 \begin{equation}\label{eq:etendueintegraltarget}
-U\big(\mbox{\set{R}{}{}}(\Pi)\big) = {\int\!\!\int}_{\emph{R}(\Pi)} \textrm{d}\variabile{q}\,\textrm{d}\variabile{p}.
+U\big(\mbox{\set{R}{}{}}(\Pi)\big) = {\int\!\!\int}_{\mbox{\insieme{R}}(\Pi)} \textrm{d}\variabile{q}\,\textrm{d}\variabile{p}.
 \end{equation}
-%Note that, since both the source and the target are located in air ($\n_1=1$), in Equations (\ref{eq:etendueintegralsource}) and (\ref{eq:etendueintegraltarget}), and from now on, we omit writing the index of refraction $\n_1$.
+Note that, since both the source and the target are located in air ($\n_1=1$), in Equations (\ref{eq:etendueintegralsource}) and (\ref{eq:etendueintegraltarget}), and from now on, we omit writing the index of refraction $\n_1$.
 \\ \indent In order to determine the value of $\alpha$ in the $\alpha$-shape procedure that approximates the boundaries $\partial$\set{R}{}{}$(\Pi)$ accurately, we use \'{e}tendue conservation ($U_{\textrm{t}}= U_1$). The $\alpha$-shapes method is applied to every region \set{R}{}{}$(\Pi)$ for a range of values of $\alpha$;
    for each value an approximation of the boundaries $\partial$\set{R}{}{}$(\Pi)$ is obtained and
    the intersection points $\variabile{q}^{\textrm{\,max}}(\Pi,\variabile{p})$ and $\variabile{q}^{\textrm{\,min}}(\Pi,\variabile{p})$ between $\partial$\set{R}{}{}$(\Pi)$
 and the horizontal lines $\variabile{p}=\textrm{const}$, with $\variabile{p}\in[-1,1]$, are computed for every path $\Pi$.
 Therefore Equation (\ref{eq:etendueintegraltarget}) becomes:
 \begin{equation}\label{eq:etenduetarg}
- U_\textrm{t}\big(\mbox{\set{R}{}{}}(\Pi)\big)= \int_{-1}^{1}{\Big(\variabile{q}^{\textrm{\,max}}(\Pi,\variabile{p})-\variabile{q}^{\textrm{\,min}}(\Pi,\variabile{p})\Big)} \textrm{d}\variabile{q}\,\textrm{d}\variabile{p}.
+ U_\textrm{t}\big(\mbox{\set{R}{}{}}(\Pi)\big)= \int_{-1}^{1}{\Big(\variabile{q}^{\textrm{\,max}}(\Pi,\variabile{p})-\variabile{q}^{\textrm{\,min}}(\Pi,\variabile{p})\Big)} \,\textrm{d}\variabile{p}.
 \end{equation} In case more than two intersection points between line $\variabile{p}=\textrm{const}$ and $\partial$\set{R}{}{}$(\Pi)$ occur, the previous equation needs to be generalized. Suppose that $\variabile{r}$ intersection points $\big(\variabile{q}^{\,\variabile{i}}(\Pi,\variabile{p}), \variabile{p}\big)_{\variabile{i} = 1, \cdots, \variabile{r}}$ are found. 
 Ordering their $\variabile{q}$ coordinates in ascending order, the target \'{e}tendue is calculated by:
 \begin{equation}\label{eq:etenduetarg1}
  U_\textrm{t}\big(\mbox{\set{R}{}{}}(\Pi)\big) = \sum_{\variabile{i} = 1}^{\variabile{m}}\int_{-1}^{1}
-{(\variabile{q}^{\,2\variabile{i}}(\Pi,\variabile{p})}-{\variabile{q}^{\,2\variabile{i}-1} (\Pi, \variabile{p}) )} \textrm{d}\variabile{q}\,\textrm{d}\variabile{p}\,,
+{\Big(\variabile{q}^{\,2\variabile{i}}(\Pi,\variabile{p})}-{\variabile{q}^{\,2\variabile{i}-1} (\Pi, \variabile{p}) \Big)}\,\textrm{d}\variabile{p}\,,
 \end{equation}
 where $\variabile{m}$ is the integer part of $\variabile{r}/2$. 
 The integrals in Equations (\ref{eq:etenduetarg}) and (\ref{eq:etenduetarg1}) are calculated discretizing the interval $[-1, 1]$
@@ -311,7 +311,7 @@ rays is considered and $\alpha_c = 0.06$ is chosen to compute the boundaries $\p
 \end{figure}
 Finally, we calculate the error between $\hat{I}_{\textrm{A}}$ and $\hat{I}_{\textrm{ref}}$, defined as:
 \begin{equation}\label{eq:error}
-\mbox{error} = \frac{\sum_{\variabile{h}= 1}^{\nbin}| \hat{I}_{A}(\variabile{p}^{\variabile{h}+1/2}) - \hat{I}_{\mbox{ref}}(\variabile{p}^{\variabile{h}+1/2})|}{\nbin}.
+\mbox{error} = \frac{\sum_{\variabile{h}= 1}^{\nbin}| \hat{I}_{\textrm{A}}(\variabile{p}^{\variabile{h}+1/2}) - \hat{I}_{\textrm{ref}}(\variabile{p}^{\variabile{h}+1/2})|}{\nbin}.
 \end{equation}
 The QMC and PS intensities are calculated several times increasing the number of rays to improve the accuracy.
 Table \ref{tab:table} and \ref{tab:table2} describe how the number of rays traced affects the error. 
@@ -419,7 +419,7 @@ PS error is depicted with the red line and, QMC error is depicted with the blue 
 %\end{equation}
 %and $\mu$ is called the rate of convergence and $m$ is the order of convergence. For $m\in[0,1]$ we have the linear convergence, for $m=2$ the quadratic convergence, etc. 
 %\\ \indent
-%For the TIR-collimator in Figure \ref{fig:analyticlens} we obtained a speed of convergence of the order of $\mathcal{O}\big(\frac{1}{\nrays}\big)$ for PS ray tracing versus an order of convergence of $\mathcal{O}\big(\frac{1}{\sqrt{\nrays}}\big)$ for QMC ray tracing.
+For the TIR-collimator in Figure \ref{fig:analyticlens} we obtained a speed of convergence of the order of $\mathcal{O}\big(\frac{1}{\nrays}\big)$ for PS ray tracing versus an order of convergence of $\mathcal{O}\big(\frac{1}{\sqrt{\nrays}}\big)$ for QMC ray tracing.
 \begin{figure}[t]
  \begin{center}
    \includegraphics[width=7.7cm]{error_alpha_shapes_vs_qmc_flat}
