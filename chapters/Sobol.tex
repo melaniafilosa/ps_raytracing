@@ -1,17 +1,21 @@
-\chapter{Implementation of Sobol' sequences}\label{app:Sobol}
+\chapter{Two examples of low discrepancy sequences}\label{app:Sobol}
+A lot of researchers have concentrated on the study of low discrepancy sequences widely used in QMC method. We here provide some details on two types of those sequences: The Van der Corput sequence and the Sobol sequence.
+In the following we give a brief outline of the theory reported in \cite{joe2008notes, leobacher2014introduction}.
 \section{Van der Corput sequences}
- In the following we show a particular construction of a low-discrepancy sequence for $d=1$ that was introduced the first time by Van der Corput in 1935.  
-This kind of sequences, called \textit{van der Corput} sequences, are particular interesting not only because they give an intuition of how to construct low discrepancy sequences but also because many other kind of sequences in higher dimensions are based on this one-dimensional case. Before introducing these sequences we need to give the concept of radical inverse function. Let $\const{b}\geq 2$ be an integer base. Any natural number $\variabile{n}\in \mathbb{N}_0$ can be decomposed in base $\const{b}$ as follows:
+\textit{Van der Corput} sequence takes the name by its inventor Van der Corput who introduced it the first time in 1935. In the following we show how to construct such sequence in one dimension $d=1$. This kind of sequences are particularly relevant because many other kind of sequences in higher dimensions are based on this one-dimensional case. Before going in details we give the concept of radical inverse function. \\ \indent 
+Let $\variabile{b}\geq 2$ be an integer number. Any natural number $\variabile{n}\in \mathbb{N}_0$ can be decomposed in base $\variabile{b}$ as follows:
 \begin{equation}
-\variabile{n} = \sum_{\variabile{i}=0}^\infty \variabile{d}_{\variabile{i}}\const{b}^{\variabile{i}}
+\variabile{n} = \sum_{\variabile{i}=0}^\infty \variabile{d}_{\variabile{i}}\variabile{b}^{\variabile{i}}
 \end{equation}
-where $\variabile{d}_{\variabile{i}} \in \{0, 1, \cdots, \const{b}-1\}$ are the digit numbers.
-The radical inverse function $\phi_{\const{b}}:\mathbb{N}_0\mapsto [0,1)$ in base $\const{b}$ is defined as:
+where $\variabile{d}_{\variabile{i}} \in \{0, 1, \cdots, \variabile{b}-1\}$ are called the digit numbers.
+\begin{definition}
+The \textit{radical inverse function} $\phi_{\variabile{b}}:\mathbb{N}_0\mapsto [0,1)$ in base $\variabile{b}$ is defined as:
 \begin{equation}
-\phi_{\const{b}}(\variabile{n}) = \sum_{\variabile{i}=1}^{\infty}\frac{\variabile{d}_{\variabile{i}-1}}{\const{b}^{\variabile{i}}}.
+\phi_{\variabile{b}}(\variabile{n}) = \sum_{\variabile{i}=1}^{\infty}\frac{\variabile{d}_{\variabile{i}-1}}{\variabile{b}^{\variabile{i}}}.
 \end{equation}
-As an example we provide in the following the radical inverse function $\phi_{\const{b}}(5)$ in base $\const{b} = 2$. 
-The digit expansion in base $\const{b}$ of $\variabile{n}=5$ is:
+\end{definition}
+As an example we calculate the radical inverse function $\phi_{\variabile{b}}(5)$ in base $\variabile{b} = 2$. 
+The digit expansion in base $\variabile{b}$ of $\variabile{n}=5$ is:
 \begin{equation}
 5 = 1\cdot 2^0+1\cdot 2^2.
 \end{equation}
@@ -21,24 +25,23 @@ The radical inverse function $\phi_2(5)$ is:
 \phi_2 (5) = \frac{1}{2}+\frac{1}{8} = \frac{5}{8}.
 \end{equation}
 \begin{definition}
-The Van der Corput sequence in base $\const{b}$ is defined as $\{ \phi_{\const{b}}(\variabile{n})\}_{n\in\mathbb{N}_0}$.
+The Van der Corput sequence in base $\variabile{b}$ is defined as $\{ \phi_{\variabile{b}}(\variabile{n})\}_{n\in\mathbb{N}_0}$.
 \end{definition}
 For example, suppose we have the finite sequence of numbers $\variabile{n}\in \{0, 1,\cdots, 8\}$  the corresponding Van der Corput sequence 
-$\{ \phi_{\const{b}}(\variabile{n})\}_{\variabile{n}\in \{0, 1,\cdots, 8\}}$ in base $\variabile{b}=2$ is:
+$\{ \phi_{\variabile{b}}(\variabile{n})\}_{\variabile{n}\in \{0, 1,\cdots, 8\}}$ in base $\variabile{b}=2$ is:
 \begin{equation}
 \big\{\phi_2(\variabile{n})\big\}_{\variabile{n}\in \{0, 1,\cdots, 8\}} = \Bigg\{0, \frac{1}{2}, \frac{1}{4}, \frac{3}{4}, \frac{1}{8},\frac{5}{8}, \frac{3}{8}, \frac{7}{8}, \frac{1}{16}\Bigg\} \,.
 \end{equation}
-It can be proved that the Van der Corput sequence in base $\variabile{b}$ is uniformly distributed modulo one, \cite{leobacher2014introduction}. 
+It can be proved that the Van der Corput sequence in base $\variabile{b}$ is uniformly distributed modulo one \cite{leobacher2014introduction}. 
 The van der Corput sequence has been extended to higher dimensions. 
-The most common QMC approach uses Sobol sequence which can be seen as an extended Van der Corput sequence in base $\variabile{b}=2$ .
-Sobol' sequence uses the same base $\variabile{b}=2$ for all the dimensions $\variabile{d}\geq2$. 
+Sobol sequence which can be seen as an extended Van der Corput sequence in base $\variabile{b}=2$ for every dimension $\variabile{d}\geq2$. 
 \section{Sobol' sequences}
-The aim is to generate a low-discrepancy sequence in the ipercube $[0,1]^{d}$. 
+The aim is to generate a low-discrepancy sequence in the ipercube $[0,1]^{\variabile{d}}$. 
 Let us start from the simplest case of one dimension, i.e. $d=1$. First, we need to chose a primitive polynomial $P_\variabile{j}$ of degree $\textrm{s}_\variabile{j}$ of the form
 \begin{equation}
 P_{\variabile{j}}:\variabile{x}^{\textrm{s}_{\variabile{j}}}+\variabile{a}_{1, \variabile{j}}\variabile{x}^{\textrm{s}_{\variabile{j}}-1}+\cdots+\variabile{a}_{\textrm{s}_{\variabile{j}}-1}\variabile{x}+1
 \end{equation}
-where the coefficients $\{\variabile{a}_{\variabile{i},\variabile{j}}\}_{\variabile{i}= 1, \cdots, \textrm{s}_{\variabile{j}}-1}$ are either $0$ or $1$. 
+where the coefficients $\{\variabile{a}_{\variabile{i},\variabile{j}}\}_{\variabile{i}= 1, \cdots, \textrm{s}_{\variabile{j}}-1}$ are either $0$ or $1$ \cite{joe2008constructing}. 
 Then a sequence $\{m_1,m_2,\cdots\}$ is defined such that:
 \begin{equation}\label{eq:m}
 m_{\variabile{k}, \variabile{j}} := 2\variabile{a}_{1, \variabile{j}}m_{\variabile{k}-1, \variabile{j}}\oplus 2^2a_{2, \variabile{j}}m_{\variabile{k}-2, \variabile{j}}\oplus \cdots \oplus 2^{\textrm{s}-1}\variabile{a}_{\variabile{k}-1, \variabile{j}}m_{\variabile{k}-\textrm{s}+1, \variabile{j}}\oplus 2^{\textrm{s}}m_{\variabile{k}-1, \variabile{j}}\oplus m_{\variabile{k}-\textrm{s}, \variabile{j}},
@@ -69,8 +72,8 @@ From Eq. (\ref{eq:x}) we finally find the sequence
 \begin{equation}
 \end{equation}
 \\ \indent
-The generalization of Sobol's sequence to higher dimensions $d>1$ is calculated considering a sequence where the $\variabile{i}$-th point has the form:
+The generalization of Sobol sequence to higher dimensions $d>1$ is calculated considering a sequence where the $\variabile{i}$-th point has the form:
 \begin{equation}
 \variabile{q}_{i} = (\variabile{x}_{\variabile{i}, 1},\variabile{x}_{\variabile{i}, 2} \cdots, \variabile{x}_{\variabile{i}, d}),
 \end{equation}
-where the second index of the variables $\variabile{x}_{\variabile{i}, \variabile{j}}$ it refers to the polynomial $P_{\variabile{j}}$ (with corresponding degree $\textrm{s}_{\variabile{j}}$) which is considered to calculate the direction numbers. Therefore, $d$ different sets of direction numbers are generated from a given polynomial $P_\variabile{j}$ using Eq. \ref{eq:dir_numb} and each component $\variabile{x}_{\variabile{i},\variabile{j}}$ is computed using the corresponding direction vector. 
+where the second index of the variables $\variabile{x}_{\variabile{i}, \variabile{j}}$ it refers to the polynomial $P_{\variabile{j}}$ (with corresponding degree $\textrm{s}_{\variabile{j}}$) which is considered to calculate the direction numbers. Therefore, $d$ different sets of direction numbers are generated from a given polynomial $P_\variabile{j}$ using Eq. (\ref{eq:dir_numb}) and each component $\variabile{x}_{\variabile{i},\variabile{j}}$ is computed using the corresponding direction vector. 
