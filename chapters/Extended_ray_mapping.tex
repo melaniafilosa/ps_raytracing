@@ -3,12 +3,10 @@
 In Chapter \ref{chap:raymapping1} we introduced an inverse method based on ray mapping reconstruction in PS.
 The goal was to calculate the intensity distribution at the target of optical systems. 
 The idea was to construct a map from the target \point{T} to the source \point{S} using the PS of all the optical lines which are divided into several regions.  
-The method developed in the previous chapter requires that the boundaries of these regions can be determined exactly in every PS. This is possible for systems formed by straight line segments.
-The results found show that the procedure allows tracing only the rays located exactly on the boundaries of the regions with positive luminance. From these rays, the \textit{exact} intensity was determined. \\ \indent
+The method developed in the previous chapter requires that the boundaries of these regions can be determined exactly in every PS. Therefore, also the positive luminance regions were found analytically and the \textit{exact} intensity was determined. This is possible for systems formed by straight line segments.\\ \indent
 In this chapter we extend the method to systems formed by curved lines. In this case, the boundaries of the regions that form the PS cannot be determined exactly.
 Because of this, we need to apply a numerical procedure. In particular, we develop a method that employs only the PS of the target of the system. 
-The boundaries are detected applying a bisection procedure in target PS in combination with the backward ray tracing.\\ \indent
-In this chapter we test the method for two optical systems: the TIR-collimator and a parabolic reflector. The results are presented in Section \ref{sec:TIR} and \ref{sec:PR}, respectively.
+The boundaries are detected applying a bisection procedure in target PS in combination with the backward ray tracing. The method is tested for two optical systems: the TIR-collimator and a parabolic reflector. The results are presented in Section \ref{sec:TIR} and \ref{sec:PR}, respectively.
 \section{Bisection method and backward ray tracing}\label{sec:raymapping_explanation}
 The purpose of this section is to present the generalized backward ray mapping method valid for systems formed by curved lines. 
 Given a partition $P: -1 = \variabile{p}^0<\variabile{p}^1<\cdots<\variabile{p}^{\nbin}=1$ of the interval $[-1,1]$ with $\nbin$ the number of bins in the partitioning, the intensity in target PS is given by Equation (\ref{eta2}) for every $\dir{}{}\in P$.
