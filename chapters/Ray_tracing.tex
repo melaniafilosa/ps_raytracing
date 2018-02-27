@@ -57,7 +57,7 @@ Ray tracing relates the position coordinates
 The ray tracing algorithm can be outlined as follows:
 \begin{enumerate}
 \item Indicating with $\variabile{i}$ the index of the line that rays leave, start considering a ray thet leaves the source $\point{S}$ (line \variabile{i}=1);
- \item Consider a ray with position coordinates $(\variabile{x}_\variabile{i}, \variabile{z}_\variabile{i})$ and direction $\vect{s}_\variabile{i}~=~(-\sin \optangle_\variabile{i}, \cos \optangle_\variabile{i})$, use Equation ($\ref{parametrization}$) to implement the ray parametrization $\vect{r}(\variabile{s})$;
+ \item Consider a ray with position coordinates $(\variabile{x}_\variabile{i}, \variabile{z}_\variabile{i})$ and direction $\vect{s}_\variabile{i}~=~(-\sin \optangle_\variabile{i}, \cos \optangle_\variabile{i})$, use equation ($\ref{parametrization}$) to implement the ray parametrization $\vect{r}(\variabile{s})$;
 \item Compute the coordinates $(\variabile{x}_\variabile{k}, \variabile{z}_\variabile{k})_{\variabile{k} = 1\cdots, \nline}$ of the intersection point of the parameterized ray $\vect{r}(\variabile{s})$ with all the lines that it crosses
 \begin{itemize}
 \item[a)] if the shape of the lines is described by an explicit equation, the intersection points are determined analytically;
@@ -69,8 +69,8 @@ The ray tracing algorithm can be outlined as follows:
 \item If $\lineai \neq \nline$, calculate the normal $\boldsymbol{\nu}_\lineai$ to line $\lineai$ at the point $(\variabile{x}_{\lineai}, \variabile{z}_{\lineai})$;
  \item Compute the new ray direction $\vect{s}_\lineai$ of the ray that leaves line $\lineai$ at the point $(\variabile{x}_{\lineai}, \variabile{z}_{\lineai})$:
 \begin{itemize}
-\item[a)] if the incident line is a reflective line, $\vect{s}_\lineai$ is given by Eq. (\ref{Reflection});
-\item[b)] if the incident line is a refractive line, $\vect{s}_\lineai$ is given by Eq. (\ref{Refraction});
+\item[a)] if the incident line is a reflective line, $\vect{s}_\lineai$ is given by equation (\ref{Reflection});
+\item[b)] if the incident line is a refractive line, $\vect{s}_\lineai$ is given by equation (\ref{Refraction});
 \end{itemize}
 \item Put $\variabile{i}=\lineai$ and restart the procedure from $2.$
 \end{enumerate}
@@ -88,7 +88,7 @@ If the rays are chosen from a so-called low discrepancy sequence we have Quasi-M
 This method is discussed in Section \ref{sec:QMC}.
 \section{Monte Carlo ray tracing}
 As explained above, the aim of ray tracing is to calculate the target photometric variables given an initial light distribution at the source. To this purpose, we can think of a light source as
-emitting a very large number of random rays and keep track of where they go. In this way we can calculate, for instance the target luminance distribution. Next the target intensity is given by the integral of the luminance (see Equation (\ref{eq:int_lum})) which can be approximated by the average of the luminance values. This simple method uses the same idea of a family of techniques called Monte Carlo simulation and can be a very easy way to numerically
+emitting a very large number of random rays and keep track of where they go. In this way we can calculate, for instance the target luminance distribution. Next the target intensity is given by the integral of the luminance (see equation (\ref{eq:int_lum})) which can be approximated by the average of the luminance values. This simple method uses the same idea of a family of techniques called Monte Carlo simulation and can be a very easy way to numerically
 solve physics problems based on numerical integration \cite{jensen2003monte}.
 \\ \indent Before explaining the details of MC ray tracing, we give an introduction to MC methods for the two-dimensional case. Let us consider a set $\mbox{\insieme{D}} = [\vect{a}, \vect{b}]$ with $\vect{a} = (a_1, a_2)$ and $\vect{b} = (b_1, b_2)$ elements of $\mathbb{R}^2$ such that
 $[\vect{a}, \vect{b}]  = [a_1, b_1] \times [a_2, b_2]$. Consider a function $f:[\vect{a},\vect{b}]\subset \mathbb{R}^2 \mapsto \mathbb{R}$ and a random variable $\vect{Y}$ with values in \insieme{D} with probability density function $\rho(\vect{y})$, where $\vect{y}$ are the values $\vect{Y}$ in \insieme{D}. Note that we indicate the random variables with capital letters and the corresponding deterministic values with lowercase letters. The expected value of $f$ with respect of $\rho$ is:
@@ -100,7 +100,7 @@ If $\rho$ is a uniform probability density function, the expected value is given
 \mathbb{E}[f] =\frac{1}{\lambda([\vect{a},\vect{b}])} \int_{\mbox{\insieme{D}}}f(\vect{y}) \textrm{d}\vect{y},
 \end{equation}
 where $\lambda([\vect{a},\vect{b}]) = (b_1-a_1)\times (b_2-a_2)$.
-Monte Carlo method approximates the integral in Equation (\ref{eq:expected_value}) by the sum:
+Monte Carlo method approximates the integral in equation (\ref{eq:expected_value}) by the sum:
 \begin{equation}
 S_{N}[f] = \frac{1}{N} \sum_{\variabile{i}=1}^{N} f(\vect{Y}_\variabile{i}),
 \end{equation}
@@ -129,7 +129,7 @@ $\textrm{Var}\big[\sum_{\variabile{i}=1}^{N}X_{\variabile{i}}\big] = \sum_{\vari
  \frac{1}{N^2}\sum_{\variabile{i}=1}^{N}\textrm{Var}\big[f(\vect{Y}_\variabile{i})\big] = \frac{1}{N}Var[f(\vect{Y})]
 \end{equation}
 which can be applied because the random variables $\{\vect{Y}_\variabile{i}\}_{i = 1, \cdots, N}$ are independent \cite{grinstead2012introduction}. 
-Suppose that $f$ has variance $\textrm{Var}[f]=\mathbb{E}[(f-\mathbb{E}(f))]^2 = \sigma^2[f] $, Equations (\ref{eq:linearity}) and (\ref{eq:variance}) give
+Suppose that $f$ has variance $\textrm{Var}[f]=\mathbb{E}[(f-\mathbb{E}(f))]^2 = \sigma^2[f] $, equations (\ref{eq:linearity}) and (\ref{eq:variance}) give
 \begin{equation}\label{eq:variance2}
 \textrm{Var}[S_N(f)] = \mathbb{E}[(S_{N}(f)-\mathbb{E}[S_{N}(f)])^2]= \mathbb{E}[(S_{N}(f)-\mathbb{E}[f])^2] = \sigma^2[f]/N.
 \end{equation}
@@ -148,7 +148,7 @@ Considering a convex function $g:\vect{x}\mapsto\vect{x}^2$ we can write:
 %\end{aligned}
 \end{equation} 
 where the inequality follows from the Jensen's inequality (\cite{williams1991probability} Chapter $6$).
-Using the previous relation and Equations (\ref{eq:variance2}) and (\ref{eq:error1}), we obtain:
+Using the previous relation and equations (\ref{eq:variance2}) and (\ref{eq:error1}), we obtain:
 \begin{equation}\label{eq:mean_error}
 \mathbb{E}\big[|\const{err}(f, S_{N})|\big]\leq
 \sqrt{\mathbb{E}\big[\const{err}(f, S_{N})^2\big]} = \frac{\sigma[f]}{\sqrt{N}},
@@ -160,7 +160,7 @@ In the two-dimensional case, for every ray we need to choose one position coordi
 Indicating with $\variabile{x}_{1}^{\variabile{i}}$ the $\variabile{x}$-coordinate of the $\variabile{i}$-th ray and with $\optangle_1^{\variabile{i}}$ its angular coordinate, a set of random variables $\{\vect{Y}_1, \cdots, \vect{Y}_N\}\in [\vect{a}, \vect{b}]\subset\mathbb{R}^2$ is chosen such that $\vect{Y}_{\variabile{i}}= (\variabile{x}_{1}^{\variabile{i}},\optangle_1^{\variabile{i}})$.
 % the initial position coordinate $\variabile{x}_1$ of the $\variabile{k}$-th ray corresponds to the first component of the $\variabile{k}$-th random variable $\vect{y}_\variabile{k}$ and, the starting angular coordinate $\optangle_1$ of the $\variabile{k}$-th ray corresponds to the second component of the $\variabile{k}$-th random variable $\vect{y}_\variabile{k}$.
 Rays with those random initial coordinates are traced from \point{S} to \point{T} and, a probabilistic interpretation of the output photometric variables is provided.
-In particular, we are interested in the target intensity $I$ as a function of the angular coordinate $\optangle$. Using the idea of MC method we approximate its expected value $\mathbb{E}[I]$ by a sum as described in Eq. (\ref{eq:approx_MC_QMC}) where the function $f$ is now the intensity $I$.
+In particular, we are interested in the target intensity $I$ as a function of the angular coordinate $\optangle$. Using the idea of MC method we approximate its expected value $\mathbb{E}[I]$ by a sum as described in equation (\ref{eq:approx_MC_QMC}) where the function $f$ is now the intensity $I$.
 %which is given by:
 %\begin{equation}\label{eq:MC_intensity}
 %I(\optangle) = \int_{\variabile{x}^{\textrm{min}}}^{\variabile{x}^{\textrm{max}}}L(\variabile{x}, \optangle)\textrm{d}\variabile{x}\,
@@ -194,7 +194,7 @@ $I(\optangle)$, which is continuous in $[\optangle_{\variabile{j}-1}, \optangle_
 \int_{\optangle_{\variabile{j}-1}}^{\optangle_{\variabile{j}}} I(\optangle) \textrm{d}\optangle = \Delta \optangle\;I(\optangle_{\variabile{j}}).
 \end{equation}
 Hence, $\const{P}_{\variabile{j}, \Delta\optangle}$ is proportional to the size $\Delta\optangle= (\optangle_{\nbin}-\optangle_{0})/{\nbin}$
-of the bins and to $I(\optangle_{\variabile{j}})$. Although $I(\optangle_{\variabile{j}})$ does depend on the number of bins \nbin, it is taken constant as it is the value of the intensity on a given direction\footnote{This is possible since $I(\optangle_{\variabile{j}})$ is a continuous function in the closed interval $[\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}}]$.}, so Equation (\ref{eq:deltatI}) proves that $\const{P}_{\variabile{j}, \Delta\optangle}$ is inversely proportional to the number of bins $\nbin$ of the partitioning $P_1$.
+of the bins and to $I(\optangle_{\variabile{j}})$. Although $I(\optangle_{\variabile{j}})$ does depend on the number of bins \nbin, it is taken constant as it is the value of the intensity on a given direction\footnote{This is possible since $I(\optangle_{\variabile{j}})$ is a continuous function in the closed interval $[\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}}]$.}, so equation (\ref{eq:deltatI}) proves that $\const{P}_{\variabile{j}, \Delta\optangle}$ is inversely proportional to the number of bins $\nbin$ of the partitioning $P_1$.
 Indicating with $\Phi = \int_{-\pi/2}^{\pi/2}I(\optangle) \textrm{d}\optangle$ the total flux (measured in lumen, $\textrm{lm}$),
 the error between the intensity $I(\optangle_{\variabile{j}-1/2})$
  and the averaged \const{MC} intensity $\Phi I_{\const{MC}}(\optangle_{\variabile{j}-1/2})/\Delta\optangle$ (not normalized) is given by
@@ -291,7 +291,7 @@ The profile of $\hat{I}_{\const{MC}}$ is depicted in Figure \ref{fig:mc_intensit
 MC ray tracing has the advantages of being very easy to implement and it does not require too much regularity of the function that has to be approximated. Furthermore, the error convergence does not depend on the dimension of the domain in which the function is defined.
 On the other hand, the MC method is time consuming as the error has a speed of convergence of order $\mathcal{O}(1/\sqrt{\nrays})$ for a large number of rays and a fixed number of bins. 
 Thus, to decrease the error of a factor $10$ we need to increase the number of rays by a factor $100$.
-Since MC ray tracing is a binning procedure, the error depends also on the number of bins in which the target is divided. Finally we remark that the error bound is only a \emph{probabilistic} error as shown in Equation (\ref{eq:mean_error}). This means that, to calculate the value of the error, several simulations have to be repeated and the average of the errors obtained in every simulation has to be calculated. \\ \indent 
+Since MC ray tracing is a binning procedure, the error depends also on the number of bins in which the target is divided. Finally we remark that the error bound is only a \emph{probabilistic} error as shown in equation (\ref{eq:mean_error}). This means that, to calculate the value of the error, several simulations have to be repeated and the average of the errors obtained in every simulation has to be calculated. \\ \indent 
 The MC noise can be reduced considering a different distribution of the initial rays set.
 Instead of considering random variables, the sample of rays can be defined such that they are regularly distributed on the domain $\mbox{\insieme{D}}\subseteq\mathbb{R}^2$ of $f$. Methods based on this deterministic approach are called Quasi-Monte Carlo (QMC) methods. The ray tracing procedure that considers such rays distribution is called QMC ray tracing.
 \section{Quasi-Monte Carlo ray tracing}\label{sec:QMC}
@@ -346,7 +346,7 @@ An important result shows that, using a low-discrepancy sequence $\{\vect{y}_{\v
 \end{equation}
 % Explain better the variation function owen2005multidimensional
 where $V(f)$ is the so-called variation function of $f$ in the sense of Hardy-Krause (see \cite{brandolini2013koksma} for details). 
-The previous equation shows that for a function $f$ with finite variation $V(f)$, QMC methods perform much better than MC. However, Equation (\ref{eq:QMC_error}) is not good for predicting when this will happen because $V(f)$ is hard to estimate and in some cases is infinite \cite{wang2008low}. 
+The previous equation shows that for a function $f$ with finite variation $V(f)$, QMC methods perform much better than MC. However, equation (\ref{eq:QMC_error}) is not good for predicting when this will happen because $V(f)$ is hard to estimate and in some cases is infinite \cite{wang2008low}. 
 %Schlier [32] reports that even for QMC the variance of f is more strongly related to the error than is the variation.
 For the functions we analyze in this thesis the corresponding variation function is always bounded. 
 Therefore, the convergence of QMC methods strongly depends on the low-discrepancy sequence that is used.\\ \indent
@@ -398,7 +398,7 @@ Similarly to MC ray tracing, the averaged and normalized QMC intensity $\hat{I}_
 \begin{equation} \begin{aligned}
 \Big|I(\optangle_{\variabile{j}-1/2})&-\frac{\Phi}
 {\Delta\optangle}\hat{I}_{\const{QMC}}(\optangle_{\variabile{j}-1/2})\Big| \leq
-\frac{\const{C}_1}{\nbin^2} + \const{C}_2\nbin\frac{\log(\nrays-\nbin)^2}{\nrays},
+\frac{\const{C}_1}{\nbin^2} + \const{C}_2\sqrt{\nbin}\frac{\log(\nrays)-\log(\nbin)}{\nrays},
 \end{aligned}
 \end{equation}
 for some $\const{C}_1>0$ and $\const{C}_2>0$.
