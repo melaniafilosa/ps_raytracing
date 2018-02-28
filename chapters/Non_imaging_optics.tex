@@ -395,22 +395,22 @@ The boundary conditions for the electric and magnetic field:
 \end{align}
 \end{subequations}
 leads to the second pair of Fresnel equations:
-\begin{equation}
-\fbox{\begin{minipage}{18em}
-\begin{equation*}\label{Fresnel_parallel}
+\begin{equation}\label{Fresnel_parallel}
 \begin{split}
 r_{\textrm{p}} & = \frac{|\boldsymbol{\mathcal{E}}_{0 \textrm{r}}|_{\textrm{p}}}{|\boldsymbol{\mathcal{E}}_{0\textrm{i}}|_\textrm{p}} = \frac{\n_\textrm{t}\cos\myangle_\textrm{i}-n_\textrm{i} \cos\myangle_\textrm{t}}{n_\textrm{i} \cos\myangle_\textrm{t}+n_\textrm{t}\cos\myangle_\textrm{i}},\\
 t_{\textrm{p}} & =\frac{|\boldsymbol{\mathcal{E}}_{0 \textrm{t}}|_{\textrm{p}}}{|\boldsymbol{\mathcal{E}}_{0\textrm{i}}|_\textrm{p}} =  \frac{2\n_\textrm{i}\cos\myangle_\textrm{i}}{n_\textrm{i}\cos\myangle_\textrm{t}+n_\textrm{t}\cos\myangle_\textrm{i}}\,,
 \end{split}
-\end{equation*}
-\end{minipage}}
 \end{equation}
 and their simplified versions reduce to:
-\begin{equation} \label{simple_Fresnel}
+\begin{equation}
+\fbox{\begin{minipage}{18em}
+\begin{equation*} \label{simple_Fresnel}
 \begin{split}
 r_{\textrm{p}} & =  \frac{\tan(\myangle_\textrm{i}-\myangle_\textrm{t})}{\tan(\myangle_\textrm{i}+\myangle_\textrm{t})},\\
 t_{\textrm{p}} & = \frac{2\sin \myangle_\textrm{t} \cos \myangle_\textrm{i}}{\sin(\myangle_\textrm{i}+\myangle_\textrm{t})\cos(\myangle_\textrm{i}- \myangle_\textrm{t})}.
 \end{split}
+\end{equation*}
+\end{minipage}}
 \end{equation}
 Furthermore, it can be checked that
  \begin{equation}
@@ -475,16 +475,24 @@ P_\textrm{i} A\cos\myangle_\textrm{i} = P_\textrm{r} A\cos\myangle_\textrm{r}+P_
 \end{equation}
 we can easily prove that:
 \begin{equation}
+\fbox{\begin{minipage}{10em}
+\begin{equation*}
 \mathcal{R}+\mathcal{T}=1\,.
+\end{equation*}
+\end{minipage}}
 \end{equation}
  The parallel and perpendicular components of $\mathcal{R}$ and $\mathcal{T}$ are given by:
-\begin{equation}\label{Fresnel_pands}
+\begin{equation}
+\fbox{\begin{minipage}{15em}
+\begin{equation*}\label{Fresnel_pands}
 \begin{split}
 \mathcal{R}_\textrm{p}& =  {r_\textrm{p}^2},\\
 \mathcal{T}_\textrm{p} &=  \frac{n_\textrm{t} \cos\myangle_\textrm{t}}{n_\textrm{i} \cos\myangle_\textrm{i}}t_\textrm{p}^2,\\
 \mathcal{R}_\textrm{s} &=  r_\textrm{s}^2,\\
 \mathcal{T}_\textrm{s} &= \frac{n_\textrm{t} \cos\myangle_\textrm{t}}{n_\textrm{i} \cos\myangle_\textrm{i}}t_\textrm{s}^2.\\
 \end{split}
+\end{equation*}
+\end{minipage}}
 \end{equation}
 It can be shown that 
 %\begin{equation}
@@ -505,15 +513,20 @@ For normal incidence, i.e., $\myangle_\textrm{i} = 0$, the incident plane is not
 \end{split}
 \end{equation}
 \indent %In two dimensions light hits lines instead of surfaces. Therefore only the plane of incidence is defined and it has no sense to consider separately the parallel and the perpendicular polarization. 
+If $\mathcal{R}_\textrm{p} = \mathcal{R}_\textrm{s}$ and $\mathcal{T}_\textrm{p} = \mathcal{T}_\textrm{s}$, then the amount of energy in both polarization states is the same \cite{hecht1998hecht}.\\ \indent
 Many common light sources such as the sun, halogen lighting, LED spotlights, and incandescent bulbs produce unpolarized light. 
-In this case, light can be represented by the sum of two orthogonal states. If $\mathcal{R}_\textrm{p} = \mathcal{R}_\textrm{s}$ and $\mathcal{T}_\textrm{p} = \mathcal{T}_\textrm{s}$, then the amount of energy in both polarization states is the same \cite{hecht1998hecht}.
-Hence it is reasonable to take as reflectance and transmittance the average of the quantities calculated considering the average between p-polarized light and then s-polarization, that is:
-\begin{equation}\begin{split}
+In this case, light can be represented by the sum of two orthogonal states. For unpolarized light is to take as reflectance and transmittance the average of the quantities calculated considering the average between p-polarized light and then s-polarization, that is:
+\begin{equation}
+\fbox{\begin{minipage}{15em}
+\begin{equation*}\begin{split}
 \mathcal{R} &= \frac{\mathcal{R}_\textrm{p}+ \mathcal{R}_\textrm{s}}{2},\\
-\mathcal{T} &= \frac{\mathcal{T}_\textrm{p}+ \mathcal{T}_\textrm{s}}{2}.
+\mathcal{T} &= \frac{\mathcal{T}_\textrm{p}+ \mathcal{T}_\textrm{s}}{2},
 \end{split}
 \label{eq:RandTin2D}
+\end{equation*}
+\end{minipage}}
 \end{equation}
+where $\mathcal{R}_\textrm{p}$, $\mathcal{R}_\textrm{s}$, $\mathcal{T}_\textrm{p}$ and $\mathcal{T}_\textrm{s}$ are obtained from equation (\ref{Fresnel_pands})
 The reflectance $\mathcal{R}$ and the transmittance $\mathcal{T}$ give the fraction of the power of energy reflected and transmitted at every interaction of a light ray with a Fresnel surface.
  \\
 \indent With this overview we conclude this chapter. The notions given in Section \ref{sec:photometry} will be used in the entire thesis as our goal is to study the distribution of light at the target of some optical systems. In particular we will focus on the computation of the output intensity distribution. The reflection and refraction laws explained in Section \ref{sec:reflection} are needed to determine how the optical system changes the ray's direction every time that it hits a surfaces (or a line in the two-dimensional case). In Chapters \ref{chap:raytracing}-\ref{chap:raymapping2} only systems where the reflection and refraction laws play a role are considered. Systems with Fresnel reflection are treated in Chapter \ref{chap:fresnel}. The amount of reflected and transmitted light is calculated using the Fresnel equations. In our simulations we consider the general case of unpolarized light. 
