@@ -102,23 +102,25 @@ If $\rho$ is a uniform probability density function, the expected value is given
 \mathbb{E}[f(\vect{Y})] =\frac{1}{\lambda([\vect{a},\vect{b}])} \int_{\textup{D}}f(\vect{y}) \textrm{d}\vect{y},
 \end{equation}
 where $\lambda([\vect{a},\vect{b}]) = (b_1-a_1)\cdot(b_2-a_2)$.
-In this case, MC methods approximate the integral in Equation (\ref{eq:expected_value}) by the sum:
+%In this case, MC methods approximate the integral in Equation (\ref{eq:expected_value}) by the sum:
+Let $\{\vect{Y}_\variabile{i}\}_{\variabile{i} = 1, \cdots, N}$ be independent samples of the probability density function $\rho$ with values in \insieme{D}.
+Indicating with $S_{N}[f(\vect{Y})]$ the sum: 
 \begin{equation}
 S_{N}[f(\vect{Y})] = \frac{1}{N} \sum_{\variabile{i}=1}^{N} f(\vect{Y}_\variabile{i}),
 \end{equation}
-where $\{\vect{Y}_\variabile{i}\}_{\variabile{i} = 1, \cdots, N}$ are independent samples of the probability density function $\rho$ with values in \insieme{D} \cite{owen2003quasi}. MC is based on the following approximation:
-\begin{equation}\label{eq:approx_MC_QMC}
-\frac{1}{\lambda([\vect{a},\vect{b}])}\int_{\textup{D}}f(\vect{y}) \textrm{d}\vect{y}\approx\frac{1}{N} \sum_{\variabile{i}=1}^{N} f(\vect{Y}_\variabile{i}).
-\end{equation}
-According to the strong law of large numbers,
+and with $\const{Pr}(E)$ the probability that the event $E$ happen,
+%\begin{equation}\label{eq:approx_MC_QMC}
+%\frac{1}{\lambda([\vect{a},\vect{b}])}\int_{\textup{D}}f(\vect{y}) \textrm{d}\vect{y}\approx\frac{1}{N} \sum_{\variabile{i}=1}^{N} f(\vect{Y}_\variabile{i}).
+%\end{equation}
+the strong law of large numbers states that
 \begin{equation}
 \const{Pr}\Big(\lim_{N\rightarrow\infty}S_{N}[f(\vect{Y})] = \mathbb{E}[f(\vect{Y})] \Big) = 1.
 \end{equation}
 Therefore, for sufficiently large $N$ the expected value of $f(\vect{Y})$ is approximated by the empirical mean:
-\begin{equation}
-\mathbb{E}[f(\vect{Y})] \approx \frac{1}{N} \sum_{\variabile{i}=1}^{N} f(\vect{Y}_\variabile{i}).
+\begin{equation}\label{eq:approx_MC_QMC}
+\mathbb{E}[f(\vect{Y})] \approx \frac{1}{N} \sum_{\variabile{i}=1}^{N} f(\vect{Y}_\variabile{i}),
 \end{equation}
-From the linearity of the expected value (see \cite{grinstead2012introduction})
+MC is based on the previous approximation \cite{owen2003quasi}. From the linearity of the expected value (see \cite{grinstead2012introduction})
 %\footnote{Given a set of independent random variables $\{X_\variabile{i}\}_{\variabile{i}=1, \cdots, N}$ and a real number $a$, the expected value satisfies:
 %$\mathbb{E}\big[\sum_{\variabile{i}=1}^{N}X_{\variabile{i}}\big] = \sum_{\variabile{i}=1}^{N}\mathbb{E}[X_{\variabile{i}}]$ and $\mathbb{E}[a\,X_\variabile{i}] = a\mathbb{E}[X_{\variabile{i}}]$.},
  it follows
@@ -127,28 +129,32 @@ From the linearity of the expected value (see \cite{grinstead2012introduction})
 \end{equation}
 where the second equality holds as
 $f(\vect{Y}_{\variabile{i}})_{\variabile{i}=1, \cdots, N}$ are still random variables with the same probability density function because $\big(\vect{Y}_{\variabile{i}}\big)_{\variabile{i}=1, \cdots, N}$ are independent samples 
-with a given probability density function $\rho(\vect{y})$. This implies that $\mathbb{E}[f(\vect{Y}_{\variabile{i}})] = \mathbb{E}[f(\vect{Y})]$ for every $\variabile{i}=1, \cdots, N$. \\ \indent
-%while the Bienaym\'e formula\footnote{Given a set of \textit{independent} random variables $\{X_\variabile{i}\}_{\variabile{i}=1, \cdots, N}$ and a real number $a$, the variance satisfies:
-%$\textrm{Var}\big[\sum_{\variabile{i}=1}^{N}X_{\variabile{i}}\big] = \sum_{\variabile{i}=1}^{N}\textrm[X_{\variabile{i}}]$ and $\textrm{Var}[a\,X_\variabile{i}] = a^2\textrm{Var}[X_{\variabile{i}}]$.} leads to
-%\begin{equation}\label{eq:variance}
-%\textrm{Var}[S_{N}]= \textrm{Var}\Bigg[\frac{1}{N}\sum_{\variabile{i}=1}^{N}f(\vect{Y}_\variabile{i})\Bigg] =
-% \frac{1}{N^2}\sum_{\variabile{i}=1}^{N}\textrm{Var}\big[f(\vect{Y}_\variabile{i})\big] = \frac{1}{N}\textrm{Var}[f(\vect{Y})]
-%\end{equation}
-%which can be applied because the random variables $\{\vect{Y}_\variabile{i}\}_{i = 1, \cdots, N}$ are independent \cite{grinstead2012introduction}. 
-Indicating with $\textrm{Var}[f(\vect{Y})]$ the variance of $f(\vect{Y})$
+with a given probability density function $\rho(\vect{y})$. This implies that $\mathbb{E}[f(\vect{Y}_{\variabile{i}})] = \mathbb{E}[f(\vect{Y})]$ for every $\variabile{i}=1, \cdots, N$. Indicating with $\textrm{Var}[f(\vect{Y})]$ the variance of $f(\vect{Y})$
 \begin{equation}\textrm{Var}[f(\vect{Y})]=\mathbb{E}[(f(\vect{Y})-\mathbb{E}[f(\vect{Y})])^2] = \sigma^2[f(\vect{Y})],
 \end{equation}
-then Equation (\ref{eq:linearity}) gives
+the Bienaym\'e formula
+%\footnote{Given a set of \textit{independent} random variables $\{X_\variabile{i}\}_{\variabile{i}=1, \cdots, N}$ and a real number $a$, the variance satisfies:
+%$\textrm{Var}\big[\sum_{\variabile{i}=1}^{N}X_{\variabile{i}}\big] = \sum_{\variabile{i}=1}^{N}\textrm[X_{\variabile{i}}]$ and $\textrm{Var}[a\,X_\variabile{i}] = a^2\textrm{Var}[X_{\variabile{i}}]$.} 
+leads to
+\begin{equation}\label{eq:variance}
+\textrm{Var}[S_{N}]= \textrm{Var}\Bigg[\frac{1}{N}\sum_{\variabile{i}=1}^{N}f(\vect{Y}_\variabile{i})\Bigg] =
+ \frac{1}{N^2}\sum_{\variabile{i}=1}^{N}\textrm{Var}\big[f(\vect{Y}_\variabile{i})\big] = \frac{1}{N}\textrm{Var}[f(\vect{Y})]
+\end{equation}
+which can be applied because the random variables $\{\vect{Y}_\variabile{i}\}_{i = 1, \cdots, N}$ are independent \cite{grinstead2012introduction}. 
+Equation (\ref{eq:linearity}) gives
 \begin{equation}\label{eq:variance2}
 \begin{aligned}
-\textrm{Var}[S_N[f(\vect{Y})]] &= \mathbb{E}[(S_{N}[f(\vect{Y})]-\mathbb{E}[S_{N}[f(\vect{Y})]])^2]\\ &= \mathbb{E}[(S_{N}[f(\vect{Y})]-\mathbb{E}[f(\vect{Y})])^2] = \sigma^2[f(\vect{Y})]/N.
+\textrm{Var}[S_N[f(\vect{Y})]] &= \mathbb{E}[(S_{N}[f(\vect{Y})]-\mathbb{E}[S_{N}[f(\vect{Y})]])^2]\\ &= \mathbb{E}[(S_{N}[f(\vect{Y})]-\mathbb{E}[f(\vect{Y})])^2].
 \end{aligned}
+\end{equation}
+Combining (\ref{eq:variance}) with (\ref{eq:variance2}) we obtain:
+\begin{equation}\label{eq:variance3}
+\mathbb{E}[(S_{N}[f(\vect{Y})]-\mathbb{E}[f(\vect{Y})])^2] = \sigma^2[f(\vect{Y})]/N
 \end{equation}
 Let us denote the integration error with:
 \begin{equation}\label{eq:error1}
-\const{err}(f, S_{N}[f]) =\frac{1}{\lambda([\vect{a},\vect{b}])}\int_{\textup{D}}f(\vect{y}) \textrm{d}\vect{y}-S_{N}[f] = \mathbb{E}[f]-S_N[f],
+\const{err}(f, S_{N}[f]) =\int_{\textup{D}}f(\vect{y})\rho(\vect{y}) \textrm{d}\vect{y}-S_{N}[f] = \mathbb{E}[f(\vect{Y})]-S_N[f(\vect{Y})].
 \end{equation}
-where we omitted the dependence of $f$ on $\vect{Y}$.
 Considering a convex function $g:\variabile{x}\rightarrow\variabile{x}^2$ we can write:
 \begin{equation}
 \begin{aligned}
@@ -160,12 +166,12 @@ Considering a convex function $g:\variabile{x}\rightarrow\variabile{x}^2$ we can
 %\end{aligned}
 \end{equation} 
 where the inequality follows from the Jensen's inequality (see \cite{williams1991probability} Chapter $6$).
-Using the previous relation and Equations (\ref{eq:variance2}) and (\ref{eq:error1}), we obtain:
+Using the previous relation and Equations (\ref{eq:variance3}) and (\ref{eq:error1}), we obtain:
 \begin{equation}\label{eq:mean_error}
 \mathbb{E}\big[|\const{err}(f, S_{N})|\big]\leq
 \sqrt{\mathbb{E}\big[\const{err}^2(f, S_{N})\big]} = \frac{\sigma[f]}{\sqrt{N}}.
 \end{equation}
-Hence, the absolute value of the integration error is, on average, bounded by $\sigma[f]/\sqrt{N}$, where $\sigma[f]$ is the standard deviation of $f$ \cite{leobacher2014introduction}. It is very important to note that $\const{err}(f, S_{N})$ does not depend on the dimension of the set \insieme{D}.
+Hence, the absolute value of the integration error is, on average, bounded by $\sigma[f]/\sqrt{N}$, where $\sigma[f]$ is the standard deviation of $f$ \cite{leobacher2014introduction}. It is important to note that $\const{err}(f, S_{N})$ does not depend on the dimension of the set \insieme{D}.
 \\ \indent The MC technique can be combined with ray tracing procedure in order to compute the intensity distribution at the target of an optical system.
 In MC ray tracing the position and the direction of every ray are chosen randomly at the source.
 In the two-dimensional case, for every ray we need to choose one position coordinate $\variabile{x}_1$ and one angular coordinate $\optangle_1$, while the $\variabile{z}_1$-coordinate of every ray is always given (for instance, for the two-faceted cup in Figure \ref{fig:cup}, $\variabile{z}_1=0$). We indicate with $\variabile{x}_{1}^{\variabile{i}}$ the $\variabile{x}$-coordinate of the $\variabile{i}$-th ray and with $\optangle_1^{\variabile{i}}$ its angular coordinate. Given \insieme{D}$=[-\variabile{a}, \variabile{a}]\times[-\pi/2, \pi/2]\subset\mathbb{R}^2$ where $\variabile{a}$ is the half length of the source, a set of random variables $\{\vect{Y}_1, \cdots, \vect{Y}_N\}$ is chosen such that they are uniformly distributes at the source, where $\vect{Y}_{\variabile{i}}= (\variabile{x}_{1}^{\variabile{i}},\optangle_1^{\variabile{i}})$.
@@ -203,7 +209,7 @@ $I(\optangle)$, which is continuous in $[\optangle_{\variabile{j}-1}, \optangle_
 \int_{\optangle_{\variabile{j}-1}}^{\optangle_{\variabile{j}}} I(\optangle) \textrm{d}\optangle = \Delta \optangle\;I(\tau_{\variabile{j}}).
 \end{equation}
 Hence, $\const{P}_{\variabile{j}, \Delta\optangle}$ is proportional to the size $\Delta\optangle= (\optangle_{\nbin}-\optangle_{0})/{\nbin}$
-of the bins and to $I(\tau_{\variabile{j}})$. Although $I(\tau_{\variabile{j}})$ does depend on the number of bins \nbin, it is taken constant over $[\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}}]$ as it is the value of the intensity in a given direction\footnote{This is possible since $I(\tau_{\variabile{j}})$ is a continuous function in the closed interval $[\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}}]$.}, so (\ref{eq:deltatI}) proves that $\const{P}_{\variabile{j}, \Delta\optangle}$ is inversely proportional to the number of bins $\nbin$ of the partitioning $P_1$.
+of the bins and to $I(\tau_{\variabile{j}})$. Although $I(\tau_{\variabile{j}})$ does depend on the number of bins \nbin, it is taken constant over $[\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}}]$ as it is the value of the intensity for a given direction\footnote{This is possible since $I(\tau_{\variabile{j}})$ is a continuous function in the closed interval $[\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}}]$.}, so (\ref{eq:deltatI}) indicates that $\const{P}_{\variabile{j}, \Delta\optangle}$ is inversely proportional to the number of bins $\nbin$ of the partitioning $P_1$.
 Indicating with $\Phi = \int_{-\pi/2}^{\pi/2}I(\optangle) \textrm{d}\optangle$ the total flux (measured in lumen, $\textrm{lm}$),
 the error between the intensity $I(\optangle_{\variabile{j}-1/2})$ and the averaged \const{MC} intensity $\Phi \hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})/\Delta\optangle$ (not normalized) is given by
 \begin{equation}\label{eq:error_int}
@@ -252,30 +258,52 @@ The corresponding expected value and variance are:
 \end{subequations}
 Note that the standard deviation $\sigma_\variabile{j}:=\sigma[\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})]$ is approximated by
 \begin{equation}\label{sigma}
-\sigma_\variabile{j}= \sqrt{\const{P}_{\variabile{j}, \Delta\optangle}(1-\const{P}_{\variabile{j}, \Delta\optangle})/\const{Nr}}\leq\frac{\const{C}_2}{\sqrt{\nbin\nrays}}\,, \end{equation}
- for some $\const{C}_{2}>0$. $\sigma_\variabile{j}$ can be used to give an estimate of the difference between the intensity $\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})$ and its mean value $\const{P}_{\variabile{j}, \Delta\optangle}$.
+\sigma_\variabile{j}= \sqrt{\const{P}_{\variabile{j}, \Delta\optangle}(1-\const{P}_{\variabile{j}, \Delta\optangle})/\nrays}\leq\frac{\const{C}_2}{\sqrt{\nbin\nrays}}\,, \end{equation}
+ as $\const{P}_{\variabile{j}}\leq \const{C}_{2}/\nbin$ for some $\const{C}_{2}>0$. $\sigma_\variabile{j}$ can be used to give an estimate of the difference between the intensity $\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})$ and its mean value $\const{P}_{\variabile{j}, \Delta\optangle}$.
 Therefore, the second term of the right hand side of relation ($\ref{eq:error_int}$) becomes
 \begin{equation}\begin{aligned}
 \frac{1}{\Delta \optangle}\Big|\int_{\optangle_{\variabile{j}-1}}^{\optangle_{\variabile{j}}} I(\optangle)\textrm{d}\optangle -
 \Phi\, \hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})\Big| &=  \\
 \frac{\Phi}{\Delta \optangle}\Big|\const{P}_{\variabile{j}, \Delta\optangle} -\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})\Big| &\approx  \\
   \frac{\Phi}{\Delta \optangle}
-\sigma_{\variabile{j}}[\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})]\leq\const{C}_3\frac{\nbin}{\sqrt{\nbin\nrays}} & = \const{C}_3\sqrt{\frac{\nbin}{\nrays}}\,,
+\sigma_{\variabile{j}}\leq\const{C}_3\frac{\nbin}{\sqrt{\nbin\nrays}} & = \const{C}_3\sqrt{\frac{\nbin}{\nrays}}\,,
 \end{aligned}
 \end{equation}
 for some $\const{C}_3>0$, where the approximation holds because $\sigma_{\variabile{j}}$ gives a measure for the error between
-$\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})$ and the probability $\const{P}_{\variabile{j}, \Delta\optangle}$ \cite{diez2012openintro}. The second approximation follows from (\ref{sigma}). The MC error over the $\variabile{j}$-th bin is estimated by
+$\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})$ and the probability $\const{P}_{\variabile{j}, \Delta\optangle}$ \cite{diez2012openintro}. The second approximation follows from (\ref{sigma}). In summary, the MC error over the $\variabile{j}$-th bin is bounded by
 \begin{equation} \begin{aligned}
 \Big|I(\optangle_{\variabile{j}-1/2})&-\frac{\Phi}
 {\Delta\optangle}\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})\Big| \leq
-\frac{\const{C}_1}{\nbin^2} + \const{C}_4\sqrt{\frac{\nbin}{\const{Nr}}},
+\frac{\const{C}_1}{\nbin^2} + \const{C}_4\sqrt{\frac{\nbin}{\nrays}},
 \end{aligned}
+\label{eq:final_MC_error}
 \end{equation}
-for some $\const{C}_1>0$ and $\const{C}_4>0$.
+for some $\const{C}_1>0$ and $\const{C}_4>0$. 
 Considering a fixed number of bins, we obtain that the minimal error is reached when $\nrays\approx \nbin^5$.
 Hence, if we double the number of bins we need to trace $2^5 = 32$ times more rays!
-% Table!!!!
-
+We remark that the first term on the right hand side of (\ref{eq:final_MC_error}) gives an estimation of the discretization error, while the second term on the right hand side of (\ref{eq:final_MC_error}) provides an estimation of MC error which in this case also depends on the discretization (partitioning at the target). 
+To clarify the connection between MC method and MC ray tracing, in Table \ref{tab:MCcomparison} we report a correspondence of the function used in MC method and MC ray tracing.
+\begin{table}[h] \label{tab:MCcomparison}
+\centering
+\caption{\bf Comparison between MC method and MC ray tracing}
+\begin{tabular}{|l|l|l|}
+ \hline   MC method & MC ray tracing \\
+  \hline 
+ \insieme{D} $= [\vect{a}, \vect{b}]\subset \mathbb{R}^2$  & $[\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}})\subset \mathbb{R}$ \\ [0.9ex] 
+ $f:\mbox{\insieme{D}}\rightarrow \mathbb{R}^2$ & $X_{\variabile{j}}: [\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}})\rightarrow \{0,1\}$ \\ [0.9ex] 
+ $\vect{Y}$   & $\optangle$ \\ [0.9ex] 
+ $N$   & $\nrays$ \\ [0.9ex] 
+$\{\vect{Y}_{\variabile{j}}\}_{\variabile{j}=1, \cdots, N}$  
+& $\{\optangle^{\variabile{k}}\}_{\variabile{k}=1, \cdots, \nrays}$  \\ [0.9ex] 
+ $S_{N}[f(\vect{Y})] = \sum_{\variabile{i}=1}^N \frac{f(\vect{Y}_{\variabile{i}})}{N}$ &
+ $\hat{I}_{\textrm{MC}}  = \frac{\nrays[\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}})}{\nrays[-\pi/2, \pi/2]}= \sum_{\variabile{k}=1}^{\nrays}\frac{X_{\variabile{j}}(\optangle^{\variabile{k}})}{\nrays}$ \\ [0.9ex] 
+ $\mathbb{E}\big[S_N[f(\vect{Y})]\big]=\mathbb{E}[f(\vect{Y})]$   
+& $\mathbb{E}[\hat{I}_{\textrm{MC}}]=\const{P}_{\variabile{j}, \Delta \optangle}$ \\ [0.9ex] 
+ $\textrm{Var}\big[S_N[f(\vect{Y})]\big] = \frac{\textrm{Var}[f(\vect{Y})]}{N} = \frac{\sigma}{N}$  & $\textrm{Var}[\hat{I}_{\textrm{MC}}] = \sqrt{\frac{\const{P}_{\variabile{j}, \Delta \optangle}(1-\const{P}_{\variabile{j}, \Delta \optangle})}{\nrays}}$ \\ [0.9ex] 
+ \hline
+ \end{tabular}
+\label{tab:MCcomparison}
+ \end{table}
 \\ \indent
 We conclude this section implementing MC ray tracing for the two-faceted cup, the profile of which is depicted in Figure \ref{fig:cup}. 
 Considering a set of $\nrays = 10^3$ random rays 
@@ -313,7 +341,7 @@ An infinite sequence $\{\vect{y}_\variabile{n}\}_{\variabile{n}\in\mathbb{N}_0} 
 \begin{equation}
 \lim_{N\rightarrow \infty}\frac{\textrm{card}(\mbox{\insieme{A}}([\vect{a},\vect{b}), N))}{N} = \lambda([\vect{a},\vect{b}))
 \end{equation}
-where $\textrm{card}(\insieme{A}([\vect{a},\vect{b}), N))$ is the cardinality of the following set
+where $\textrm{card}(\insieme{A}([\vect{a},\vect{b}), N))$ is the cardinality of the set \insieme{A}$([\vect{a},\vect{b}), N)$, i.e., the number of its elements:
 \begin{equation}
 \mbox{\insieme{A}}([\vect{a},\vect{b}), N) = \{\variabile{n}\in \mathbb{N}_0 | 0\leq\variabile{n}\leq N-1 \mbox{ and } \vect{y}_{\variabile{n}}\in [\vect{a},\vect{b})\}\,,
 \end{equation} 
@@ -347,20 +375,21 @@ where $\lambda([0, \point{b})) = \variabile{b}_1\variabile{b}_2$.
 \end{definition}
 % Maybe add a picture
 %Sequences constructed such that the corresponding star discrepancy is of the order of $\mathcal{O}(\log(N)^2/N)$ for $N\rightarrow\infty$ are called \textit{low-discrepancy sequences}, \cite{owen2003quasi}.
-An important result shows that, using a low-discrepancy sequence $\{\vect{y}_{\variabile{i}}\}_{\variabile{i}=1, \cdots, N}$, the absolute error of a QMC algorithm in two dimensions:
+An important is provided in the following
+\begin{theorem} Using a low-discrepancy sequence $\{\vect{y}_{\variabile{i}}\}_{\variabile{i}=1, \cdots, N}$, the absolute error of a QMC algorithm in two dimensions:
 \begin{equation}
 \const{err}(f, S_{N}) =\int_{[0,1)^2}f(\vect{y}) \textrm{d}\vect{y}-\frac{1}{N}\sum_{\variabile{i}=1}^{N}f(\vect{y}_\variabile{i})
 \end{equation}
- can be bounded by the product of a term that depends on $f$ and another term that depends on the discrepancy of the set $\{\vect{y}_{\variabile{i}}\}_{\variabile{i}=1, \cdots, N}.$ This is the result provided by the Koksma-Hlawka inequality which gives the worst-case error estimation:
+ can be bounded by the product of a term that depends on $f$ and another term that depends on the star discrepancy of the set $\{\vect{y}_{\variabile{i}}\}_{\variabile{i}=1, \cdots, N}.$ This is the result provided by the Koksma-Hlawka inequality which gives the worst-case error estimation:
 \begin{equation}\label{eq:QMC_error}
 |\const{err}(f, S_{N})|= \Bigg|\int_{[0,1)^2}f(\vect{y}) \textrm{d}\vect{y}-\frac{1}{N}\sum_{\variabile{i}=1}^{N}f(\vect{y}_\variabile{i})\Bigg|\leq V(f)D^*_N(\mbox{\insieme{Y}}),
 \end{equation}
+where $V(f)$ is the so-called variation function of $f$ in the sense of Hardy-Krause \cite{brandolini2013koksma}. 
+\end{theorem}
 % Explain better the variation function owen2005multidimensional
-where $V(f)$ is the so-called variation function of $f$ in the sense of Hardy-Krause (see \cite{brandolini2013koksma} for details). 
 The previous equation shows that for a function $f$ with finite variation $V(f)$, QMC methods perform better than MC as it uses sequences with a low star discrepancy $D^*_N$. However, (\ref{eq:QMC_error}) is not good for predicting for which $N$ this will happen because $V(f)$ is hard to estimate and in some cases is even infinite \cite{wang2008low}. 
 %Schlier [32] reports that even for QMC the variance of f is more strongly related to the error than is the variation.
-For the functions we analyze in this thesis the corresponding variation function is always bounded. 
-Therefore, the convergence of QMC methods strongly depends on the low-discrepancy sequence that is used.\\ \indent
+For the functions we analyze in this thesis the corresponding variation function is always bounded and the convergence of QMC methods strongly depends on the low-discrepancy sequence that is used.\\ \indent
 There are many ways to generate low-discrepancy sequences \cite{dalal2008low}. The most common QMC approach uses the so-called Sobol sequence. The algorithm for generating Sobol sequences is widely explained in the literature, (see for instance \cite{bratley1988algorithm}). In appendix \ref{app:Sobol} we give an overview of how the construction of such sequences. When using Sobol sequences the QMC error can be estimated by:
 \begin{equation}
 \const{err}(f, S_{N})<\const{C} \frac{\log(N)^2}{N}, 
