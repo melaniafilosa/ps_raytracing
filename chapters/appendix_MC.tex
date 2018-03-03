@@ -1,0 +1,107 @@
+Although MC and MC ray tracing are two different methods, they are based on the same idea. To fully understand the basis of MC methods is a step needed for comprehending MC ray tracing technique, its accuracy and convergence to the exact solution (for example the exact target intensity).
+\\ \indent Next, we give an introduction to MC methods for the two-dimensional case. Let us consider a set $\mbox{\insieme{D}} = [\vect{a}, \vect{b}]$ with $\vect{a} = (a_1, a_2)$ and $\vect{b} = (b_1, b_2)$ elements of $\mathbb{R}^2$ such that
+$[\vect{a}, \vect{b}]  = [a_1, b_1] \times [a_2, b_2]$. Consider a function $f:[\vect{a},\vect{b}]\subset \mathbb{R}^2 \rightarrow \mathbb{R}$ and a random variable $\vect{Y}$ with values in \insieme{D} and probability density function $\rho(\vect{y})$, where $\vect{y}$ are the values of $\vect{Y}$ in \insieme{D}. Note that we indicate the random variables with capital letters and the corresponding deterministic values with lowercase letters. The expected value of $f(\vect{Y})$ with respect of $\rho(\vect{Y})$ is:
+\begin{equation}
+\mathbb{E}[f(\vect{Y})] =\int_{\textup{D}}f(\vect{y})\rho(\vect{y}) \textrm{d}\vect{y}.
+\end{equation}
+If $\rho$ is a uniform probability density function, the expected value is given by:
+\begin{equation}\label{eq:expected_value}
+\mathbb{E}[f(\vect{Y})] =\frac{1}{\lambda([\vect{a},\vect{b}])} \int_{\textup{D}}f(\vect{y}) \textrm{d}\vect{y},
+\end{equation}
+where $\lambda([\vect{a},\vect{b}]) = (b_1-a_1)\cdot(b_2-a_2)$.
+%In this case, MC methods approximate the integral in Equation (\ref{eq:expected_value}) by the sum:
+Let $\{\vect{Y}_\variabile{i}\}_{\variabile{i} = 1, \cdots, N}$ be independent samples of the probability density function $\rho$ with values in \insieme{D}.
+Indicating with $S_{N}[f(\vect{Y})]$ the sum: 
+\begin{equation}
+S_{N}[f(\vect{Y})] = \frac{1}{N} \sum_{\variabile{i}=1}^{N} f(\vect{Y}_\variabile{i}),
+\end{equation}
+and with $\const{Pr}(E)$ the probability that the event $E$ happen,
+%\begin{equation}\label{eq:approx_MC_QMC}
+%\frac{1}{\lambda([\vect{a},\vect{b}])}\int_{\textup{D}}f(\vect{y}) \textrm{d}\vect{y}\approx\frac{1}{N} \sum_{\variabile{i}=1}^{N} f(\vect{Y}_\variabile{i}).
+%\end{equation}
+the strong law of large numbers states that
+\begin{equation}
+\const{Pr}\Big(\lim_{N\rightarrow\infty}S_{N}[f(\vect{Y})] = \mathbb{E}[f(\vect{Y})] \Big) = 1.
+\end{equation}
+Therefore, for sufficiently large $N$ the expected value of $f(\vect{Y})$ is approximated by the empirical mean:
+\begin{equation}\label{eq:approx_MC_QMC}
+\mathbb{E}[f(\vect{Y})] \approx \frac{1}{N} \sum_{\variabile{i}=1}^{N} f(\vect{Y}_\variabile{i}),
+\end{equation}
+MC is based on the previous approximation \cite{owen2003quasi}. From the linearity of the expected value (see \cite{grinstead2012introduction})
+%\footnote{Given a set of independent random variables $\{X_\variabile{i}\}_{\variabile{i}=1, \cdots, N}$ and a real number $a$, the expected value satisfies:
+%$\mathbb{E}\big[\sum_{\variabile{i}=1}^{N}X_{\variabile{i}}\big] = \sum_{\variabile{i}=1}^{N}\mathbb{E}[X_{\variabile{i}}]$ and $\mathbb{E}[a\,X_\variabile{i}] = a\mathbb{E}[X_{\variabile{i}}]$.},
+ it follows
+\begin{equation}\label{eq:linearity}
+\mathbb{E}[S_{N}[f(\vect{Y})]] = \frac{1}{N}\sum_{\variabile{i}=1}^{\textrm{N}}\mathbb{E}[f(\vect{Y}_{\variabile{i}})] = \mathbb{E}[f(\vect{Y})],
+\end{equation}
+where the second equality holds as
+$f(\vect{Y}_{\variabile{i}})_{\variabile{i}=1, \cdots, N}$ are still random variables with the same probability density function because $\big(\vect{Y}_{\variabile{i}}\big)_{\variabile{i}=1, \cdots, N}$ are independent samples 
+with a given probability density function $\rho(\vect{y})$. This implies that $\mathbb{E}[f(\vect{Y}_{\variabile{i}})] = \mathbb{E}[f(\vect{Y})]$ for every $\variabile{i}=1, \cdots, N$. Indicating with $\textrm{Var}[f(\vect{Y})]$ the variance of $f(\vect{Y})$
+\begin{equation}\textrm{Var}[f(\vect{Y})]=\mathbb{E}[(f(\vect{Y})-\mathbb{E}[f(\vect{Y})])^2] = \sigma^2[f(\vect{Y})],
+\end{equation}
+the Bienaym\'e formula
+%\footnote{Given a set of \textit{independent} random variables $\{X_\variabile{i}\}_{\variabile{i}=1, \cdots, N}$ and a real number $a$, the variance satisfies:
+%$\textrm{Var}\big[\sum_{\variabile{i}=1}^{N}X_{\variabile{i}}\big] = \sum_{\variabile{i}=1}^{N}\textrm[X_{\variabile{i}}]$ and $\textrm{Var}[a\,X_\variabile{i}] = a^2\textrm{Var}[X_{\variabile{i}}]$.} 
+leads to
+\begin{equation}\label{eq:variance}
+\textrm{Var}[S_{N}]= \textrm{Var}\Bigg[\frac{1}{N}\sum_{\variabile{i}=1}^{N}f(\vect{Y}_\variabile{i})\Bigg] =
+ \frac{1}{N^2}\sum_{\variabile{i}=1}^{N}\textrm{Var}\big[f(\vect{Y}_\variabile{i})\big] = \frac{1}{N}\textrm{Var}[f(\vect{Y})]
+\end{equation}
+which can be applied because the random variables $\{\vect{Y}_\variabile{i}\}_{i = 1, \cdots, N}$ are independent \cite{grinstead2012introduction}. 
+Equation (\ref{eq:linearity}) gives
+\begin{equation}\label{eq:variance2}
+\begin{aligned}
+\textrm{Var}[S_N[f(\vect{Y})]] &= \mathbb{E}[(S_{N}[f(\vect{Y})]-\mathbb{E}[S_{N}[f(\vect{Y})]])^2]\\ &= \mathbb{E}[(S_{N}[f(\vect{Y})]-\mathbb{E}[f(\vect{Y})])^2].
+\end{aligned}
+\end{equation}
+Combining (\ref{eq:variance}) with (\ref{eq:variance2}) we obtain:
+\begin{equation}\label{eq:variance3}
+\mathbb{E}[(S_{N}[f(\vect{Y})]-\mathbb{E}[f(\vect{Y})])^2] = \sigma^2[f(\vect{Y})]/N
+\end{equation}
+Let us denote the integration error with:
+\begin{equation}\label{eq:error1}
+\const{err}(f, S_{N}[f]) =\int_{\textup{D}}f(\vect{y})\rho(\vect{y}) \textrm{d}\vect{y}-S_{N}[f] = \mathbb{E}[f(\vect{Y})]-S_N[f(\vect{Y})].
+\end{equation}
+Considering a convex function $g:\variabile{x}\rightarrow\variabile{x}^2$ we can write:
+\begin{equation}
+\begin{aligned}
+\mathbb{E}[|\const{err}(f, S_{N})|] &= \sqrt{g\big(\mathbb{E}[|\const{err}(f, S_{N})|]\big)} \\&\leq\sqrt{\mathbb{E}[g(|\const{err}(f, S_{N})|)]} = \sqrt{\mathbb{E}[\const{err}^2(f, S_{N})]},
+\end{aligned}
+%\begin{aligned}
+%\mathbb{E}\big[|\const{err}(f, S_{\const{N}})|\big] &= \frac{1}{\const{N}}\sqrt{\Bigg(\sum_{\variabile{1}=1}^\const{N}|\const{err}(f, S_{\const{N}})|\Bigg)^2}  \leq \frac{1}{\const{N}}\sqrt{\const{N}\sum_{\variabile{1}=1}^\const{N}\big(\const{err}(f, S_{\const{N}})\big)^2}  \\
+%& =\sqrt{\frac{1}{\const{N}}\sum_{\variabile{1}=1}^\const{N}\big(\const{err}(f, S_{\const{N}})\big)^2}= \sqrt{\mathbb{E}\big[\const{err}(f, S_{\const{N}})^2\big]}
+%\end{aligned}
+\end{equation} 
+where the inequality follows from the Jensen's inequality (see \cite{williams1991probability} Chapter $6$).
+Using the previous relation and Equations (\ref{eq:variance3}) and (\ref{eq:error1}), we obtain:
+\begin{equation}\label{eq:mean_error}
+\mathbb{E}\big[|\const{err}(f, S_{N})|\big]\leq
+\sqrt{\mathbb{E}\big[\const{err}^2(f, S_{N})\big]} = \frac{\sigma[f]}{\sqrt{N}}.
+\end{equation}
+Hence, the absolute value of the integration error is, on average, bounded by $\sigma[f]/\sqrt{N}$, where $\sigma[f]$ is the standard deviation of $f$ \cite{leobacher2014introduction}. It is important to note that $\const{err}(f, S_{N})$ does not depend on the dimension of the set \insieme{D}.
+
+To clarify the connection between MC method and MC ray tracing, in Table \ref{tab:MCcomparison} we report a correspondence of the function used in MC method and MC ray tracing.
+\begin{table}[h] \label{tab:MCcomparison}
+\centering
+\caption{\bf Comparison between MC method and MC ray tracing}
+\begin{tabular}{|l|l|l|}
+ \hline   MC method & MC ray tracing \\
+  \hline 
+ \insieme{D} $= [\vect{a}, \vect{b}]\subset \mathbb{R}^2$  & $[\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}})\subset \mathbb{R}$ \\ [0.9ex] 
+ $f:\mbox{\insieme{D}}\rightarrow \mathbb{R}^2$ & $X_{\variabile{j}}: [\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}})\rightarrow \{0,1\}$ \\ [0.9ex] 
+ $\vect{Y}$   & $\optangle$ \\ [0.9ex] 
+ $N$   & $\nrays$ \\ [0.9ex] 
+$\{\vect{Y}_{\variabile{j}}\}_{\variabile{j}=1, \cdots, N}$  
+& $\{\optangle^{\variabile{k}}\}_{\variabile{k}=1, \cdots, \nrays}$  \\ [0.9ex] 
+ $S_{N}[f(\vect{Y})] = \sum_{\variabile{i}=1}^N \frac{f(\vect{Y}_{\variabile{i}})}{N}$ &
+ $\hat{I}_{\textrm{MC}}  = \frac{\nrays[\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}})}{\nrays[-\pi/2, \pi/2]}= \sum_{\variabile{k}=1}^{\nrays}\frac{X_{\variabile{j}}(\optangle^{\variabile{k}})}{\nrays}$ \\ [0.9ex] 
+ $\mathbb{E}\big[S_N[f(\vect{Y})]\big]=\mathbb{E}[f(\vect{Y})]$   
+& $\mathbb{E}[\hat{I}_{\textrm{MC}}]=\const{P}_{\variabile{j}, \Delta \optangle}$ \\ [0.9ex] 
+ $\textrm{Var}\big[S_N[f(\vect{Y})]\big] = \frac{\textrm{Var}[f(\vect{Y})]}{N} = \frac{\sigma}{N}$  & $\textrm{Var}[\hat{I}_{\textrm{MC}}] = \sqrt{\frac{\const{P}_{\variabile{j}, \Delta \optangle}(1-\const{P}_{\variabile{j}, \Delta \optangle})}{\nrays}}$ \\ [0.9ex] 
+ \hline
+ \end{tabular}
+\label{tab:MCcomparison}
+ \end{table}
+
+
+
