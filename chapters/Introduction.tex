@@ -1,35 +1,41 @@
 \chapter{Introduction}
 \section{Motivation}
 A non-negligible amount of the total electricity consumed is due to residential and commercial illumination.
-According to the U.S. Energy Information Administrator (EIA) about $7\%$ of the total electricity consumed in the U.S. in 2017 was for lighting \cite{}. These figures are impressive if one considers that the global electricity consumption was more than $20,000$ TWh in 2016 \cite{}. 
+According to the U.S. Energy Information Administrator (EIA) about $7\%$ of the total electricity consumed in the U.S. in 2017 was for lighting \cite{electricity_light}. These figures are impressive if one considers that the global electricity consumption was more than $20,000$ TWh in 2016 \cite{statistic}. 
 
 The energy consumed by an illumination device is clearly related to the efficiency of the device itself. 
-In particular, part of the energy consumption constists of excessive, misdirected and inefficent use of light, which could be used in a smarter way. A tangible aspect of such lack of efficiency is light pollution, a persistent and increasing problem in most cities. Light pollution is wasted energy and can have adverse impacts on everything from humans’ sleep patterns to bird and fish migration to plants’ growth periods \cite{}. Figures \ref{fig:light_pollution} and \ref{fig:light_pollution2} show the light pollution of the Gulf of Naples.
+In particular, part of the energy consumption constists of excessive, misdirected and inefficent use of light, which could be used in a smarter way. A tangible aspect of such lack of efficiency is light pollution, a persistent and increasing problem in most cities. Light pollution is not only wasted energy but can also have adverse impacts on everything like for example humans’ sleep patterns, bird and fish migration and plants’ growth \cite{bergesen2016potential}. Figures \ref{fig:light_pollution} and \ref{fig:light_pollution2} show the light pollution of the Gulf of Naples.
 \begin{figure}[t]
-\centering
-  \begin{minipage}[]{0.49\textwidth}
+  \begin{minipage}[t]{0.49\textwidth}
     \includegraphics[width  = \textwidth]{gulf_naples}
-    \caption{\textbf{Gulf of Naples at night \cite{}}}
+    \caption{\textbf{Gulf of Naples at night.}}
     \label{fig:light_pollution}
 \end{minipage}
 \hfill
- \begin{minipage}[]{ 0.49\textwidth}
+ \begin{minipage}[t]{ 0.49\textwidth}
     \includegraphics[width  =\textwidth]{naples}
-    \caption{\textbf{Satellite view of Naples \cite{}.}}
+    \caption{\textbf{Satellite view of Naples \cite{nasa_image}.}}
     \label{fig:light_pollution2}
 \end{minipage}
   \end{figure}
 
-Using efficient light sources could help to mitigate both the amount of energy consumption and light pollution.
+Using efficient light sources could help to mitigate both the amount of energy consumption and light pollution. % Efficienza LED allungo il brodo 
+Solid-state lighting systems using light-emitting diodes (LEDs) can reach a luminous efficacy up to $120$ \textrm{lm}/\textrm{W} versus only around $60$ \textrm{lm}/\textrm{W} achieved by a fluorescent lamp \cite{bergesen2016potential, humphreys2008solid}.
 Because of this, many optical industries are interested in fabricating efficient light sources.
-Currently, light emitting
-diodes (LEDs) are replacing traditional sources \cite{koshel2012illumination}. 
-This is mainly due to their high energy efficacy and very long lifetime, \cite{taguchi2008present, haitz2011solid}. 
-% Efficienza LED allungo il brodo
+Currently, LEDs are replacing traditional sources \cite{koshel2012illumination}. 
+This is mainly due to their high energy efficacy and very long lifetime, 
 LED systems consist of several components. 
 Electronic devices convert the AC mains voltage into a voltage suitable for the LED source.
-An optical system is required, it is formed by optical components such as lenses and reflectors \cite{moreno2008modeling}. Light emitted from the LED propagates within the system which reshapes light according to physical laws (e.g. reflection, refraction and scattering phenomena). LED systems are increasingly used in many application such as street lights, automotive lighting and home illumination. 
-However, the efficiency of the source does not reflect how much light is transferred from the source to the target, and for each application a certain target distribution is desired. For example, street lights should provide a uniform illumination of the streets; car headlights should be built such that they have a powerful and uniform light while avoiding uncomfortable glare for the oncoming traffic. The material and the shape of the optical systems are very important for the efficiency of the entire lighting system. Thus, our aim is to design an optical systems which directs light only where illumination is desired, avoiding to spread light everywhere.
+An optical system is required, it is formed by optical components such as lenses and reflectors \cite{moreno2008modeling} (see Figure \ref{fig:led}). Light emitted from the LED propagates within the system which reshapes light according to physical laws (e.g. reflection, refraction and scattering phenomena). LED systems are increasingly used in many application such as street lights, automotive lighting and home illumination. 
+However, the efficiency of the source does not reflect how much light is transferred from the source to the target, and for each application a certain target distribution is desired. For example, street lights should provide a uniform illumination of the streets; car headlights should be built such that they have a powerful and uniform light while avoiding uncomfortable glare for the oncoming traffic. The material and the shape of the optical systems are very important for the efficiency of the entire lighting system. Thus, our aim is to design an optical systems which directs light only where illumination is desired, avoiding to spread light everywhere \cite{taguchi2008present, haitz2011solid}. 
+\begin{figure}[h]
+\centering
+  \begin{minipage}[t]{0.5\textwidth}
+    \includegraphics[width  = \textwidth]{otherlightbulb}
+    \caption{\textbf{LED system \cite{Schweber}.}}
+    \label{fig:led}
+\end{minipage}
+\end{figure}
 
 Illumination optics is the branch of optics that deals with the design of optical systems. It concerns the transfer of light from the source to the target. The goal in illumination optics is to obtain the desired light distribution at the receiver after its propagation through the optical system. Depending on the intensity distribution required, an optical engineer can determine what type of optic is needed. To this purpose, it is important to understand how light propagates through a given optical system.
 
@@ -63,23 +69,24 @@ meridional plane is taken into account. In two dimensions we refer to \textit{op
 
 Optical phenomena can be analyzed by using the PS and the photometric variables can be defined in PS \cite{rausch2014illumination}.  
 %For example, the \'{e}tendue can be seen as the area covered by the rays in phase space which can be calculated either using numerical integration or, for very simple systems, even analytically. The luminance is the power distribution in phase space. For systems formed by a Lambertian source the output luminance is a positive constant when different from zero. The intensity is given by an integration of the luminance over all the possible positions in phase space. Assuming a Lambertian source, the intensity along every direction is simply the support of the luminance given by the sum of the distances between the rays located on the boundaries of the regions with positive luminance. 
-Currently, some material based on phase space optics has been published, showing that light propagation can be investigated using the phase space concept \cite{rausch2012phase,rausch2014phase, herkommer2012phase}. Also, phase space optics might constitute an alternative approach for describing aberration phenomena \cite{herkommer2013phase, babington2017freeform, wolf1993relativistic}. In this thesis we introduce new methods based on PS providing a new way to calculate the light distribution at the target of optical systems. The PS methods significantly improve the performance of existing procedures used to this purpose in illumination optics, i.e., MC and QMC ray tracing. 
+Currently, some material based on phase space optics has been published, showing that light propagation can be investigated using the phase space concept \cite{rausch2012phase,rausch2014phase, herkommer2012phase}. 
+In particular, it has been proved that the radiance and irradiance distribution at the target can be analyzed by looking at the phase space transformations from the source to the target.
+Also, phase space optics might constitute an alternative approach for describing aberration phenomena \cite{herkommer2013phase, babington2017freeform, wolf1993relativistic}. In this thesis we introduce new methods based on PS providing a new way to calculate the light distribution at the target of optical systems. The PS methods significantly improve the performance of existing procedures used to this purpose in illumination optics, i.e., MC and QMC ray tracing. 
 Next, the methods and results are briefly discussed. 
 \section{Phase space methods and results}
 The new methods presented in this thesis are based on PS rays tracing. The PS of a line is a $2$D space described by one position and one direction coordinate of the ray. 
-The position coordinate is given by one of the two coordinates of the intersection point between the rays and the optical line, the direction coordinate is the sine of the angle that the ray forms with the normal of the line encountered measured counterclockwise multiplied by the index of refraction of the material in which the line is located \cite{wolf2004geometric}. In Figure \ref{fig:TIR_intro} we show a ray that follows a certain path when propagating inside an optical system. This ray corresponds to a unique point in PS. In Figure \ref{fig:PS_intro} we represent the ray traced at the target PS of the system.
+The position coordinate is given by one of the two coordinates of the intersection point between the rays and the optical line, the direction coordinate 
+e of the angle $t$ that the ray forms with the normal of the line encountered measured counterclockwise multiplied by the index of refraction $n$ of the material in which the line is located \cite{wolf2004geometric}. In Figure \ref{fig:TIR_intro} we show a ray propagating inside a two-dimensional optical system in the $(\variabile{x}, \variabile{z})$-plane. This ray is described by a unique point in target PS with corresponding coordinates $(\variabile{x}, n\sin(t))$ (see Figure \ref{fig:PS_intro}).
 \begin{figure}[t]
   \begin{minipage}[t]{0.49\textwidth}
-\centering
-    \includegraphics[width  = \textwidth]{source_PS_cup.pdf}
+    \includegraphics[width  = \textwidth]{tir_1ray}
     \caption{\textbf{A ray propagating inside an optical system.}}
     \label{fig:TIR_intro}
   \end{minipage}
 \hfill
   \begin{minipage}[t]{0.49\textwidth}
-\centering
-    \includegraphics[width=\textwidth]{target_PS_cup.pdf}
-  \caption{\textbf{Ray at the target PS of the system.}}
+    \includegraphics[width=\textwidth]{PS_tir_1ray}
+  \caption{\textbf{Ray at the target PS of the system.} A ray in PS is a point with coordinates $(x, n\sin(t))$.}
 \label{fig:PS_intro}
  \end{minipage}
 \end{figure}

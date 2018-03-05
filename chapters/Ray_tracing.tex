@@ -147,7 +147,7 @@ In order to show how this term decreases as a function of the number of rays tra
 we define the characteristic function $\chi_\variabile{j}(\optangle)$ of the random variable $\optangle$:
 \begin{equation}
 \label{radom_variable}
-\variabile{X}_{\variabile{j}}(\optangle) = \begin{cases} \begin{aligned}
+\chi_{\variabile{j}}(\optangle) = \begin{cases} \begin{aligned}
 1& \qquad \mbox{if} \quad \optangle\in [\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}}),\\
 0 & \qquad \mbox{otherwise}.
 \end{aligned}\end{cases}
@@ -162,7 +162,7 @@ follows a binomial distribution $B(\nrays, \const{P}_{\variabile{j},\Delta \opta
 \end{subequations}
 (see \cite{zolotarev1997modern, rubinstein2016simulation}).
 Thus, the normalized intensity along the direction $\optangle_{\variabile{j}-1/2}$ is given by:
-\begin{equation}\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2}) = \sum_{\variabile{k}=1}^{\nrays}\variabile{X}_{\variabile{j}}(\optangle^{\variabile{k}})/\nrays.\end{equation}
+\begin{equation}\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2}) = \sum_{\variabile{k}=1}^{\nrays}\chi_{\variabile{j}}(\optangle^{\variabile{k}})/\nrays.\end{equation}
 The corresponding expected value and variance are:
 \begin{subequations}
 \begin{align}E[\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})]&=\const{P}_{\variabile{j}, \Delta\optangle},\\ \label{eq:variance_I}
@@ -224,7 +224,9 @@ Since MC ray tracing is a binning procedure, the error depends also on the numbe
 MC noise can be reduced considering a different distribution of the initial rays set.
 Instead of considering random variables, the sample of rays can be defined such that they are regularly distributed on the domain $\textup{D}\subseteq\mathbb{R}^2$ of $f$. Methods based on this \textit{deterministic approach} are called Quasi-Monte Carlo (QMC) methods. The ray tracing procedure that considers such rays distribution is called QMC ray tracing.
 \section{Quasi-Monte Carlo (QMC) ray tracing}\label{sec:QMC}
-As in the previous section we first introduce QMC methods and then we briefly explain QMC ray tracing. QMC methods were proposed for the first time in the 1950s in order to speed up MC. Like MC methods, QMC procedures can be used to approximate the integral of a function $f$ using (\ref{eq:approx_MC_QMC}).\\ \indent
+In this section we first introduce QMC methods and then we briefly explain QMC ray tracing. QMC methods were proposed for the first time in the 1950s in order to speed up MC. Like MC methods, QMC procedures can be used to approximate the integral of a function $f$.
+
+% using (\ref{eq:approx_MC_QMC}).\\ \indent
 This section provides the basic notions about uniform distribution theory following Chapter $2$ of \cite{leobacher2014introduction}. 
 We restrict ourselves to sets of the form $$[\vect{a}, \vect{b})= [a_1,b_1)\times[a_2, b_2)\subseteq[0,1)^2$$ and introduce the concept of sequences uniformly distributed modulo $1$.
 \begin{definition}
@@ -354,7 +356,7 @@ In Figure \ref{fig:qmc_intensity} we show the profile of the output intensity at
 The QMC intensity is depicted with the red line. It is compared to the exact intensity shown in the same figure with the green dotted line.
 A comparison between Figure \ref{fig:mc_intensity} and \ref{fig:qmc_intensity} shows that for the two-faceted cup and for a set of $\nrays=10^4$ rays, QMC ray tracing performs better than MC ray tracing. In order to compare MC and QMC ray tracing, we calculate the target intensity using both methods gradually increasing the number of rays traced. The errors between the approximated averaged normalized intensity $\hat{I}_{\textrm{A}} (\textrm{A} = \textrm{MC}, \textrm{QMC})$ and the exact normalized intensity $\hat{I}_\textrm{exact}$ are calculated.
 % Explain the speed of convergence
-The speed of convergence for MC is shown in Figure \ref{fig:Error_cup} with the red line, while the behavior of QMC ray tracing is depicted in the same picture with the blue line.
+The speed of convergence for MC is shown in Figure \ref{fig:Error_cup} with the green line, while the behavior of QMC ray tracing is depicted in the same picture with the blue line.
 The results shown for a simple optical system are indeed consistent with what we expected from the theoretical analysis.
 \\\indent Although QMC ray tracing is an improvement of MC ray tracing for small dimensions, it has still two main disadvantages. 
 First, its convergence is strongly related with the dimension in which it is implemented.
@@ -368,9 +370,9 @@ Second, like MC ray tracing, QMC ray tracing is a binning procedure, therefore t
   \end{figure}
 \begin{figure}[h]
 \begin{center}
-    \includegraphics[width=0.7\textwidth]{Error_cup}
-    \caption{Error as function of the number of rays traced in a logarithmic scale for fixed number of bins $\nbin=100$.
- MC ray tracing convergence is of the order $\mathcal{O}(1/\sqrt{\nrays})$ and it is shown with the red line. 
+    \includegraphics[width=0.7\textwidth]{error_cup_MC_QMC}
+    \caption{Error as function of the number of rays traced for fixed number of bins $\nbin=100$.
+ MC ray tracing convergence is of the order $\mathcal{O}(1/\sqrt{\nrays})$ and it is shown with the green line. 
 QMC ray tracing convergence is of the order $\mathcal{O}(1/\nrays)$ and it is depicted with the blue line.}
     \label{fig:Error_cup}
 \end{center}
