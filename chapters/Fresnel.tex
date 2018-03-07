@@ -48,7 +48,7 @@ All the rays exiting from $\point{F}_1$ arrive at $\point{F}_2$.}
 \label{fig:real-lens}
  \end{figure}
 \\ \indent The optical path length is defined as the product of the geometric ray path and the refractive index in which the ray travels, where the geometric ray path is the distance between two intersection points of the ray with two optical lines or the source.
-Fermat's principle guarantees that the optical path length is constant \cite{greivenkamp2004field}. Employing Fermat principle, we derive the equations of the lens lines. In the following we explain how the equation for the left lens (line $2$) is obtained. We indicate with $\variabile{d}(\variabile{z})$ half of the lens thickness at high $\variabile{z}$, with $\vect{r}=\vect{r}(\variabile{z})$ the parametrization of the ray emitted from $\point{F}_1$ that reaches line $2$ at height $\variabile{z}$, and $u(\variabile{z})$ the projection of $\vect{r}(\variabile{z})$ on the optical axis. 
+The theorem of Malus-Dupin guarantees that the optical path length is constant \cite{greivenkamp2004field}. Employing Fermat principle, we derive the equations of the lens lines. In the following we explain how the equation for the left lens (line $2$) is obtained. We indicate with $\variabile{d}(\variabile{z})$ half of the lens thickness at high $\variabile{z}$, with $\vect{r}=\vect{r}(\variabile{z})$ the parametrization of the ray emitted from $\point{F}_1$ that reaches line $2$ at height $\variabile{z}$, and $u(\variabile{z})$ the projection of $\vect{r}(\variabile{z})$ on the optical axis. 
 The following relations hold:
 \begin{equation}\label{eq:variables_lens}
 \begin{aligned}
@@ -113,7 +113,7 @@ Thus, given two different paths $\Pi_{\variabile{i}}$ and $\Pi_{\variabile{j}}$ 
 \end{equation}
 where the intersection is over all the possible paths. 
 % Say that simply applying bisection and ray tracing is not enough
-Because of this, we need to slightly modify direct mapping. \\ \indent
+Because of this, we need to slightly modify direct backward ray mapping. \\ \indent
 The key idea is to apply the bisection method of backward ray mapping for every single path $\Pi$ separately. All the possible paths from the target to the source can be visualized in a tree, see Figure \ref{fig:tree_fresnel}. $R$ and $T$ indicate if the reflected or the transmitted part of the ray is considered at every intersection point. Many possibilities occur, we indicate with $C$ the sequence of the choices that are made at every intersection with the lens. For example, the path $\Pi_1$ in reverse order, that is 
 $\Pi_1^{\prime}=(4,3,2,1)$ corresponds to the choice $C_1= (T,T)$ from the target to the source (red path in Figure \ref{fig:tree_fresnel}). This means that the rays that follow path $\Pi_1$ are transmitted on both line $2$ and $3$. 
 \begin{figure}[t]

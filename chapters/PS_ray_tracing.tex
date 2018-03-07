@@ -43,7 +43,7 @@ Rays that propagate through the two-faceted cup can follow $5$ different paths. 
 This means that, while the luminance at the source PS is positive for any possible position and direction, the luminance at the target PS is positive only inside the regions $\mbox{\insieme{R}}_\textrm{t}(\Pi)$, for every path $\Pi$, and it is equal to $0$ outside those regions. For this reason, from now on we will refer to $\mbox{\insieme{R}}_\textrm{t}(\Pi)$ as the \textit{positive luminance regions}. \\ \indent
 It is very important to remark that, although \insieme{S} and \insieme{T} have a different ray distribution, the area covered by the rays is conserved. This follows from \'{e}tendue conservation. From (\ref{etendue2d}) we rewrite the two-dimensional \'{e}tendue as:
 \begin{equation}
-U = \int_{\variabile{x}^{\textrm{min}}}^{\variabile{x}^{\textrm{max}}} \int_{\myangle^{\textrm{min}}}^{\myangle^{\textrm{max}}} \n \cos(\myangle)\textrm{d}\variabile{x}\,\textrm{d}\myangle= \int_{\mbox{\set{Q}{}{}}}\int_{\mbox{\set{P}{}{}}} \textrm{d}\variabile{q}\,\textrm{d}\variabile{p}.
+U = \int_{\variabile{x}^{\textrm{min}}}^{\variabile{x}^{\textrm{max}}} \int_{\myangle^{\textrm{min}}}^{\myangle^{\textrm{max}}} \n \cos(\myangle)\textrm{d}\variabile{x}\,\textrm{d}\myangle= \int_{\mbox{\set{P}{}{}}}\int_{\mbox{\set{Q}{}{}}} \textrm{d}\variabile{q}\,\textrm{d}\variabile{p}.
 \end{equation}
 where we indicated with $\variabile{x}^{\textrm{min}}$ and $\variabile{x}^{\textrm{max}}$ the minimum and maximum rays position coordinates and with $\myangle^{\textrm{min}}$ and $\myangle^{\textrm{max}}$ the minimum and maximum angles of the rays and the normal to the target. The second equality holds since $\textrm{d}\variabile{p}= \n\cos \myangle\textrm{d}\myangle$.
 Therefore, in two dimensions, \'{e}tendue can be seen as an area in PS. Etendue conservation leads to the conservation of the areas of regions with positive luminance.\\ \indent
@@ -179,7 +179,7 @@ Because of this, the procedure could continue infinitely, therefore, two paramet
 The algorithm stops when the length of the sides of the triangles is smaller than $\varepsilon_\variabile{q}^\textrm{min}$ and $\varepsilon_\variabile{p}^\textrm{min}$ in $\variabile{q}$ and $\variabile{p}$ direction. \\ \indent 
 We indicate all the possible paths with $(\Pi_{\variabile{j}})_{\variabile{j}=1, \cdots, \npath}$ where $\npath$ is the maximum number of paths\footnote{We remind the reader that we indicate with $\Pi^\variabile{k} = \Pi(\variabile{q}_1^\variabile{k},\variabile{p}_1^\variabile{k})$ the path followed by rays with coordinates $(\variabile{q}_1^\variabile{k},\variabile{p}_1^\variabile{k})$ in source PS. Note that it
 can happen that $\Pi^\variabile{k}= \Pi^\variabile{h}$ for $\variabile{k}\neq\variabile{h}.$
-With $(\Pi_{\variabile{j}})_{\variabile{j}=1, \cdots, \npath}$ we indicate all the possible $\npath$ paths that can occur, therefore $\Pi_{\variabile{i}}\neq\Pi_{\variabile{j}}$ if $\variabile{i}\neq\variabile{j}$.} (\npath = 5 for the two-faceted cup).
+With $(\Pi_{\variabile{j}})_{\variabile{j}=1, \cdots, \npath}$ we indicate all the possible $\npath$ paths that can occur, therefore $\Pi_{\variabile{i}}\neq\Pi_{\variabile{j}}$ if $\variabile{i}\neq\variabile{j}$.} (\npath = 5 for the two-faceted cup in Figure \ref{fig:cup}).
 If the size of the triangles is too big, it can happen that a region formed by rays that follow a path $\Pi_\variabile{j}$ is located completely inside a triangle whose vertices are related to another path $\Pi_\variabile{i}$ with $\variabile{j} \neq  \variabile{i}$, see Figure \ref{fig:region inside}.
 To avoid this, two parameters $\varepsilon_\variabile{q}^{\textrm{max}}$ and $\varepsilon_\variabile{p}^{\textrm{max}}$ are defined for the $\variabile{q}_1$-axis and the $\variabile{p}_1$-axis, respectively.
 When the length of the sides of the triangle are greater than these parameters, a new triangle is defined even if its vertices correspond to the same path.
@@ -192,7 +192,7 @@ A similar procedure gives the function R$\footnotesize{\textrm{IGHT}}$ T$\footno
 \caption{Triangulation refinement algorithm}\label{alg:triangulation}
 Initialize $\varepsilon_{\variabile{q}}^{\textrm{min}}, \varepsilon_{\variabile{q}}^{\textrm{max}}, \varepsilon_{\variabile{p}}^{\textrm{min}},$ and
  $\varepsilon_{\variabile{p}}^{\textrm{max}}$, Ray = [empty];\\
-Define a structure that contains related data in fields. Each field can contain every type of data. \\
+Define a structure that contains related data in fields. \\
 \Comment $\varepsilon_{\variabile{q}}^{\textrm{min}}, \varepsilon_{\variabile{q}}^{\textrm{max}}, \varepsilon_{\variabile{p}}^{\textrm{min}},$ and
  $\varepsilon_{\variabile{p}}^{\textrm{max}}$ are fixed parameters needed to stop the procedure\\
 \Comment Ray: structure that contains all the data of rays traced (i.e., position, direction and path).

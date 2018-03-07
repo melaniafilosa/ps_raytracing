@@ -2,7 +2,7 @@
 In the previous chapter we presented a new ray tracing approach based on PS. We explained that, in order to compute the target intensity, it is necessary to know the boundaries of the regions in target PS with positive luminance. Ray tracing in PS requires tracing only the rays close to these boundaries. The rays traced can be seen as a point cloud in PS. To detect the shape formed by those rays, the $\alpha$-shapes approach is employed \cite{portegies2013fast}.\\ \indent
 Methods based on $\alpha$-shapes are widely used to reconstruct an unknown shape formed by a set of finite data points \cite{guo1997surface}. $\alpha$-shapes is a very powerful tool to construct the shape of a point cloud. As the parameter $\alpha$ varies, we can obtain different $\alpha$-shapes from the point set itself to the convex
 hull \cite{xu2003automatic}. The disadvantage of such method is that it can be very hard to choose the appropriate value of the parameter $\alpha$ and, in most cases it can be selected only by trial-and-error.\\ \indent
-We develop a technique based on $\alpha$-shapes that gives a criterion to determine the value of the parameter $\alpha$, for which the boundaries are approximated well \cite{filosa2015new}.\\ \indent This chapter is organized as follows. An overview of the-state-of-the-art about $\alpha$-shape methods is provided in Section \ref{sec:alpha-shapes}; the technique used for computing the $\alpha$ value is explained in Section \ref{sec:Tir_alpha}; the results for two different kind of total internal reflection (TIR)-collimators are given in Section \ref{sec:results-Tir-alpha}. Discussions and conclusions are provided in the last paragraph of this chapter.
+We developed a technique based on $\alpha$-shapes that gives a criterion to determine the value of the parameter $\alpha$, for which the boundaries are approximated well \cite{filosa2015new}.\\ \indent This chapter is organized as follows. An overview of the-state-of-the-art about $\alpha$-shape methods is provided in Section \ref{sec:alpha-shapes}; the technique used for computing the $\alpha$ value is explained in Section \ref{sec:Tir_alpha}; the results for two different kind of total internal reflection (TIR)-collimators are given in Section \ref{sec:results-Tir-alpha}. Discussions and conclusions are provided in the last paragraph of this chapter.
 \section{$\alpha$-shapes theory}\label{sec:alpha-shapes}
 Given a finite set $\mbox{\insieme{U}} = \{\point{u}_1, \cdots, \point{u}_N\}\subset \mathbb{R}^2$ of points, $\alpha$-shapes are geometrical objects that give us an approximation of the shape formed by the point cloud. For now we do not further specify the notion of shape. A more precise definition will be provided later.\\ \indent
 Before giving a formal definition, we explain an intuitive and nice interpretation of $\alpha$-shapes \cite{lucieer2004alpha}. 
@@ -38,7 +38,7 @@ The Delaunay triangulation $\mbox{\insieme{T}}^{\prime}$ of the point set \insie
 $\mbox{\insieme{T}}^\prime$ is constructed by modifying a general triangulation \insieme{T} such that every point satisfies the Delaunay property. 
 Therefore, every triangle that does not satisfy such property is flipped such that the new edge is part of the triangulation, see Figure \ref{fig:Delaunay}. 
 Given, for example, an arbitrary triangulation \insieme{T} in two-dimensions, for each edge $\overline{\point{ab}}$ in \insieme{T} which is not on the boundary of the convex hull the two triangles 
-$\Delta_{\point{abc}}$ and $\Delta_{\point{abd}}$ with the common edge $\overline{\point{ab}}$ are identified. Then, if either the circumcircle of triangle $\Delta_{\point{abc}}$ contains point \point{d} or the circumcircle of triangle $\Delta_{\point{abd}}$ contains point \point{c}, the edge $\overline{\point{ab}}$ cannot be included in the Delaunay triangulation and, therefore, $\overline{\point{ab}}$ is replaced by the edge $\overline{\point{ab}}$ such that the triangles $\Delta_{\point{acd}}$ and $\Delta_{\point{bcd}}$ are constructed. The new edge $\overline{\point{cd}}$ locally satisfies the Delaunay property and the triangles $\Delta_{\point{acd}}$ and  $\Delta_{\point{bcd}}$ are added to the Delaunay triangulation $\mbox{\insieme{T}}^\prime$.  
+$\Delta_{\point{abc}}$ and $\Delta_{\point{abd}}$ with the common edge $\overline{\point{ab}}$ are identified. Then, if either the circumcircle of triangle $\Delta_{\point{abc}}$ contains point \point{d} or the circumcircle of triangle $\Delta_{\point{abd}}$ contains point \point{c}, the edge $\overline{\point{ab}}$ cannot be included in the Delaunay triangulation and, therefore, $\overline{\point{ab}}$ is replaced by the edge $\overline{\point{cd}}$ such that the triangles $\Delta_{\point{acd}}$ and $\Delta_{\point{bcd}}$ are constructed. The new edge $\overline{\point{cd}}$ locally satisfies the Delaunay property and the triangles $\Delta_{\point{acd}}$ and  $\Delta_{\point{bcd}}$ are added to the Delaunay triangulation $\mbox{\insieme{T}}^\prime$.  
 \begin{figure}[t]\label{fig:Delaunay}
 \begin{subfigure}[t]{0.48\textwidth}
 \centering
@@ -92,11 +92,11 @@ For each triangle we calculate the circumradius, i.e., the radius of the circumc
 %Note that, while $\delta$ is given for a fixed point set $V$, the value of $C$ needs to be determined by numerical simulations.\\ \indent 
 To summarize, the $\alpha$-shape construction can be outlined as follows:
 \begin{enumerate}
-\item Construct a Delaunay triangulation\footnote{In the simulations we present in this chapter the Matlab function \textit{Delaunay} is used.} $\mbox{\insieme{T}}^\prime$ of the point cloud $\mbox{\insieme{U}}$;
+\item Construct a Delaunay triangulation\footnote{In the simulations we present in this chapter the Matlab function \textit{Delaunay} is used \cite{matlab_delaunay}.} $\mbox{\insieme{T}}^\prime$ of the point cloud $\mbox{\insieme{U}}$;
 \item For every triangle $\mbox{\insieme{T}}^\prime(i)\in \mbox{\insieme{T}}^\prime$ calculate its circumradius $r(i)$;
 \item If $r(i)\leq\alpha$ keep the triangle $\mbox{\insieme{T}}^\prime(i)$ in the triangulation;
 \item If $r(i)>\alpha$ remove the triangle from the triangulation;
-\item For every triangle return the edges belonging to only one triangle of $\mbox{\insieme{T}}^{\prime}$, the so-called \textit{free boundary edges}\footnote{In the simulations we present in this chapter the Matlab function \textit{freeBoundary} is used.}. By definition, the free boundary edges are not a common edge of any two triangles.
+\item Select from the new triangulation obtained those sides that belong to only one triangle, the so-called \textit{free boundary edges}\footnote{In the simulations we present in this chapter the Matlab function \textit{freeBoundary} is used \cite{matlab_free}.}. By definition, the free boundary edges are not a common edge of any two triangles.
 \end{enumerate}
 %% Insert algorithm
 %\begin{algorithm}[h]
@@ -132,7 +132,7 @@ To summarize, the $\alpha$-shape construction can be outlined as follows:
 %The tuple $\mathcal{S}=\{1,\cdots,n\}\subset \mathbb{R}^2$ is now a set of points. The Voronoi diagram of $\mathcal{S}$ is a subsection of $\mathbb{R}^2$ such that every other region around a point $p\in \mathcal{S}$ contains all points that are closer to $p$ than to every point in $\mathcal{S}$. A triangulation of the point set $\mathcal{S}$ is a set of edges $\mathcal{E}$ whose extremes are points of $\mathcal{S}$ such that the faces of each triangle are bounded by three edges and any edge that is not in $\mathcal{E}$ intersects one of the existing edges. The Delaunay triangulation is the dual graph of the Voronoi diagram: it consists of vertices (the points in $\mathcal{S}$) and it has an edge between two vertices if the two corresponding faces share an edge. 
 $\alpha$-shapes provide a nice mathematical definition of the \textit{shape} of
 a set of points. In two dimensions, $\alpha$-shapes gives the contour of the point cloud which is approximated by a family of line segments. 
-Although they are a powerful tool for determining the shape of a point cloud, there exist shapes that are not described well by classical $ \alpha $-shapes. Indeed, for some point sets there is no value of $\alpha$ that includes all desired triangles and deletes all undesired triangles. If the parameter $\alpha$ is determined according to the density of the point cloud, it can be difficult to obtain a good approximation of a shape formed by a non-uniform point set. Furthermore, the $\alpha$-shape method does not work well when the shape we need to approximate has a sharp turn or a joint. 
+Although they are a powerful tool for determining the shape of a point cloud, there exist shapes that are not described well by classical $ \alpha $-shapes. Indeed, for some point sets there is no value of $\alpha$ that gives a good approximation of the contour formed by the point cloud. Usually the parameter $\alpha$ is determined according to the density of the point cloud, therefore, it can be difficult to obtain a good approximation of a shape formed by a non-uniform point set. Furthermore, the $\alpha$-shape method does not work well when the shape we need to approximate has a sharp turn or a joint, this case will be clarified in Section \ref{sec:results-Tir-alpha} with an example. 
 %In this case $\alpha$-shapes often give a "webbed-foot" appearance at such joints since they improperly connect the adjacent surfaces. 
 \\ \indent There are several ways to determine the value of $\alpha$ \cite{mandal1997selection}; in the next section we provide a technique that exploits the conservation of \'{e}tendue in PS. 
 %The first step of this method is to make a triangulation of the point cloud.
@@ -236,8 +236,8 @@ The collimator is surrounded by two vertical lines (lines $13$ and $15$) and two
   \end{center}
   \caption{\textbf{Shape of the TIR-collimator.} Each line of the system is labeled with a number.
    The shape of the collimator is shown in blue.
-   Three detectors depicted with green lines (surfaces $13$, $14$, and $15$) are located at the left, the right and the bottom of the optical system. The source (line $1$) and the target (line $12$) are depicted in red.
-The sagitta of the lens is approximately $1.17$.}
+   Three detectors depicted with green lines (surfaces $13$, $14$, and $15$) are located at the left, the right and the bottom of the optical system. The source (line $1$) and the target (line $12$) are depicted in red.}
+%The sagitta of the lens is approximately $1.17$.}
   \label{fig:tir}
 \end{figure}
 \\ \indent
@@ -296,7 +296,9 @@ The averaged and normalized QMC intensity $\big(\hat{I}_{\textrm{QMC}}(\variabil
 \hat{I}_{\textrm{QMC}}(\variabile{p}^{\variabile{h}+1/2}) = \frac{\nrays[\variabile{p}^{\variabile{h}},\variabile{p}^{\variabile{h}+1})}{\nrays[-1,1)} 
 \qquad \mbox{ for } \variabile{p}\in[\variabile{p}^{\variabile{h}}, \variabile{p}^{\variabile{h}+1}).
 \end{equation} 
-Both approximate intensities $\hat{I}_{\textrm{A}} (\textrm{A} = \textrm{PS}, \textrm{QMC})$ are compared to an intensity $\hat{I}_{\textrm{ref}}$ taken as a reference. For some optical systems, there is an explicit solution for the target intensity but this is not the case of the TIR-collimator.
+Both approximate intensities $\hat{I}_{\textrm{A}} (\textrm{A} = \textrm{PS}, \textrm{QMC})$ are compared to an intensity $\hat{I}_{\textrm{ref}}$ taken as a reference. 
+
+For some optical systems, there is an explicit solution for the target intensity but this is not the case of the TIR-collimator.
 Therefore, a QMC simulation with $10^7$ rays is used to obtain the averaged normalized intensity $\hat{I}_{\textrm{ref}}$.
 The intensity profile $\hat{I}_{\textrm{PS}}
 $ obtained using PS ray tracing with $8.3\cdot 10^4$ rays and $\alpha= \alpha_\textrm{c} = 0.06$ is depicted in Figure \ref{fig:intensityMCPS} with a red line.
@@ -306,7 +308,7 @@ $\hat{I}_{\textrm{PS}}$ is hardly distinguishable from $\hat{I}_{\textrm{ref}}$ 
     \includegraphics[width=7.7 cm]{intensity_alpha_shapes}
 \caption{\textbf{Target intensity profile.}
 The exact intensity is computed using the QMC method for a set of $10^7$ rays. For the PS intensity a set of $6.3\cdot 10^4$
-rays is considered and $\alpha_\textrm{c}c = 0.06$ is chosen to compute the boundaries $\partial$\set{R}{}{}$(\Pi)$.}
+rays is considered and $\alpha_\textrm{c} = 0.06$ is chosen to compute the boundaries $\partial$\set{R}{}{}$(\Pi)$.}
   \label{fig:intensityMCPS}
 \end{figure}
 Finally, we calculate the error between $\hat{I}_{\textrm{A}}$ and $\hat{I}_{\textrm{ref}}$, defined as:
@@ -338,7 +340,7 @@ $16\,755$  & $0.8/4$  & $0.05/4$  & $0.8/8$  & $0.05/8$ & $0.08$ & $8.60\cdot 10
 Increasing the number of rays traced, the error gradually decreases.
 \begin{table}[htbp]
 \centering
-\caption{\bf Error of the MC intensity}
+\caption{\bf Error of the QMC intensity}
 \begin{tabular}{ll} \hline   Number of rays\; & QMC error\\
  \hline $10^3$  & $1.65\cdot10^{-3}$ \\
 $10^4$  & $3.96\cdot 10^{-4}$  \\
@@ -399,7 +401,8 @@ Therefore, it is expected that the $\alpha$-shapes method performs better for a 
    \end{center}
     \caption{\textbf{Shape of the TIR-collimator.} Each line of the system is labeled with a number.
        $n_1 = 1$ is the refraction index of the medium (air) where the source and the target are located, and
-       $n_2 = 1.5 $ the refraction index of the medium (glass) inside the optical system. The sagitta of the lens is equal to $0.6$.}
+       $n_2 = 1.5 $ the refraction index of the medium (glass) inside the optical system.} 
+%The sagitta of the lens is equal to $0.6$.}
  \label{fig:analyticlens}
 \end{figure}
  \begin{figure}[h]
@@ -419,7 +422,7 @@ PS error is depicted with the red line and, QMC error is depicted with the blue 
 %\end{equation}
 %and $\mu$ is called the rate of convergence and $m$ is the order of convergence. For $m\in[0,1]$ we have the linear convergence, for $m=2$ the quadratic convergence, etc. 
 %\\ \indent
-For the TIR-collimator in Figure \ref{fig:analyticlens} we obtained a speed of convergence of the order of $\mathcal{O}\big(\frac{1}{\nrays}\big)$ for PS ray tracing versus an order of convergence of $\mathcal{O}\big(\frac{1}{\sqrt{\nrays}}\big)$ for QMC ray tracing.
+Numerical results show that, for the TIR-collimator in Figure \ref{fig:analyticlens}, the computational time needed to achieve an error of the order of $10^{-5}$ is reduced using PS ray tracing compared with QMC ray tracing.
 \begin{figure}[t]
  \begin{center}
    \includegraphics[width=7.7cm]{error_alpha_shapes_vs_qmc_flat}
