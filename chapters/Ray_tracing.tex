@@ -284,7 +284,7 @@ where $V(f)$ is the so-called variation function of $f$ in the sense of Hardy-Kr
 Usually both the star discrepancy $D^*_N(\mbox{\insieme{Y}})$ and the variation function $V(f)$ are difficult to approximate. In particular,  $V(f)$ in some cases is even infinite \cite{wang2008low}. Hence, (\ref{eq:QMC_error}) is not good for predicting for which $N$ the error will converge. 
 %Schlier [32] reports that even for QMC the variance of f is more strongly related to the error than is the variation.
 For the functions we analyze in this thesis the corresponding variation function is always bounded and the convergence of QMC methods strongly depends on the low-discrepancy sequence that is used.\\ \indent
-There are many ways to generate low-discrepancy sequences \cite{dalal2008low}. The most common QMC approach uses the so-called Sobol sequence. The algorithm for generating Sobol sequences is widely explained in the literature, (see for instance \cite{bratley1988algorithm}). In appendix \ref{app:Sobol} we give an overview of how to construct such sequence. When using Sobol sequences, the absolute value of QMC error can be estimated by:
+There are many ways to generate low-discrepancy sequences \cite{dalal2008low}. The most common QMC approach uses the so-called Sobol sequence. The algorithm for generating Sobol sequences is widely explained in the literature, (see for instance \cite{bratley1988algorithm}). When using Sobol sequences, the absolute value of QMC error can be estimated by:
 \begin{equation}
 |\const{err}(f, S_{N})|<\const{C} \frac{\log(N)^2}{N}, 
 \end{equation}

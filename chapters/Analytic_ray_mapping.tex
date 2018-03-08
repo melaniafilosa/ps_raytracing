@@ -837,7 +837,7 @@ Comparison between the reference intensity (QMC ray tracing with $10^8$ rays) an
 \end{figure}
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=.4]{error_10_cup_raymapping1}
+\includegraphics[scale=.4]{error_10_cup_raymapping}
 \caption{\textbf{Errors for the $20$-faceted cup as a function of the CPU-time.} The ray mapping method is more accurate than QMC ray tracing and it is faster in case an error smaller than $10^{-5}$ is desired.}
 \label{fig:error10cup} 
 \end{figure}
@@ -856,9 +856,9 @@ The error between the normalized exact intensity $\hat{I}_{\textrm{exact}}$ and 
 \frac{1}{\textrm{Nb}}\Bigg(\sum_{\variabile{h} = 1}^{\textrm{Nb}}\big| \hat{I}_{\textrm{exact}}(\variabile{p}^\variabile{h}) - \hat{I}_{\textrm{ref}}(\variabile{p}^\variabile{h})\big| +
 \sum_{\variabile{h} = 1}^{\textrm{Nb}}\big| \hat{I}_{\textrm{ref}}(\variabile{p}^\variabile{h}) - \hat{I}_{\textrm{A}}(\variabile{p}^\variabile{h})\big|\Bigg)\,.
 \end{equation}
-To give an estimation of the first term on the right hand side of (\ref{eq:qmc_error_20_cup}), we do a linear extrapolation from the errors values obtained. Therefore, a line with slope $-1$ is considered (dotted cyan line in Figure \ref{fig:error10cup}). The extrapolated point at the time needed for computing the reference intensity (cyan dot in Figure \ref{fig:error10cup}) gives an estimation of the error between the reference intensity and the exact intensity. If the reference intensity is \textit{exact} then we would expect an error \textit{exactly} equal to $0$.
+To give an estimation of the first term on the right hand side of (\ref{eq:qmc_error_20_cup}), we do a linear extrapolation from the errors values obtained. The extrapolated point at the time needed for computing the reference intensity (cyan dot in Figure \ref{fig:error10cup}) gives an estimation of the error between the reference intensity and the exact intensity. If the reference intensity is \textit{exact} then we would expect an error \textit{exactly} equal to $0$.
 From the extrapolation we obtain
-\begin{equation*}\sum_{\variabile{h} = 1}^{\textrm{Nb}}| \hat{I}_{\textrm{exact}}(\variabile{p}^\variabile{h}) - \hat{I}_{\textrm{ref}}(\variabile{p}^\variabile{h})|/\textrm{Nb}\approx 3*10^{-8}. \end{equation*}
+\begin{equation*}\sum_{\variabile{h} = 1}^{\textrm{Nb}}| \hat{I}_{\textrm{exact}}(\variabile{p}^\variabile{h}) - \hat{I}_{\textrm{ref}}(\variabile{p}^\variabile{h})|/\textrm{Nb}\approx 1.02*10^{-7}. \end{equation*}
 The results show that 
 \begin{equation*}
 \sum_{\variabile{h} = 1}^{\textrm{Nb}}| \hat{I}_{\textrm{exact}}(\variabile{p}^\variabile{h}) - \hat{I}_{\textrm{ref}}(\variabile{p}^\variabile{h})|/\nbin

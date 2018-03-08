@@ -11,7 +11,7 @@
 \newcommand{\scalar}[2]{(#1 #2)}
 \newcommand{\const}[1]{\textrm{#1}}
 \newcommand{\myangle}{\theta}
-\newcommand{\mytime}{t}
+\newcommand{\mytime}{\tau}
 \newcommand{\mynormal}{$\boldsymbol{\nu}$}
 \newcommand{\lineai}{\variabile{j}}
 \newcommand{\lineaj}{\variabile{k}}
@@ -32,143 +32,144 @@
 %\newcommand{\setbound}[4]{$\emph{#1}_{\textit{#2#3}}^{#4}$}
 \chapter*{List of symbols}
 \begin{longtable}{l l}
-$\Phi_{\textrm{r}}$ &{Radiant flux}\\
-$Q$ &{Total energy emitted from a light sorce or received by a target}\\
-$\mytime$ & {time}\\
-$\Phi$ &{Luminous flux}\\
-$y$ &{Luminous efficacy function}\\
-$\lambda$ &{Wavelength}\\
-$\Psi_{\textrm{r}}$ & {Spectral radiant flux}\\
-$\Psi$ & {Spectral luminous flux}\\
-$\bar{y}(\lambda)$ & {Luminousity efficiency function}\\
-$E$ &{Illuminance}\\
-$P$ &{Irradiance (Radiant flux density)}\\
-${\Omega}$ & {Solid angle}\\
-$\boldsymbol{\nu}$ & {Surface normal}\\
-$I$ &{Intensity}\\
-$L$ &{Luminance}\\
-$U$ &{\'{e}tendue}\\
-$\n$ &{Index of refraction}\\
-$\myangle$& {Polar angle between $\boldsymbol{\nu}$ and the direction of the central line of $\textrm{d}\Omega$}\\
-$\phi$ & {Azimuthal angle between $\boldsymbol{\nu}$ and the direction of the central line of $\textrm{d}\Omega$}\\
-$\vect{t}_\textrm{i}$ &{Direction of the incident ray}\\ 
-$\vect{t}_\textrm{r}$ &{Direction of the reflected ray}\\ 
-$\vect{t}_\textrm{t}$ &{Direction of the transmitted ray}\\ 
-\variabile{s} &{Arc length}\\
-$\n_\textrm{i}$ &{Index of refraction of the medium in which the incident ray travels}\\
-$\n_\textrm{r}$ &{Index of refraction of the medium in which the reflected ray is located}\\
-$\n_\textrm{t}$ &{Index of refraction of the medium in which the transmitted ray travels}\\
-$\myangle_\textrm{i}$& {Angle between the incident ray and the normal \mynormal}\\
-$\myangle_\textrm{r}$ &{Angle between the reflected ray and the normal \mynormal}\\
-$\myangle_\textrm{t}$ & {Angle between the transmitted ray and the normal \mynormal}\\
-$P_{\textrm{i}}$ &{Incident radiant flux density}\\
-$P_{\textrm{r}}$ &{Reflected radiant flux density}\\
-$P_{\textrm{t}}$ &{Transmitted radiant flux density}\\
-$\mathcal{E}$ &{Electric field}\\
-$\mathcal{B}$ &{Magnetic field}\\
-$\mathcal{E}_0$ &{Amplitude of the electric field}\\
-$\mathcal{B}_0$ &{Amplitude of the magnetic field}\\
-$\mu$ &{Magnetic permeability}\\
-$\omega$ &{Angular frequency}\\
-$c$ &{Speed of light in vacuum}\\
-$v$ &{Speed of light in medium}\\
-$r$ &{Amplitude coefficient for the reflected light}\\
-$t$ &{Amplitude coefficient for the transmitted light}\\
-$r_{\textrm{s}}$ &{Amplitude coefficient for the reflected \textrm{s}-polarized light}\\
-$t_{\textrm{s}}$ &{Amplitude coefficient for the transmitted s-polarized light}\\
-$r_{\textrm{p}}$ &{Amplitude coefficient for the reflected p-polarized light}\\
-$t_{\textrm{p}}$ &{Amplitude coefficient for the transmitted p-polarized light}\\
-$\mathcal{R}$ &{Reflectance}\\
-$\mathcal{T}$ &{Transmittance}\\
-$\mathcal{R}_{\textrm{s}}$ &{Reflectance for s-polarized light}\\
-$\mathcal{T}_{\textrm{s}}$ &{Transmittance for s-polarized light}\\
-$\mathcal{R}_{\textrm{p}}$ &{Reflectance for p-polarized light}\\
-$\mathcal{T}_{\textrm{p}}$ &{Transmittance for p-polarized light}\\
-$\myangle_\const{c}$& {Critical angle}\\
+$\Phi_{\textrm{r}}$ &{radiant flux, [W]}\\
+$Q$ &{total energy emitted from a light source or received by a target, [J]}\\
+$\mytime$ & {time, [sec]}\\
+$\Phi$ &{luminous flux, [lm]}\\
+$y$ &{luminous efficacy function, [lm/W]}\\
+$\lambda$ &{wavelength}\\
+$\Psi_{\textrm{r}}$ & {spectral radiant flux, [W/m]}\\
+$\Psi$ & {spectral luminous flux, [lm/m]}\\
+$\bar{y}(\lambda)$ & {luminosity efficiency function}\\
+$E$ &{illuminance, [lm/$\textrm{m}^2$]}\\
+$P$ &{irradiance (radiant flux density), [W/$\textrm{m}^2$]}\\
+${\Omega}$ & {solid angle}\\
+$\boldsymbol{\nu}$ & {surface normal}\\
+$I$ &{intensity, [cd = lm/sr]}\\
+$L$ &{luminance, [cd/$\textrm{m}^2$]}\\
+$U$ &{\'{e}tendue, [$\textrm{m}^2\,$sr]}\\
+$\n$ &{index of refraction}\\
+$\myangle$& {polar angle between $\boldsymbol{\nu}$ and the direction of the central line of $\textrm{d}\Omega$}\\
+$\phi$ & {azimuthal angle between $\boldsymbol{\nu}$ and the direction of the central line of $\textrm{d}\Omega$}\\
+$\vect{t}_\textrm{i}$ &{direction of the incident ray}\\ 
+$\vect{t}_\textrm{r}$ &{direction of the reflected ray}\\ 
+$\vect{t}_\textrm{t}$ &{direction of the transmitted ray}\\ 
+\variabile{s} &{arc length}\\
+$\n_\textrm{i}$ &{index of refraction of the medium in which the incident ray travels}\\
+$\n_\textrm{r}$ &{index of refraction of the medium in which the reflected ray is located}\\
+$\n_\textrm{t}$ &{index of refraction of the medium in which the transmitted ray travels}\\
+$\myangle_\textrm{i}$& {angle between the incident ray and the normal \mynormal}\\
+$\myangle_\textrm{r}$ &{angle between the reflected ray and the normal \mynormal}\\
+$\myangle_\textrm{t}$ & {angle between the transmitted ray and the normal \mynormal}\\
+$P_{\textrm{i}}$ &{incident radiant flux density}\\
+$P_{\textrm{r}}$ &{reflected radiant flux density}\\
+$P_{\textrm{t}}$ &{transmitted radiant flux density}\\
+$\mathcal{E}$ &{electric field}\\
+$\mathcal{B}$ &{magnetic field}\\
+$\mathcal{E}_0$ &{amplitude of the electric field}\\
+$\mathcal{B}_0$ &{amplitude of the magnetic field}\\
+$\mu$ &{permeability}\\
+$\varepsilon$ &{permittivity}\\ 
+$\omega$ &{angular frequency}\\
+$c$ &{speed of light in vacuum}\\
+$v$ &{speed of light in medium}\\
+$r$ &{amplitude coefficient for the reflected light}\\
+$t$ &{amplitude coefficient for the transmitted light}\\
+$r_{\textrm{s}}$ &{amplitude coefficient for reflected \textrm{s}-polarized light}\\
+$t_{\textrm{s}}$ &{amplitude coefficient for transmitted s-polarized light}\\
+$r_{\textrm{p}}$ &{amplitude coefficient for reflected p-polarized light}\\
+$t_{\textrm{p}}$ &{amplitude coefficient for transmitted p-polarized light}\\
+$\mathcal{R}$ &{reflectance}\\
+$\mathcal{T}$ &{transmittance}\\
+$\mathcal{R}_{\textrm{s}}$ &{reflectance for s-polarized light}\\
+$\mathcal{T}_{\textrm{s}}$ &{transmittance for s-polarized light}\\
+$\mathcal{R}_{\textrm{p}}$ &{reflectance for p-polarized light}\\
+$\mathcal{T}_{\textrm{p}}$ &{transmittance for p-polarized light}\\
+$\myangle_\const{c}$& {critical angle}\\
 $\myangle_\const{p}$& {Brewster's angle for $\n_{\textrm{t}}<\n_{\textrm{i}}$}\\
 $\myangle_\const{p}^{\prime}$ & {Brewster's angle for $\n_{\textrm{t}}>\n_{\textrm{i}}$}\\
-$\point{S}$ &{Light source}\\
-\point{T} &{Light target}\\
+$\point{S}$ &{light source}\\
+\point{T} &{light target}\\
 $(\variabile{x}_{\lineai}, \variabile{z}_{\lineai})$ 
-&{Coordinates of the intersection point of the rays with line $\lineai$ in real space}\\
-$\optangle_\lineai$ &{Angle that the ray incident line $\lineai$ makes with respect to the optical axis}\\
-$\vect{r}(\variabile{s}) $ & Ray parametrization\\
-$\nrays$ & Number of rays \\
-$\nbin$ & Number of bins \\
-$\n_{\lineai}$ &{Index of refraction of the medium in which line $\lineai$ is located}\\
-$\nline$ &{Number of lines that constitute the system = Index of the target}\\
-$\vect{Y}$ &{Random variable}\\
-$\vect{y}$ &{Values that a random variable assumes}\\
-$\rho(\vect{y})$ &{Probability density function}\\
-$\mathbb{E}[f]$ &{Expected value of $f$}\\
-$\textrm{Var}[f] = \sigma$ &{Variance of $f$}\\
-$\sigma^2 [f]$ &{Standard deviation of $f$}\\
+&{coordinates of the intersection point of the rays with line $\lineai$ in real space}\\
+$\optangle_\lineai$ &{angle that the ray incident line $\lineai$ makes with respect to the optical axis}\\
+$\vect{r}(\variabile{s}) $ & ray parametrization\\
+$\nrays$ & number of rays \\
+$\nbin$ & number of bins \\
+$\n_{\lineai}$ &{index of refraction of the medium in which line $\lineai$ is located}\\
+$\nline$ &{number of lines that constitute the system = Index of the target}\\
+$\vect{Y}$ &{random variable}\\
+$\vect{y}$ &{values that a random variable assumes}\\
+$\rho(\vect{y})$ &{probability density function}\\
+$\mathbb{E}[f]$ &{expected value of $f$}\\
+$\textrm{Var}[f] = \sigma$ &{variance of $f$}\\
+$\sigma^2 [f]$ &{standard deviation of $f$}\\
 $(\variabile{x}_{\lineai}, \variabile{z}_{\lineai})$ 
 &{Position coordinates of the on line $\lineai$ of the $\lineai$-th ray traced}\\
-$\optangle_\lineai$ &{Angular coordinate of the $\lineai$-th ray traced}\\
-$\hat{I}_{\textrm{MC}}$ &{Averaged and normalized Monte Carlo intensity}\\
-$\hat{I}_{\textrm{QMC}}$ &{Averaged and normalized Quasi-Monte Carlo intensity}\\
-$\textrm{card}(\mbox{\insieme{A}})$ &{Cardinality of the set $\insieme{A}$}\\
-$D_{N}(\mbox{\insieme{Y}})$ &{Discrepancy of the finite set $\insieme{Y}$ of $N$ points.}\\
-$D_{N}^*(\mbox{\insieme{Y}})$ &{Discrepancy of the finite set $\insieme{Y}$ of $N$ points.}\\
+$\optangle_\lineai$ &{angular coordinate of the $\lineai$-th ray traced}\\
+$\hat{I}_{\textrm{MC}}$ &{averaged and normalized Monte Carlo intensity}\\
+$\hat{I}_{\textrm{QMC}}$ &{averaged and normalized Quasi-Monte Carlo intensity}\\
+$\textrm{card}(\mbox{\insieme{A}})$ &{cardinality of the set $\insieme{A}$}\\
+$D_{N}(\mbox{\insieme{Y}})$ &{discrepancy of the finite set $\insieme{Y}$ of $N$ points.}\\
+$D_{N}^*(\mbox{\insieme{Y}})$ &{discrepancy of the finite set $\insieme{Y}$ of $N$ points.}\\
 $V(f)$ &{Hardy-Krause variation function.}\\
-$\insieme{Q}$ &{Set of the position coordinates of the rays}\\
-$\insieme{P}$  &{Set of the direction coordinates of the rays}\\
-\set{S}{}{}=\set{Q}{}{} $\times$ \set{P}{}{} & Phase space of the rays with position in \set{Q}{}{} and direction in \set{P}{}{}\\
-$\insieme{S}$ &{Source phase space}\\
-$\insieme{T}$ &{Target phase space}\\
+$\insieme{Q}$ &{set of the position coordinates of the rays}\\
+$\insieme{P}$  &{set of the direction coordinates of the rays}\\
+\set{S}{}{}=\set{Q}{}{} $\times$ \set{P}{}{} & phase space of the rays with position in \set{Q}{}{} and direction in \set{P}{}{}\\
+$\insieme{S}$ &{source phase space}\\
+$\insieme{T}$ &{target phase space}\\
 $(\variabile{q}_1, \variabile{q}_1)$ 
-&{Coordinates of the ray on source PS \insieme{S}}\\ 
+&{coordinates of the ray on source PS \insieme{S}}\\ 
 $(\variabile{q}, \variabile{q})$ 
-&{Coordinates of the ray on target PS \insieme{T}}\\
-$\Pi$ &{Ray path}\\
-$\map{M}{}{}$ &{Ray mapping form source to target PS}\\
-\insieme{R}$_\textrm{s}(\Pi)$ &{ $\mbox{\insieme{R}}_1(\Pi)$ Regions in source PS related to path $\Pi$}\\
-\insieme{R}$_\textrm{t}(\Pi) $ &{$\mbox{\insieme{R}}_\textrm{t}(\Pi)$ Positive luminance regions in target PS related to path $\Pi$}\\
+&{coordinates of the ray on target PS \insieme{T}}\\
+$\Pi$ &{ray path}\\
+$\map{M}{}{}$ &{ray mapping form source to target PS}\\
+\insieme{R}$_\textrm{s}(\Pi)$ &{ $\mbox{\insieme{R}}_1(\Pi)$ regions in source PS related to path $\Pi$}\\
+\insieme{R}$_\textrm{t}(\Pi) $ &{$\mbox{\insieme{R}}_\textrm{t}(\Pi)$ positive luminance regions in target PS related to path $\Pi$}\\
 $(\variabile{q}_1^{\variabile{k}}, \variabile{p}_1^{\variabile{k}})$ 
-&{Source PS coordinates of the \variabile{k}-th ray traced}\\
-$\Pi^{\variabile{k}}$ &{Path followed by the \variabile{k}-th ray traced}\\
+&{source PS coordinates of the \variabile{k}-th ray traced}\\
+$\Pi^{\variabile{k}}$ &{path followed by the \variabile{k}-th ray traced}\\
 $\npath$ &{Number of paths}\\
-$\hat{I}_{\textrm{PS}}(\variabile{p})$ &{Averaged and normalized phase space intensity at the target}\\
-$\hat{I}_{\textrm{exact}}(\variabile{p})$ & {Exact averaged and normalized target intensity} \\
-$\hat{I}_{\textrm{ref}}(\variabile{p})$ & {Reference averaged and normalized target intensity} \\
+$\hat{I}_{\textrm{PS}}(\variabile{p})$ &{averaged and normalized phase space intensity at the target}\\
+$\hat{I}_{\textrm{exact}}(\variabile{p})$ & {exact averaged and normalized target intensity} \\
+$\hat{I}_{\textrm{ref}}(\variabile{p})$ & {reference averaged and normalized target intensity} \\
 $\Pi_{\variabile{j}}$ &{\variabile{j}-th possible path ($\variabile{j}=1, \cdots, \npath$)}\\
-$\varepsilon_\variabile{q}^\textrm{min}$ & {Minimum triangulation parameter for the $\variabile{q}$-axis}\\
-$\varepsilon_\variabile{p}^\textrm{min}$ & {Minimum triangulation parameter for the $\variabile{p}$-axis}\\
-$\varepsilon_\variabile{q}^\textrm{max}$ & {Maximum triangulation parameter for the $\variabile{q}$-axis}\\
+$\varepsilon_\variabile{q}^\textrm{min}$ & {minimum triangulation parameter for the $\variabile{q}$-axis}\\
+$\varepsilon_\variabile{p}^\textrm{min}$ & {minimum triangulation parameter for the $\variabile{p}$-axis}\\
+$\varepsilon_\variabile{q}^\textrm{max}$ & {maximum triangulation parameter for the $\variabile{q}$-axis}\\
 $\varepsilon_\variabile{p}^\textrm{max}$ & {Maximum triangulation parameter for the $\variabile{p}$-axis}\\
 $\variabile{q}^\variabile{i}(\Pi, \variabile{p})$ &{$\variabile{q}$-coordinate on $\partial\mbox{\insieme{R}}(\Pi)$ along direction $\variabile{p}$}\\
-$\variabile{q}^\textrm{min}(\Pi, \variabile{p}) $ &{Minimum $\variabile{q}$-coordinate on $\partial\mbox{\insieme{R}}(\Pi)$ along direction $\variabile{p}$}\\
-$\variabile{q}^\textrm{max}(\Pi, \variabile{p}) $ &{Maximum $\variabile{q}$-coordinate on $\partial\mbox{\insieme{R}}(\Pi)$ along direction $\variabile{p}$}\\
-\insieme{T} &{Triangulation in $\mathbb{R}^2$}\\
+$\variabile{q}^\textrm{min}(\Pi, \variabile{p}) $ &{minimum $\variabile{q}$-coordinate on $\partial\mbox{\insieme{R}}(\Pi)$ along direction $\variabile{p}$}\\
+$\variabile{q}^\textrm{max}(\Pi, \variabile{p}) $ &{maximum $\variabile{q}$-coordinate on $\partial\mbox{\insieme{R}}(\Pi)$ along direction $\variabile{p}$}\\
+\insieme{T} &{triangulation in $\mathbb{R}^2$}\\
 \insieme{T}$^{\prime}$ &{Delaunay triangulation in $\mathbb{R}^2$}\\
 \insieme{V}$_{\variabile{i}}$ &{Voronoi cell}\\
 \insieme{V} &{Voronoi diagram}\\
-\set{S}{i}{} & Source phase space of line $\variabile{i}$ \\
-\set{T}{i}{} & Target phase space of line $\variabile{i}$ \\
-\set{T}{i,}{j} & Part of \set{T}{i}{} that is illuminated by line 
+\set{S}{i}{} & source phase space of line $\variabile{i}$ \\
+\set{T}{i}{} & target phase space of line $\variabile{i}$ \\
+\set{T}{i,}{j} & part of \set{T}{i}{} that is illuminated by line 
 $\variabile{j}$ with $\variabile{i}\neq \variabile{j}$ \\
-$\pos{s,}{i}$ & Position coordinates of the rays on \set{S}{i}{} \\
+$\pos{s,}{i}$ & position coordinates of the rays on \set{S}{i}{} \\
 $\pos{t,}{j}$ & Position coordinates of the rays on \set{T}{j}{} \\
-$\vect{$\nu$}_\variabile{i}$ & Normal to line $\variabile{i}$\\
+$\vect{$\nu$}_\variabile{i}$ & normal to line $\variabile{i}$\\
 %$\tau_{\var{i}}$ & Angle between the ray that hits line $\var{i}$ and the normal $\vect{$\nu$}_\var{i}$, measured counterclockwise.\\
-$\dir{s,}{i}$ & Direction coordinates on \set{S}{i}{}, $\dir{s,}{i} = n_\variabile{i}\sin(\tau_{\variabile{i}})$ \\
-$\dir{t,}{i}$ & Direction coordinates on \set{T}{i}{}, $\dir{s,}{i} = n_\variabile{i}\sin(\tau_{\variabile{i}})$ \\
-$\map{M}{$1$,}{\mbox{\textrm{Nl}}}$ & Map from \set{S}{$1$}{} into \set{T}{Nl}{} \\
-$\map{M}{$1$,}{\mbox{\textrm{Nl}}}(\Pi)$ & Map from \set{S}{$1$}{} to \set{R}{}{}($\Pi$)\\
-$\map{P}{i,}{j}$ & Propagation map from \set{S}{i}{} to \set{T}{j}{}\\
-$\map{R}{j}{}$ & Reflection map from \set{T}{j}{} to \set{S}{j}{}\\
+$\dir{s,}{i}$ & direction coordinates on \set{S}{i}{}, $\dir{s,}{i} = n_\variabile{i}\sin(\tau_{\variabile{i}})$ \\
+$\dir{t,}{i}$ & direction coordinates on \set{T}{i}{}, $\dir{s,}{i} = n_\variabile{i}\sin(\tau_{\variabile{i}})$ \\
+$\map{M}{$1$,}{\mbox{\textrm{Nl}}}$ & map from \set{S}{$1$}{} into \set{T}{Nl}{} \\
+$\map{M}{$1$,}{\mbox{\textrm{Nl}}}(\Pi)$ & map from \set{S}{$1$}{} to \set{R}{}{}($\Pi$)\\
+$\map{P}{i,}{j}$ & propagation map from \set{S}{i}{} to \set{T}{j}{}\\
+$\map{R}{j}{}$ & reflection map from \set{T}{j}{} to \set{S}{j}{}\\
 %$\var{q}^\textrm{\,min}(\Pi,\var{p})$ & Minimum position coordinate on $\partial$\set{R}{}{}($\Pi$) along the direction $\var{p}$.
 %\\
 %$\var{q}^\textrm{\,max}(\Pi,\var{p})$ & Maximum position coordinate on $\partial$\set{R}{}{}($\Pi$) along the direction $\var{p}$.\\
 %$\pos{t,}{j}^\textrm{\,min}(\dir{}{})$ & Minimum position coordinate on \set{T}{j}{} with momentum $\dir{}{}$\\
 %$\pos{t,}{j}^ \textrm{\,max}(\dir{}{})$ & Maximum position coordinate on \set{T}{j}{} with momentum $\dir{}{}$\\
-$\variabile{u}_{\variabile{j},\variabile{i}}^\textrm{\,min}(\dir{}{})$ & Minimum position coordinate on $\partial$\set{T}{j,}{i} along direction $\variabile{p}=\variabile{p}_{\textrm{t}, \variabile{j}}$ \\
-$\variabile{u}_{\variabile{j},\variabile{i}}^\textrm{\,max}(\dir{}{})$ & Maximum position coordinate on $\partial$\set{T}{j,}{i} along direction $\variabile{p}=\variabile{p}_{\textrm{t}, \variabile{j}}$ \\
+$\variabile{u}_{\variabile{j},\variabile{i}}^\textrm{\,min}(\dir{}{})$ & minimum position coordinate on $\partial$\set{T}{j,}{i} along direction $\variabile{p}=\variabile{p}_{\textrm{t}, \variabile{j}}$ \\
+$\variabile{u}_{\variabile{j},\variabile{i}}^\textrm{\,max}(\dir{}{})$ & maximum position coordinate on $\partial$\set{T}{j,}{i} along direction $\variabile{p}=\variabile{p}_{\textrm{t}, \variabile{j}}$ \\
 $\variabile{v}_{\variabile{j},\variabile{i}}^\textrm{\,min}$ & $\max(\pos{j,}{i}^\textrm{\,min},\variabile{u}_{\variabile{j},\variabile{i}}^\textrm{\,min})$ \\
 $\variabile{v}_{\variabile{j},\variabile{i}}^\textrm{\,max}$ & $\min(\pos{j,}{i}^\textrm{\,max},\variabile{u}_{\variabile{j},\variabile{i}}^\textrm{\,max})$ \\
-$(\variabile{q}^{\,\textrm{a}}, \variabile{p})$ &{Coordinates of the left end point of \insieme{T}}\\
-$(\variabile{q}^{\,\textrm{b}}, \variabile{p})$ &{Coordinates of the right end point of \insieme{T}}\\
+$(\variabile{q}^{\,\textrm{a}}, \variabile{p})$ &{coordinates of the left end point of \insieme{T}}\\
+$(\variabile{q}^{\,\textrm{b}}, \variabile{p})$ &{coordinates of the right end point of \insieme{T}}\\
 
 %$\boldsymbol{\nu}_{\lineai}$ & {Normal to the line $\lineai$}\\
 %$\optangle_\lineai$ & {Angle that the ray located on line $\lineai$ forms with respect to the optical axis}\\
