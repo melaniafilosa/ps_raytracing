@@ -1,4 +1,6 @@
-Although MC and MC ray tracing are two different methods, they are based on the same idea. To fully understand the basis of MC methods is a step needed for comprehending MC ray tracing technique, its accuracy and convergence to the exact solution (for example the exact target intensity).
+\chapter{Monte Carlo method and Monte Carlo ray tracing}\label{chap:appraytracing}
+The aim of this appendix is to point out the similarities and the differences between Monte Carlo (MC) method and MC ray tracing.
+Although MC and MC ray tracing are two different methods, they are based on the same idea. We think to fully comprehend MC ray tracing technique it is necessary to first understand the basis of MC methods.
 \\ \indent Next, we give an introduction to MC methods for the two-dimensional case. Let us consider a set $\mbox{\insieme{D}} = [\vect{a}, \vect{b}]$ with $\vect{a} = (a_1, a_2)$ and $\vect{b} = (b_1, b_2)$ elements of $\mathbb{R}^2$ such that
 $[\vect{a}, \vect{b}]  = [a_1, b_1] \times [a_2, b_2]$. Consider a function $f:[\vect{a},\vect{b}]\subset \mathbb{R}^2 \rightarrow \mathbb{R}$ and a random variable $\vect{Y}$ with values in \insieme{D} and probability density function $\rho(\vect{y})$, where $\vect{y}$ are the values of $\vect{Y}$ in \insieme{D}. Note that we indicate the random variables with capital letters and the corresponding deterministic values with lowercase letters. The expected value of $f(\vect{Y})$ with respect of $\rho(\vect{Y})$ is:
 \begin{equation}
@@ -80,7 +82,14 @@ Using the previous relation and Equations (\ref{eq:variance3}) and (\ref{eq:erro
 \end{equation}
 Hence, the absolute value of the integration error is, on average, bounded by $\sigma[f]/\sqrt{N}$, where $\sigma[f]$ is the standard deviation of $f$ \cite{leobacher2014introduction}. It is important to note that $\const{err}(f, S_{N})$ does not depend on the dimension of the set \insieme{D}.
 
-To clarify the connection between MC method and MC ray tracing, in Table \ref{tab:MCcomparison} we report a correspondence of the function used in MC method and MC ray tracing.
+The MC technique can be combined with ray tracing procedure in order to compute the intensity distribution at the target of an optical system.
+In MC ray tracing the position and the direction of every ray are chosen randomly at the source. 
+% Repetition of chapter 3 formulate it differently
+In the two-dimensional case, for every ray we need to choose one position coordinate $\variabile{x}_1$ and one angular coordinate $\optangle_1$. Given a set \insieme{D}$\in \mathbb{R}^2$, a set of random variables $\{\vect{Y}_1, \cdots, \vect{Y}_N\}= (\variabile{x}_{1}^{\variabile{i}},\optangle_1^{\variabile{i}})$ is chosen such that they are uniformly distributes at the source. More precisely, the initial position coordinate $\variabile{x}_1$ of the $\variabile{k}$-th ray corresponds to the first component of the $\variabile{k}$-th random variable $\vect{y}_\variabile{k}$ and, the starting angular coordinate $\optangle_1$ of the $\variabile{k}$-th ray corresponds to the second component of the $\variabile{k}$-th random variable $\vect{y}_\variabile{k}$.
+Using ray tracing procedure, the rays with those random initial coordinates are traced from \point{S} to \point{T} and, the corresponding random variables $\vect{Z}_{\variabile{i}}=(\variabile{x}^{\variabile{i}},\optangle^{\variabile{i}})$ at the target are obtained. Note that the rays at the target are not necessary uniformly distributed. Once the target variable are computed using ray tracing we can apply the idea of MC simulation to approximate the target intensity $I(\optangle)$. Since the intensity only depends on the angular coordinate $\optangle$ we use MC approximation in one dimension. Hence, we approximate the expected value $\mathbb{E}[I]$ by a sum as described in Equation (\ref{eq:approx_MC_QMC}). The details are explained next.
+
+
+To clarify the connection between MC method and MC ray tracing, in Table \ref{tab:MCcomparison} we report a correspondence of the functions and the variables used here and in chapter \ref{chap:raytracing}.
 \begin{table}[h] \label{tab:MCcomparison}
 \centering
 \caption{\bf Comparison between MC method and MC ray tracing}
@@ -102,6 +111,3 @@ $\{\vect{Y}_{\variabile{j}}\}_{\variabile{j}=1, \cdots, N}$
  \end{tabular}
 \label{tab:MCcomparison}
  \end{table}
-
-
-
