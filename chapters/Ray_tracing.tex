@@ -159,7 +159,8 @@ follows a binomial distribution $B(\nrays, \const{P}_{\variabile{j},\Delta \opta
 \end{subequations}
 (see \cite{zolotarev1997modern, rubinstein2016simulation}).
 Thus, the normalized intensity along the direction $\optangle_{\variabile{j}-1/2}$ is given by:
-\begin{equation}\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2}) = \sum_{\variabile{k}=1}^{\nrays}\chi_{\variabile{j}}(\optangle^{\variabile{k}})/\nrays.\end{equation}
+\begin{equation}\label{eq:approssimazione_MCraytracing}
+\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2}) = \sum_{\variabile{k}=1}^{\nrays}\chi_{\variabile{j}}(\optangle^{\variabile{k}})/\nrays.\end{equation}
 The corresponding expected value and variance are:
 \begin{subequations}
 \begin{align}E[\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})]&=\const{P}_{\variabile{j}, \Delta\optangle},\\ \label{eq:variance_I}
@@ -181,7 +182,7 @@ Therefore, the second term of the right hand side of relation ($\ref{eq:error_in
 \end{equation}
 for some $\const{C}_3>0$, where the approximation holds because $\sigma_{\variabile{j}}$ gives a measure for the error between
 $\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})$ and the probability $\const{P}_{\variabile{j}, \Delta\optangle}$ \cite{diez2012openintro}. The second approximation follows from (\ref{sigma}). In summary, the MC error over the $\variabile{j}$-th bin is approximated by
-\begin{equation} \begin{aligned}
+\begin{equation}\begin{aligned}
 \Big|I(\optangle_{\variabile{j}-1/2})&-\frac{\Phi}
 {\Delta\optangle}\hat{I}_{\const{MC}}(\optangle_{\variabile{j}-1/2})\Big| \approx
 \frac{\const{C}_1}{\nbin^2} + \const{C}_4\sqrt{\frac{\nbin}{\nrays}},
