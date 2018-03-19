@@ -25,7 +25,7 @@ Let $\gamma$ be the angle that the left and right reflector make with the normal
 The highest $\variabile{z}$ coordinate that the two-faceted cup can reach during the rotation is defined by:
 \begin{equation}\label{rotation}\begin{tabular}{llll}
 $Z$ & $=$ & $ \big(h+\frac{\variabile{a}}{\tan\gamma}\big)\frac{1}{\cos\gamma}-\frac{\variabile{a}}{\tan\gamma}$ \\ $ \quad$ & $ \quad $ & $ \quad $ \\$ \quad$ &  $=$ & $\frac{h}{\cos\gamma}+a\tan\big(\frac{1}{2}\gamma\big),$\end{tabular}
-\end{equation} and $\point{B}=(0,Z)$ is the rotation point. We define $\point{B}_k$ as the clockwise ($k<0$) or counterclockwise ($k\geq 0$) rotations of the point $\point{B}=(0,Z)$ over an angle $\alpha_k~=~(~2~k~+~1~)~\gamma$, with $k$ an integer number (Figure \ref{fig:twofaced} is illustrative).
+\end{equation} and $\point{P}=(0,Z)$ is the rotation point. We define $\point{B}_k$ as the clockwise ($k<0$) or counterclockwise ($k\geq 0$) rotations of the point $\point{P}=(0,Z)$ over an angle $\alpha_k~=~(~2~k~+~1~)~\gamma$, with $k$ an integer number (Figure \ref{fig:twofaced} is illustrative).
 \begin{figure}[t]%\label{fig:twofaced}
  \begin{center}
   \includegraphics[width=10cm]{rotatedcup.jpg}
@@ -53,7 +53,7 @@ Given the coordinates $(\variabile{x}_1, \variabile{z}_1)$ and the angular coord
  \variabile{v}+\frac{a}{\tan(\gamma)}\end{pmatrix}-\begin{pmatrix}0 \\ \frac{a}{\tan\gamma}\end{pmatrix}.
 \end{equation} We observe that the sign depends on the parity of $\variabile{k}$. When $\variabile{k}=0$, i.e. the ray does not reflect, the first and the second matrices become the identity matrix and the cup is not rotated nor reflected. When $\variabile{k}$ is even, the determinant of the matrix given by the product between the first and the second matrix (\ref{rotation_target}) is equal to $1$ and we obtained a rotation matrix, while when $\variabile{k}$ is odd the determinant of the product matrix is $-1$ and we have a reflection matrix.
 \\ \indent
-The method of reflecting the cup instead of the rays allows to determine the positive luminance regions $\mbox{\insieme{R}}_1(\Pi_{\variabile{j}})$ and $\mbox{\insieme{R}}(\Pi_{\variabile{j}})$ in source and target PS, where every path $(\Pi_{\variabile{j}})_{\variabile{j}=1, \cdots, 2\variabile{k}+1}$ corresponds to a certain number $\variabile{k}$ of reflections. The corresponding boundaries only consists of rays that either leave the extremes of the source or hit one of the points $\point{B}_\variabile{k}$. 
+The method of reflecting the cup instead of the rays allows to determine the positive luminance regions $\mbox{\insieme{R}}_1(\Pi_{\variabile{j}})$ and $\mbox{\insieme{R}}(\Pi_{\variabile{j}})$ in source and target PS, where every path $(\Pi_{\variabile{j}})_{\variabile{j}=1, \cdots, 2\variabile{r}_{\textrm{max}}+1}$ corresponds to a certain number $\variabile{k}$ of reflections. The corresponding boundaries only consists of rays that either leave the extremes of the source or hit one of the points $\point{B}_\variabile{k}$. 
 %At the boundaries a small change in the position or direction ray coordinate can cause a difference in the number of the reflections. 
 
 Rays emitted from the end points of the source have a constant position coordinate $\variabile{q}_1 = \variabile{x}_1 = \textrm{const}$ in source PS while varying the direction coordinate $\variabile{p}_1 = \sin(\optangle_1)\in[-1, 1]$. The corresponding target position coordinates $\variabile{x}$ are obtained from Equation (\ref{rotation_target}) while the direction coordinates in the target PS are $\variabile{p} = \sin(\optangle)$, where $\optangle$ is given by: 
@@ -67,7 +67,7 @@ The direction coordinates of these rays at the source PS are $\variabile{p}_1 = 
 \end{equation}
 The corresponding direction coordinates at the target PS are $\variabile{p}=\sin(\optangle)$ where $\optangle$ is given by Equation (\ref{teta}).
 Note that the rays emitted from the end points of the source form vertical lines in source PS as $\variabile{q}_1= \textrm{const}$ while varying $\variabile{p}_1\in[-1,1]$.
-On the other hand, rays that hit points $\point{B}_k$ form vertical lines in target PS \insieme{T} as $\variabile{q} = \textrm{const}$ while varying $\variabile{p}\in[-1,1]$.
+On the other hand, rays that hit points $\point{B}_k$ form vertical lines in target PS as $\variabile{q} = \textrm{const}$ while varying $\variabile{p}\in[-1,1]$.
 \\ \indent 
 %In Figure \ref{fig:raggi} are shown some rays that compose the boundaries of $M_{\textrm{s},k}$ which coordinates are:
 %$$ \begin{array}{cc}ADE = \Bigg(-a, \arctan\Big(\frac{-a+b_{-1,x}}{b_{-1,z}}\Big)\Bigg),\; ACE = \big(-a, \sin(\gamma)\big),\; AF = \big(-a, -\sin(\delta)\big), \\
@@ -84,28 +84,26 @@ On the other hand, rays that hit points $\point{B}_k$ form vertical lines in tar
 %$$ \begin{array}{cc}ADE = \big(-b, -(t_1+2\gamma)\big)),\; ACE = \big(-b, \sin(\gamma)\big),\; AF = \big(-b, -\sin(\delta)\big), \\
 % BCF = \big(b, -(t_2-2\gamma)\big), BDF = \big(b, - \sin(\gamma)\big) \, \;\mbox{and} \,\; BE = \big(b, \sin(\delta)\big).\end{array} $$
 % where $t_1 = \arctan(\frac(-a+b_{-1,x}{b_{-1}}))$ and $t_2 = \arctan(\frac(a-b_{-1,x}{b_{-1}}))$.
-The boundaries at the source and target PS are shown in Figures \ref{fig:boundary} and \ref{boundaries_target}, respectively. 
+The boundaries at the source and target PS are shown in red in Figures \ref{fig:boundary} and \ref{boundaries_target}, respectively. 
 \begin{figure}[htbp]
-%\centering
+\centering
 %\begin{minipage}[t]{.40\textwidth}
-\includegraphics[scale=0.55]{boundaries_source.jpg}
-\caption{\footnotesize{Regions $M_{s,k}$ of rays that reflect $|k|$ times, with $(x,\tau)\in\mathcal{P}_\textrm{s}$.
-The parameter values are: $a=5$, $b=20$ and $h=40$. The continuous lines are the boundaries of the regions $M_{\textrm{s}}$
-calculated considering rays that leave the source and hit the points $B_{k}$ at the target. The dashed blue lines are the boundaries calculated using (\ref{anglesource}) }}
+\includegraphics[width = 0.8 \textwidth]{analytic_boundaries_source}
+\caption{Regions in source PS formed by rays that reflect $|k|$ times, for the two-faceted cup in Figure \ref{fig:cup}.}
 \label{fig:boundary}
 %\end{minipage} \qquad \qquad
 %\begin{minipage}[t]{.40\textwidth}
 \end{figure}
 \begin{figure}[htbp]
-%\centering
+\centering
 %\begin{minipage}[t]{.40\textwidth}
-\includegraphics[scale=0.55]{boundaries_target.jpg}
-\caption{Regions $M_{t,k}$ of rays that reflect $|k|$ times, for the two-faceted cup. The parameter values are: $a=5$, $b=20$ and $h=40$.}
+\includegraphics[width = 0.8 \textwidth]{analytic_boundaries_target}
+\caption{Regions in target PS formed by rays that reflect $|k|$ times, for the two-faceted cup in Figure \ref{fig:cup}.}
 \label{boundaries_target}
 %\end{minipage} \qquad \qquad \qquad
 \end{figure}
-\noindent 
-Figure \ref{fig:boundary} and \ref{boundaries_target} show also the symmetry of the regions $M_{\textrm{s},k}$ and $M_{\textrm{t},k}$. 
+%\noindent 
+%Figure \ref{fig:boundary} and \ref{boundaries_target} show also the symmetry of the regions $M_{\textrm{s},k}$ and $M_{\textrm{t},k}$. 
 %Finally we note that, since $k = 1$ is odd, the position of the regions $M_{\textrm{t},1}$ and $ M_{\textrm{t},-1}$ are exchanged with respect to the position of $ M_{\textrm{s},1}$ and $ M_{\textrm{s},-1}$.
 Once the boundaries at the target are determined, the coordinates of the intersection points between line $\variabile{p}=\textrm{const}$ and $\partial$\insieme{R}$(\Pi_{\variabile{j}})$ are found for every path $(\Pi_\variabile{j})_{\variabile{j}=1, \cdots, 2\variabile{k}+1}$ along every direction $\variabile{p}$. The target intensity is computed using Equation (\ref{eq:eta_appendix}). The intensity profile is depicted in Figure \ref{fig:intensity_cup_analytic}. 
 \begin{figure}[htbp]
@@ -118,5 +116,5 @@ Once the boundaries at the target are determined, the coordinates of the interse
 \end{figure}
 Since the boundaries are calculated analytically, the intensity $I(\variabile{p})$ found is the exact intensity.
 
-The exact intensity found as described above was taken as the reference intensity for the two-faceted cup in Chapters \ref{chap:triangulation} and \ref{chap:raymapping1}.
+The exact intensity found as described above was taken as reference intensity in Chapters \ref{chap:triangulation} and \ref{chap:raymapping1}.
 
