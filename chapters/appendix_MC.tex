@@ -1,6 +1,6 @@
-\chapter{Monte Carlo method and Monte Carlo ray tracing}\label{chap:appraytracing}
-Although Monte Carlo (MC) and MC ray tracing are two different methods, they are based on the same idea. We think to fully comprehend MC ray tracing technique it is necessary to first understand the basis of MC methods. The aim of this appendix is to point out the similarities and the differences between the two methods. Next, we give an introduction to MC methods for the two-dimensional case. 
-\section{Monte Carlo method}
+\chapter{Monte Carlo integration versus Monte Carlo ray tracing}\label{chap:appraytracing}
+Although Monte Carlo integration (MC) and MC ray tracing are two different methods, they are based on the same idea. We think to fully comprehend MC ray tracing technique it is necessary to first understand the basics of MC methods. The aim of this appendix is to point out the similarities and the differences between the two methods. In the next section we give an introduction to MC integration for the two-dimensional case. 
+\section{Monte Carlo integration}
 Let us consider a set $\mbox{\insieme{D}} = [\vect{a}, \vect{b}]$ with $\vect{a} = (a_1, a_2)$ and $\vect{b} = (b_1, b_2)$ elements of $\mathbb{R}^2$ such that
 $[\vect{a}, \vect{b}]  = [a_1, b_1] \times [a_2, b_2]$. Consider a function $f:[\vect{a},\vect{b}]\subset \mathbb{R}^2 \rightarrow \mathbb{R}$ and a random variable $\vect{Y}$ with values in \insieme{D} and probability density function $\rho(\vect{y})$, where $\vect{y}$ are the values of $\vect{Y}$ in \insieme{D}. Note that we indicate the random variables with capital letters and the corresponding deterministic values with lowercase letters. The expected value of $f(\vect{Y})$ with respect of $\rho(\vect{Y})$ is:
 \begin{equation}
@@ -12,7 +12,7 @@ If $\rho$ is a uniform probability density function, the expected value is given
 \end{equation}
 where $\lambda([\vect{a},\vect{b}]) = (b_1-a_1)\cdot(b_2-a_2)$.
 %In this case, MC methods approximate the integral in Equation (\ref{eq:expected_value}) by the sum:
-Let $\{\vect{Y}_\variabile{i}\}_{\variabile{i} = 1, \cdots, N}$ be independent samples of the probability density function $\rho$ with values in \insieme{D}.
+Let $\{\vect{Y}_\variabile{i}\}_{\variabile{i} = 1, \cdots, N}$ be independent samples of the probability density function $\rho$ of $\vect{Y}$ with values in \insieme{D}.
 Indicating with $S_{N}[f(\vect{Y})]$ the sum: 
 \begin{equation}
 S_{N}[f(\vect{Y})] = \frac{1}{N} \sum_{\variabile{i}=1}^{N} f(\vect{Y}_\variabile{i}),
@@ -23,13 +23,13 @@ and with $\const{Pr}(E)$ the probability that the event $E$ happens,
 %\end{equation}
 the strong law of large numbers states that
 \begin{equation}
-\const{Pr}\Big(\lim_{N\rightarrow\infty}S_{N}[f(\vect{Y})] = \mathbb{E}[f(\vect{Y})] \Big) = 1.
+\const{Pr}\Big(\lim_{N\rightarrow\infty}S_{N}[f(\vect{Y})] = \mathbb{E}[f(\vect{Y})] \Big) = 1
 \end{equation}
-Therefore, for sufficiently large $N$ the expected value of $f(\vect{Y})$ is approximated by the empirical mean:
+\cite{grinstead2012introduction}. The empirical mean is an unbiased estimator of the expectation value:
 \begin{equation}\label{eq:approx_MC_QMC}
 \mathbb{E}[f(\vect{Y})] \approx \frac{1}{N} \sum_{\variabile{i}=1}^{N} f(\vect{Y}_\variabile{i}).
 \end{equation}
-MC method based on the previous approximation \cite{owen2003quasi}. From the linearity of the expected value (see \cite{grinstead2012introduction})
+From the linearity of the expected value (see \cite{grinstead2012introduction})
 %\footnote{Given a set of independent random variables $\{X_\variabile{i}\}_{\variabile{i}=1, \cdots, N}$ and a real number $a$, the expected value satisfies:
 %$\mathbb{E}\big[\sum_{\variabile{i}=1}^{N}X_{\variabile{i}}\big] = \sum_{\variabile{i}=1}^{N}\mathbb{E}[X_{\variabile{i}}]$ and $\mathbb{E}[a\,X_\variabile{i}] = a\mathbb{E}[X_{\variabile{i}}]$.},
  it follows
@@ -37,17 +37,16 @@ MC method based on the previous approximation \cite{owen2003quasi}. From the lin
 \mathbb{E}[S_{N}[f(\vect{Y})]] = \frac{1}{N}\sum_{\variabile{i}=1}^{\textrm{N}}\mathbb{E}[f(\vect{Y}_{\variabile{i}})] = \mathbb{E}[f(\vect{Y})],
 \end{equation}
 where the second equality holds as
-$f(\vect{Y}_{\variabile{i}})_{\variabile{i}=1, \cdots, N}$ are still random variables with the same probability density function because $\big(\vect{Y}_{\variabile{i}}\big)_{\variabile{i}=1, \cdots, N}$ are independent samples 
-with a given probability density function $\rho(\vect{y})$. This implies that $\mathbb{E}[f(\vect{Y}_{\variabile{i}})] = \mathbb{E}[f(\vect{Y})]$ for every $\variabile{i}=1, \cdots, N$. Indicating with $\textrm{Var}[f(\vect{Y})]$ the variance of $f(\vect{Y})$
+$f(\vect{Y}_{\variabile{i}})_{\variabile{i}=1, \cdots, N}$ are still random variables with the same probability density function $\rho(\vect{y})$ because $\big(\vect{Y}_{\variabile{i}}\big)_{\variabile{i}=1, \cdots, N}$ are independent samples with probability density function $\rho(\vect{y})$. This implies that $\mathbb{E}[f(\vect{Y}_{\variabile{i}})] = \mathbb{E}[f(\vect{Y})]$ for every $\variabile{i}=1, \cdots, N$. Indicating with $\textrm{Var}[f(\vect{Y})]$ the variance of $f(\vect{Y})$:
 \begin{equation}\textrm{Var}[f(\vect{Y})]=\mathbb{E}[(f(\vect{Y})-\mathbb{E}[f(\vect{Y})])^2] = \sigma^2[f(\vect{Y})],
 \end{equation}
-the Bienaym\'e formula
+the Bienaym\'e formula (\cite{grinstead2012introduction})
 %\footnote{Given a set of \textit{independent} random variables $\{X_\variabile{i}\}_{\variabile{i}=1, \cdots, N}$ and a real number $a$, the variance satisfies:
 %$\textrm{Var}\big[\sum_{\variabile{i}=1}^{N}X_{\variabile{i}}\big] = \sum_{\variabile{i}=1}^{N}\textrm[X_{\variabile{i}}]$ and $\textrm{Var}[a\,X_\variabile{i}] = a^2\textrm{Var}[X_{\variabile{i}}]$.} 
-leads to
+and the fact that $\textrm{Var}[f(\vect{Y}_{\variabile{i}})] = \textrm{Var}[f(\vect{Y})]$ lead to
 \begin{equation}\label{eq:variance}
-\textrm{Var}[S_{N}]= \textrm{Var}\Bigg[\frac{1}{N}\sum_{\variabile{i}=1}^{N}f(\vect{Y}_\variabile{i})\Bigg] =
- \frac{1}{N^2}\sum_{\variabile{i}=1}^{N}\textrm{Var}\big[f(\vect{Y}_\variabile{i})\big] = \frac{1}{N}\textrm{Var}[f(\vect{Y})]
+\textrm{Var}[S_{N}[f(\vect{Y})]]= \textrm{Var}\Bigg[\frac{1}{N}\sum_{\variabile{i}=1}^{N}f(\vect{Y}_\variabile{i})\Bigg] =
+ \frac{1}{N^2}\sum_{\variabile{i}=1}^{N}\textrm{Var}\big[f(\vect{Y}_\variabile{i})\big] = \frac{1}{N}\textrm{Var}[f(\vect{Y})],
 \end{equation}
 which can be applied because the random variables $\{\vect{Y}_\variabile{i}\}_{i = 1, \cdots, N}$ are independent \cite{grinstead2012introduction}. 
 Equation (\ref{eq:linearity}) gives
@@ -58,13 +57,13 @@ Equation (\ref{eq:linearity}) gives
 \end{equation}
 Combining (\ref{eq:variance}) with (\ref{eq:variance2}) we obtain:
 \begin{equation}\label{eq:variance3}
-\mathbb{E}[(S_{N}[f(\vect{Y})]-\mathbb{E}[f(\vect{Y})])^2] = \sigma^2[f(\vect{Y})]/N
+\mathbb{E}[(S_{N}[f(\vect{Y})]-\mathbb{E}[f(\vect{Y})])^2] = \sigma^2[f(\vect{Y})]/N.
 \end{equation}
 Let us denote the integration error with:
 \begin{equation}\label{eq:error1}
-\const{err}(f, S_{N}[f]) =\int_{\textup{D}}f(\vect{y})\rho(\vect{y}) \textrm{d}\vect{y}-S_{N}[f] = \mathbb{E}[f(\vect{Y})]-S_N[f(\vect{Y})].
+\const{err}(f, S_{N}[f(\vect{Y})]) =\int_{\textup{D}}f(\vect{y})\rho(\vect{y}) \textrm{d}\vect{y}-S_{N}[f] = \mathbb{E}[f(\vect{Y})]-S_N[f(\vect{Y})].
 \end{equation}
-Considering a convex function $g:\variabile{x}\rightarrow\variabile{x}^2$ we can write:
+Considering a convex function $g:\variabile{x}\mapsto\variabile{x}^2$ we can write:
 \begin{equation}
 \begin{aligned}
 \mathbb{E}[|\const{err}(f, S_{N})|] &= \sqrt{g\big(\mathbb{E}[|\const{err}(f, S_{N})|]\big)} \\&\leq\sqrt{\mathbb{E}[g(|\const{err}(f, S_{N})|)]} = \sqrt{\mathbb{E}[\const{err}^2(f, S_{N})]},
@@ -80,39 +79,38 @@ Using the previous relation and Equations (\ref{eq:variance3}) and (\ref{eq:erro
 \mathbb{E}\big[|\const{err}(f, S_{N})|\big]\leq
 \sqrt{\mathbb{E}\big[\const{err}^2(f, S_{N})\big]} = \frac{\sigma[f]}{\sqrt{N}}.
 \end{equation}
-Hence, the absolute value of the integration error is, on average, bounded by $\sigma[f]/\sqrt{N}$, where $\sigma[f]$ is the standard deviation of $f$ \cite{leobacher2014introduction}. It is important to note that $\const{err}(f, S_{N})$ does not depend on the dimension of the set \insieme{D}.
+Hence, the absolute value of the integration error is, on average, bounded by $\sigma[f(\vect{Y})]/\sqrt{N}$, where $\sigma[f(\vect{Y})]$ is the standard deviation of $f$ \cite{leobacher2014introduction}. It is important to note that $\const{err}(f, S_{N})$ does not depend on the dimension of the set \insieme{D}.
 \section{Monte Carlo ray tracing}
-The MC technique can be combined with ray tracing procedure in order to compute the intensity distribution at the target of an optical system.
+The MC technique can be combined with ray tracing in order to compute the intensity distribution at the target of an optical system.
 In MC ray tracing the position and the direction of every ray are chosen randomly at the source. 
 
-In the two-dimensional case, for every ray we need to choose one position coordinate $\variabile{x}_1$ and one angular coordinate $\optangle_1$. These coordinates are chosen randomly and such that they are uniformly distributes at the source. 
-Using ray tracing procedure, the rays with those random initial coordinates are traced from \point{S} to \point{T} and, the corresponding random variables $\vect{Z}_{\variabile{i}}=(\variabile{x}^{\variabile{i}},\optangle^{\variabile{i}})$ at the target are obtained, where $\variabile{x}^{\variabile{i}}$ and $\variabile{t}^{\variabile{i}}$ are the position and direction coordinates of the $\variabile{i}$-th ray at the target. Note that the rays at the target are most likely non-uniformly distributed. Once the target variable are computed, we can apply the idea of MC simulation to approximate the target intensity $I(\optangle)$. Since the intensity only depends on the angular coordinate $\optangle$ we use MC approximation in one dimension. Hence, we approximate the expected value $\mathbb{E}[I]$ by a sum as described in Equation (\ref{eq:approx_MC_QMC}). 
+In the two-dimensional case, for every ray we need to choose one position coordinate $\variabile{x}_1$ and one angular coordinate $\optangle_1$. These coordinates are chosen randomly and such that they are uniformly distributed at the source. 
+Using ray tracing, the rays with those random initial coordinates are traced from \point{S} to \point{T} and, the corresponding random variables $\vect{Z}_{\variabile{i}}=(\variabile{x}^{\variabile{i}},\optangle^{\variabile{i}})$ at the target are obtained, where $\variabile{x}^{\variabile{i}}$ and $\variabile{t}^{\variabile{i}}$ are the position and direction coordinates of the $\variabile{i}$-th ray at the target. Note that the rays at the target are most likely non-uniformly distributed. Once the target variables are computed, we can apply the idea of MC simulation to approximate the target intensity $I(\optangle)$. Since the intensity only depends on the angular coordinate $\optangle$ we use MC approximation in one dimension. Hence, we approximate the expected value $\mathbb{E}[I]$ by a sum as described in Equation (\ref{eq:approx_MC_QMC}). 
 
-
-To clarify the connection between MC method and MC ray tracing, in Table \ref{tab:MCcomparison} we report a correspondence of the functions and the variables used in the previous section and in Chapter \ref{chap:raytracing}.
+To clarify the connection between the MC integration and MC ray tracing, in Table \ref{tab:MCcomparison} we report a correspondence of the functions and the variables used in the previous section and in Chapter \ref{chap:raytracing}.
 \begin{table}[h] \label{tab:MCcomparison}
 \centering
-\caption{\bf Comparison between MC method and MC ray tracing}
+\caption{\bf Comparison between the MC integration and MC ray tracing}
 \begin{tabular}{|l|l|l|}
  \hline   MC method & MC ray tracing \\
   \hline 
  \insieme{D} $= [\vect{a}, \vect{b}]\subset \mathbb{R}^2$  & $[\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}})\subset \mathbb{R}$ \\ [0.9ex] 
- $f:\mbox{\insieme{D}}\rightarrow \mathbb{R}^2$ & $X_{\variabile{j}}: [\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}})\rightarrow \{0,1\}$ \\ [0.9ex] 
+ $f:\mbox{\insieme{D}}\rightarrow \mathbb{R}^2$ & $\chi_{\variabile{j}}: [\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}})\rightarrow \{0,1\}$ \\ [0.9ex] 
  $\vect{Y}$   & $\optangle$ \\ [0.9ex] 
  $N$   & $\nrays$ \\ [0.9ex] 
 $\{\vect{Y}_{\variabile{j}}\}_{\variabile{j}=1, \cdots, N}$  
 & $\{\optangle^{\variabile{k}}\}_{\variabile{k}=1, \cdots, \nrays}$  \\ [0.9ex] 
  $S_{N}[f(\vect{Y})] = \sum_{\variabile{i}=1}^N \frac{f(\vect{Y}_{\variabile{i}})}{N}$ &
- $\hat{I}_{\textrm{MC}}  = \frac{\nrays[\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}})}{\nrays[-\pi/2, \pi/2]}= \sum_{\variabile{k}=1}^{\nrays}\frac{X_{\variabile{j}}(\optangle^{\variabile{k}})}{\nrays}$ \\ [0.9ex] 
+ $\hat{I}_{\textrm{MC}}  = \frac{\nrays[\optangle_{\variabile{j}-1}, \optangle_{\variabile{j}})}{\nrays[-\pi/2, \pi/2]}= \sum_{\variabile{k}=1}^{\nrays}\frac{\chi_{\variabile{j}}(\optangle^{\variabile{k}})}{\nrays}$ \\ [0.9ex] 
  $\mathbb{E}\big[S_N[f(\vect{Y})]\big]=\mathbb{E}[f(\vect{Y})]$   
 & $\mathbb{E}[\hat{I}_{\textrm{MC}}]=\const{P}_{\variabile{j}, \Delta \optangle}$ \\ [0.9ex] 
- $\textrm{Var}\big[S_N[f(\vect{Y})]\big] = \frac{\textrm{Var}[f(\vect{Y})]}{N} = \frac{\sigma}{N}$  & $\textrm{Var}[\hat{I}_{\textrm{MC}}] = \sqrt{\frac{\const{P}_{\variabile{j}, \Delta \optangle}(1-\const{P}_{\variabile{j}, \Delta \optangle})}{\nrays}}$ \\ [0.9ex] 
+ $\textrm{Var}\big[S_N[f(\vect{Y})]\big] = \frac{\textrm{Var}[f(\vect{Y})]}{N} = \frac{\sigma^2}{N}$  & $\textrm{Var}[\hat{I}_{\textrm{MC}}] = \frac{\const{P}_{\variabile{j}, \Delta \optangle}(1-\const{P}_{\variabile{j}, \Delta \optangle})}{\nrays} = \sigma_{\variabile{j}}^2$ \\ [0.9ex] 
  \hline
  \end{tabular}
 \label{tab:MCcomparison}
  \end{table}
 
-The main difference between the two methods is that in MC ray tracing we know the probability density distribution $\rho$ of the random variables $\vect{Y}_{\variabile{i}}$ which is the uniform distribution. Because of this, the expected value of the function $f$ can be approximated by (\ref{eq:approx_MC_QMC}). On the contrary, in MC ray tracing we consider random variables equally distributed with a uniform distribution $\rho$ at the source but, applying ray tracing to these variables, we do not know the target probability distribution anymore. Therefore the expected value of the \textit{target} MC intensity $\hat{I}_{\textrm{MC}}$ cannot be approximates by the sum in (\ref{eq:approx_MC_QMC}). Thus, the target is divided into intervals (for the one dimensional case) of the same length, i.e., bins, and the intensity is approximated by the sum of the characteristic function $\chi_{\variabile{j}}$ of the $\variabile{j}$-th interval as explained in Chapter \ref{chap:raytracing} (see Equation \ref{eq:approssimazione_MCraytracing}). Because of this, the error convergence of MC methods only depends on the number of sample points (Equation \ref{eq:mean_error}), while its also related to the number of bins for MC ray tracing (Equation \ref{eq:final_MC_error}).
+The main difference between the two methods is that in MC integration we know the probability density distribution $\rho$ of the random variables $\vect{Y}_{\variabile{i}}$ which is the uniform distribution. Because of this, the expected value of the function $f$ can be approximated by (\ref{eq:approx_MC_QMC}). On the contrary, in MC ray tracing we consider random variables equally distributed with a uniform distribution $\rho$ at the source but, applying ray tracing to these variables, we do not know the target probability distribution anymore. Therefore the expected value of the \textit{target} MC intensity $\hat{I}_{\textrm{MC}}$ cannot be approximates by the sum in (\ref{eq:approx_MC_QMC}). Thus, the target is divided into intervals (for the one dimensional case) of the same length, i.e., bins, and the intensity is approximated by the sum of the characteristic function $\chi_{\variabile{j}}$ of the $\variabile{j}$-th interval as explained in Chapter \ref{chap:raytracing} (see Equation \ref{eq:approssimazione_MCraytracing}). Because of this, the error convergence of MC integration only depends on the number of sample points (\ref{eq:mean_error}), while it is also related to the number of bins for MC ray tracing (\ref{eq:final_MC_error}).
 
 
 
