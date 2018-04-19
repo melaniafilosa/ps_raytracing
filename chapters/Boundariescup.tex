@@ -1,14 +1,14 @@
 \chapter{Exact intensity for the two-faceted cup}\label{app:boundariescup}
-For very simple optical systems, the \textit{exact} target intensity of light can be calculated. Here we explain how this is done for the two-faceted cup formed by a Lambertian source described in Chapter \ref{chap:raytracing}. We remind the reader that, for this system, the intensity in a given direction $\variabile{p}$ in PS is defined as:
+For very simple optical systems, the \textit{exact} target intensity of light can be calculated. Here we explain how this is done for the two-faceted cup with a Lambertian source described in Chapter \ref{chap:raytracing}. We remind the reader that, for this system, the intensity in a given direction $\variabile{p}$ in PS is defined as:
 \begin{equation}\label{eq:eta_appendix}
 I_{\textrm{PS}}(\variabile{p}) = \sum_{\Pi}\int_{\variabile{q}^\textrm{\,min}(\Pi, \variabile{p})}^{\variabile{q}^\textrm{\,max}(\Pi,\variabile{p})}L(\variabile{q}, \variabile{p})\textrm{d}\variabile{q} = \sum_{\Pi}\big (\variabile{q}^\textrm{max}(\Pi,\variabile{p})-\variabile{q}^\textrm{\,min}(\Pi,\variabile{p})\big )\,,
 \end{equation}
-where the sum is over all the possible paths, $\variabile{q}^\textrm{\,min}(\Pi,\variabile{p})$ and $\variabile{q}^\textrm{\,max}(\Pi,\variabile{p})$ are the minimum and maximum position coordinates of the rays on $\partial$\insieme{R}$_\textrm{t}(\Pi)$ along direction $\variabile{p}$, and the second equation holds as we assume $L=1$ in \insieme{R}$_\textrm{t}(\Pi)$.
-Therefore, if we are able to provide an analytic expression for the boundaries $\partial$\insieme{R}$_\textrm{t}(\Pi)$ we can calculated the position coordinates $\variabile{q}^\textrm{\,min}(\Pi,\variabile{p})$ and $\variabile{q}^\textrm{\,max}(\Pi,\variabile{p})$ of the intersection points between the line $\variabile{p}=\textrm{const}$ and $\partial$\insieme{R}$_\textrm{t}(\Pi)$ analytically and the exact intensity for every direction $\variabile{p}$ is obtained using (\ref{eq:eta_appendix}). The procedure used for such purpose is explained next.
+where the sum is over all the possible paths, $\variabile{q}^\textrm{\,min}(\Pi,\variabile{p})$ and $\variabile{q}^\textrm{\,max}(\Pi,\variabile{p})$ are of the intersection points between the line $\variabile{p}=\textrm{const}$ and $\partial$\insieme{R}$_\textrm{t}(\Pi)$, and the second equation holds as we assume $L=1$ in \insieme{R}$_\textrm{t}(\Pi)$.
+Therefore, if we are able to provide an analytic expression for the boundaries $\partial$\insieme{R}$_\textrm{t}(\Pi)$ we can calculated the position coordinates $\variabile{q}^\textrm{\,min}(\Pi,\variabile{p})$ and $\variabile{q}^\textrm{\,max}(\Pi,\variabile{p})$ analytically and we can compute the exact intensity for every direction $\variabile{p}$ is obtained using (\ref{eq:eta_appendix}). The procedure used for such purpose is explained next.
 \section{Analytic approach}
-The idea is to rotate the cup to determine the maximum number of reflections between the rays and the optical lines before reaching the target. The rays are considered to be straight lines instead of broken lines. Hence it is sufficient to find only one intersection point between the ray and a line segment (also in the case where more than one reflection occurs). Finally transforming back these points we obtain the corresponding coordinates at the target.\\ \indent
+The idea is to rotate the cup to determine the maximum number of reflections between a ray and the optical lines before reaching the target. The rays are considered to be straight lines instead of broken lines. Hence it is sufficient to find only one intersection point between the ray and a line segment (also in the case where more than one reflection occurs). Finally transforming (rotating or reflecting) back these points we obtain the corresponding coordinates at the target.\\ \indent
 The two-faceted cup is defined in the $(\variabile{x}, \variabile{z})$-plane as in Chapter \ref{chap:raytracing}. 
-Let $\gamma\in[0, \pi/2]$ be the angle that the left and right reflector make with the normal to the source. 
+Let $\gamma\in(0, \pi/2)$ be the angle that the left and right reflector make with the normal to the source. 
 %\begin{figure}[t]
 %\label{fig:cup}
 %  \begin{center}
@@ -22,10 +22,10 @@ Let $\gamma\in[0, \pi/2]$ be the angle that the left and right reflector make wi
 %   The left and right reflectors (line $2$ and $3$) connect the source with the target.}
 %  \label{fig:cup}
 %\end{figure}
-The maximum $\variabile{z}$-coordinate that the two-faceted cup can reach during the rotation is defined by:
+The maximum $\variabile{z}$-coordinate that the two-faceted cup can reach during the rotation is defined by the $\variabile{z}$-coordinate of the point $\point{P}=(0,Z)$:
 \begin{equation}\label{rotation}\begin{tabular}{llll}
-$Z$ & $=$ & $ \big(h+\frac{\variabile{a}}{\tan\gamma}\big)\frac{1}{\cos\gamma}-\frac{\variabile{a}}{\tan\gamma}$ \\ $ \quad$ & $ \quad $ & $ \quad $ \\$ \quad$ &  $=$ & $\frac{h}{\cos\gamma}+\frac{\variabile{a}(1-\cos\gamma)}{\sin\gamma}\big),$\end{tabular}
-\end{equation} and $\point{R}=(0,-\frac{\variabile{a}}{\tan\gamma})$ is the rotation point. We define $\point{B}_k$ as the clockwise ($k<0$) or counterclockwise ($k\geq 0$) rotation image around the point $\point{R}$ over an angle $\alpha_k=(2k+1)\gamma$, with $k$ an integer number (Figure \ref{fig:twofaced} is illustrative).
+$Z$ & $=$ & $ \big(h+\frac{\variabile{a}}{\tan\gamma}\big)\frac{1}{\cos\gamma}-\frac{\variabile{a}}{\tan\gamma}$ \\ $ \quad$ & $ \quad $ & $ \quad $ \\$ \quad$ &  $=$ & $\frac{h}{\cos\gamma}+\frac{\variabile{a}(1-\cos\gamma)}{\sin\gamma},$\end{tabular}
+\end{equation} and $\point{R}=(0,-\frac{\variabile{a}}{\tan\gamma})$ is the rotation point. We define $\point{B}_k$ as the clockwise ($k<0$) or counterclockwise ($k\geq 0$) rotation image of $\point{P}$ around the point $\point{R}$ over an angle $\alpha_k=(2k+1)\gamma$, with $k$ an integer number (Figure \ref{fig:twofaced} is illustrative).
 \begin{figure}[t]%\label{fig:twofaced}
  \centering
   \includegraphics[width=\textwidth]{rotated_cup.pdf}
@@ -42,18 +42,17 @@ The position coordinates of points $\point{B}_k = (B_{k,x}, B_{k,z})$ are given 
 \end{equation}
 The maximum number of reflections $r_{\textrm{max}}$ a ray can undergo before arriving at the target is:
 \begin{equation}
-r_{\textrm{max}}=\max\{k\in\mathbb{N} \;| \; B_{k-1,z}\geq 0\}
+r_{\textrm{max}}=\max\{k\in\mathbb{N} \;| \; B_{k-1,z}\geq 0\}.
 \end{equation}
-because rays cannot reach $\variabile{z}<0$.
 For example, for the two-faceted cup depicted in Figure \ref{fig:cup}, we found $r_{\textrm{max}}=2$.\\ \indent 
-Given the coordinates $(\variabile{x}_1, \variabile{z}_1)$ and the angular coordinate $\optangle_1$ of a ray at the source we can calculate the corresponding position $(\variabile{x}, \variabile{z})$ and direction coordinate $\optangle$ at the target as explained in the following. \\ \indent We compute the coordinates $(u,v)$ of the intersection point between the ray parametrization and the $|\variabile{k}|$ times rotated or reflected target $\point{B}_{\variabile{k}-1}\point{B}_\variabile{k}$ for which the intersection with the forward ray is not empty where $\variabile{k}=-\variabile{r}_{\textrm{max}}-1, \cdots, \variabile{r}_{\textrm{max}}$. Next, if $\variabile{k}$ is even, the corresponding coordinates $(\variabile{x},\variabile{z})$ at the target are found by rotating back the coordinates $(\variabile{u},\variabile{v})$, otherwise a reflection is applied. Therefore, the ray coordinates $(\variabile{x},\variabile{z})$ at the target are given by:
+Given the coordinates $(\variabile{x}_1, \variabile{z}_1)$ and the angular coordinate $\optangle_1$ of a ray at the source, we can calculate the corresponding position $(\variabile{x}, \variabile{z})$ and direction coordinate $\optangle$ at the target as explained in the following. \\ \indent We compute the coordinates $(u,v)$ of the intersection point between the ray parametrization and the $|\variabile{k}|$ times rotated or reflected target $\point{B}_{\variabile{k}-1}\point{B}_\variabile{k}$ for which the intersection with the forward ray is not empty, for $\variabile{k}=-\variabile{r}_{\textrm{max}}-1, \cdots, \variabile{r}_{\textrm{max}}$. Next, if $\variabile{k}$ is even, the corresponding coordinates $(\variabile{x},\variabile{z})$ at the target are found by rotating back the coordinates $(\variabile{u},\variabile{v})$, otherwise a reflection is applied. Therefore, the ray coordinates $(\variabile{x},\variabile{z})$ at the target are given by:
 \begin{equation} \label{rotation_target}\begin{pmatrix} \variabile{x}\\ \variabile{z}
 \end{pmatrix} = \left(\begin{array}{cc}(-1)^k & 0  \\ 0 & 1\end{array}\right)
 \left(\begin{array}{cc}\cos(-2\variabile{k}\gamma) & -\sin(-2\variabile{k}\gamma) \\\sin(-2\variabile{k}\gamma) & \cos(-2\variabile{k}\gamma)\end{array}\right)\begin{pmatrix} \variabile{u} \\
  \variabile{v}+\frac{a}{\tan(\gamma)}\end{pmatrix}-\begin{pmatrix}0 \\ \frac{a}{\tan\gamma}\end{pmatrix}.
-\end{equation} We observe that the sign depends on the parity of $\variabile{k}$. When $\variabile{k}=0$, i.e., the ray does not reflect, the first two matrices become the identity matrix and the cup is not rotated nor reflected. When $\variabile{k}$ is even, the determinant of the matrix given by the product between the first and the second matrix (\ref{rotation_target}) is equal to $1$ and we obtained a rotation matrix, while when $\variabile{k}$ is odd the determinant of the product matrix is $-1$ and we have a reflection matrix.
+\end{equation} We observe that the sign in the first matrix depends on the parity of $\variabile{k}$. When $\variabile{k}=0$, i.e., the ray does not reflect, the first matrices become the identity matrix and the cup is not rotated nor reflected. When $\variabile{k}$ is even, the determinant of the matrix given by the product between the first and the second matrix (\ref{rotation_target}) is equal to $1$ and we obtained a rotation matrix, while when $\variabile{k}$ is odd the determinant of the product matrix is $-1$ and we have a reflection matrix.
 \\ \indent
-The method of transforming the cup instead of the rays allows us to determine the positive luminance regions $\mbox{\insieme{R}}_1(\Pi_{\variabile{j}})$ and $\mbox{\insieme{R}}(\Pi_{\variabile{j}})$ in source and target PS, where every path $(\Pi_{\variabile{j}})_{\variabile{j}=1, \cdots, 2\variabile{r}_{\textrm{max}}+1}$ corresponds to $|\variabile{k}|$ of reflections. The corresponding boundaries only consist of rays that either leave the extremes of the source or hit one of the points $\point{B}_\variabile{k}$. 
+The method of transforming the cup instead of the rays allows us to determine the positive luminance regions $\mbox{\insieme{R}}_1(\Pi_{\variabile{j}})$ and $\mbox{\insieme{R}}(\Pi_{\variabile{j}})$ in source and target PS, where every path $(\Pi_{\variabile{j}})_{\variabile{j}=1, \cdots, 2\variabile{r}_{\textrm{max}}+1}$ corresponds to $|\variabile{k}|$ reflections. The corresponding boundaries only consist of rays that either leave the extremes of the source or hit one of the points $\point{B}_\variabile{k}$. 
 %At the boundaries a small change in the position or direction ray coordinate can cause a difference in the number of the reflections. 
 
 
@@ -67,9 +66,9 @@ The corresponding direction coordinates at the target PS are $\variabile{p}=\sin
 \optangle=(-1)^\variabile{k}(\optangle_1-2\variabile{k}\gamma).
 \end{equation}
 
-Rays emitted from the end points of the source have a constant position coordinate $\variabile{q}_1 = \variabile{x}_1 = \textrm{const}$ in source PS while varying the direction coordinate $\variabile{p}_1 = \sin(\optangle_1)\in[-1, 1]$ where $\optangle_1\in[-\pi/2, \pi/2]$. The corresponding target position coordinates $\variabile{x}$ is obtained from (\ref{rotation_target}) while the direction coordinates in the target PS are $\variabile{p} = \sin(\optangle)$, where $\optangle$ is given by Equation (\ref{teta}) and $\optangle_1\in[-\pi/2, \pi/2]$.
-Note that the rays emitted from the end points of the source form vertical lines in source PS as $\variabile{q}_1= \textrm{const}$ while varying $\variabile{p}_1\in[-1,1]$.
-On the other hand, rays that hit points $\point{B}_k$ form vertical lines in target PS as $\variabile{q} = \textrm{const}$ while varying $\variabile{p}\in[-1,1]$.
+Rays emitted from the end points of the source have a constant position coordinate $\variabile{q}_1 = \variabile{x}_1 = \textrm{const}$ in source PS and varying a direction coordinate $\variabile{p}_1 = \sin(\optangle_1)\in[-1, 1]$ where $\optangle_1\in[-\pi/2, \pi/2]$. The corresponding target position coordinate $\variabile{x}$ is obtained from (\ref{rotation_target}) while the direction coordinate in the target PS is $\variabile{p} = \sin(\optangle)$, where $\optangle$ is given by Equation (\ref{teta}).
+Note that the rays emitted from the end points of the source form vertical lines in source PS as $\variabile{q}_1= \textrm{const}$ and $\variabile{p}_1\in[-1,1]$ varies.
+On the other hand, rays that hit points $\point{B}_k$ form vertical lines in target PS as $\variabile{q} = \textrm{const}$.
 \\ \indent 
 %In Figure \ref{fig:raggi} are shown some rays that compose the boundaries of $M_{\textrm{s},k}$ which coordinates are:
 %$$ \begin{array}{cc}ADE = \Bigg(-a, \arctan\Big(\frac{-a+b_{-1,x}}{b_{-1,z}}\Big)\Bigg),\; ACE = \big(-a, \sin(\gamma)\big),\; AF = \big(-a, -\sin(\delta)\big), \\
@@ -107,8 +106,8 @@ The boundaries at the source and target PS are shown in red in Figures \ref{fig:
 %\noindent 
 %Figure \ref{fig:boundary} and \ref{boundaries_target} show also the symmetry of the regions $M_{\textrm{s},k}$ and $M_{\textrm{t},k}$. 
 %Finally we note that, since $k = 1$ is odd, the position of the regions $M_{\textrm{t},1}$ and $ M_{\textrm{t},-1}$ are exchanged with respect to the position of $ M_{\textrm{s},1}$ and $ M_{\textrm{s},-1}$.
-Once the boundaries at the target are determined, the coordinates of the intersection points between line $\variabile{p}=\textrm{const}$ and $\partial$\insieme{R}$(\Pi_{\variabile{j}})$ are found for every path $(\Pi_\variabile{j})_{\variabile{j}=1, \cdots, 2\variabile{k}+1}$ along every direction $\variabile{p}$. The target intensity is computed using Equation (\ref{eq:eta_appendix}). The intensity profile is depicted in Figure \ref{fig:intensity_cup_analytic}. 
-\begin{figure}[htbp]
+Once the boundaries at the target are determined, the coordinates of the intersection points between line $\variabile{p}=\textrm{const}$ and $\partial$\insieme{R}$(\Pi_{\variabile{j}})$ are found for every path $(\Pi_\variabile{j})_{\variabile{j}=1, \cdots, 2\variabile{r}_{\textrm{max}}+1}$ along every direction $\variabile{p}$. The target intensity is computed using Equation (\ref{eq:eta_appendix}). The intensity profile is depicted in Figure \ref{fig:intensity_cup_analytic}. 
+\begin{figure}[t]
 \centering
 %\begin{minipage}[t]{.40\textwidth}
 \includegraphics[width = 0.7\textwidth]{Exact_intensity}
@@ -116,7 +115,7 @@ Once the boundaries at the target are determined, the coordinates of the interse
 \label{fig:intensity_cup_analytic}
 %\end{minipage} \qquad \qquad \qquad
 \end{figure}
-Since the boundaries are calculated analytically, the intensity $I(\variabile{p})$ found is the exact intensity.
+Since the boundaries are computed analytically, the intensity $I(\variabile{p})$ found is the exact intensity.
 
 The exact intensity found as described above was taken as reference intensity in Chapters \ref{chap:triangulation} and \ref{chap:raymapping1}.
 
