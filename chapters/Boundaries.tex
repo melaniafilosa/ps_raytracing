@@ -247,7 +247,7 @@ Using PS ray tracing explained in Section \ref{sec:PS_raytracing} with parameter
 \begin{figure}[t]
 \label{fig:sourcePS}
   \begin{center}
-  \includegraphics[width=7.7cm]{source1}
+  \includegraphics[width=0.8\textwidth]{source1}
   \end{center}
   \caption{\textbf{Distribution of the rays on \point{S}{}{}}. Around $1.67 \cdot 10^4$ rays are traced using the triangulation refinement with parameters:
   $\varepsilon_\variabile{q}^\textrm{max} = 0.8/4 ,$ $ \varepsilon_{\variabile{p}}^\textrm{max} = 0.08/8, $ $\varepsilon_{\variabile{q}}^\textrm{min} = 0.05/4, \varepsilon_\variabile{p}^\textrm{min} = 0.05/8$. Rays that belong to the same region are depicted with the same color. The rays located inside the white areas do not reach the target. The boundaries of the two white regions are approximated by triangles depicted with black lines.}
@@ -265,7 +265,7 @@ $\Pi_7$ are discarded). To this purpose $U_1$ is calculated by removing from the
 \\ \indent To clarify this concept, in Figure \ref{fig:etendueTS} we provide an example where the source \'{e}tendue $U_1$ and target \'{e}tendue $U_{\textrm{t}}$ are computed from a set of around $1.67\cdot 10^4$ rays. The approximated source \'{e}tendue $U_1\approx 7.77$ is depicted with the red line. The blue line shows how the \'{e}tendue at the target changes as a function of $\alpha$. The smallest difference $\Delta U = |U_1-U_{\textrm{t}}|$ is obtained using $\alpha = \alpha_\textrm{c} = 0.08$.
  \begin{figure}[h]
   \begin{center}
-  \includegraphics[width=7.7cm]{etendue_alpha_shapes}
+  \includegraphics[width=\textwidth]{etendue_alpha_shapes}
   \end{center}
   \caption{\textbf{Etendue for the TIR-collimator.} $U_\textrm{t}$ is computed for a range of values for $\alpha$. $U_1 \approx 7.77$
    The green dot indicates the value of $\alpha_\textrm{c} = 0.08$ which gives a good approximation of the boundaries $\partial$\set{R}{}{}$(\Pi)$ at the target.
@@ -277,7 +277,7 @@ In Figure \ref{fig:targetPS} we show the boundaries
 $\partial$\set{R}{}{}$(\Pi)$ in target PS with $\alpha_\textrm{c}=0.08$ and tracing $1.67\cdot10^4$ rays.
   \begin{figure}[h]
   \begin{center}
-  \includegraphics[width=7.7cm]{target_alpha_shapes.png}
+  \includegraphics[width=\textwidth]{target_alpha_shapes}
   \end{center}
   \caption{\textbf{Target PS representation.} A set of $1.67 \cdot 10^4$ rays are traced.
   Rays that follow the same path are depicted with the same color. The choice of the colors is consistent with Figure $\ref{fig:sourcePS}$. The boundaries $\partial$\set{R}{}{}$(\Pi)$ are computed through the $\alpha$-shapes method with $\alpha = \alpha_\textrm{c} = 0.08$.}
@@ -397,7 +397,7 @@ Moreover a target located very close to the top makes the shape of that region l
 Therefore, it is expected that the $\alpha$-shapes method performs better for a small number of rays.
 \begin{figure}[h]
   \begin{center}
-  \includegraphics[width=6.5cm]{tir_analytic2}
+  \includegraphics[width=\textwidth]{tir_analytic2}
    \end{center}
     \caption{\textbf{Shape of the TIR-collimator.} Each line of the system is labeled with a number.
        $n_1 = 1$ is the refraction index of the medium (air) where the source and the target are located, and
@@ -407,7 +407,7 @@ Therefore, it is expected that the $\alpha$-shapes method performs better for a 
 \end{figure}
  \begin{figure}[h]
   \begin{center}
-       \includegraphics[width=7.7cm]{boundaries_alpha3}
+       \includegraphics[width=\textwidth]{boundaries_alpha3}
    \end{center}
         \caption{\textbf{Target phase space for the TIR-collimator depicted in
         Figure \ref{fig:analyticlens}.} The black line depicts the best approximation of $\partial$\set{R}{}{}$(\Pi)$ for $3\cdot 10^3$ rays. 
@@ -425,7 +425,7 @@ PS error is depicted with the red line and, QMC error is depicted with the blue 
 Numerical results show that, for the TIR-collimator in Figure \ref{fig:analyticlens}, the computational time needed to achieve an error of the order of $10^{-5}$ is reduced using PS ray tracing compared with QMC ray tracing.
 \begin{figure}[t]
  \begin{center}
-   \includegraphics[width=7.7cm]{error_alpha_shapes_vs_qmc_flat}
+   \includegraphics[width=\textwidth]{error_alpha_shapes_vs_qmc_flat}
     \end{center}
      \caption{\textbf{PS and QMC errors.}}
 %The red line depicts the error using the $\alpha$-shapes method to compute the boundaries. 

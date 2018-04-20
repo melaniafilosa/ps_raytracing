@@ -16,7 +16,17 @@
 \input{macros.tex}
 
 \graphicspath{{figures/}}
-
+\newenvironment{dedication}
+  {\clearpage           % we want a new page
+   \thispagestyle{empty}% no header and footer
+   \vspace*{\stretch{1}}% some space at the top 
+   \itshape             % the text is in italics
+   \raggedleft          % flush to the right margin
+  }
+  {\par % end the paragraph
+   \vspace{\stretch{3}} % space at bottom is three times that at the top
+   \clearpage           % finish off the page
+  }
 %\usepackage{titlesec}
 %\titleformat{\section}{\newpage \large\bfseries}
 %{\thesection.}{0.5em}{} 
@@ -50,8 +60,9 @@
 %\renewcommand{\epigraphwidth}{\setlength{12cm}}
 \clearpage{\pagestyle{empty}\cleardoublepage}
 %\begin{center}
-%{\Large  ``{ \textit...all actions in their entirety culminate in knowledge   }''}
+%{\Large  ``{ To  \\[2\baselineskip] }''}
 %\end{center}
+
 %\renewcommand{\epigraphwidth}{\setlength{5cm}}
 
 
@@ -102,11 +113,12 @@
 \include{chapters/Appendix_MC}
 %\include{chapters/Sobol}
 \include{chapters/Boundariescup}
-\bibliographystyle{ieeetr}
-\bibliography{Bib_US1}
 \include{chapters/Summary}
 \include{chapters/cv}
+\include{chapters/publications}
 \include{chapters/Acknowledgments}
+\bibliographystyle{ieeetr}
+\bibliography{Bib_US1}
 
 %\clearpage{\pagestyle{empty}\cleardoublepage}
 
