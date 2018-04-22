@@ -204,22 +204,25 @@ In Figure \ref{fig:ray_path2} we show in cyan a ray traced back from the target 
 \end{figure}
 \\ \indent 
 Direct backward ray mapping is able to detect \textit{all} the boundaries of \textit{all} regions of positive luminance in target PS. Since rays with multiple reflections hardly contribute to the total power, we discard rays with more than four reflections. The procedure can be stopped according to the desired accuracy. The more reflections are considered, the better the accuracy. \\ \indent
-Note that the luminance at the target cannot be constant because every ray carries a certain amount of energy that depends on the Fresnel coefficients. Because of this, a sampling in the interior of the boundaries is needed to compute the profile of the luminance at the target. In Figure \ref{fig:interpolation1} we show the procedure to compute the luminance related to path $\Pi_1$ along direction $\variabile{p}=0$. A sample of rays with corresponding coordinates $(\variabile{q}, \variabile{p})$ where $\variabile{q}\in[\variabile{q}^{\textrm{min}}(\Pi_1,\variabile{p}), \variabile{q}^{\textrm{max}}(\Pi_1,\variabile{p})]$ and $\variabile{p}=0$ are traced from the target to the source using the backward ray tracing and taking into account sequence $C_1$. The rays traced are depicted in red in Figure \ref{fig:interpolation1}. The luminance $L_{\Pi_1}(\variabile{q}, \variabile{p})$ is calculated for every $\variabile{q}\in[\variabile{q}^{\textrm{min}}(\Pi_1,\variabile{p}), \variabile{q}^{\textrm{max}}(\Pi_1,\variabile{p})]$ and $\variabile{p}=0$. Its profile is depicted in Figure \ref{fig:luminance_fresnel}.
-\begin{figure}[t]
-\centering
-\begin{subfigure}{.45\textwidth}
-  \includegraphics[width=\textwidth]{interpolation1}
- \caption{Sample of rays in the interior of $\partial$\set{R}{}{}$(\Pi_1)$ along direction $\variabile{p}=0$.}
-  \label{fig:interpolation1}
-\end{subfigure}%
-\hfill
-\begin{subfigure}{.45\textwidth}
-  \includegraphics[width=\textwidth]{luminance}
-  \caption{Luminance $L_{\Pi_1}(\variabile{q}, 0)$ related to path $\Pi_1$ along direction $\variabile{p}=0$ and with $\variabile{q}\in[\variabile{q}^{\textrm{min}}(\Pi_1, \variabile{p}), \variabile{q}^{\textrm{max}}(\Pi_1, \variabile{p})]$.} %
-  \label{fig:luminance_fresnel}
-\end{subfigure} %
-\caption{\textbf{Determination of the partial luminance.} $L_{\Pi_1}(\variabile{q}, 0)$ is related to path $\Pi_1$ along direction $\variabile{p}=0$.} 
-\end{figure}
+Note that the luminance at the target cannot be constant because every ray carries a certain amount of energy that depends on the Fresnel coefficients. Because of this, a sampling in the interior of the boundaries is needed to compute the profile of the luminance at the target. 
+%In Figure \ref{fig:interpolation1}
+Next we explain the procedure to compute the luminance related to path $\Pi_1$ along direction $\variabile{p}=0$. A sample of rays with corresponding coordinates $(\variabile{q}, \variabile{p})$ where $\variabile{q}\in[\variabile{q}^{\textrm{min}}(\Pi_1,\variabile{p}), \variabile{q}^{\textrm{max}}(\Pi_1,\variabile{p})]$ and $\variabile{p}=0$ are traced from the target to the source using the backward ray tracing and taking into account sequence $C_1$. The rays traced are depicted in red in Figure \ref{fig:interpolation1}. The luminance $L_{\Pi_1}(\variabile{q}, \variabile{p})$ is calculated for every $\variabile{q}\in[\variabile{q}^{\textrm{min}}(\Pi_1,\variabile{p}), \variabile{q}^{\textrm{max}}(\Pi_1,\variabile{p})]$ and $\variabile{p}=0$. 
+%Its profile is depicted in Figure \ref{fig:luminance_fresnel}.
+%\begin{figure}[t]
+%\centering
+%\begin{subfigure}{.45\textwidth}
+%  \includegraphics[width=\textwidth]{interpolation1}
+% \caption{Sample of rays in the interior of $\partial$\set{R}{}{}$(\Pi_1)$ along direction $\variabile{p}=0$.}
+%  \label{fig:interpolation1}
+%\end{subfigure}%
+%\hfill
+%\begin{subfigure}{.45\textwidth}
+%  \includegraphics[width=\textwidth]{luminance}
+%  \caption{Luminance $L_{\Pi_1}(\variabile{q}, 0)$ related to path $\Pi_1$ along direction $\variabile{p}=0$ and with $\variabile{q}\in[\variabile{q}^{\textrm{min}}(\Pi_1, \variabile{p}), \variabile{q}^{\textrm{max}}(\Pi_1, \variabile{p})]$.} %
+%  \label{fig:luminance_fresnel}
+%\end{subfigure} %
+%\caption{\textbf{Determination of the partial luminance.} $L_{\Pi_1}(\variabile{q}, 0)$ is related to path $\Pi_1$ along direction $\variabile{p}=0$.} 
+%\end{figure}
 \\\indent 
 Repeating the procedure explained above along all possible directions $\variabile{p}\in[-1,1]$, the partial luminance $L_{\Pi_1}(\variabile{q}, \variabile{p})$ is found for every $\variabile{q}\in[\variabile{q}^{\textrm{min}}(\Pi_1,\variabile{p}), \variabile{q}^{\textrm{max}}(\Pi_1,\variabile{p})]$ and $\variabile{p}\in[-1,1]$. The same procedure is applied to all the paths considered and the luminance corresponding to each path is calculated. The total luminance $L(\variabile{q}, \variabile{p})$ is given by the sum in (\ref{eq:luminance_fresnel}). Finally, the intensity is computed using (\ref{eq:intensity_fresnel}). \\ \indent
 We do not show here the numerical results of the total luminance and intensity because the work is still in progress. Our expectation is that direct backward ray mapping is suitable also for systems with Fresnel reflection. Indeed, the preliminary results show that the boundaries of the regions with positive luminance are calculated correctly. Once the boundaries are found also the luminance and the intensity can be computed applying an interpolation between the rays at the boundaries along every possible direction. Furthermore we expect that the method is much more accurate and faster than both MC and QMC ray tracing. This because we can analyze every single path independently.  

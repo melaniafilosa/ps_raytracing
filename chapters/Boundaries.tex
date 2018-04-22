@@ -72,7 +72,7 @@ The Voronoi diagram $\mbox{\insieme{V}}$ is defined as
 For the definition of Voronoi diagram in higher dimensions see \cite{brown1979voronoi}.
 \begin{figure}[t]
 \centering
-\includegraphics[width = 8cm]{Delanay_Voronoi1}
+\includegraphics[width = 0.7 \textwidth]{Delanay_Voronoi1}
 \caption{\textbf{Relationship between the Delaunay triangulation and the Voronoi Diagram \cite{Wiki4}.} The black line segments are the boundaries of the Delaunay triangulation, the red line segments constitutes the boundaries of the Voronoi diagram.}
 \label{fig:Voronoi}
 \end{figure}
@@ -230,9 +230,9 @@ The source $\point{S}= [-2,2]$ is located at a height $\variabile{z}_{1} = 0.3$ 
  The target $\point{T}= [-9.7, 9.7]$ is parallel to the source and is located at a height $ \variabile{z}= 8.2$. Both \point{S} and \point{T} are located in air ($\n_1=1$).
 The volume inside the collimator is filled with a material with index of refraction $\n_2=1.5$ (e.g. glass).
 The collimator is surrounded by two vertical lines (lines $13$ and $15$) and two horizontal lines ($12$ and $14$) that receive the light emitted from the source; among these the one at the top (line $12$) is assumed to be the target, and it is located at a small distance from the top (line $7$). 
-\begin{figure}[h]
+\begin{figure}[t]
   \begin{center}
-  \includegraphics[width=7.7cm]{TIR}
+  \includegraphics[width=0.7\textwidth]{TIR}
   \end{center}
   \caption{\textbf{Shape of the TIR-collimator.} Each line of the system is labeled with a number.
    The shape of the collimator is shown in blue.
@@ -263,9 +263,9 @@ $\Pi_7$ are discarded). To this purpose $U_1$ is calculated by removing from the
 %An accurate approximation of $\partial$\set{R}{}{}$(\Pi)$ gives a value of $U_{\textrm{t}}$ close to the exact \'{e}tendue. 
 %Matching $U_1$ with all the approximations of $U_{\textrm{t}}$ we find the best value $\alpha_c$ of $\alpha$ that approximates $\partial$\set{R}{}{}$(\Pi)$ and, therefore, $U_{\textrm{t}}$. 
 \\ \indent To clarify this concept, in Figure \ref{fig:etendueTS} we provide an example where the source \'{e}tendue $U_1$ and target \'{e}tendue $U_{\textrm{t}}$ are computed from a set of around $1.67\cdot 10^4$ rays. The approximated source \'{e}tendue $U_1\approx 7.77$ is depicted with the red line. The blue line shows how the \'{e}tendue at the target changes as a function of $\alpha$. The smallest difference $\Delta U = |U_1-U_{\textrm{t}}|$ is obtained using $\alpha = \alpha_\textrm{c} = 0.08$.
- \begin{figure}[h]
+ \begin{figure}[t]
   \begin{center}
-  \includegraphics[width=\textwidth]{etendue_alpha_shapes}
+  \includegraphics[width=0.7 \textwidth]{etendue_alpha_shapes}
   \end{center}
   \caption{\textbf{Etendue for the TIR-collimator.} $U_\textrm{t}$ is computed for a range of values for $\alpha$. $U_1 \approx 7.77$
    The green dot indicates the value of $\alpha_\textrm{c} = 0.08$ which gives a good approximation of the boundaries $\partial$\set{R}{}{}$(\Pi)$ at the target.
@@ -277,7 +277,7 @@ In Figure \ref{fig:targetPS} we show the boundaries
 $\partial$\set{R}{}{}$(\Pi)$ in target PS with $\alpha_\textrm{c}=0.08$ and tracing $1.67\cdot10^4$ rays.
   \begin{figure}[h]
   \begin{center}
-  \includegraphics[width=\textwidth]{target_alpha_shapes}
+  \includegraphics[width=0.7\textwidth]{target_alpha_shapes}
   \end{center}
   \caption{\textbf{Target PS representation.} A set of $1.67 \cdot 10^4$ rays are traced.
   Rays that follow the same path are depicted with the same color. The choice of the colors is consistent with Figure $\ref{fig:sourcePS}$. The boundaries $\partial$\set{R}{}{}$(\Pi)$ are computed through the $\alpha$-shapes method with $\alpha = \alpha_\textrm{c} = 0.08$.}
@@ -305,7 +305,7 @@ $ obtained using PS ray tracing with $8.3\cdot 10^4$ rays and $\alpha= \alpha_\t
 $\hat{I}_{\textrm{PS}}$ is hardly distinguishable from $\hat{I}_{\textrm{ref}}$ which is indicated with the dashed and blue line in Figure $\ref{fig:intensityMCPS}$.\\ \indent
   \begin{figure}[h]
     \centering
-    \includegraphics[width=7.7 cm]{intensity_alpha_shapes}
+    \includegraphics[width=0.7\textwidth]{intensity_alpha_shapes}
 \caption{\textbf{Target intensity profile.}
 The exact intensity is computed using the QMC method for a set of $10^7$ rays. For the PS intensity a set of $6.3\cdot 10^4$
 rays is considered and $\alpha_\textrm{c} = 0.06$ is chosen to compute the boundaries $\partial$\set{R}{}{}$(\Pi)$.}
@@ -351,9 +351,9 @@ $10^6$  & $1.02\cdot 10^{-5}$ \\
  \label{tab:table2}
  \end{table}
 \noindent In Figure $\ref{fig:error}$, the results listed in Table $\ref{tab:table}$ and Table $\ref{tab:table2}$ are shown. The red line depicts the convergence of the PS error and the blue line indicates the QMC error.
-\begin{figure}[h]
+\begin{figure}[t]
   \begin{center}
-  \includegraphics[width=7cm]{error_alpha_shapes_vs_qmc_curved}
+  \includegraphics[width=0.7\textwidth]{error_alpha_shapes_vs_qmc_curved}
   \end{center}
   \caption{\textbf{PS and QMC errors as a function of the number of rays}
   The horizontal dotted line shows that an error equal to $1.31\cdot  10^{-5}$ can be obtained tracing almost $10$ times fewer rays in phase space.}
@@ -397,7 +397,7 @@ Moreover a target located very close to the top makes the shape of that region l
 Therefore, it is expected that the $\alpha$-shapes method performs better for a small number of rays.
 \begin{figure}[h]
   \begin{center}
-  \includegraphics[width=\textwidth]{tir_analytic2}
+  \includegraphics[width=0.7\textwidth]{tir_analytic2}
    \end{center}
     \caption{\textbf{Shape of the TIR-collimator.} Each line of the system is labeled with a number.
        $n_1 = 1$ is the refraction index of the medium (air) where the source and the target are located, and
@@ -407,7 +407,7 @@ Therefore, it is expected that the $\alpha$-shapes method performs better for a 
 \end{figure}
  \begin{figure}[h]
   \begin{center}
-       \includegraphics[width=\textwidth]{boundaries_alpha3}
+       \includegraphics[width=0.7\textwidth]{boundaries_alpha3}
    \end{center}
         \caption{\textbf{Target phase space for the TIR-collimator depicted in
         Figure \ref{fig:analyticlens}.} The black line depicts the best approximation of $\partial$\set{R}{}{}$(\Pi)$ for $3\cdot 10^3$ rays. 

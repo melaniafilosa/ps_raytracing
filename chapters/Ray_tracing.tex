@@ -85,12 +85,12 @@ Once the target position and the direction of every ray are computed, also the t
 \\ \indent
 There are different ways to implement the ray tracing procedure. The efficiency of ray tracing can be related to the distribution of the rays at the source. 
 In Monte Carlo (MC) ray tracing the initial position and direction of the rays are chosen randomly. This is a very common method in non-imaging optics as it is very powerful and easy to implement. MC ray tracing will be explained in the next section.
-In Quasi-Monte Carlo (QMC) ray tracing the rays are chosen from a so-called low discrepancy sequence. This method is discussed in Section \ref{sec:QMC}.
+In Quasi-Monte Carlo (QMC) ray tracing the rays are chosen from a so-called low discrepancy sequence \cite{joe2008notes,joe2008constructing}. This method is discussed in Section \ref{sec:QMC}.
 \section{Monte Carlo (MC) ray tracing}
-MC \textit{methods} rely on stochastic random samples to obtain numerical results for a deterministic problem. In particular, MC simulations can be a very easy way to solve physics problems based on numerical integration \cite{jensen2003monte}. \textit{Ray tracing} provides a light distribution at the target given an initial light distribution at the source and an optical system.
+MC \textit{integrations} rely on stochastic random samples to obtain numerical results for a deterministic problem. In particular, MC simulations can be a very easy way to solve physics problems based on numerical integration \cite{jensen2003monte}. \textit{Ray tracing} provides a light distribution at the target given an initial light distribution at the source and an optical system.
 MC \textit{ray tracing} uses probabilistic random processes to implement ray tracing for illumination systems \cite{leobacher2014introduction}.
 We can think of a light source as emitting a very large number of random rays and keep track of where they go during their propagation inside the optical system. 
-Applying ray tracing to the initial random set of rays, a random rays distribution at the target of the system is obtained. From this distribution, we can calculate, for instance, the profile of the target intensity using MC approximation.  
+Applying ray tracing to the initial random set of rays, a random rays distribution at the target of the system is obtained. From this distribution, we can calculate, for instance, the profile of the target intensity using MC approximation. The differences and similarities between MC integration and MC ray tracing is better explained in Appendix \ref{chap:appraytracing}.
 
 In the two-dimensional MC ray tracing, for every ray we need to choose one position coordinate $\variabile{x}_1$ and one angular coordinate $\optangle_1$, while the $\variabile{z}_1$-coordinate of every ray is always given (for instance, for the two-faceted cup in Figure \ref{fig:cup}, $\variabile{z}_1=0$). 
 We indicate with $\variabile{x}_{1}^{\variabile{i}}$ the $\variabile{x}$-coordinate of the $\variabile{i}$-th ray and with $\optangle_1^{\variabile{i}}$ its angular coordinate. 
@@ -287,7 +287,7 @@ where $V(f)$ is the so-called variation function of $f$ in the sense of Hardy-Kr
 Usually both the star discrepancy $D^*_N(\mbox{\insieme{Y}})$ and the variation function $V(f)$ are difficult to approximate. In particular,  $V(f)$ in some cases is even infinite \cite{wang2008low}. Hence, (\ref{eq:QMC_error}) is not good for predicting for which $N$ the error will converge. 
 %Schlier [32] reports that even for QMC the variance of f is more strongly related to the error than is the variation.
 For the functions we analyze in this thesis the corresponding variation function is always bounded and the convergence of QMC methods strongly depends on the low-discrepancy sequence that is used.\\ \indent
-There are many ways to generate low-discrepancy sequences \cite{dalal2008low}. The most common QMC approach uses the so-called Sobol sequence. The algorithm for generating Sobol sequences is widely explained in the literature, (see for instance \cite{bratley1988algorithm}). When using Sobol sequences, the absolute value of QMC error can be estimated by:
+There are many ways to generate low-discrepancy sequences \cite{dalal2008low}. The most common QMC approach uses the so-called Sobol sequence \cite{joe2008constructing}. The algorithm for generating Sobol sequences is widely explained in the literature, (see for instance \cite{bratley1988algorithm}). When using Sobol sequences, the absolute value of QMC error can be estimated by:
 \begin{equation}
 |\const{err}(f, S_{N})|<\const{C} \frac{\log(N)^2}{N}, 
 \end{equation}
