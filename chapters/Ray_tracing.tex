@@ -18,7 +18,7 @@ Every ray emitted from the source is followed until it reaches the target.
 The ray tracing procedure is constructed such that the position and the direction of the rays are calculated on every optical line that they cross. \\ \indent
 Given a Cartesian coordinate system $(\variabile{x}, \variabile{z})$, a two-dimensional optical system symmetric with respect to the $\variabile{z}$-axis is defined.
 Hence, we assume that the optical axis coincides with the $\variabile{z}$-axis.
-The optical system is formed by a source \point{S}, a target  \point{T} and some optical components labeled with indices $\lineai$ where $\lineai \in \{2, \cdots, \nline-1\}$ and $\nline$
+The optical system is formed by a source \point{S}, a target  \point{T}, and some optical components labeled with indices $\lineai$ where $\lineai \in \{2, \cdots, \nline-1\}$ and $\nline$
  indicates the number of lines that form the system. \point{S} and \point{T} are indicated with the indices $1$ and $\nline$, respectively.
 Every line separates two materials with different indices of refraction. We indicate with $\n_\lineai$ the index of refraction of the medium in which the ray incident line $\lineai$ travels.
 Every ray emitted by \point{S} (line $1$) can either go straight to the target \point{T} or hit some optical components $\lineai\in\{2, \cdots, \nline -1\}$ before reaching \point{T} (line $\nline$).
@@ -87,7 +87,7 @@ There are different ways to implement the ray tracing procedure. The efficiency 
 In Monte Carlo (MC) ray tracing the initial position and direction of the rays are chosen randomly. This is a very common method in non-imaging optics as it is very powerful and easy to implement. MC ray tracing will be explained in the next section.
 In Quasi-Monte Carlo (QMC) ray tracing the rays are chosen from a so-called low discrepancy sequence \cite{joe2008notes,joe2008constructing}. This method is discussed in Section \ref{sec:QMC}.
 \section{Monte Carlo (MC) ray tracing}
-MC \textit{integrations} rely on stochastic random samples to obtain numerical results for a deterministic problem. In particular, MC simulations can be a very easy way to solve physics problems based on numerical integration \cite{jensen2003monte}. \textit{Ray tracing} provides a light distribution at the target given an initial light distribution at the source and an optical system.
+MC \textit{methods} rely on stochastic random samples to obtain numerical results for a deterministic problem. In particular, MC simulations can be a very easy way to solve physics problems based on numerical integration \cite{jensen2003monte}. \textit{Ray tracing} provides a light distribution at the target given an initial light distribution at the source and an optical system.
 MC \textit{ray tracing} uses probabilistic random processes to implement ray tracing for illumination systems \cite{leobacher2014introduction}.
 We can think of a light source as emitting a very large number of random rays and keep track of where they go during their propagation inside the optical system. 
 Applying ray tracing to the initial random set of rays, a random rays distribution at the target of the system is obtained. From this distribution, we can calculate, for instance, the profile of the target intensity using MC approximation. The differences and similarities between MC integration and MC ray tracing is better explained in Appendix \ref{chap:appraytracing}.
