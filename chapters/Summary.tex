@@ -1,6 +1,7 @@
 \chapter*{Summary}
 %\pagestyle{empty}
 %\pagenumbering{}
+\markboth{}{}
 \addcontentsline{toc}{chapter}{Summary}
 In this thesis we studied the light propagation within optical systems.
 Optical engineers are interested in design systems in such a way the desired output distribution of light is obtained. Ray tracing is a forward method where a set of rays is traced within the system from the source to the target. The propagation of light is determined computing the position and the direction of every ray for all the optical surfaces that it encounters. There are many ways to implement the ray tracing process. Monte Carlo (MC) ray tracing is often used in non-imaging optics. Rays are randomly traced from the source to the target and each time that a ray hits an optical surface the coordinates of the intersection point of the ray with the surface and the new ray direction are calculated. The output variables are computed dividing the target into intervals, the so-called bins, and counting the rays that fall into each bin. To obtain the desired accuracy, millions of rays are required, therefore the method is extremely computationally expensive and it converges as the inverse of the square root of the number of rays traced. 
