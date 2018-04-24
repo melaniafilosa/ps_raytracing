@@ -83,7 +83,7 @@ I(\myangle) = I_0\cos\myangle ,
 \end{equation}
 where $I_0 = I(\myangle = 0) = LA$. Light sources emitting light with a constant luminance are called \textit{Lambertian} sources.\\
 \indent Finally, we give a definition of the \'{e}tendue $U$ (unit $\textrm{m}^2\textrm{sr}$).
-Etendue is a french word that means extent or spread. In geometric optics, it is a quantity to describe how light is spread out in terms of area and solid angle \cite{lerner2006etendue, zhu2011etendue}.
+\'{E}tendue is a french word that means extent or spread. In geometric optics, it is a quantity to describe how light is spread out in terms of area and solid angle \cite{lerner2006etendue, zhu2011etendue}.
 The quantity $ \textrm{d}U $ of a source $\textrm{d}A$ is defined as:
 \begin{equation}\label{etendue}
 \textrm{d}U = n^2  \frac{1}{L}\textrm{d}\Phi = n^2 \cos\myangle\textrm{d}A\textrm{d}\Omega,
@@ -181,7 +181,7 @@ Luminous flux & $\Phi$   & $\textrm{lm}$   &  $\textrm{lm}$ \\
 Illuminance/emittance  & $E$    & $\textrm{lm}/{\textrm{m}^2} $ & $\textrm{lm}/{\textrm{m}}$  \\
 Intensity  & $I$    & $\textrm{lm}/{\textrm{sr}} = \textrm{cd}$  & $\textrm{lm}/\textrm{rad}$ \\
 Luminance  & $L$  & $ \textrm{cd}/{\textrm{m}^2}$   & $\textrm{lm}/(\textrm{rad} \,\textrm{m})$ \\
-Etendue & $U$  & $\textrm{m}^2\, \textrm{sr}$   & $\textrm{m}\, \textrm{rad}$ \\
+\'{E}tendue & $U$  & $\textrm{m}^2\, \textrm{sr}$   & $\textrm{m}\, \textrm{rad}$ \\
  \hline
  \end{tabular}
 \label{tab:photometric_variables}
@@ -190,7 +190,7 @@ Etendue & $U$  & $\textrm{m}^2\, \textrm{sr}$   & $\textrm{m}\, \textrm{rad}$ \\
 The propagation of a light ray traveling through different media is determined by the reflection and refraction law.
 In the following we introduce these two laws and we explain the total internal reflection phenomenon.
 \section{Reflection and refraction law}\label{sec:reflection}
-A light ray is described by a position vector \vect{x} on a surface and a direction vector \vect{t} and can be parameterized by the arc length \variabile{s}.
+A light ray is described by a position vector \vect{x} on a surface and a direction vector \vect{t} and can be parametrized by the arc length \variabile{s}.
 Light rays travel in a homogeneous medium along straight lines, once they hit a reflective surface their direction changes.
  Denoting with $\vect{t}_\textrm{i}$ the direction of the incident ray and with $\boldsymbol{\nu}$ the unit normal to the surface at the location of incidence, the direction $\vect{t}_\textrm{r}$ of the reflected ray is given by:
  \begin{equation}\label{Reflection}
@@ -204,7 +204,7 @@ From the previous equation it follows that the vector  $\vect{t}_\textrm{r}$ is 
 - 4(\vect{t}_\textrm{i}\boldsymbol{\cdot}\boldsymbol{\nu})(\vect{t}_\textrm{i}\boldsymbol{\cdot}\boldsymbol{\nu})+
 4(\vect{t}_\textrm{i}\boldsymbol{\cdot}\boldsymbol{\nu})^2(\boldsymbol{\nu}\boldsymbol{\cdot}\boldsymbol{\nu})=1 .
 \end{equation} 
-Note, from (\ref{Reflection}) that the vectors $\vect{t}_\textrm{i}$, $\vect{t}_\textrm{r}$ and $\boldsymbol{\nu}$ are coplanar.
+Note from (\ref{Reflection}) that the vectors $\vect{t}_\textrm{i}$, $\vect{t}_\textrm{r}$ and $\boldsymbol{\nu}$ are coplanar.
 Indicating with $\myangle_\textrm{i}$ the incident angle and with $\myangle_\textrm{r}$ the reflective angle such that $\myangle_\textrm{i}$, $\myangle_\textrm{r} \in[0, \pi/2)$,
 the reflection law states that $\myangle_\textrm{i}=\myangle_\textrm{r}$, see Figure \ref{fig:Snell}.
 \begin{figure}[t]
@@ -424,7 +424,7 @@ t_\textrm{p}+r_\textrm{p} =  1
 \end{equation}
 is valid only at normal incidence ($\myangle_{\textrm{i}} = 0$).
 \\ \indent The amplitude coefficients are shown in Figure \ref{fig:coefficients} for the case in which light travels from a less dense to a more dense medium, i.e., $\n_\textrm{i}<n_\textrm{t}$ where $\n_{\textrm{i}}= 1$ and $\n_{\textrm{t}}=1.5$, thus $\myangle_\textrm{i}>\myangle_\textrm{t}$. 
-In Figure \ref{fig:coefficients2} the amplitude coefficients are shown for the case in which $\n_\textrm{i}>n_\textrm{t}$ with $\n_{\textrm{i}}= 1.5$ and $\n_{\textrm{t}}=1$ ($\myangle_\textrm{i}<\myangle_\textrm{t}$). Note, from Figure \ref{fig:coefficients} that $r_\textrm{p}$ approaches $0$ when $\myangle_\textrm{i}$ approaches $\myangle_\textrm{p}$ and it gradually decreases, reaching $-1$ for an incident angle $\myangle_\textrm{i}=90^\circ$. The angle $\myangle_\textrm{p}$ is called \textit{Brewster's angle} or polarization angle as only the component perpendicular to the incident plane is reflected at that angle and therefore light is perfectly polarized. Similarly, Figure \ref{fig:coefficients2} shows that $r_\textrm{p}=0$ for $\myangle_\textrm{i}= \myangle_{\textrm{p}\prime}$. It can be show that $\myangle_\textrm{p}+ \myangle_{\textrm{p}\prime}= 90^\circ$. Both $r_\textrm{p}$ and $r_\textrm{s}$ reach $1$ when $\myangle_\textrm{i}~=~\myangle_\textrm{c}$. $\myangle_\textrm{c}$ is called the critical angle. Light that hits the incident plane with an incident angle equal to or greater than $\myangle_{\textrm{c}}$ is totally reflected back and no transmitted light is observed. This phenomenon is called total internal reflection. 
+In Figure \ref{fig:coefficients2} the amplitude coefficients are shown for the case in which $\n_\textrm{i}>n_\textrm{t}$ with $\n_{\textrm{i}}= 1.5$ and $\n_{\textrm{t}}=1$ ($\myangle_\textrm{i}<\myangle_\textrm{t}$). Note from Figure \ref{fig:coefficients} that $r_\textrm{p}$ approaches $0$ when $\myangle_\textrm{i}$ approaches $\myangle_\textrm{p}$ and it gradually decreases, reaching $-1$ for an incident angle $\myangle_\textrm{i}=90^\circ$. The angle $\myangle_\textrm{p}$ is called \textit{Brewster's angle} or polarization angle as only the component perpendicular to the incident plane is reflected at that angle and therefore light is perfectly polarized. Similarly, Figure \ref{fig:coefficients2} shows that $r_\textrm{p}=0$ for $\myangle_\textrm{i}= \myangle_{\textrm{p}\prime}$. It can be show that $\myangle_\textrm{p}+ \myangle_{\textrm{p}\prime}= 90^\circ$. Both $r_\textrm{p}$ and $r_\textrm{s}$ reach $1$ when $\myangle_\textrm{i}~=~\myangle_\textrm{c}$. $\myangle_\textrm{c}$ is called the critical angle. Light that hits the incident plane with an incident angle equal to or greater than $\myangle_{\textrm{c}}$ is totally reflected back and no transmitted light is observed. This phenomenon is called total internal reflection. 
 \begin{figure}[t]
   \begin{minipage}[h]{0.48\textwidth}
     \includegraphics[width=\textwidth]{amplitude_coefficients}
